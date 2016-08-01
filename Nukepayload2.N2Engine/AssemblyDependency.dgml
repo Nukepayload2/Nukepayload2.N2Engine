@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DirectedGraph GraphDirection="BottomToTop" Layout="Sugiyama" ZoomLevel="-1" xmlns="http://schemas.microsoft.com/vs/2009/dgml">
+  <Nodes>
+    <Node Id="Mono" Bounds="223.180732930501,-186.660594568691,239.323333333333,85.2402" Group="Expanded" Label="Mono" UseManualLocation="True" />
+    <Node Id="Nukepayload2.N2Engine" Bounds="-77.9212209128793,-241.776645276096,162.056666666666,25.24" UseManualLocation="True" />
+    <Node Id="Nukepayload2.N2Engine.ActionGames.Core" Bounds="189.221155192057,-71.4202945686909,271.196666666667,25.24" UseManualLocation="True" />
+    <Node Id="Nukepayload2.N2Engine.ActionGames.UWP" Bounds="213.661908397651,158.745026413371,326.71,25.24" Label="Nukepayload2.N2Engine.ActionGames.UWP.Designer" />
+    <Node Id="Nukepayload2.N2Engine.Core" Bounds="-93.1390038150241,-159.950078006375,191.996666666667,25.24" UseManualLocation="True" />
+    <Node Id="Nukepayload2.N2Engine.Mono" Bounds="243.180732930501,-146.660494568691,199.323333333333,25.24" Label="Nukepayload2.N2Engine.Mono" />
+    <Node Id="Nukepayload2.N2Engine.RolePlayGames" Bounds="-135.871563783223,-70.6098700714111,283.036666666667,25.24" Label="Nukepayload2.N2Engine.RolePlayGames.Core" UseManualLocation="True" />
+    <Node Id="Nukepayload2.N2Engine.RolePlayGames.UWP" Bounds="-155.25807344439,160.84767999804,338.55,25.24" Label="Nukepayload2.N2Engine.RolePlayGames.UWP.Designer" />
+    <Node Id="Nukepayload2.N2Engine.TableGames.Core" Bounds="-431.101563783223,-72.7027560424804,265.23,25.24" UseManualLocation="True" />
+    <Node Id="Nukepayload2.N2Engine.TableGames.UWP" Bounds="-506.393970457736,160.84767999804,320.743333333333,25.24" Label="Nukepayload2.N2Engine.TableGames.UWP.Designer" />
+    <Node Id="Nukepayload2.N2Engine.UWP" Bounds="-254.093031180117,94.497899913581,193.46,25.24" UseManualLocation="True" />
+    <Node Id="Nukepayload2.N2Engine.UWP.Designer" Bounds="40.7279065834903,100.385890922948,247.51,25.24" UseManualLocation="True" />
+    <Node Id="PCL" Bounds="-451.10156463623,-281.77675435791,933.605630900065,256.406984286499" Group="Expanded" LayoutSettings="BottomToTop" UseManualLocation="True" />
+    <Node Id="UWP" Bounds="-526.393970457736,54.497799913581,1086.76587885539,151.58997722168" Group="Expanded" LayoutSettings="BottomToTop" UseManualLocation="True" />
+  </Nodes>
+  <Links>
+    <Link Source="Mono" Target="Nukepayload2.N2Engine.Mono" Category="Contains" />
+    <Link Source="Nukepayload2.N2Engine.ActionGames.Core" Target="Nukepayload2.N2Engine.Core" Bounds="57.432951181804,-132.323901707484,221.490828025271,60.903607138793" />
+    <Link Source="Nukepayload2.N2Engine.ActionGames.UWP" Target="Nukepayload2.N2Engine.ActionGames.Core" Bounds="327.10953996414,-38.6727878869833,50.9271624527776,231.574257003194" />
+    <Link Source="Nukepayload2.N2Engine.ActionGames.UWP" Target="Nukepayload2.N2Engine.UWP.Designer" Bounds="219.121558768926,128.008968035892,111.935455381334,30.7360527160613" />
+    <Link Source="Nukepayload2.N2Engine.Core" Target="Nukepayload2.N2Engine" Bounds="2.89754480509073,-207.536695621315,0.144099543510404,47.5866176149401" />
+    <Link Source="Nukepayload2.N2Engine.Mono" Target="Nukepayload2.N2Engine.Core" Bounds="107.821708011112,-166.834661397646,112.588059343218,10.094133637076" />
+    <Link Source="Nukepayload2.N2Engine.RolePlayGames" Target="Nukepayload2.N2Engine.Core" Bounds="3.53374427171097,-125.714455385918,1.71928174213221,55.1045853145073" />
+    <Link Source="Nukepayload2.N2Engine.RolePlayGames.UWP" Target="Nukepayload2.N2Engine.RolePlayGames" Bounds="6.42839661482551,-36.3757491712187,7.13215088511613,197.223431055984" />
+    <Link Source="Nukepayload2.N2Engine.RolePlayGames.UWP" Target="Nukepayload2.N2Engine.UWP.Designer" Bounds="45.4232152609917,128.981578365032,79.3023924183234,31.866103519734" />
+    <Link Source="Nukepayload2.N2Engine.TableGames.Core" Target="Nukepayload2.N2Engine.Core" Bounds="-254.898003041839,-132.20714202493,205.523812234059,59.5043840751006" />
+    <Link Source="Nukepayload2.N2Engine.TableGames.UWP" Target="Nukepayload2.N2Engine.TableGames.Core" Bounds="-339.928654171675,-38.6084141165655,42.3676018060535,232.622096367542" />
+    <Link Source="Nukepayload2.N2Engine.TableGames.UWP" Target="Nukepayload2.N2Engine.UWP.Designer" Bounds="-239.466157013962,126.68440875314,288.455380501945,34.1632731316256" />
+    <Link Source="Nukepayload2.N2Engine.UWP" Target="Nukepayload2.N2Engine.Core" Bounds="-146.727672431924,-126.797596452024,138.458141038363,255.451950512536" />
+    <Link Source="Nukepayload2.N2Engine.UWP.Designer" Target="Nukepayload2.N2Engine.Core" Bounds="14.3557100598106,-126.86324422693,146.833610957427,261.405582483766" />
+    <Link Source="PCL" Target="Mono" Category="Contains" />
+    <Link Source="PCL" Target="Nukepayload2.N2Engine" Category="Contains" />
+    <Link Source="PCL" Target="Nukepayload2.N2Engine.ActionGames.Core" Category="Contains" />
+    <Link Source="PCL" Target="Nukepayload2.N2Engine.Core" Category="Contains" />
+    <Link Source="PCL" Target="Nukepayload2.N2Engine.RolePlayGames" Category="Contains" />
+    <Link Source="PCL" Target="Nukepayload2.N2Engine.TableGames.Core" Category="Contains" />
+    <Link Source="UWP" Target="Nukepayload2.N2Engine.ActionGames.UWP" Category="Contains" />
+    <Link Source="UWP" Target="Nukepayload2.N2Engine.RolePlayGames.UWP" Category="Contains" />
+    <Link Source="UWP" Target="Nukepayload2.N2Engine.TableGames.UWP" Category="Contains" />
+    <Link Source="UWP" Target="Nukepayload2.N2Engine.UWP" Category="Contains" />
+    <Link Source="UWP" Target="Nukepayload2.N2Engine.UWP.Designer" Category="Contains" />
+  </Links>
+  <Categories>
+    <Category Id="Contains" Label="包含" Description="链接的源是否包含目标对象" CanBeDataDriven="False" CanLinkedNodesBeDataDriven="True" IncomingActionLabel="包含者" IsContainment="True" OutgoingActionLabel="包含" />
+  </Categories>
+  <Properties>
+    <Property Id="Bounds" DataType="System.Windows.Rect" />
+    <Property Id="CanBeDataDriven" Label="CanBeDataDriven" Description="CanBeDataDriven" DataType="System.Boolean" />
+    <Property Id="CanLinkedNodesBeDataDriven" Label="CanLinkedNodesBeDataDriven" Description="CanLinkedNodesBeDataDriven" DataType="System.Boolean" />
+    <Property Id="Expression" DataType="System.String" />
+    <Property Id="GraphDirection" DataType="Microsoft.VisualStudio.Diagrams.Layout.LayoutOrientation" />
+    <Property Id="Group" Label="组" Description="将节点显示为组" DataType="Microsoft.VisualStudio.GraphModel.GraphGroupStyle" />
+    <Property Id="GroupLabel" DataType="System.String" />
+    <Property Id="IncomingActionLabel" Label="IncomingActionLabel" Description="IncomingActionLabel" DataType="System.String" />
+    <Property Id="IsContainment" DataType="System.Boolean" />
+    <Property Id="IsEnabled" DataType="System.Boolean" />
+    <Property Id="Label" Label="标签" Description="可批注对象的可显示标签" DataType="System.String" />
+    <Property Id="Layout" DataType="System.String" />
+    <Property Id="LayoutSettings" DataType="Microsoft.VisualStudio.Diagrams.View.GroupLayoutStyle" />
+    <Property Id="OutgoingActionLabel" Label="OutgoingActionLabel" Description="OutgoingActionLabel" DataType="System.String" />
+    <Property Id="TargetType" DataType="System.Type" />
+    <Property Id="UseManualLocation" DataType="System.Boolean" />
+    <Property Id="Value" DataType="System.String" />
+    <Property Id="ValueLabel" DataType="System.String" />
+    <Property Id="ZoomLevel" DataType="System.String" />
+  </Properties>
+  <Styles>
+    <Style TargetType="Node" GroupLabel="注释" ValueLabel="包含注释">
+      <Condition Expression="HasCategory('Comment')" />
+      <Setter Property="Background" Value="#FFFFFACD" />
+      <Setter Property="Stroke" Value="#FFE5C365" />
+      <Setter Property="StrokeThickness" Value="1" />
+      <Setter Property="NodeRadius" Value="2" />
+      <Setter Property="MaxWidth" Value="250" />
+    </Style>
+  </Styles>
+</DirectedGraph>
