@@ -32,8 +32,19 @@ Public MustInherit Class GameElement
     Public Sub UnhandleRenderer(parentRenderer As RendererBase)
         RaiseEvent RendererUnhandleRequested(Me, New RendererRegistrationRequestedEventArgs(parentRenderer))
     End Sub
+    ''' <summary>
+    ''' 主动请求从游戏画布移除
+    ''' </summary>
+    Public Event RemoveFromGameCanvasReuqested As EventHandler
+    ''' <summary>
+    ''' 从游戏画布移除
+    ''' </summary>
+    Public Sub RemoveFromGameCanvas()
+        RaiseEvent RemoveFromGameCanvasReuqested(Me, EventArgs.Empty)
+    End Sub
     Sub New()
         RendererBase.CreateElementRenderer(Me)
     End Sub
+    Public Overridable Property UpdateCommand As IGameCommand
 
 End Class

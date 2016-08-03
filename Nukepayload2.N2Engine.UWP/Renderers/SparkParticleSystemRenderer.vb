@@ -1,6 +1,8 @@
 ﻿Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.Core
+Imports Nukepayload2.N2Engine.UWP.Marshal
+
 ''' <summary>
 ''' 火花粒子系统的渲染器
 ''' </summary>
@@ -17,7 +19,10 @@ Public Class SparkParticleSystemRenderer
     End Sub
 
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
-
+        Dim ds = args.DrawingSession
+        For Each part In View.Data.Value.Particles
+            ds.FillCircle(part.Location, part.SparkSize, part.SparkColor.AsWindowsColor)
+        Next
     End Sub
 
     Protected Overrides Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object)

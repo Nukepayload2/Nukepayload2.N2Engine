@@ -75,21 +75,23 @@
     <Import Include="System.Runtime.CompilerServices" />
     <Import Include="System.Threading.Tasks" />
     <Import Include="System.Xml.Linq" />
-    <Import Include="Windows.ApplicationModel" />
-    <Import Include="Windows.ApplicationModel.Activation" />
-    <Import Include="Windows.Foundation" />
-    <Import Include="Windows.Foundation.Collections" />
-    <Import Include="Windows.Graphics.Display" />
-    <Import Include="Windows.UI.ViewManagement" />
-    <Import Include="Windows.UI.Xaml" />
-    <Import Include="Windows.UI.Xaml.Controls" />
-    <Import Include="Windows.UI.Xaml.Controls.Primitives" />
-    <Import Include="Windows.UI.Xaml.Data" />
-    <Import Include="Windows.UI.Xaml.Input" />
-    <Import Include="Windows.UI.Xaml.Media" />
-    <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Animations\BitmapAnimation.vb" />
+    <Compile Include="Animations\DynamicBitmapAnimation.vb" />
+    <Compile Include="Animations\LoopInformation.vb" />
+    <Compile Include="Animations\Trailer.vb" />
+    <Compile Include="Foundation\IGameCommand.vb" />
+    <Compile Include="Foundation\SimpleCommand.vb" />
+    <Compile Include="ParticleSystem\FixedCapacityParticleSystem.vb" />
+    <Compile Include="ParticleSystem\ImageParticle.vb" />
+    <Compile Include="ParticleSystem\IParticle.vb" />
+    <Compile Include="ParticleSystem\IParticleSystem.vb" />
+    <Compile Include="ParticleSystem\Particle.vb" />
+    <Compile Include="ParticleSystem\ParticleSystemBase.vb" />
+    <Compile Include="ParticleSystem\PointParticle.vb" />
+    <Compile Include="ParticleSystem\DynamicCapacityParticleSystem.vb" />
+    <Compile Include="ParticleSystem\SparkParticle.vb" />
     <Compile Include="Resources\BitmapResource.vb" />
     <Compile Include="Resources\GameResourceBase.vb" />
     <Compile Include="Foundation\PropertyBinder.vb" />
@@ -194,7 +196,10 @@
     <Compile Include="Platform\Platform.vb" />
     <Compile Include="Platform\PlatformImplRegistration.vb" />
     <Compile Include="Platform\RendererBase.vb" />
+    <Compile Include="Resources\GameResourceModelBase.vb" />
+    <Compile Include="Resources\ResourceId.vb" />
     <Compile Include="Resources\ResourceLoader.vb" />
+    <Compile Include="Utilities\Vector2Extensions.vb" />
     <Compile Include="Views\Foundation\GameCanvas.vb" />
     <Compile Include="Views\Foundation\GameEffect.vb" />
     <Compile Include="Views\Foundation\GameElement.vb" />
@@ -207,6 +212,8 @@
     <Compile Include="Platform\PlatformImplAttribute.vb" />
     <Compile Include="Foundation\SingleInstance.vb" />
     <Compile Include="Views\Foundation\RendererRegistrationRequestedEventArgs.vb" />
+    <Compile Include="ParticleSystem\SparkParticleSystem.vb" />
+    <Compile Include="Views\ParticleSystem\ParticleSystemView.vb" />
     <Compile Include="Views\ParticleSystem\SparkParticleSystemView.vb" />
   </ItemGroup>
   <ItemGroup>

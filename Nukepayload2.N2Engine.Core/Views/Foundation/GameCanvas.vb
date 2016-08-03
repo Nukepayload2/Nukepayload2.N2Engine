@@ -11,4 +11,16 @@ Public Class GameCanvas
     ''' 这个画布
     ''' </summary>
     Public ReadOnly Property Paused As New PropertyBinder(Of Boolean)
+    Sub New()
+        AddHandler Children.CollectionChanged,
+            Sub(sender, e)
+                Dim removeFromChildren As EventHandler = Sub(ele, args) Children.Remove(DirectCast(ele, GameElement))
+                For Each newItem As GameElement In e.NewItems
+                    AddHandler newItem.RemoveFromGameCanvasReuqested, removeFromChildren
+                Next
+                For Each oldItem As GameElement In e.OldItems
+                    RemoveHandler oldItem.RemoveFromGameCanvasReuqested, removeFromChildren
+                Next
+            End Sub
+    End Sub
 End Class

@@ -85,8 +85,35 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="Battle\BattleData.vb" />
+    <Compile Include="Battle\BuffDebuffStatus.vb" />
+    <Compile Include="Battle\SkillStatus.vb" />
+    <Compile Include="Character\BodyPropertiesComposite.vb" />
+    <Compile Include="CollectionSystem\CharacterCollection.vb" />
+    <Compile Include="CollectionSystem\ItemCollection.vb" />
+    <Compile Include="CollectionSystem\ItemCollectionBase.vb" />
+    <Compile Include="CollectionSystem\PlayerCollectionProperties.vb" />
+    <Compile Include="Foundation\Composite.vb" />
+    <Compile Include="Item\ItemState.vb" />
+    <Compile Include="Mission\ChapterData.vb" />
+    <Compile Include="Character\CharacterRepository.vb" />
+    <Compile Include="Foundation\CompositedValue.vb" />
+    <Compile Include="GameControl\Diffifulty.vb" />
+    <Compile Include="Battle\ElementPhase.vb" />
+    <Compile Include="Character\GameCharacterData.vb" />
+    <Compile Include="Character\BodyProperties.vb" />
+    <Compile Include="Battle\BattleProperties.vb" />
+    <Compile Include="Character\CharacterInformation.vb" />
+    <Compile Include="Mission\MissionData.vb" />
+    <Compile Include="Mission\MissionState.vb" />
+    <Compile Include="Mission\MissionType.vb" />
+    <Compile Include="Mission\MissionCondition.vb" />
+    <Compile Include="Save\Achievement.vb" />
+    <Compile Include="Battle\BattlePropertiesComposite.vb" />
+    <Compile Include="Save\RPGSaveRoamingData.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="GameControl\StoryFlag.vb" />
+    <Compile Include="Foundation\ValueRange.vb" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

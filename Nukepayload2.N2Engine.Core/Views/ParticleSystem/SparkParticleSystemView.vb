@@ -1,7 +1,6 @@
-﻿''' <summary>
-''' 火花粒子系统的视图
-''' </summary>
+﻿Imports Nukepayload2.N2Engine.Core.ParticleSystem
+
 Public Class SparkParticleSystemView
-    Inherits GameElement
+    Inherits ParticleSystemView(Of SparkParticleSystem)
 
 End Class
