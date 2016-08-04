@@ -16,8 +16,16 @@ Public Class GameCanvasRenderer
     ''' <param name="win2DCanvas">UWP的画布</param>
     Sub New(view As GameCanvas, win2DCanvas As CanvasAnimatedControl)
         MyBase.New(view, win2DCanvas)
+        HandleNewElements(view)
         AddHandler view.Children.CollectionChanged, AddressOf OnChildrenChanged
     End Sub
+
+    Private Sub HandleNewElements(view As GameCanvas)
+        For Each newItems As GameElement In view.Children
+            newItems.HandleRenderer(Me)
+        Next
+    End Sub
+
     ''' <summary>
     ''' 释放画布渲染器级别的资源
     ''' </summary>
@@ -29,12 +37,17 @@ Public Class GameCanvasRenderer
     ''' 更新Renderer的事件订阅
     ''' </summary>
     Protected Overridable Sub OnChildrenChanged(sender As Object, e As NotifyCollectionChangedEventArgs)
-        For Each newItems As GameElement In e.NewItems
-            newItems.HandleRenderer(Me)
-        Next
-        For Each oldItems As GameElement In e.OldItems
-            oldItems.UnhandleRenderer(Me)
-        Next
+        If e.NewItems IsNot Nothing Then
+            HandleNewElements(View)
+        End If
+        If e.OldItems IsNot Nothing Then
+            Dim result = Win2DCanvas.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
+            Sub()
+                For Each oldItems As GameElement In e.OldItems
+                    oldItems.UnhandleRenderer(Me)
+                Next
+            End Sub)
+        End If
     End Sub
     ''' <summary>
     ''' 创建画布渲染器级别的资源
@@ -61,7 +74,7 @@ Public Class GameCanvasRenderer
 
     End Sub
     ''' <summary>
-    ''' 处理自己和子元素的更新
+    ''' 处理自己的更新
     ''' </summary>
     Protected Overrides Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs) Handles MyBase.Update
 

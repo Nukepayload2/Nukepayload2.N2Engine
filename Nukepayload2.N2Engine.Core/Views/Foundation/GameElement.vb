@@ -45,6 +45,6 @@ Public MustInherit Class GameElement
     Sub New()
         RendererBase.CreateElementRenderer(Me)
     End Sub
-    Public Overridable Property UpdateCommand As IGameCommand
+    Public MustOverride Property UpdateCommand As IGameCommand
 
 End Class

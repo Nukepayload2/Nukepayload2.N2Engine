@@ -8,7 +8,7 @@
 
         Dim lock As New Object
 
-        Sub New(spawnCount As Integer, spawnDuration As Integer, spawnInterval As Integer, removeFromGameCanvasCallback As Action)
+        Sub New(spawnCount As Integer, spawnDuration As Integer, spawnInterval As Integer, removeFromGameCanvasCallback As PropertyBinder(Of Action))
             MyBase.New(spawnCount, spawnDuration)
             Me.SpawnInterval = spawnInterval
             Me.RemoveFromGameCanvasCallback = removeFromGameCanvasCallback
@@ -33,7 +33,7 @@
                 SpawnDuration -= 1
             Else
                 If Particles.Count = 0 Then
-                    RemoveFromGameCanvasCallback.Invoke
+                    RemoveFromGameCanvasCallback.Value.Invoke
                 End If
             End If
             Dim deq = 0

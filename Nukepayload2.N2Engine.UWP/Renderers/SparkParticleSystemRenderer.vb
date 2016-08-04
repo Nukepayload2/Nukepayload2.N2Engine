@@ -1,7 +1,9 @@
-﻿Imports Microsoft.Graphics.Canvas.UI
+﻿Imports System.Numerics
+Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.Core
 Imports Nukepayload2.N2Engine.UWP.Marshal
+Imports Windows.UI
 
 ''' <summary>
 ''' 火花粒子系统的渲染器
@@ -15,12 +17,14 @@ Public Class SparkParticleSystemRenderer
     End Sub
 
     Protected Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
-
+        Debug.WriteLine("准备火花资源")
     End Sub
 
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim ds = args.DrawingSession
-        For Each part In View.Data.Value.Particles
+        Dim SparkSys = View.Data.Value
+        ds.DrawText($"粒子数量: {SparkSys.Particles.Count}", New Vector2(20, 20), Colors.Black)
+        For Each part In SparkSys.Particles
             ds.FillCircle(part.Location, part.SparkSize, part.SparkColor.AsWindowsColor)
         Next
     End Sub
@@ -34,6 +38,11 @@ Public Class SparkParticleSystemRenderer
     End Sub
 
     Protected Overrides Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
+        View.UpdateCommand.Execute()
+    End Sub
 
+    Public Overrides Sub DisposeResources()
+        MyBase.DisposeResources()
+        Debug.WriteLine("释放全部火花资源")
     End Sub
 End Class

@@ -25,7 +25,7 @@
         ''' <summary>
         ''' 注册一个回调，处理与它对应的 <see cref="GameEffect"/> 从 <see cref="GameCanvas"/>移除这个过程。 
         ''' </summary>
-        Public Property RemoveFromGameCanvasCallback As Action
+        Public Property RemoveFromGameCanvasCallback As PropertyBinder(Of Action)
         ''' <summary>
         ''' 新建一个粒子
         ''' </summary>
