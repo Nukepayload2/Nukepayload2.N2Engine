@@ -73,6 +73,7 @@ artifacts/
 _Chutzpah*
 
 # Visual C++ cache files
+*.VC.db
 ipch/
 *.aps
 *.ncb
