@@ -17,7 +17,7 @@ Public NotInheritable Class MainPage
     End Sub
 
     Private Sub MainPage_Tapped(sender As Object, e As TappedRoutedEventArgs) Handles Me.Tapped
-        sparks.SparksData.SparkSys.Location = e.GetPosition(Me).ToVector2 * animContent.DpiScale
+        sparks.OnTapped(e.GetPosition(Me).ToVector2 * animContent.DpiScale)
     End Sub
 
     Private Sub MainPage_Unloaded(sender As Object, e As RoutedEventArgs) Handles Me.Unloaded

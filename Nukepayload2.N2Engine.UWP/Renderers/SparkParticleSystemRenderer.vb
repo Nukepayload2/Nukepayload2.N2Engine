@@ -25,7 +25,7 @@ Public Class SparkParticleSystemRenderer
         Dim SparkSys = View.Data.Value
         ds.DrawText($"粒子数量: {SparkSys.Particles.Count}", New Vector2(20, 20), Colors.Black)
         For Each part In SparkSys.Particles
-            ds.FillCircle(part.Location, part.SparkSize, part.SparkColor.AsWindowsColor)
+            ds.FillRectangle(New Rect(part.Location.ToPoint, New Size(part.SparkSize, part.SparkSize)), part.SparkColor.AsWindowsColor)
         Next
     End Sub
 

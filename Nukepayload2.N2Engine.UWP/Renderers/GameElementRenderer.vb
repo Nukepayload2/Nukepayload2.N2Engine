@@ -11,7 +11,7 @@ Public MustInherit Class GameElementRenderer(Of T As GameElement)
     Sub New(view As T)
         MyBase.New(view)
         AddHandler view.HandleRendererRequested, AddressOf OnHandleRendererRequested
-        AddHandler view.RendererUnhandleRequested, AddressOf OnRendererUnhandleRequested
+        AddHandler view.RendererUnloadRequested, AddressOf OnRendererUnhandleRequested
     End Sub
 
     Private Sub OnRendererUnhandleRequested(sender As Object, e As RendererRegistrationRequestedEventArgs)
@@ -21,6 +21,7 @@ Public MustInherit Class GameElementRenderer(Of T As GameElement)
             RemoveHandler .GameLoopStarting, AddressOf OnGameLoopStarting
             RemoveHandler .GameLoopStopped, AddressOf OnGameLoopStopped
             RemoveHandler .Update, AddressOf OnUpdate
+            .Dispose()
         End With
     End Sub
 
@@ -36,6 +37,6 @@ Public MustInherit Class GameElementRenderer(Of T As GameElement)
 
     Public Overrides Sub DisposeResources()
         RemoveHandler View.HandleRendererRequested, AddressOf OnHandleRendererRequested
-        RemoveHandler View.RendererUnhandleRequested, AddressOf OnRendererUnhandleRequested
+        RemoveHandler View.RendererUnloadRequested, AddressOf OnRendererUnhandleRequested
     End Sub
 End Class

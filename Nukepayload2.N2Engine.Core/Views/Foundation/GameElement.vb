@@ -23,14 +23,14 @@ Public MustInherit Class GameElement
         RaiseEvent HandleRendererRequested(Me, New RendererRegistrationRequestedEventArgs(parentRenderer))
     End Sub
     ''' <summary>
-    ''' 需要让渲染器结束处理平台渲染控件的事件
+    ''' 需要让渲染器结束处理平台渲染控件的事件, 并且释放渲染器占用的全部资源
     ''' </summary>
-    Public Event RendererUnhandleRequested As EventHandler(Of RendererRegistrationRequestedEventArgs)
+    Public Event RendererUnloadRequested As EventHandler(Of RendererRegistrationRequestedEventArgs)
     ''' <summary>
     ''' 发出注册渲染器注册请求
     ''' </summary>
-    Public Sub UnhandleRenderer(parentRenderer As RendererBase)
-        RaiseEvent RendererUnhandleRequested(Me, New RendererRegistrationRequestedEventArgs(parentRenderer))
+    Public Sub UnloadRenderer(parentRenderer As RendererBase)
+        RaiseEvent RendererUnloadRequested(Me, New RendererRegistrationRequestedEventArgs(parentRenderer))
     End Sub
     ''' <summary>
     ''' 主动请求从游戏画布移除

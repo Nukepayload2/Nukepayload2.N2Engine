@@ -31,7 +31,7 @@ Public Class GameCanvasRenderer
     ''' </summary>
     Public Overrides Sub DisposeResources()
         MyBase.DisposeResources()
-
+        View.Children.Clear()
     End Sub
     ''' <summary>
     ''' 更新Renderer的事件订阅
@@ -44,7 +44,7 @@ Public Class GameCanvasRenderer
             Dim result = Win2DCanvas.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
             Sub()
                 For Each oldItems As GameElement In e.OldItems
-                    oldItems.UnhandleRenderer(Me)
+                    oldItems.UnloadRenderer(Me)
                 Next
             End Sub)
         End If

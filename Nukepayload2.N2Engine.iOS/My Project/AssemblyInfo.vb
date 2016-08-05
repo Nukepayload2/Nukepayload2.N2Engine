@@ -8,10 +8,10 @@ Imports System.Reflection
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("Nukepayload2.N2Engine.Mono")> 
+<Assembly: AssemblyTitle("Nukepayload2.N2Engine.iOS")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("Nukepayload2.N2Engine.Mono")> 
+<Assembly: AssemblyProduct("Nukepayload2.N2Engine.iOS")> 
 <Assembly: AssemblyCopyright("版权所有(C)  2016")> 
 <Assembly: AssemblyTrademark("")> 
 <Assembly: NeutralResourcesLanguage("zh-Hans")>

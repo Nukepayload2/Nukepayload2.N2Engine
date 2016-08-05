@@ -1,4 +1,5 @@
-﻿Imports Nukepayload2.N2Engine.Core
+﻿Imports System.Numerics
+Imports Nukepayload2.N2Engine.Core
 
 Public Class SparksView
     Inherits GameCanvas
@@ -11,5 +12,11 @@ Public Class SparksView
         SparksData.RemoveFromVisualTree.Bind(Function() AddressOf sparks.RemoveFromGameCanvas)
 
         Children.Add(sparks)
+    End Sub
+    ''' <summary>
+    ''' 平台特定实现点击此视图时，调用此方法
+    ''' </summary>
+    Public Sub OnTapped(pos As Vector2)
+        SparksData.SparkSys.Location = pos
     End Sub
 End Class

@@ -5,13 +5,13 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{3C650E58-69B0-4CE5-A8E6-F51EAAED184C}</ProjectGuid>
+    <ProjectGuid>{B6900D0C-E801-40E6-AD35-7FEF0F7B57C4}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Nukepayload2.N2Engine.Mono</RootNamespace>
-    <AssemblyName>Nukepayload2.N2Engine.Mono</AssemblyName>
+    <RootNamespace>Nukepayload2.N2Engine.iOS</RootNamespace>
+    <AssemblyName>Nukepayload2.N2Engine.iOS</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <ProjectTypeGuids>{14182A97-F7F0-4C62-8B27-98AA8AE2109A};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
-    <TargetFrameworkProfile>Profile259</TargetFrameworkProfile>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
@@ -22,7 +22,7 @@
     <DefineConstants>
     </DefineConstants>
     <OutputPath>bin\Debug</OutputPath>
-    <DocumentationFile>Nukepayload2.N2Engine.Mono.xml</DocumentationFile>
+    <DocumentationFile>Nukepayload2.N2Engine.iOS.xml</DocumentationFile>
     <NoWarn>40057,42016,41999,42020,42021,42022</NoWarn>
     <WarningsAsErrors>42017,42018,42019,42032,42036</WarningsAsErrors>
   </PropertyGroup>
@@ -34,7 +34,7 @@
     </DefineConstants>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DocumentationFile>Nukepayload2.N2Engine.Mono.xml</DocumentationFile>
+    <DocumentationFile>Nukepayload2.N2Engine.iOS.xml</DocumentationFile>
     <NoWarn>40057,42016,41999,42020,42021,42022</NoWarn>
     <WarningsAsErrors>42017,42018,42019,42032,42036</WarningsAsErrors>
   </PropertyGroup>
@@ -50,13 +50,6 @@
   <PropertyGroup>
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
-  <ItemGroup>
-    <!-- A reference to the entire .NET Framework and Windows SDK is automatically included -->
-    <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
-      <Project>{33bd32b3-a054-4097-89f7-4128c10a21fc}</Project>
-      <Name>Nukepayload2.N2Engine</Name>
-    </ProjectReference>
-  </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
@@ -85,8 +78,29 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="MonoAPIContract.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="MonoGame.Framework">
+      <HintPath>C:\Program Files (x86)\MonoGame\v3.0\Assemblies\iOS\MonoGame.Framework.dll</HintPath>
+    </Reference>
+    <Reference Include="OpenTK-1.0">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\Xamarin.iOS\v1.0\OpenTK-1.0.dll</HintPath>
+    </Reference>
+    <Reference Include="Xamarin.iOS">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
+      <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
+      <Name>Nukepayload2.N2Engine.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RaisingStudio.Xna.Graphics.iOS\RaisingStudio.Xna.Graphics.iOS.csproj">
+      <Project>{e1a3e111-a8f0-4ef9-8c65-13dd3ce5855b}</Project>
+      <Name>RaisingStudio.Xna.Graphics.iOS</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>25ff50da-e05c-4e11-b60f-259d4088fc7f</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>RaisingStudio.Xna.Graphics</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Brush.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CommandType.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)CommonEqualityComparer.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ContextCommand.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawingBatch.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawingComponent.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawingContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawingRender.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawingSortMode.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DrawingTexture.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensions.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IProducerConsumerCollection.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ITransform.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LineStroke.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)LineStyle.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectPool.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)SolidColorBrush.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TextureBrush.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)TextureContext.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)Transform2D.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)VertexFragment.cs" />
+  </ItemGroup>
+</Project>
