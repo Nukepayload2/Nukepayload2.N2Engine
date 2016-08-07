@@ -141,6 +141,10 @@
       <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
       <Name>Nukepayload2.N2Engine.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.Win32\Nukepayload2.N2Engine.Win32.vbproj">
+      <Project>{79ca7b28-8aa2-4c54-85ce-e44c52e719a0}</Project>
+      <Name>Nukepayload2.N2Engine.Win32</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

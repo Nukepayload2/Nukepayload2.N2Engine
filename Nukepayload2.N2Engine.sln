@@ -68,6 +68,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2401E3DB-43A4-4EF8-ACFE-B806D19E9FB7}"
 	ProjectSection(SolutionItems) = preProject
 		README.md = README.md
+		代码规范.md = 代码规范.md
+		可移植的粒子系统.md = 可移植的粒子系统.md
 	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "N2Demo.WPF", "N2Demo.WPF\N2Demo.WPF.vbproj", "{10772B7C-CA13-41F2-A325-D13ECD1992BC}"
