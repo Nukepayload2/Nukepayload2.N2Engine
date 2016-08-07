@@ -10,7 +10,7 @@ namespace RaisingStudio.Xna.Graphics
 {
     public class DrawingContext : DrawingBatch
     {
-        SpriteBatch spriteBatch;
+        public SpriteBatch SpriteBatch { get; private set; }
         private SpriteSortMode spriteSortMode;
         private BlendState blendState;
         private SamplerState samplerState;
@@ -23,19 +23,19 @@ namespace RaisingStudio.Xna.Graphics
         public DrawingContext(GraphicsDevice graphicsDevice)
             : base(graphicsDevice)
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
         public DrawingContext(RenderTarget2D renderTarget)
             : base(renderTarget)
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
         }
 
         public DrawingContext(RenderTarget2D renderTarget, Texture2D background)
             : base(renderTarget, background)
         {
-            spriteBatch = new SpriteBatch(GraphicsDevice);
+            SpriteBatch = new SpriteBatch(GraphicsDevice);
         }
         #endregion
 
@@ -286,25 +286,25 @@ namespace RaisingStudio.Xna.Graphics
         protected virtual void RenderSprites(List<ContextCommand> spriteCommands)
         {
             RenderTargetBinding[] renderTagets = null;
-            this.Render.Begin(this.spriteBatch, this.spriteSortMode, this.blendState, this.samplerState, this.depthStencilState, rasterizerState, this.customEffect, this.transformMatrix, out renderTagets);
+            this.Render.Begin(this.SpriteBatch, this.spriteSortMode, this.blendState, this.samplerState, this.depthStencilState, rasterizerState, this.customEffect, this.transformMatrix, out renderTagets);
             foreach (ContextCommand command in spriteCommands)
             {
                 switch (command.CommandType)
                 {
                     case CommandType.DrawPoints:
                         {
-                            RenderPoints(this.spriteBatch, command.Vectors, (Vector2)command.Addtions[0], command.Color);
+                            RenderPoints(this.SpriteBatch, command.Vectors, (Vector2)command.Addtions[0], command.Color);
                             break;
                         }
                     case CommandType.DrawColors:
                         {
                             if(command.Addtions[0] is VertexPositionColor[])
                             {
-                                RenderColors(this.spriteBatch, (VertexPositionColor[])command.Addtions[0], command.Vectors[0]);
+                                RenderColors(this.SpriteBatch, (VertexPositionColor[])command.Addtions[0], command.Vectors[0]);
                             }
                             else
                             {
-                                RenderColors(this.spriteBatch, (Color[])command.Addtions[0], command.Vectors[0], command.Vectors[1]);
+                                RenderColors(this.SpriteBatch, (Color[])command.Addtions[0], command.Vectors[0], command.Vectors[1]);
                             }
                             break;
                         }
@@ -312,22 +312,22 @@ namespace RaisingStudio.Xna.Graphics
                         {
                             if (command.Addtions[1] != null)
                             {
-                                this.spriteBatch.Draw((Texture2D)command.Addtions[0], (Rectangle)command.Addtions[1], (Rectangle?)command.Addtions[2], command.Color, (float)command.Addtions[3], command.Vectors[1], (SpriteEffects)command.Addtions[4], (float)command.Addtions[5]);
+                                this.SpriteBatch.Draw((Texture2D)command.Addtions[0], (Rectangle)command.Addtions[1], (Rectangle?)command.Addtions[2], command.Color, (float)command.Addtions[3], command.Vectors[1], (SpriteEffects)command.Addtions[4], (float)command.Addtions[5]);
                             }
                             else
                             {
-                                this.spriteBatch.Draw((Texture2D)command.Addtions[0], command.Vectors[0], (Rectangle?)command.Addtions[2], command.Color, (float)command.Addtions[3], command.Vectors[1], command.Vectors[2], (SpriteEffects)command.Addtions[4], (float)command.Addtions[5]);
+                                this.SpriteBatch.Draw((Texture2D)command.Addtions[0], command.Vectors[0], (Rectangle?)command.Addtions[2], command.Color, (float)command.Addtions[3], command.Vectors[1], command.Vectors[2], (SpriteEffects)command.Addtions[4], (float)command.Addtions[5]);
                             }
                             break;
                         }
                     case CommandType.DrawText:
                         {
-                            this.spriteBatch.DrawString((SpriteFont)command.Addtions[0], (string)command.Addtions[1], command.Vectors[0], command.Color, (float)command.Addtions[2], command.Vectors[1], command.Vectors[2], (SpriteEffects)command.Addtions[3], (float)command.Addtions[4]);
+                            this.SpriteBatch.DrawString((SpriteFont)command.Addtions[0], (string)command.Addtions[1], command.Vectors[0], command.Color, (float)command.Addtions[2], command.Vectors[1], command.Vectors[2], (SpriteEffects)command.Addtions[3], (float)command.Addtions[4]);
                             break;
                         }
                 }
             }
-            this.Render.End(this.spriteBatch, renderTagets);
+            this.Render.End(this.SpriteBatch, renderTagets);
         }
 
         protected virtual void RenderPrimitives(List<ContextCommand> primitiveCommands)
@@ -429,7 +429,7 @@ namespace RaisingStudio.Xna.Graphics
                         {
                             if (latestSprite)
                             {
-                                this.Render.End(this.spriteBatch, renderTagets);
+                                this.Render.End(this.SpriteBatch, renderTagets);
                             }
                             ProcessDrawLine(command.Vectors[0], command.Vectors[1], command.Color);
                             latestPrimitives = true;
@@ -440,7 +440,7 @@ namespace RaisingStudio.Xna.Graphics
                         {
                             if (latestSprite)
                             {
-                                this.Render.End(this.spriteBatch, renderTagets);
+                                this.Render.End(this.SpriteBatch, renderTagets);
                             }
                             ProcessDrawRectangle(command.Vectors[0], command.Vectors[1], command.Color);
                             latestPrimitives = true;
@@ -451,7 +451,7 @@ namespace RaisingStudio.Xna.Graphics
                         {
                             if (latestSprite)
                             {
-                                this.Render.End(this.spriteBatch, renderTagets);
+                                this.Render.End(this.SpriteBatch, renderTagets);
                             }
                             ProcessDrawTriangle(command.Vectors[0], command.Vectors[1], command.Vectors[2], command.Color);
                             latestPrimitives = true;
@@ -462,7 +462,7 @@ namespace RaisingStudio.Xna.Graphics
                         {
                             if (latestSprite)
                             {
-                                this.Render.End(this.spriteBatch, renderTagets);
+                                this.Render.End(this.SpriteBatch, renderTagets);
                             }
                             ProcessDrawEllipse(command.Vectors[0], command.Vectors[1], command.Color);
                             latestPrimitives = true;
@@ -473,7 +473,7 @@ namespace RaisingStudio.Xna.Graphics
                         {
                             if (latestSprite)
                             {
-                                this.Render.End(this.spriteBatch, renderTagets);
+                                this.Render.End(this.SpriteBatch, renderTagets);
                             }
                             ProcessDrawPolyline(command.Vectors, 0, -1, (bool)command.Addtions[0], command.Color);
                             latestPrimitives = true;
@@ -484,7 +484,7 @@ namespace RaisingStudio.Xna.Graphics
                         {
                             if (latestSprite)
                             {
-                                this.Render.End(this.spriteBatch, renderTagets);
+                                this.Render.End(this.SpriteBatch, renderTagets);
                             }
                             ProcessDrawFilledRectangle(command.Vectors[0], command.Vectors[1], command.Color);
                             latestPrimitives = true;
@@ -495,7 +495,7 @@ namespace RaisingStudio.Xna.Graphics
                         {
                             if (latestSprite)
                             {
-                                this.Render.End(this.spriteBatch, renderTagets);
+                                this.Render.End(this.SpriteBatch, renderTagets);
                             }
                             ProcessDrawFilledTriangle(command.Vectors[0], command.Vectors[1], command.Vectors[2], command.Color);
                             latestPrimitives = true;
@@ -506,7 +506,7 @@ namespace RaisingStudio.Xna.Graphics
                         {
                             if (latestSprite)
                             {
-                                this.Render.End(this.spriteBatch, renderTagets);
+                                this.Render.End(this.SpriteBatch, renderTagets);
                             }
                             ProcessDrawFilledEllipse(command.Vectors[0], command.Vectors[1], command.Color);
                             latestPrimitives = true;
@@ -523,9 +523,9 @@ namespace RaisingStudio.Xna.Graphics
                             }
                             if (!latestSprite)
                             {
-                                this.Render.Begin(this.spriteBatch, this.spriteSortMode, this.blendState, this.samplerState, this.depthStencilState, rasterizerState, this.customEffect, this.transformMatrix, out renderTagets);
+                                this.Render.Begin(this.SpriteBatch, this.spriteSortMode, this.blendState, this.samplerState, this.depthStencilState, rasterizerState, this.customEffect, this.transformMatrix, out renderTagets);
                             }
-                            RenderPoints(this.spriteBatch, command.Vectors, (Vector2)command.Addtions[0], command.Color);
+                            RenderPoints(this.SpriteBatch, command.Vectors, (Vector2)command.Addtions[0], command.Color);
                             latestSprite = true;
                             latestPrimitives = false;
                             break;
@@ -538,15 +538,15 @@ namespace RaisingStudio.Xna.Graphics
                             }
                             if (!latestSprite)
                             {
-                                this.Render.Begin(this.spriteBatch, this.spriteSortMode, this.blendState, this.samplerState, this.depthStencilState, rasterizerState, this.customEffect, this.transformMatrix, out renderTagets);
+                                this.Render.Begin(this.SpriteBatch, this.spriteSortMode, this.blendState, this.samplerState, this.depthStencilState, rasterizerState, this.customEffect, this.transformMatrix, out renderTagets);
                             }
                             if (command.Addtions[0] is VertexPositionColor[])
                             {
-                                RenderColors(this.spriteBatch, (VertexPositionColor[])command.Addtions[0], command.Vectors[0]);
+                                RenderColors(this.SpriteBatch, (VertexPositionColor[])command.Addtions[0], command.Vectors[0]);
                             }
                             else
                             {
-                                RenderColors(this.spriteBatch, (Color[])command.Addtions[0], command.Vectors[0], command.Vectors[1]);
+                                RenderColors(this.SpriteBatch, (Color[])command.Addtions[0], command.Vectors[0], command.Vectors[1]);
                             }
                             latestSprite = true;
                             latestPrimitives = false;
@@ -560,15 +560,15 @@ namespace RaisingStudio.Xna.Graphics
                             }
                             if (!latestSprite)
                             {
-                                this.Render.Begin(this.spriteBatch, this.spriteSortMode, this.blendState, this.samplerState, this.depthStencilState, rasterizerState, this.customEffect, this.transformMatrix, out renderTagets);
+                                this.Render.Begin(this.SpriteBatch, this.spriteSortMode, this.blendState, this.samplerState, this.depthStencilState, rasterizerState, this.customEffect, this.transformMatrix, out renderTagets);
                             }
                             if (command.Addtions[1] != null)
                             {
-                                this.spriteBatch.Draw((Texture2D)command.Addtions[0], (Rectangle)command.Addtions[1], (Rectangle?)command.Addtions[2], command.Color, (float)command.Addtions[3], command.Vectors[1], (SpriteEffects)command.Addtions[4], (float)command.Addtions[5]);
+                                this.SpriteBatch.Draw((Texture2D)command.Addtions[0], (Rectangle)command.Addtions[1], (Rectangle?)command.Addtions[2], command.Color, (float)command.Addtions[3], command.Vectors[1], (SpriteEffects)command.Addtions[4], (float)command.Addtions[5]);
                             }
                             else
                             {
-                                this.spriteBatch.Draw((Texture2D)command.Addtions[0], command.Vectors[0], (Rectangle?)command.Addtions[2], command.Color, (float)command.Addtions[3], command.Vectors[1], command.Vectors[2], (SpriteEffects)command.Addtions[4], (float)command.Addtions[5]);
+                                this.SpriteBatch.Draw((Texture2D)command.Addtions[0], command.Vectors[0], (Rectangle?)command.Addtions[2], command.Color, (float)command.Addtions[3], command.Vectors[1], command.Vectors[2], (SpriteEffects)command.Addtions[4], (float)command.Addtions[5]);
                             }
                             latestSprite = true;
                             latestPrimitives = false;
@@ -582,9 +582,9 @@ namespace RaisingStudio.Xna.Graphics
                             }
                             if (!latestSprite)
                             {
-                                this.Render.Begin(this.spriteBatch, this.spriteSortMode, this.blendState, this.samplerState, this.depthStencilState, rasterizerState, this.customEffect, this.transformMatrix, out renderTagets);
+                                this.Render.Begin(this.SpriteBatch, this.spriteSortMode, this.blendState, this.samplerState, this.depthStencilState, rasterizerState, this.customEffect, this.transformMatrix, out renderTagets);
                             }
-                            this.spriteBatch.DrawString((SpriteFont)command.Addtions[0], (string)command.Addtions[1], command.Vectors[0], command.Color, (float)command.Addtions[2], command.Vectors[1], command.Vectors[2], (SpriteEffects)command.Addtions[3], (float)command.Addtions[4]);
+                            this.SpriteBatch.DrawString((SpriteFont)command.Addtions[0], (string)command.Addtions[1], command.Vectors[0], command.Color, (float)command.Addtions[2], command.Vectors[1], command.Vectors[2], (SpriteEffects)command.Addtions[3], (float)command.Addtions[4]);
                             latestSprite = true;
                             latestPrimitives = false;
                             break;
@@ -594,7 +594,7 @@ namespace RaisingStudio.Xna.Graphics
             }
             if (latestSprite)
             {
-                this.Render.End(this.spriteBatch, renderTagets);
+                this.Render.End(this.SpriteBatch, renderTagets);
             }
         }
 

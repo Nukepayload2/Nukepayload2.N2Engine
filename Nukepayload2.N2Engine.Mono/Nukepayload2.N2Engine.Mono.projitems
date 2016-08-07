@@ -9,6 +9,13 @@
     <Import_RootNamespace>Nukepayload2.N2Engine.Mono</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)GameCanvasRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)MonoAPIContract.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)MonogameCreateResourcesEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)MonogameDrawEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)MonoGameHandler.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)MonogameUpdateEventArgs.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)MonoImplRegistration.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)TypedEventHandler.vb" />
   </ItemGroup>
 </Project>
