@@ -11,10 +11,10 @@ Imports System.Windows
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("N2Demo.WPF")>
+<Assembly: AssemblyTitle("N2Demo.Win32")>
 <Assembly: AssemblyDescription("")>
 <Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("N2Demo.WPF")>
+<Assembly: AssemblyProduct("N2Demo.Win32")>
 <Assembly: AssemblyCopyright("Copyright ©  2016")>
 <Assembly: AssemblyTrademark("")>
 <Assembly: ComVisible(false)>
@@ -42,7 +42,7 @@ Imports System.Windows
 
 
 '如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-<Assembly: Guid("92e6b89e-7a29-4b13-83d9-7470130ea061")>
+<Assembly: Guid("0a4dfc1a-a775-4bf7-8941-559454eff608")>
 
 ' 程序集的版本信息由下列四个值组成: 
 '

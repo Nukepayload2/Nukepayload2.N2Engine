@@ -3,6 +3,10 @@ Imports Microsoft.Xna.Framework.Graphics
 Imports Microsoft.Xna.Framework.Input
 Imports RaisingStudio.Xna.Graphics
 
+#If ANDROID_APP Then
+Imports Android.Views
+#End If
+
 Public Class MonoGameHandler
     Inherits Game
 
@@ -15,10 +19,24 @@ Public Class MonoGameHandler
     Public Event Drawing As TypedEventHandler(Of Game, MonogameDrawEventArgs)
     Public Event Updating As TypedEventHandler(Of Game, MonogameUpdateEventArgs)
 
+#If WINDOWS_DESKTOP Then
+    Public Property SwapChainGrid As New SwapChainGrid
+#End If
+
+#If ANDROID_APP Then
+    Public ReadOnly Property OpenGLView As View
+        Get
+            Return Services.GetService(GetType(View))
+        End Get
+    End Property
+#End If
+
     Sub New()
         graphics = New GraphicsDeviceManager(Me)
         Content.RootDirectory = "Content"
-
+#If WINDOWS_DESKTOP Then
+        AddHandler graphics.PreparingDeviceSettings, Sub(sender, e) e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle = SwapChainGrid.WinformHost.Handle
+#End If
         graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft Or DisplayOrientation.LandscapeRight
     End Sub
 
@@ -70,12 +88,14 @@ Public Class MonoGameHandler
         MyBase.Update(timing)
     End Sub
 
+    Public Property Background As Color = Color.CornflowerBlue
+
     ''' <summary>
     ''' 在游戏应该绘制的时候调用
     ''' </summary>
     ''' <param name="timing">提供时间的快照</param>
     Protected Overrides Sub Draw(timing As GameTime)
-        GraphicsDevice.Clear(Color.CornflowerBlue)
+        GraphicsDevice.Clear(Background)
 
         ' TODO: 在此添加绘制代码
         drawingContext.Begin()

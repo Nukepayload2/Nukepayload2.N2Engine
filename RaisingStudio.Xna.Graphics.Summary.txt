@@ -1,0 +1,15 @@
+XNA Graphics API Library
+
+Project Description
+XNA Graphics API Library is an open source library aiming at providing 2D drawing functions with high performance and easy APIs.
+
+Features:
+1. Simple APIs.
+2. Good performance.
+3. Multi-thread supported.
+
+Project website:
+http://xnagraphics.codeplex.com/
+
+Team Blogs:
+zhong_zhaofeng's blog: http://zhongzf.cnblogs.com

@@ -1,6 +1,5 @@
 ﻿Class Application
-    Private Sub Application_Startup(sender As Object, e As StartupEventArgs) Handles Me.Startup
-        ' 注册 Mono 平台上的实现
+    Private Sub Application_LoadCompleted(sender As Object, e As NavigationEventArgs) Handles Me.LoadCompleted
         Nukepayload2.N2Engine.Win32.MonoImplRegistration.Register()
     End Sub
 
