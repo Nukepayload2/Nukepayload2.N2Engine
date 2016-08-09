@@ -9,13 +9,16 @@
     <Import_RootNamespace>Nukepayload2.N2Engine.Mono</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)GameCanvasRenderer.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)MonoAPIContract.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)MonogameCreateResourcesEventArgs.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)MonogameDrawEventArgs.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)MonoGameHandler.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)MonogameUpdateEventArgs.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)MonoImplRegistration.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)TypedEventHandler.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\ColorConverter.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonoAPIContract.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameCreateResourcesEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameDrawEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonoGameHandler.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameUpdateEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonoImplRegistration.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\TypedEventHandler.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
   </ItemGroup>
 </Project>

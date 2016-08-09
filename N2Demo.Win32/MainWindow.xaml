@@ -1,12 +1,52 @@
-﻿<Window x:Class="MainWindow"
+﻿<nb:NoBorderWindow x:Class="MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:N2Demo.Win32"
+        WindowStyle="None"
+        x:Name="This"
+        xmlns:nb="clr-namespace:libExtraWindow;assembly=libExtraWindow"
+        BorderThickness="2,1,2,2" BorderBrush="DodgerBlue"
+        xmlns:winform="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d"
-        Title="MainWindow" Height="350" Width="525">
+        Title="N2Demo.Win32" Height="480" Width="800">
     <Grid>
-        
+        <Grid.RowDefinitions>
+            <RowDefinition Height="32"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid>
+            <Rectangle PreviewMouseLeftButtonDown="Rectangle_PreviewMouseLeftButtonDown" Fill="DodgerBlue"></Rectangle>
+            <StackPanel Orientation="Horizontal" VerticalAlignment="Center" HorizontalAlignment="Left">
+                <Button ToolTip="快速读档" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe MDL2 Assets" Click="BtnQuickLoad_Click">
+                    <Grid>
+                        <TextBlock Padding="2" Text="&#57765;" Foreground="White" FontSize="14" FontFamily="Segoe MDL2 Assets"/>
+                        <TextBlock FontWeight="Bold" Foreground="White" FontSize="8" HorizontalAlignment="Center" Margin="0,16,0,0" FontFamily="Microsoft Yahei UI">load</TextBlock>
+                    </Grid>
+                </Button>
+                <Border Width="3" Margin="4,0" Height="16" Background="Black" BorderThickness="1" BorderBrush="White"></Border>
+                <Button ToolTip="快速存档" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe MDL2 Assets" Click="BtnQuickSave_Click">
+                    <Grid>
+                        <TextBlock Padding="2" Text="&#57605;" Foreground="White" FontSize="14" FontFamily="Segoe MDL2 Assets"/>
+                        <TextBlock FontWeight="Bold" Foreground="White" FontSize="8" HorizontalAlignment="Center" Margin="0,16,0,0" FontFamily="Microsoft Yahei UI">save</TextBlock>
+                    </Grid>
+                </Button>
+                <Button ToolTip="中断存档" Background="Transparent" BorderBrush="Transparent" FontFamily="Segoe MDL2 Assets" Click="BtnBreakSave_Click">
+                    <Grid>
+                        <TextBlock HorizontalAlignment="Center" Padding="2" Text="&#57605;" Foreground="White" FontSize="14" FontFamily="Segoe MDL2 Assets"/>
+                        <TextBlock FontWeight="Bold" Foreground="White" FontSize="8" HorizontalAlignment="Center" Margin="0,16,0,0" FontFamily="Microsoft Yahei UI">break</TextBlock>
+                    </Grid>
+                </Button>
+                <Border Width="3" Margin="0,0,4,0" Height="16" Background="Black" BorderThickness="1" BorderBrush="White"></Border>
+                <TextBlock IsHitTestVisible="False" VerticalAlignment="Center" Foreground="White" Text="{Binding Title,ElementName=This,Mode=OneWay}"></TextBlock>
+            </StackPanel>
+            <Button HorizontalAlignment="Right" UseLayoutRounding="True" VerticalAlignment="Stretch" Padding="16,0" Background="Transparent" BorderThickness="0" Click="BtnClose_Click" Style="{DynamicResource CloseButtonStyle}">
+                <TextBlock Foreground="White" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" FontSize="13" Text="&#xE10a;"></TextBlock>
+            </Button>
+        </Grid>
+        <WindowsFormsHost Grid.Row="1" x:Name="winformHost">
+
+        </WindowsFormsHost>
     </Grid>
-</Window>
+</nb:NoBorderWindow>

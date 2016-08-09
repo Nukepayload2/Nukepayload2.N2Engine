@@ -56,7 +56,7 @@ Public Class GameCanvasRenderer
 
     End Sub
     ''' <summary>
-    ''' 绘制全部子元素
+    ''' 绘制水印
     ''' </summary>
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs) Handles MyBase.Draw
 
@@ -74,7 +74,7 @@ Public Class GameCanvasRenderer
 
     End Sub
     ''' <summary>
-    ''' 处理自己的更新
+    ''' 处理水印的更新
     ''' </summary>
     Protected Overrides Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs) Handles MyBase.Update
 

@@ -20,7 +20,31 @@ Public Class MonoGameHandler
     Public Event Updating As TypedEventHandler(Of Game, MonogameUpdateEventArgs)
 
 #If WINDOWS_DESKTOP Then
-    Public Property SwapChainGrid As New SwapChainGrid
+    Public ReadOnly Property GameWindow As Windows.Forms.Form
+    ''' <summary>
+    ''' 对于 WPF 应用程序，使用这个构造函数可以轻松地让 WindowsFormsHost 承载游戏窗口。
+    ''' </summary>
+    ''' <param name="setChild">将 WindowsFormsHost 的 Child 属性设置为参数中的 Coltrol</param>
+    ''' <param name="focusResizeWpfWindow">调用 WPF 窗口的 Focus 方法, 并且 WPF 窗口的宽度 +1。</param>
+    Sub New(setChild As Action(Of Windows.Forms.Control), focusResizeWpfWindow As Action)
+        MyClass.New
+        AddHandler graphics.PreparingDeviceSettings,
+            Sub(sender, e)
+                _GameWindow = Windows.Forms.Control.FromHandle(e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle)
+                GameWindow.TopLevel = False
+                GameWindow.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+                setChild(GameWindow)
+                focusResizeWpfWindow()
+                AddHandler GameWindow.SizeChanged,
+                    Sub()
+                        graphics.PreferredBackBufferHeight = GameWindow.Height
+                        graphics.PreferredBackBufferWidth = GameWindow.Width
+                        graphics.ApplyChanges()
+                    End Sub
+                GameWindow.Width += 1
+            End Sub
+    End Sub
+
 #End If
 
 #If ANDROID_APP Then
@@ -34,9 +58,6 @@ Public Class MonoGameHandler
     Sub New()
         graphics = New GraphicsDeviceManager(Me)
         Content.RootDirectory = "Content"
-#If WINDOWS_DESKTOP Then
-        AddHandler graphics.PreparingDeviceSettings, Sub(sender, e) e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle = SwapChainGrid.WinformHost.Handle
-#End If
         graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft Or DisplayOrientation.LandscapeRight
     End Sub
 
@@ -88,8 +109,7 @@ Public Class MonoGameHandler
         MyBase.Update(timing)
     End Sub
 
-    Public Property Background As Color = Color.CornflowerBlue
-
+    Public Property Background As Color = Color.White
     ''' <summary>
     ''' 在游戏应该绘制的时候调用
     ''' </summary>

@@ -21,7 +21,6 @@ Public MustInherit Class GameElementRenderer(Of T As GameElement)
             RemoveHandler .GameLoopStarting, AddressOf OnGameLoopStarting
             RemoveHandler .GameLoopStopped, AddressOf OnGameLoopStopped
             RemoveHandler .Update, AddressOf OnUpdate
-            .Dispose()
         End With
     End Sub
 

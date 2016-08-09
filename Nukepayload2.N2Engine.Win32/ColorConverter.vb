@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
 
-Module ColorConverter
+Partial Module ColorConverter
     <Extension>
     Function AsWindowsColor(color As Microsoft.Xna.Framework.Color) As System.Windows.Media.Color
         Return Windows.Media.Color.FromArgb(color.A, color.R, color.G, color.B)
