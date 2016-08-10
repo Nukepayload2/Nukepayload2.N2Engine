@@ -20,7 +20,10 @@ Public Class MonoGameHandler
     Public Event Updating As TypedEventHandler(Of Game, MonogameUpdateEventArgs)
 
 #If WINDOWS_DESKTOP Then
-    Public ReadOnly Property GameWindow As Windows.Forms.Form
+    ''' <summary>
+    ''' Winform 互操作
+    ''' </summary>
+    Public ReadOnly Property GameForm As Windows.Forms.Form
     ''' <summary>
     ''' 对于 WPF 应用程序，使用这个构造函数可以轻松地让 WindowsFormsHost 承载游戏窗口。
     ''' </summary>
@@ -30,18 +33,19 @@ Public Class MonoGameHandler
         MyClass.New
         AddHandler graphics.PreparingDeviceSettings,
             Sub(sender, e)
-                _GameWindow = Windows.Forms.Control.FromHandle(e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle)
-                GameWindow.TopLevel = False
-                GameWindow.FormBorderStyle = Windows.Forms.FormBorderStyle.None
-                setChild(GameWindow)
+                _GameForm = Windows.Forms.Control.FromHandle(e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle)
+                GameForm.TopLevel = False
+                GameForm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
+                setChild(GameForm)
                 focusResizeWpfWindow()
-                AddHandler GameWindow.SizeChanged,
+                AddHandler GameForm.SizeChanged,
                     Sub()
-                        graphics.PreferredBackBufferHeight = GameWindow.Height
-                        graphics.PreferredBackBufferWidth = GameWindow.Width
+                        graphics.PreferredBackBufferHeight = GameForm.Height
+                        graphics.PreferredBackBufferWidth = GameForm.Width
                         graphics.ApplyChanges()
+                        Debug.WriteLine($"分辨率重置： {GameForm.Height} x {GameForm.Width}")
                     End Sub
-                GameWindow.Width += 1
+                GameForm.Width += 1
             End Sub
     End Sub
 

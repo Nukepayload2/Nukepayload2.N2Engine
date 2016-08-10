@@ -47,9 +47,20 @@ Class MainWindow
     End Sub
 
     Private Sub gameHandler_Updating(sender As Game, args As MonogameUpdateEventArgs) Handles gameHandler.Updating
-        Dim state = Mouse.GetState(sender.Window)
-        If state.LeftButton = ButtonState.Pressed Then
-            sparks.OnTapped(New Numerics.Vector2(state.Position.X, state.Position.Y))
+        Dim mouseState = Mouse.GetState(sender.Window)
+        Dim touchState = Touch.TouchPanel.GetState
+        Dim touchPoint As New Numerics.Vector2?
+        For Each t In touchState
+            If t.State = Touch.TouchLocationState.Pressed Then
+                touchPoint = New Numerics.Vector2(t.Position.X, t.Position.Y)
+                Exit For
+            End If
+        Next
+        If Not touchPoint.HasValue AndAlso mouseState.LeftButton = ButtonState.Pressed Then
+            touchPoint = New Numerics.Vector2(mouseState.Position.X, mouseState.Position.Y)
+        End If
+        If touchPoint.HasValue Then
+            sparks.SparksData.SparkSys.Location = touchPoint.Value
         End If
     End Sub
 End Class
