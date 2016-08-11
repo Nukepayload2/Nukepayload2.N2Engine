@@ -85,6 +85,12 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Resources.vb" />
     <Compile Include="SparksView.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="SparksViewModel.vb" />
@@ -99,7 +105,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="charactersheet.png" />
+    <EmbeddedResource Include="CoreImages\CharacterSheet.png" />
+    <EmbeddedResource Include="My Project\Resources.resx">
+      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
+      <CustomToolNamespace>My.Resources</CustomToolNamespace>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

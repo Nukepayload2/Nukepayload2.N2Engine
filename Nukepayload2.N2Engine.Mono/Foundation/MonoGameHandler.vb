@@ -59,6 +59,14 @@ Public Class MonoGameHandler
     End Property
 #End If
 
+#If WINDOWS_PHONE_APP Then
+    Public ReadOnly Property SwapChainPanel As SwapChainBackgroundPanel
+        Get
+            Return graphics.SwapChainBackgroundPanel
+        End Get
+    End Property
+#End If
+
     Sub New()
         graphics = New GraphicsDeviceManager(Me)
         Content.RootDirectory = "Content"

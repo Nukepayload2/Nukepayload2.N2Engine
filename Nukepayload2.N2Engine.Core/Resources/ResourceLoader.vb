@@ -27,8 +27,11 @@ Public Class ResourceLoader
     ''' 从自定义字符串映射到自定义加载委托
     ''' </summary>
     Dim customRoutes As New Dictionary(Of String, Func(Of String, Object))
+    Sub New()
+
+    End Sub
     ''' <summary>
-    ''' 添加嵌入的资源加载Uri路由。示例：资源包名是Core, 程序集是这个方法所在的程序集，那么映射是：n2-res-emb:///Core/GameLogo.png -> assembly.GetManifestResourceStream("Nukepayload2.N2Engine.Core.GameLogo.png")
+    ''' 添加嵌入的资源加载Uri路由。示例：资源包名是Images, 程序集是N2Demo.Core，那么映射是：n2-res-emb:///Images/GameLogo.png -> assembly.GetManifestResourceStream("N2Demo.Core.GameLogo.png")
     ''' </summary>
     ''' <param name="resPackName">指定资源包的名字</param>
     ''' <param name="assembly">资源所在程序集</param>
@@ -116,12 +119,23 @@ Public Class ResourceLoader
     ''' </summary>
     Public Function GetEmbeddedResource(path As String) As Stream
         Dim second As Integer = 0
-        Dim asmName = GetUriPathRoot(path, second)
-        If Not String.IsNullOrEmpty(asmName) AndAlso assemblyRoutes.ContainsKey(asmName) Then
-            Dim asm = assemblyRoutes(asmName)
-            Dim asmFullName = asm.FullName
-            Dim resKey = asmFullName + path.Substring(second).Replace("/"c, "."c)
-            Return asm.GetManifestResourceStream(resKey)
+        If path.EndsWith("/") Then
+            Throw New ArgumentException("结尾不应出现 '/'", NameOf(path))
+        End If
+        If path.Contains("\") Then
+            Throw New ArgumentException("代表嵌入资源的Uri不应该出现 '\'", NameOf(path))
+        End If
+        If path.LastIndexOf("/") > 0 Then
+            '带文件夹名字的嵌入资源
+            Dim asmName = GetUriPathRoot(path, second)
+            If Not String.IsNullOrEmpty(asmName) AndAlso assemblyRoutes.ContainsKey(asmName) Then
+                Dim asm = assemblyRoutes(asmName)
+                Dim asmFullName = asm.FullName
+                Dim resKey = asmFullName
+                Return asm.GetManifestResourceStream(resKey)
+            End If
+        Else
+            Throw New ArgumentException("这个Uri不包含资源包的名称", NameOf(path))
         End If
         Throw New ArgumentException($"Uri表示的嵌入资源不存在", NameOf(path))
     End Function
