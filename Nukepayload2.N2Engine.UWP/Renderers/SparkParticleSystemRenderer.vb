@@ -23,7 +23,6 @@ Public Class SparkParticleSystemRenderer
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim ds = args.DrawingSession
         Dim SparkSys = View.Data.Value
-        ds.DrawText($"粒子数量: {SparkSys.Particles.Count}", New Vector2(20, 20), Colors.Black)
         For Each part In SparkSys.Particles
             ds.FillRectangle(New Rect(part.Location.ToPoint, New Size(part.SparkSize, part.SparkSize)), part.SparkColor.AsWindowsColor)
         Next

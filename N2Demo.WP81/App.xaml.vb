@@ -30,47 +30,37 @@ NotInheritable Class App
         End If
 #End If
 
-        Dim rootFrame As Frame = TryCast(Window.Current.Content, Frame)
+        Dim rootPage As Page = TryCast(Window.Current.Content, Page)
 
         ' 不要在窗口已包含内容时重复应用程序初始化，
         ' 只需确保窗口处于活动状态
-        If rootFrame Is Nothing Then
+        If rootPage Is Nothing Then
+            ' 注册引擎实现
+            Nukepayload2.N2Engine.Wp81.MonoImplRegistration.Register()
             ' 创建要充当导航上下文的框架，并导航到第一页
-            rootFrame = New Frame()
-
-            ' TODO: 将此值更改为适合您的应用程序的缓存大小
-            rootFrame.CacheSize = 1
+            rootPage = New MainPage
 
             '设置默认语言
-            rootFrame.Language = Windows.Globalization.ApplicationLanguages.Languages(0)
+            rootPage.Language = Windows.Globalization.ApplicationLanguages.Languages(0)
 
             If e.PreviousExecutionState = ApplicationExecutionState.Terminated Then
                 ' TODO: 从之前挂起的应用程序加载状态
             End If
-            ' 注册引擎实现
-            Nukepayload2.N2Engine.Wp81.MonoImplRegistration.Register()
             ' 将框架放在当前窗口中
-            Window.Current.Content = rootFrame
+            Window.Current.Content = rootPage
         End If
 
-        If rootFrame.Content Is Nothing Then
+        If rootPage.Content Is Nothing Then
             ' 删除用于启动的旋转门导航。
-            If rootFrame.ContentTransitions IsNot Nothing Then
+            If rootPage.Transitions IsNot Nothing Then
                 _transitions = New TransitionCollection()
-                For Each transition As Transition In rootFrame.ContentTransitions
+                For Each transition As Transition In rootPage.Transitions
                     _transitions.Add(transition)
                 Next
             End If
 
-            rootFrame.ContentTransitions = Nothing
-            AddHandler rootFrame.Navigated, AddressOf RootFrame_FirstNavigated
+            rootPage.Transitions = Nothing
 
-            ' 当导航堆栈尚未还原时，导航到第一页，
-            ' 并通过将所需信息作为导航参数传入来配置
-            ' 参数
-            If Not rootFrame.Navigate(GetType(MainPage), e.Arguments) Then
-                Throw New Exception("Failed to create initial page")
-            End If
         End If
 
         ' 确保当前窗口处于活动状态
