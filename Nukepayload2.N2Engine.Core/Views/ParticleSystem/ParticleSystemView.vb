@@ -4,4 +4,6 @@ Public MustInherit Class ParticleSystemView(Of T As IParticleSystem)
     Inherits GameElement
 
     Public ReadOnly Property Data As New PropertyBinder(Of T)
+
+
 End Class

@@ -15,6 +15,7 @@ Class MainWindow
         sparks = New SparksView
         sparksRenderer = New GameCanvasRenderer(sparks, gameHandler)
         gameHandler.Run()
+
     End Sub
 
     Private Sub MainWindow_Unloaded(sender As Object, e As RoutedEventArgs) Handles Me.Unloaded

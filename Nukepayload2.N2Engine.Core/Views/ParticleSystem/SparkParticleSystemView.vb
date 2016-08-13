@@ -7,7 +7,7 @@ Public Class SparkParticleSystemView
             Return New SimpleCommand(AddressOf Data.Value.Update)
         End Get
         Set(value As IGameCommand)
-            Throw New NotSupportedException("粒子系统的更新是固定的")
+            Throw New NotSupportedException("火花粒子系统的更新是固定的")
         End Set
     End Property
 End Class

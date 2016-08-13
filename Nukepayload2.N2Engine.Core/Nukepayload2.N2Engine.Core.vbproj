@@ -76,13 +76,6 @@
     <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework and Windows SDK is automatically included -->
-    <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
-      <Project>{33bd32b3-a054-4097-89f7-4128c10a21fc}</Project>
-      <Name>Nukepayload2.N2Engine</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
     <Import Include="System.Collections" />
@@ -104,6 +97,7 @@
     <Compile Include="Animations\Trailer.vb" />
     <Compile Include="Foundation\IGameCommand.vb" />
     <Compile Include="Foundation\SimpleCommand.vb" />
+    <Compile Include="Foundation\N2PortableApiContract.vb" />
     <Compile Include="ParticleSystem\FixedCapacityParticleSystem.vb" />
     <Compile Include="ParticleSystem\ImageParticle.vb" />
     <Compile Include="ParticleSystem\IParticle.vb" />
@@ -236,6 +230,9 @@
     <Compile Include="ParticleSystem\SparkParticleSystem.vb" />
     <Compile Include="Views\ParticleSystem\ParticleSystemView.vb" />
     <Compile Include="Views\ParticleSystem\SparkParticleSystemView.vb" />
+    <Compile Include="Views\Triggers\GameEventTrigger.vb" />
+    <Compile Include="Views\Triggers\GameTriggerBase.vb" />
+    <Compile Include="Views\Triggers\IGameTrigger.vb" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Numerics.Vectors, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -244,6 +241,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <None Include="AssemblyDependency.dgml" />
     <None Include="Docs\游戏存档的结构.md" />
     <None Include="packages.config" />
   </ItemGroup>
