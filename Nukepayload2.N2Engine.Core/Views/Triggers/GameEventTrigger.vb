@@ -28,7 +28,7 @@ End Class
 ''' <summary>
 ''' 高性能但是编写麻烦的事件触发器
 ''' </summary>
-Public Class GameEventTrigger(Of TSender As GameVisual)
+Public Class GameCustomEventTrigger(Of TSender As GameVisual)
     Inherits GameTriggerBase(Of TSender)
 
     Sub New(registerEvent As Action(Of TSender), unregisterEvent As Action(Of TSender))

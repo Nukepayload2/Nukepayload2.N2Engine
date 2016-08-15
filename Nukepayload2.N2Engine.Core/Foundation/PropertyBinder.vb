@@ -108,4 +108,14 @@ Public Class PropertyBinder(Of T)
     Public Sub Bind(another As PropertyBinder(Of T))
         Bind(another.Getter, another.Setter)
     End Sub
+    ''' <summary>
+    ''' 绑定的数据有变化
+    ''' </summary>
+    Public Event DataChanged As EventHandler(Of T)
+    ''' <summary>
+    ''' 绑定的数据变动后，手动报告数据已经改动。
+    ''' </summary>
+    Public Sub ReportDataChanged()
+        RaiseEvent DataChanged(Me, Value)
+    End Sub
 End Class

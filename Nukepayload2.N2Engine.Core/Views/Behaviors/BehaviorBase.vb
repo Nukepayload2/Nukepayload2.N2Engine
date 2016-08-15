@@ -1,3 +1,3 @@
-﻿Public MustInherit Class Behavior
+﻿Public MustInherit Class BehaviorBase
     Protected MustOverride Sub OnAttached()
 End Class
