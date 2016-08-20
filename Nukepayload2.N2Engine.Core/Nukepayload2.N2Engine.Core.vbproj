@@ -95,9 +95,17 @@
     <Compile Include="Animations\DynamicBitmapAnimation.vb" />
     <Compile Include="Animations\LoopInformation.vb" />
     <Compile Include="Animations\Trailer.vb" />
+    <Compile Include="Data\SaveFile\PlatformSaveManagerBase.vb" />
+    <Compile Include="Data\SaveFile\PlatformSaveDirectoryBase.vb" />
+    <Compile Include="Data\SaveFile\SaveFile.vb" />
+    <Compile Include="Data\SaveFile\SaveFileHelper.vb" />
+    <Compile Include="Data\SaveFile\PartialSaveFileLoader.vb" />
+    <Compile Include="Data\SaveFile\SaveFileStatus.vb" />
+    <Compile Include="Data\SaveFile\SaveManager.vb" />
     <Compile Include="Foundation\IGameCommand.vb" />
     <Compile Include="Foundation\SimpleCommand.vb" />
     <Compile Include="Foundation\N2PortableApiContract.vb" />
+    <Compile Include="Math\RandomGenerator.vb" />
     <Compile Include="ParticleSystem\FixedCapacityParticleSystem.vb" />
     <Compile Include="ParticleSystem\ImageParticle.vb" />
     <Compile Include="ParticleSystem\IParticle.vb" />
@@ -107,6 +115,7 @@
     <Compile Include="ParticleSystem\PointParticle.vb" />
     <Compile Include="ParticleSystem\DynamicCapacityParticleSystem.vb" />
     <Compile Include="ParticleSystem\SparkParticle.vb" />
+    <Compile Include="Platform\PlatformActivator.vb" />
     <Compile Include="Resources\BitmapResource.vb" />
     <Compile Include="Resources\GameResourceBase.vb" />
     <Compile Include="Foundation\PropertyBinder.vb" />
@@ -216,6 +225,8 @@
     <Compile Include="Resources\ResourceLoader.vb" />
     <Compile Include="Utilities\Vector2Extensions.vb" />
     <Compile Include="Views\Behaviors\BehaviorBase.vb" />
+    <Compile Include="Views\Behaviors\ApplyForceBehavior.vb" />
+    <Compile Include="Views\Behaviors\ShakeBehavior.vb" />
     <Compile Include="Views\Foundation\GameCanvas.vb" />
     <Compile Include="Views\Foundation\GameEffect.vb" />
     <Compile Include="Views\Foundation\GameElement.vb" />
@@ -247,7 +258,9 @@
     <None Include="Docs\游戏存档的结构.md" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Storage\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

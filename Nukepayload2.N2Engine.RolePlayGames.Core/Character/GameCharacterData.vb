@@ -26,10 +26,6 @@ Public Class GameCharacterData
     ''' 附加的 Buff 和 Debuff
     ''' </summary>
     Public Property BuffDebuff As New List(Of BuffDebuffStatus)
-    ''' <summary>
-    ''' 每章节的任务
-    ''' </summary>
-    Public Property Missions As New List(Of ChapterData)
     Public Property Skills As New List(Of SkillStatus)
     Public Property Money As Integer
 End Class

@@ -20,5 +20,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameElementRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\MonoPlatformSaveManager.vb" />
   </ItemGroup>
 </Project>

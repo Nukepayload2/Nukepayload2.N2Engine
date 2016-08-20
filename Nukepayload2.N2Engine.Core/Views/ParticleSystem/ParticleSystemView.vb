@@ -5,5 +5,4 @@ Public MustInherit Class ParticleSystemView(Of T As IParticleSystem)
 
     Public ReadOnly Property Data As New PropertyBinder(Of T)
 
-
 End Class

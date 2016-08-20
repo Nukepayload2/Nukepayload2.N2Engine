@@ -4,10 +4,13 @@ Public Class SparkParticleSystemView
     Inherits ParticleSystemView(Of SparkParticleSystem)
     Public Overrides Property UpdateCommand As IGameCommand
         Get
-            Return New SimpleCommand(AddressOf Data.Value.Update)
+            Return New SimpleCommand(Sub()
+                                         MyBase.UpdateCommand.Execute()
+                                         Data.Value.Update()
+                                     End Sub)
         End Get
         Set(value As IGameCommand)
-            Throw New NotSupportedException("火花粒子系统的更新是固定的")
+            MyBase.UpdateCommand = value
         End Set
     End Property
 End Class

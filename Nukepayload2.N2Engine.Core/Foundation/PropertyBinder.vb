@@ -102,6 +102,14 @@ Public Class PropertyBinder(Of T)
         _Setter = Nothing
     End Sub
 
+    Public Shared Narrowing Operator CType(binder As PropertyBinder(Of T)) As T
+        Return binder.Value
+    End Operator
+
+    Public Shared Widening Operator CType(val As T) As PropertyBinder(Of T)
+        Return New PropertyBinder(Of T)(val)
+    End Operator
+
     ''' <summary>
     ''' 绑定到另一个绑定器
     ''' </summary>

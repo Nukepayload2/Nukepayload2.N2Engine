@@ -89,6 +89,7 @@
     <Compile Include="Battle\BuffDebuffStatus.vb" />
     <Compile Include="Battle\SkillStatus.vb" />
     <Compile Include="Character\BodyPropertiesComposite.vb" />
+    <Compile Include="Character\CharacterPermanentInfluence.vb" />
     <Compile Include="CollectionSystem\CharacterCollection.vb" />
     <Compile Include="CollectionSystem\ItemCollection.vb" />
     <Compile Include="CollectionSystem\ItemCollectionBase.vb" />
@@ -110,10 +111,12 @@
     <Compile Include="Mission\MissionCondition.vb" />
     <Compile Include="Save\Achievement.vb" />
     <Compile Include="Battle\BattlePropertiesComposite.vb" />
-    <Compile Include="Save\RPGSaveRoamingData.vb" />
+    <Compile Include="Save\RPGSaveBase.vb" />
+    <Compile Include="Save\RPGSaveMasterData.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="GameControl\StoryFlag.vb" />
     <Compile Include="Foundation\ValueRange.vb" />
+    <Compile Include="Save\RPGSavePartialData.vb" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

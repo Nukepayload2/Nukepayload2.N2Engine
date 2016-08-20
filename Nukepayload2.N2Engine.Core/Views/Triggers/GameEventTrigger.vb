@@ -41,11 +41,12 @@ Public Class GameCustomEventTrigger(Of TSender As GameVisual)
 
     Public Overrides Sub Attach(visual As TSender)
         RegisterEvent.Invoke(visual)
-        visual.AddTrigger(Me)
+        MyBase.Attach(visual)
     End Sub
 
     Public Overrides Sub Detach(visual As TSender)
         UnregisterEvent.Invoke(visual)
         visual.RemoveTrigger(Me)
+        MyBase.Detach(visual)
     End Sub
 End Class

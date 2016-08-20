@@ -13,6 +13,7 @@ Public MustInherit Class GameDataTriggerBase(Of TVisual As GameVisual, TData)
 
     Public Overrides Sub Attach(visual As TVisual)
         AddHandler GetPropBinder(visual).DataChanged, AddressOf CallAction
+        MyBase.Attach(visual)
     End Sub
 
     Protected MustOverride Function GetPropBinder(visual As TVisual) As PropertyBinder(Of TData)
@@ -23,6 +24,7 @@ Public MustInherit Class GameDataTriggerBase(Of TVisual As GameVisual, TData)
 
     Public Overrides Sub Detach(visual As TVisual)
         RemoveHandler GetPropBinder(visual).DataChanged, AddressOf CallAction
+        MyBase.Detach(visual)
     End Sub
 End Class
 

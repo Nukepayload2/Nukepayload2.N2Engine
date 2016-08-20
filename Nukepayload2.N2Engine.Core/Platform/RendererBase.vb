@@ -10,7 +10,7 @@ Public MustInherit Class RendererBase
     ''' 注册渲染器后，元素视图可以用这个方法创建渲染器
     ''' </summary>
     Friend Shared Sub CreateElementRenderer(view As GameElement)
-        Activator.CreateInstance(PlatformImplRegistration.Registered(view.GetType), view)
+        PlatformActivator.CreateInstance(view)
     End Sub
 
     Public Property View As GameVisual

@@ -7,7 +7,9 @@
         Attach(DirectCast(visual, T))
     End Sub
 
-    Public MustOverride Sub Attach(visual As T) Implements IGameTrigger(Of T).Attach
+    Public Overridable Sub Attach(visual As T) Implements IGameTrigger(Of T).Attach
+        visual.AddTrigger(Me)
+    End Sub
     ''' <summary>
     ''' 任何可见元素上解除附加。默认行为是强制调用 <see cref="Detach(T)"/> 
     ''' </summary>
@@ -15,5 +17,7 @@
         Detach(DirectCast(visual, T))
     End Sub
 
-    Public MustOverride Sub Detach(visual As T) Implements IGameTrigger(Of T).Detach
+    Public Overridable Sub Detach(visual As T) Implements IGameTrigger(Of T).Detach
+        visual.RemoveTrigger(Me)
+    End Sub
 End Class

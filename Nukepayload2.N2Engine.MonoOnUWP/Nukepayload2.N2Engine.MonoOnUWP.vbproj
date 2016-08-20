@@ -123,6 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="MonoAPIContract.vb" />
+    <Compile Include="MonoPlatformSaveManager.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.MonoOnUWP.rd.xml" />
   </ItemGroup>

@@ -79,6 +79,10 @@
       <Project>{A30BD00A-8BD6-4BD7-8C88-74992C489C25}</Project>
       <Name>Nukepayload2.N2Engine.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.RolePlayGames.Core\Nukepayload2.N2Engine.RolePlayGames.Core.vbproj">
+      <Project>{acbc1542-df92-44ae-845c-2ffd089fc2d6}</Project>
+      <Name>Nukepayload2.N2Engine.RolePlayGames.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -114,6 +118,10 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Resources.vb" />
+    <Compile Include="Save\SampleMasterData.vb" />
+    <Compile Include="Save\SamplePartialData.vb" />
+    <Compile Include="Save\SampleSaveFileManager.vb" />
+    <Compile Include="Save\SampleSavePollution.vb" />
     <Compile Include="SparksView.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="SparksViewModel.vb" />
