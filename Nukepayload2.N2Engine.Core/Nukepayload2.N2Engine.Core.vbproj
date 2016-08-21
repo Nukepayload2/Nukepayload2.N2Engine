@@ -106,6 +106,10 @@
     <Compile Include="Foundation\SimpleCommand.vb" />
     <Compile Include="Foundation\N2PortableApiContract.vb" />
     <Compile Include="Math\RandomGenerator.vb" />
+    <Compile Include="Media\AudioPlayerBase.vb" />
+    <Compile Include="Media\IMusicPlayer.vb" />
+    <Compile Include="Media\MusicPlayer.vb" />
+    <Compile Include="Media\SoundPlayer.vb" />
     <Compile Include="ParticleSystem\FixedCapacityParticleSystem.vb" />
     <Compile Include="ParticleSystem\ImageParticle.vb" />
     <Compile Include="ParticleSystem\IParticle.vb" />
@@ -223,6 +227,7 @@
     <Compile Include="Resources\GameResourceModelBase.vb" />
     <Compile Include="Resources\ResourceId.vb" />
     <Compile Include="Resources\ResourceLoader.vb" />
+    <Compile Include="Utilities\AsyncHelper.vb" />
     <Compile Include="Utilities\Vector2Extensions.vb" />
     <Compile Include="Views\Behaviors\BehaviorBase.vb" />
     <Compile Include="Views\Behaviors\ApplyForceBehavior.vb" />
@@ -234,7 +239,6 @@
     <Compile Include="Views\Foundation\GameEntity.vb" />
     <Compile Include="Views\Foundation\GameSoundPlayer.vb" />
     <Compile Include="Views\Foundation\GameVisual.vb" />
-    <Compile Include="Platform\PlatformContractAttribute.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Platform\PlatformImplAttribute.vb" />
     <Compile Include="Foundation\SingleInstance.vb" />

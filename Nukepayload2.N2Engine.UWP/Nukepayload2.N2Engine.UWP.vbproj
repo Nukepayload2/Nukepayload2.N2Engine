@@ -130,12 +130,12 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Media\AsyncHelper.vb" />
     <Compile Include="Media\AudioState.vb" />
     <Compile Include="Media\AudioStateCacheFactory.vb" />
     <Compile Include="Foundation\Cache.vb" />
     <Compile Include="Foundation\CacheOverflowException.vb" />
     <Compile Include="Media\MusicPlayback.vb" />
+    <Compile Include="Media\MusicPlayer.vb" />
     <Compile Include="Media\SoundMixListFullOperation.vb" />
     <Compile Include="Media\SoundPlayback.vb" />
     <Compile Include="Renderers\GameCanvasRenderer.vb" />
@@ -145,6 +145,7 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Renderers\CanvasRendererBase.vb" />
     <Compile Include="Renderers\UWPRenderer.vb" />
+    <Compile Include="Storage\UWPSaveManager.vb" />
     <Compile Include="Utilities\CanvasGeometryExtension.vb" />
     <Compile Include="Utilities\LightClipCalculator.vb" />
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.UWP.rd.xml" />

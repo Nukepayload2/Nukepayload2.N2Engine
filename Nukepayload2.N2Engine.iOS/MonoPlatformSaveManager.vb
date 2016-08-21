@@ -1,6 +1,6 @@
 ﻿Imports Nukepayload2.N2Engine.Core
 
-Public Class MonoPlatformSaveManager
+Friend Class MonoPlatformSaveManager
     Public Overrides ReadOnly Property LocalMasterData As PlatformSaveDirectoryBase
         Get
             Throw New NotImplementedException()

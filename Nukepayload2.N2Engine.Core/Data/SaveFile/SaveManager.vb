@@ -1,7 +1,7 @@
 ﻿Public MustInherit Class SaveManager
     Inherits SingleInstance(Of SaveManager)
     Sub New()
-        PlatformSaveManager = DirectCast(PlatformActivator.CreateInstance(Of SaveManager), PlatformSaveManagerBase)
+        PlatformSaveManager = PlatformActivator.CreateBaseInstance(Of SaveManager, PlatformSaveManagerBase)
         OnFileInitializing()
     End Sub
 

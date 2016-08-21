@@ -9,7 +9,7 @@ Imports Windows.UI
 ''' 火花粒子系统的渲染器
 ''' </summary>
 <PlatformImpl(GetType(SparkParticleSystemView))>
-Public Class SparkParticleSystemRenderer
+Friend Class SparkParticleSystemRenderer
     Inherits GameElementRenderer(Of SparkParticleSystemView)
 
     Sub New(view As SparkParticleSystemView)

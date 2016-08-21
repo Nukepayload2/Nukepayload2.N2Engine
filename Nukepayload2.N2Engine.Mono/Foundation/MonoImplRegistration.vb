@@ -1,4 +1,11 @@
-﻿Imports Nukepayload2.N2Engine.Core
+﻿#If WINDOWS_DESKTOP Then
+Imports System.Runtime.CompilerServices
+#End If
+
+Imports Nukepayload2.N2Engine.Core
+
+<Assembly: InternalsVisibleTo("Nukepayload2.N2Engine.Core")>
+
 ''' <summary>
 ''' 启动应用时，注册Mono的实现到引擎核心。
 ''' </summary>

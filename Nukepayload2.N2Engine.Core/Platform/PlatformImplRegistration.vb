@@ -70,12 +70,11 @@ Public Class PlatformImplRegistration
     ''' </summary>
     ''' <param name="pImplAsm">平台实现的程序集。</param>
     Public Function RegsterImplAssembly(pImplAsm As Assembly) As Boolean
-        Return Aggregate tp In pImplAsm.ExportedTypes
-               Let inf = tp.GetTypeInfo
-               Where inf.IsClass
-               Let attr = inf.GetCustomAttributes(Of PlatformImplAttribute).FirstOrDefault
+        Return Aggregate tp In pImplAsm.DefinedTypes
+               Where tp.IsClass AndAlso tp.IsNotPublic
+               Let attr = tp.GetCustomAttributes(Of PlatformImplAttribute).FirstOrDefault
                Where attr IsNot Nothing
-               Select success = RegisterViewRenderer(attr.ViewType, tp)
+               Select success = RegisterViewRenderer(attr.ViewType, tp.AsType)
                Into All(success)
     End Function
     ''' <summary>
