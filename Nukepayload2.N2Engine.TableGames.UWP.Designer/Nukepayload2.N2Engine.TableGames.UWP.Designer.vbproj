@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{f248d6f2-74c5-41e4-b9c1-5543b06d2022}</ProjectGuid>
+    <ProjectGuid>{F248D6F2-74C5-41E4-B9C1-5543B06D2022}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Nukepayload2.N2Engine.TableGames.UWP.Designer</RootNamespace>
     <AssemblyName>Nukepayload2.N2Engine.TableGames.UWP.Designer</AssemblyName>
@@ -123,7 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.vb" />
-    <Compile Include="My Project\AssemblyInfo.vb"/>
+    <Compile Include="My Project\AssemblyInfo.vb" />
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.TableGames.UWP.Designer.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -138,7 +138,7 @@
     <Import Include="System.Linq" />
     <Import Include="System.Runtime.CompilerServices" />
     <Import Include="System.Threading.Tasks" />
-    <Import Include="System.Runtime.InteropServices.WindowsRuntime"/>
+    <Import Include="System.Runtime.InteropServices.WindowsRuntime" />
     <Import Include="System.Windows.Input" />
     <Import Include="System.Xml.Linq" />
     <Import Include="Windows.ApplicationModel" />
@@ -179,4 +179,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
- </Project>
+</Project>

@@ -78,7 +78,30 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="CardGames\Battle\IBattleStringLoader.vb" />
+    <Compile Include="CardGames\Battle\IBattleImageLoader.vb" />
+    <Compile Include="CardGames\Battle\UseDefaultResourcePackObject.vb" />
+    <Compile Include="CardGames\Battle\UserIdentity.vb" />
+    <Compile Include="CardGames\Battle\Events.vb" />
+    <Compile Include="CardGames\Battle\BattleCoreStuff.vb" />
+    <Compile Include="CardGames\Battle\CardManger.vb" />
+    <Compile Include="CardGames\Battle\HandCardBase.vb" />
+    <Compile Include="CardGames\Battle\EffectHook.vb" />
+    <Compile Include="CardGames\Battle\Marks.vb" />
+    <Compile Include="CardGames\Battle\MarkAbility.vb" />
+    <Compile Include="CardGames\Battle\MilitaryOfficerBase.vb" />
+    <Compile Include="CardGames\Battle\CampBase.vb" />
+    <Compile Include="CardGames\Battle\Utilities.vb" />
+    <Compile Include="CardGames\Battle\MarkManager.vb" />
+    <Compile Include="CardGames\Battle\GameManager.vb" />
+    <Compile Include="CardGames\Battle\CardCommandBase.vb" />
+    <Compile Include="CardGames\Battle\Player.vb" />
+    <Compile Include="CardGames\Battle\UserInformation.vb" />
+    <Compile Include="CardGames\Battle\MilitaryOfficerCampPicker.vb" />
+    <Compile Include="CardGames\Battle\SettingsManager.vb" />
+    <Compile Include="CardGames\Battle\Resources.vb" />
+    <Compile Include="CardGames\ControlSymbolBase.vb" />
+    <Compile Include="CardGames\TableModelBase.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>
   <ItemGroup>
@@ -86,6 +109,9 @@
       <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
       <Name>Nukepayload2.N2Engine.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="CardGames\Trading\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

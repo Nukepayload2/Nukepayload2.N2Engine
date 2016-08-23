@@ -1,4 +1,5 @@
 ﻿Imports System.Reflection
+Imports System.Resources
 ''' <summary>
 ''' 处理资源加载或键映射
 ''' </summary>
@@ -12,6 +13,10 @@ Public Class ResourceLoader
     ''' </summary>
     Public Const EmbeddedScheme = "n2-res-emb"
     ''' <summary>
+    ''' 在某个程序集按照资源字典存储的字符串
+    ''' </summary>
+    Public Const StringScheme = "n2-res-str"
+    ''' <summary>
     ''' 自定义的资源
     ''' </summary>
     Public Const CustomScheme = "n2-res-cus"
@@ -24,11 +29,26 @@ Public Class ResourceLoader
     ''' </summary>
     Dim assemblyRoutes As New Dictionary(Of String, Assembly)
     ''' <summary>
+    ''' 从n2引擎前缀映射到存放资源的程序集
+    ''' </summary>
+    Dim strMgrRoutes As New Dictionary(Of String, ResourceManager)
+    ''' <summary>
     ''' 从自定义字符串映射到自定义加载委托
     ''' </summary>
     Dim customRoutes As New Dictionary(Of String, Func(Of String, Object))
     Sub New()
 
+    End Sub
+    Public Property UICulture As Globalization.CultureInfo = Globalization.CultureInfo.CurrentUICulture
+    ''' <summary>
+    ''' 添加嵌入的资源加载Uri路由。示例：资源包名是StringPack, 字符串资源加载器是 resMgr, 当前语言标识为 CurrentCulture，那么映射是：n2-res-str:///StringPack/Welcome -> resMgr.GetString("Welcome", UICulture)
+    ''' </summary>
+    ''' <param name="resPackName">指定资源包的名字</param>
+    Public Sub AddRoute(resPackName As String, resMgr As ResourceManager)
+        If strMgrRoutes.ContainsKey(resPackName) Then
+            Throw New InvalidOperationException($"前缀{resPackName}已经被注册过了")
+        End If
+        strMgrRoutes.Add(resPackName, resMgr)
     End Sub
     ''' <summary>
     ''' 添加嵌入的资源加载Uri路由。示例：资源包名是Images, 程序集是N2Demo.Core，那么映射是：n2-res-emb:///Images/GameLogo.png -> assembly.GetManifestResourceStream("N2Demo.Core.GameLogo.png")
@@ -76,12 +96,23 @@ Public Class ResourceLoader
                     Return GetEmbeddedResource(path)
                 Case CustomScheme
                     Return GetCustomResource(path)
+                Case StringScheme
+                    Return GetString(path)
                 Case Else
                     Throw New ArgumentException($"未识别的方案{scheme}")
             End Select
         Catch ex As ArgumentException
             Throw New ArgumentException("无法检索相应的资源, 由于提供了错误的Uri。", NameOf(resourceKey), ex)
         End Try
+    End Function
+
+    Public Function GetString(path As String) As String
+        Dim paths = path.Split({"/"c}, StringSplitOptions.RemoveEmptyEntries)
+        If path.Length <> 2 Then
+            Throw New ArgumentException("提供了无效的路径", NameOf(path))
+        End If
+        Dim resMgr = strMgrRoutes(paths(0))
+        Return resMgr.GetString(path, UICulture)
     End Function
 
     ''' <summary>

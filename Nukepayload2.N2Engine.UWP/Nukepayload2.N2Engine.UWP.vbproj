@@ -138,6 +138,7 @@
     <Compile Include="Media\MusicPlayer.vb" />
     <Compile Include="Media\SoundMixListFullOperation.vb" />
     <Compile Include="Media\SoundPlayback.vb" />
+    <Compile Include="Media\SoundPlayer.vb" />
     <Compile Include="Renderers\GameCanvasRenderer.vb" />
     <Compile Include="Renderers\GameElementRenderer.vb" />
     <Compile Include="Renderers\SparkParticleSystemRenderer.vb" />

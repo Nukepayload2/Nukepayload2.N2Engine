@@ -91,10 +91,12 @@
     <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AI\AILevel.vb" />
     <Compile Include="Animations\BitmapAnimation.vb" />
     <Compile Include="Animations\DynamicBitmapAnimation.vb" />
     <Compile Include="Animations\LoopInformation.vb" />
     <Compile Include="Animations\Trailer.vb" />
+    <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
     <Compile Include="Data\SaveFile\PlatformSaveManagerBase.vb" />
     <Compile Include="Data\SaveFile\PlatformSaveDirectoryBase.vb" />
     <Compile Include="Data\SaveFile\SaveFile.vb" />
@@ -102,14 +104,21 @@
     <Compile Include="Data\SaveFile\PartialSaveFileLoader.vb" />
     <Compile Include="Data\SaveFile\SaveFileStatus.vb" />
     <Compile Include="Data\SaveFile\SaveManager.vb" />
+    <Compile Include="Extensibility\ExtensionPreviewLevels.vb" />
+    <Compile Include="Extensibility\ExtensionStages.vb" />
+    <Compile Include="Extensibility\IExtendable.vb" />
+    <Compile Include="Extensibility\IGameExtensionInfo.vb" />
     <Compile Include="Foundation\IGameCommand.vb" />
     <Compile Include="Foundation\SimpleCommand.vb" />
     <Compile Include="Foundation\N2PortableApiContract.vb" />
     <Compile Include="Math\RandomGenerator.vb" />
     <Compile Include="Media\AudioPlayerBase.vb" />
     <Compile Include="Media\IMusicPlayer.vb" />
+    <Compile Include="Media\ISoundVoicePlayer.vb" />
+    <Compile Include="Media\MediaPlayerExtensions.vb" />
     <Compile Include="Media\MusicPlayer.vb" />
     <Compile Include="Media\SoundPlayer.vb" />
+    <Compile Include="Media\SoundVoicePlayer.vb" />
     <Compile Include="ParticleSystem\FixedCapacityParticleSystem.vb" />
     <Compile Include="ParticleSystem\ImageParticle.vb" />
     <Compile Include="ParticleSystem\IParticle.vb" />
@@ -229,9 +238,10 @@
     <Compile Include="Resources\ResourceLoader.vb" />
     <Compile Include="Utilities\AsyncHelper.vb" />
     <Compile Include="Utilities\Vector2Extensions.vb" />
-    <Compile Include="Views\Behaviors\BehaviorBase.vb" />
-    <Compile Include="Views\Behaviors\ApplyForceBehavior.vb" />
-    <Compile Include="Views\Behaviors\ShakeBehavior.vb" />
+    <Compile Include="Behaviors\BehaviorBase.vb" />
+    <Compile Include="Behaviors\ApplyForceBehavior.vb" />
+    <Compile Include="Behaviors\ShakeBehavior.vb" />
+    <Compile Include="Views\Foundation\ColorValues.vb" />
     <Compile Include="Views\Foundation\GameCanvas.vb" />
     <Compile Include="Views\Foundation\GameEffect.vb" />
     <Compile Include="Views\Foundation\GameElement.vb" />
@@ -246,10 +256,10 @@
     <Compile Include="ParticleSystem\SparkParticleSystem.vb" />
     <Compile Include="Views\ParticleSystem\ParticleSystemView.vb" />
     <Compile Include="Views\ParticleSystem\SparkParticleSystemView.vb" />
-    <Compile Include="Views\Triggers\GameDataTrigger.vb" />
-    <Compile Include="Views\Triggers\GameEventTrigger.vb" />
-    <Compile Include="Views\Triggers\GameTriggerBase.vb" />
-    <Compile Include="Views\Triggers\IGameTrigger.vb" />
+    <Compile Include="Triggers\GameDataTrigger.vb" />
+    <Compile Include="Triggers\GameEventTrigger.vb" />
+    <Compile Include="Triggers\GameTriggerBase.vb" />
+    <Compile Include="Triggers\IGameTrigger.vb" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Numerics.Vectors, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
