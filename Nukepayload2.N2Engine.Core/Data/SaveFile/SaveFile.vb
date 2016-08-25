@@ -1,7 +1,7 @@
 ﻿''' <summary>
 ''' 空的存档文件。建议使用泛型版本的这个类作为存档文件。
 ''' </summary>
-Public MustInherit Class SaveFile
+Public Class SaveFile
     ''' <summary>
     ''' 这个存档当前的状态
     ''' </summary>
@@ -73,6 +73,7 @@ Public MustInherit Class SaveFile
     Public Property OriginalFileName As String
 
     Private _IsRoaming As Boolean
+
     ''' <summary>
     ''' 这个存档会自动上传到游戏账号
     ''' </summary>

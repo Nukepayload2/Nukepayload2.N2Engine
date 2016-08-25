@@ -236,6 +236,7 @@
     <Compile Include="Resources\GameResourceModelBase.vb" />
     <Compile Include="Resources\ResourceId.vb" />
     <Compile Include="Resources\ResourceLoader.vb" />
+    <Compile Include="Storage\SaveLocations.vb" />
     <Compile Include="Utilities\AsyncHelper.vb" />
     <Compile Include="Utilities\Vector2Extensions.vb" />
     <Compile Include="Behaviors\BehaviorBase.vb" />
@@ -272,9 +273,7 @@
     <None Include="Docs\游戏存档的结构.md" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Storage\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

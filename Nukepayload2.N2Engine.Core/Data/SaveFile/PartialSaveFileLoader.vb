@@ -1,10 +1,15 @@
 ﻿Public Class PartialSaveFileLoader(Of T)
     Const SavExtension As String = ".n2sav"
 
-    Sub New(partialDir As PlatformSaveDirectoryBase)
+    Private Sub New(partialDir As PlatformSaveDirectoryBase)
         Me.PartialDir = partialDir
-        CraftSaveFileModel()
     End Sub
+
+    Public Shared Async Function CreateAsync(partialDir As PlatformSaveDirectoryBase) As Task(Of PartialSaveFileLoader(Of T))
+        Dim ldr As New PartialSaveFileLoader(Of T)(partialDir)
+        Await ldr.CraftSaveFileModel()
+        Return ldr
+    End Function
 
     Protected Property PartialDir As PlatformSaveDirectoryBase
     Protected Property Save As New List(Of SaveFile(Of T))
@@ -23,8 +28,8 @@
         forEachAction = act
         Return Me
     End Function
-    Private Sub CraftSaveFileModel()
-        Dim fileIds = From f In PartialDir.SaveFiles
+    Private Async Function CraftSaveFileModel() As Task
+        Dim fileIds = From f In Await PartialDir.GetSaveFilesAsync
                       Let ori = f.OriginalFileName
                       Where ori.StartsWith(BaseName) AndAlso ori.EndsWith(SavExtension)
                       Select file = f, id = ori.Substring(BaseName.Length, ori.Length - SavExtension.Length - BaseName.Length)
@@ -39,5 +44,5 @@
             forEachAction.Invoke(f.file)
             Save.Add(CType(f.file, SaveFile(Of T)))
         Next
-    End Sub
+    End Function
 End Class

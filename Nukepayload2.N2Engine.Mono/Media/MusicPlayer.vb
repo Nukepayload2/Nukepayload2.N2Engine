@@ -1,8 +1,7 @@
 ﻿Imports Nukepayload2.N2Engine.Core
 
-<PlatformImpl(GetType(Core.MusicPlayer))>
+
 Friend Class MusicPlayer
-    Implements IMusicPlayer
 
     Public ReadOnly Property PlayingIndex As Integer Implements IMusicPlayer.PlayingIndex
         Get

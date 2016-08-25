@@ -1,8 +1,6 @@
 ﻿Imports Nukepayload2.N2Engine.Core
 
-<PlatformImpl(GetType(Core.SoundPlayer))>
 Friend Class SoundPlayer
-    Implements ISoundVoicePlayer
 
     Public Property SoundVolume As Double Implements ISoundVoicePlayer.SoundVolume
         Get

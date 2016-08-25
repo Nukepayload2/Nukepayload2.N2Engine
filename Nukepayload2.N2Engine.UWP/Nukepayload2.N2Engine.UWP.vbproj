@@ -146,7 +146,6 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Renderers\CanvasRendererBase.vb" />
     <Compile Include="Renderers\UWPRenderer.vb" />
-    <Compile Include="Storage\UWPSaveManager.vb" />
     <Compile Include="Utilities\CanvasGeometryExtension.vb" />
     <Compile Include="Utilities\LightClipCalculator.vb" />
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.UWP.rd.xml" />
@@ -194,6 +193,11 @@
   <ItemGroup>
     <Content Include="Media\Nukepayload2.N2Engine.Media.vbproj" />
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Storage\" />
+  </ItemGroup>
+  <Import Project="..\Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>

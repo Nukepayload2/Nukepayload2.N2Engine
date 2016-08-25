@@ -7,7 +7,7 @@ Public Class SampleSaveFileManager
     Public Property SavePollution As New SaveFile(Of SampleSavePollution)(New SampleSavePollution)
     Public Property PartialSaveFiles As List(Of SaveFile(Of SamplePartialData))
 
-    Protected Overrides Sub OnFileInitializing()
+    Protected Overrides Async Sub OnFileInitializing()
         MasterSaveFile.Master().
                        HasBaseName("N2Demo").
                        Roaming()
@@ -16,7 +16,7 @@ Public Class SampleSaveFileManager
                       Roaming().
                       HasSaveId(233).
                       Indelible()
-        PartialSaveFiles = New PartialSaveFileLoader(Of SamplePartialData)(PlatformSaveManager.LocalPartialData).
+        PartialSaveFiles = (Await PartialSaveFileLoader(Of SamplePartialData).CreateAsync(PlatformSaveManager.LocalPartialData)).
                            HasBaseName("Branch")
 
     End Sub

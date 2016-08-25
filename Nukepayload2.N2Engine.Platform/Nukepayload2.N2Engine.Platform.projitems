@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>0cc24abe-f541-46fc-8849-ef695ea5d387</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Nukepayload2.N2Engine.Platform</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\SoundPlayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Storage\SaveManagerImpl.vb" />
+  </ItemGroup>
+</Project>

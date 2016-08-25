@@ -116,7 +116,7 @@
   <ItemGroup>
     <Compile Include="ColorConverter.vb" />
     <Compile Include="MonoAPIContract.vb" />
-    <Compile Include="MonoPlatformSaveManager.vb" />
+    <Compile Include="SaveManagerImpl.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -164,6 +164,7 @@
     </ProjectReference>
   </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems" Label="Shared" />
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
