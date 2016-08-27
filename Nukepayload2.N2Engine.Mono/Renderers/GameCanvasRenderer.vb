@@ -2,7 +2,7 @@
 Imports Microsoft.Xna.Framework
 Imports Nukepayload2.N2Engine.Core
 
-Friend Class GameCanvasRenderer
+Public Class GameCanvasRenderer
     Inherits RendererBase(Of GameCanvas)
 
     Public WithEvents Game As MonoGameHandler

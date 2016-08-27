@@ -16,7 +16,7 @@ Public Class SampleSaveFileManager
                       Roaming().
                       HasSaveId(233).
                       Indelible()
-        PartialSaveFiles = (Await PartialSaveFileLoader(Of SamplePartialData).CreateAsync(PlatformSaveManager.LocalPartialData)).
+        PartialSaveFiles = (Await PartialSaveFileLoader(Of SamplePartialData).CreateAsync(Await PlatformSaveManager.OpenSaveFolderAsync(Storage.SaveLocations.LocalPartial))).
                            HasBaseName("Branch")
 
     End Sub

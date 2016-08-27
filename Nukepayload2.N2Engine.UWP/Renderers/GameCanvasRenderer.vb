@@ -3,7 +3,7 @@ Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.Core
 
-Friend Class GameCanvasRenderer
+Public Class GameCanvasRenderer
     Inherits CanvasRendererBase(Of GameCanvas)
 
     ''' <summary>
