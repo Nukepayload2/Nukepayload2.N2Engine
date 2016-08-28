@@ -236,6 +236,8 @@
     <Compile Include="Resources\GameResourceModelBase.vb" />
     <Compile Include="Resources\ResourceId.vb" />
     <Compile Include="Resources\ResourceLoader.vb" />
+    <Compile Include="Storage\IDirectory.vb" />
+    <Compile Include="Storage\IFile.vb" />
     <Compile Include="Storage\SaveLocations.vb" />
     <Compile Include="Utilities\AsyncHelper.vb" />
     <Compile Include="Utilities\Vector2Extensions.vb" />

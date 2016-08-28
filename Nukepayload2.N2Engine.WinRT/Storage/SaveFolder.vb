@@ -23,7 +23,7 @@ Namespace Global.Nukepayload2.N2Engine.WinRT.Storage
                 Case SaveLocations.LocalMaster
                     sav.curFolder = appdata.LocalFolder
                 Case SaveLocations.LocalPartial
-                    sav.curFolder = Await appdata.LocalFolder.CreateFolderAsync("Partial")
+                    sav.curFolder = Await appdata.LocalFolder.CreateFolderAsync("Partial", CreationCollisionOption.OpenIfExists)
                 Case SaveLocations.Roaming
                     sav.curFolder = appdata.RoamingFolder
                 Case Else

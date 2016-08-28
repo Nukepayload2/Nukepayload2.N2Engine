@@ -44,17 +44,16 @@ Public Class PlatformImplRegistration
         End If
         curPlatform = platform
     End Sub
-
     ''' <summary>
-    ''' 注册视图的渲染器, 返回是否注册成功
+    ''' 注册需要注册的实现类型, 返回是否注册成功
     ''' </summary>
-    ''' <param name="viewType">视图的类型</param>
-    ''' <param name="rendererType">渲染器的类型</param>
+    ''' <param name="declType">视图的类型</param>
+    ''' <param name="implType">渲染器的类型</param>
     ''' <returns></returns>
-    Public Function RegisterViewRenderer(viewType As Type, rendererType As Type) As Boolean
-        Dim canReg = Not Registered.ContainsKey(viewType)
+    Public Function RegisterImplType(declType As Type, implType As Type) As Boolean
+        Dim canReg = Not Registered.ContainsKey(declType)
         If canReg Then
-            Registered.Add(viewType, rendererType)
+            Registered.Add(declType, implType)
         End If
         Return canReg
     End Function
@@ -74,7 +73,7 @@ Public Class PlatformImplRegistration
                Where tp.IsClass AndAlso tp.IsNotPublic
                Let attr = tp.GetCustomAttributes(Of PlatformImplAttribute).FirstOrDefault
                Where attr IsNot Nothing
-               Select success = RegisterViewRenderer(attr.ViewType, tp.AsType)
+               Select success = RegisterImplType(attr.DeclType, tp.AsType)
                Into All(success)
     End Function
     ''' <summary>

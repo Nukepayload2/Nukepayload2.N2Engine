@@ -4,6 +4,7 @@ using UIKit;
 using N2Demo.Core;
 using Nukepayload2.N2Engine.iOS;
 using Microsoft.Xna.Framework.Input.Touch;
+using Nukepayload2.N2Engine.IO.FileSystem;
 
 namespace N2Demo.iOS
 {
@@ -26,8 +27,7 @@ namespace N2Demo.iOS
             if (gameHandler == null)
             {
                 // 注册 N2 引擎的 Mono 实现
-                MonoImplRegistration.Register();
-
+                MonoImplRegistration.Register(typeof(XamarinApiContract).Assembly);
                 gameHandler = new MonoGameHandler();
 
                 sparks = new SparksView();

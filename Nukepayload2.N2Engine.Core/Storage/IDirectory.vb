@@ -1,0 +1,17 @@
+﻿Public Interface IDirectory
+    Property CreationTime As Date
+    Property CreationTimeUtc As Date
+    Property DirectoryName As String
+    Property LastAccessTime As Date
+    Property LastAccessTimeUtc As Date
+    Property LastWriteTime As Date
+    Property LastWriteTimeUtc As Date
+    Function CreateAsync() As Task
+    Function DeleteAsync() As Task
+    Function EnumerateDirectoriesAsync() As Task(Of IEnumerable(Of String))
+    Function EnumerateDirectoriesAsync(searchPattern As String) As Task(Of IEnumerable(Of String))
+    Function EnumerateFilesAsync() As Task(Of IEnumerable(Of String))
+    Function EnumerateFilesAsync(searchPattern As String) As Task(Of IEnumerable(Of String))
+    Function Exists() As Boolean
+    Function MoveAsync(dest As String) As Task
+End Interface

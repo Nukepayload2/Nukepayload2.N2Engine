@@ -135,6 +135,12 @@
       <Project>{A30BD00A-8BD6-4BD7-8C88-74992C489C25}</Project>
       <Name>Nukepayload2.N2Engine.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.iOS.IO.FileSystem\Nukepayload2.N2Engine.iOS.IO.FileSystem.csproj">
+      <Project>{30213fc0-5b24-4ab2-8642-ccab631c5795}</Project>
+      <Name>Nukepayload2.N2Engine.iOS.IO.FileSystem</Name>
+      <IsAppExtension>false</IsAppExtension>
+      <IsWatchApp>false</IsWatchApp>
+    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine.iOS\Nukepayload2.N2Engine.iOS.vbproj">
       <Project>{b6900d0c-e801-40e6-ad35-7fef0f7b57c4}</Project>
       <Name>Nukepayload2.N2Engine.iOS</Name>

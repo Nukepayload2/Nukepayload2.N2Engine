@@ -4,12 +4,12 @@
 <AttributeUsage(AttributeTargets.Class)>
 Public Class PlatformImplAttribute
     Inherits Attribute
-    Sub New(viewType As Type)
-        Me.ViewType = viewType
+    Sub New(declType As Type)
+        Me.DeclType = declType
     End Sub
 
     ''' <summary>
-    ''' 表示一个联系类型
+    ''' 表示一个不包含实现的类型
     ''' </summary>
-    Public Property ViewType As Type
+    Public Property DeclType As Type
 End Class

@@ -95,6 +95,10 @@
       <Project>{df4dd7ab-2687-48d3-9c7b-b1d7f117dbd1}</Project>
       <Name>N2Demo.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.Android.IO.FileSystem\Nukepayload2.N2Engine.Android.IO.FileSystem.csproj">
+      <Project>{24b5188b-425c-45c9-9d1a-f8624590207c}</Project>
+      <Name>Nukepayload2.N2Engine.Android.IO.FileSystem</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine.Android\Nukepayload2.N2Engine.Android.vbproj">
       <Project>{aa2ea02e-f413-48ac-b384-ac59906bf91f}</Project>
       <Name>Nukepayload2.N2Engine.Android</Name>

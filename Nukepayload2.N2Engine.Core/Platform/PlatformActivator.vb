@@ -29,6 +29,20 @@ Public Class PlatformActivator
         Return DirectCast(CreateInstance(GetType(TPortable), parameters), TPlatformBase)
     End Function
     ''' <summary>
+    ''' 根据泛型指定的可移植类型的类型创建平台实现基类型 (使用平台实现类型的公共无参数构造函数)
+    ''' </summary>
+    ''' <typeparam name="TPlatformBase">可移植类型</typeparam>
+    Public Shared Function CreateBaseInstance(Of TPlatformBase)() As TPlatformBase
+        Return DirectCast(CreateInstance(GetType(TPlatformBase)), TPlatformBase)
+    End Function
+    ''' <summary>
+    ''' 根据泛型指定的可移植类型的类型创建平台实现基类型 (使用平台实现类型的公共无参数构造函数)
+    ''' </summary>
+    ''' <typeparam name="TPlatformBase">可移植类型</typeparam>
+    Public Shared Function CreateBaseInstance(Of TPlatformBase)(ParamArray parameters As Object()) As TPlatformBase
+        Return DirectCast(CreateInstance(GetType(TPlatformBase), parameters), TPlatformBase)
+    End Function
+    ''' <summary>
     ''' 根据泛型指定的可移植类型的类型创建平台实现类型 (使用平台实现类型的公共无参数构造函数)
     ''' </summary>
     ''' <typeparam name="TPortable">可移植类型</typeparam>

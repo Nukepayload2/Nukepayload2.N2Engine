@@ -3,6 +3,7 @@ using Android.OS;
 using Nukepayload2.N2Engine.Android;
 using N2Demo.Core;
 using Microsoft.Xna.Framework.Input.Touch;
+using Nukepayload2.N2Engine.IO.FileSystem;
 
 namespace N2Demo.Android
 {
@@ -16,7 +17,7 @@ namespace N2Demo.Android
         {
             base.OnCreate(bundle);
             // 注册 N2 引擎的 Mono 实现
-            MonoImplRegistration.Register();
+            MonoImplRegistration.Register(typeof(XamarinApiContract).Assembly);
 
             gameHandler = new MonoGameHandler();
             // 要从 "main.axml" 载入布局，取消以下注释
