@@ -1,6 +1,7 @@
 ﻿Imports Foundation
 Imports Nukepayload2.N2Engine.Core
 Imports Nukepayload2.N2Engine.Core.Storage
+Imports Nukepayload2.N2Engine.Storage
 
 Friend Class SaveManagerImpl
     Public Overrides Async Function OpenSaveFolderAsync(Location As SaveLocations) As Task(Of PlatformSaveDirectoryBase)
@@ -12,13 +13,10 @@ Friend Class SaveManagerImpl
             Case SaveLocations.LocalPartial
                 folder = Path.Combine(localData, "Partial")
             Case SaveLocations.Roaming
-                Throw New PlatformNotSupportedException("iOS 不支持 iCloud 漫游数据")
+                Throw New PlatformNotSupportedException("iOS 不支持 iCloud 漫游应用数据")
             Case Else
                 Throw New PlatformNotSupportedException("iOS 不支持 开发商共享数据")
         End Select
-        Dim dir = PlatformActivator.CreateBaseInstance(Of IDirectory)(folder)
-        If Not dir.Exists Then
-            Await dir.CreateAsync
-        End If
+        Return Await SaveFolder.CreateAsync(folder)
     End Function
 End Class

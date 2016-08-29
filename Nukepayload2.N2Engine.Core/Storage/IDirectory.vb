@@ -14,4 +14,6 @@
     Function EnumerateFilesAsync(searchPattern As String) As Task(Of IEnumerable(Of String))
     Function Exists() As Boolean
     Function MoveAsync(dest As String) As Task
+    Function OpenStreamForReadAsync(fileName As String) As Task(Of Stream)
+    Function OpenStreamForWriteAsync(fileName As String) As Task(Of Stream)
 End Interface

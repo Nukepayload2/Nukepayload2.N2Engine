@@ -4,7 +4,7 @@ Imports Nukepayload2.N2Engine.Core
 Imports Nukepayload2.N2Engine.Core.Storage
 Imports Windows.Storage
 
-Namespace Global.Nukepayload2.N2Engine.WinRT.Storage
+Namespace Global.Nukepayload2.N2Engine.Storage
     ''' <summary>
     ''' 表示 Windows RT 下保存文件用的目录
     ''' </summary>
@@ -15,7 +15,9 @@ Namespace Global.Nukepayload2.N2Engine.WinRT.Storage
         Private Sub New()
 
         End Sub
-
+        ''' <summary>
+        ''' 打开或创建存档文件夹
+        ''' </summary>
         Public Shared Async Function CreateAsync(saveLocation As SaveLocations) As Task(Of SaveFolder)
             Dim appdata = ApplicationData.Current
             Dim sav As New SaveFolder
@@ -30,7 +32,7 @@ Namespace Global.Nukepayload2.N2Engine.WinRT.Storage
 #If WINDOWS_UWP Then
                     sav.curFolder = appdata.SharedLocalFolder
 #Else
-                    Throw New PlatformNotSupportedException
+                    Throw New PlatformNotSupportedException("WP 8.1 没有共享本地数据文件夹")
 #End If
             End Select
             Return sav

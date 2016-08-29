@@ -88,6 +88,10 @@
     <Reference Include="MonoGame.Framework">
       <HintPath>C:\Program Files (x86)\MonoGame\v3.0\Assemblies\Android\MonoGame.Framework.dll</HintPath>
     </Reference>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="OpenTK-1.0">
       <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\MonoAndroid\v6.0\OpenTK-1.0.dll</HintPath>
     </Reference>
@@ -111,6 +115,7 @@
   </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.Xamarin\Nukepayload2.N2Engine.Xamarin.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

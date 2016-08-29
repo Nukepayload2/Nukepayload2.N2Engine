@@ -46,6 +46,17 @@ namespace Nukepayload2.N2Engine.IO.FileSystem
         {
             return await Task.Run(() => DirectoryIO.EnumerateFiles(DirectoryName, searchPattern));
         }
+
+        public async Task<System.IO.Stream> OpenStreamForReadAsync(string fileName)
+        {
+            return await new File(System.IO.Path.Combine(DirectoryName, fileName)).OpenForReadAsync();
+        }
+
+        public async Task<System.IO.Stream> OpenStreamForWriteAsync(string fileName)
+        {
+            return await new File(System.IO.Path.Combine(DirectoryName, fileName)).OpenForWriteAsync();
+        }
+
         public DateTime CreationTime
         {
             get { return DirectoryIO.GetCreationTime(DirectoryName); }

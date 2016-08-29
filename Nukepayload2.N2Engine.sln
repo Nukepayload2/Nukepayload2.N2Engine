@@ -126,6 +126,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Nukepayload2.N2Engine.Andro
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.IO.FileSystem", "Nukepayload2.N2Engine.IO.FileSystem\Nukepayload2.N2Engine.IO.FileSystem.shproj", "{546F847C-14C7-4830-A213-83223EA59050}"
 EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.Xamarin", "Nukepayload2.N2Engine.Xamarin\Nukepayload2.N2Engine.Xamarin.shproj", "{8DF48139-91CE-4B19-B6A2-ABC050FF1F85}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{0cc24abe-f541-46fc-8849-ef695ea5d387}*SharedItemsImports = 13
@@ -143,12 +145,15 @@ Global
 		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{79ca7b28-8aa2-4c54-85ce-e44c52e719a0}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{80604c90-fb0e-4432-89cc-939a1702a91e}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems*{80604c90-fb0e-4432-89cc-939a1702a91e}*SharedItemsImports = 4
+		Nukepayload2.N2Engine.Xamarin\Nukepayload2.N2Engine.Xamarin.projitems*{8df48139-91ce-4b19-b6a2-abc050ff1f85}*SharedItemsImports = 13
 		Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems*{a6d04e38-fb22-4395-8e71-4617f9fb054f}*SharedItemsImports = 13
 		Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems*{aa2ea02e-f413-48ac-b384-ac59906bf91f}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{aa2ea02e-f413-48ac-b384-ac59906bf91f}*SharedItemsImports = 4
+		Nukepayload2.N2Engine.Xamarin\Nukepayload2.N2Engine.Xamarin.projitems*{aa2ea02e-f413-48ac-b384-ac59906bf91f}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems*{ab1598cb-3ae1-4770-b439-3b2daea171ed}*SharedItemsImports = 13
 		Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems*{b6900d0c-e801-40e6-ad35-7fef0f7b57c4}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{b6900d0c-e801-40e6-ad35-7fef0f7b57c4}*SharedItemsImports = 4
+		Nukepayload2.N2Engine.Xamarin\Nukepayload2.N2Engine.Xamarin.projitems*{b6900d0c-e801-40e6-ad35-7fef0f7b57c4}*SharedItemsImports = 4
 		RaisingStudio.Xna.Graphics.Shared\RaisingStudio.Xna.Graphics.Shared.projitems*{ca20682b-fec9-46e1-8293-6896e8fc16a3}*SharedItemsImports = 4
 		RaisingStudio.Xna.Graphics.Shared\RaisingStudio.Xna.Graphics.Shared.projitems*{e1a3e111-a8f0-4ef9-8c65-13dd3ce5855b}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
@@ -1735,5 +1740,6 @@ Global
 		{30213FC0-5B24-4AB2-8642-CCAB631C5795} = {0549E02F-1FE0-41FC-B4CD-3C9B467133A2}
 		{24B5188B-425C-45C9-9D1A-F8624590207C} = {0549E02F-1FE0-41FC-B4CD-3C9B467133A2}
 		{546F847C-14C7-4830-A213-83223EA59050} = {0549E02F-1FE0-41FC-B4CD-3C9B467133A2}
+		{8DF48139-91CE-4B19-B6A2-ABC050FF1F85} = {74F37D22-44D6-419A-A7C5-928F72891012}
 	EndGlobalSection
 EndGlobal
