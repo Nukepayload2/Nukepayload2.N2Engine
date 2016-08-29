@@ -1,5 +1,5 @@
-﻿Imports Nukepayload2.N2Engine.Core
+﻿Imports Nukepayload2.N2Engine.Platform
 
 Public Structure MonoAPIContract
-    Public Shared ReadOnly Property Platform As Platform = Platform.iOS
+    Public Shared ReadOnly Property Platform As Platforms = Platforms.iOS
 End Structure

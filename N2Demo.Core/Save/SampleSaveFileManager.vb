@@ -1,4 +1,4 @@
-﻿Imports Nukepayload2.N2Engine.Core
+﻿Imports Nukepayload2.N2Engine.Storage
 
 Public Class SampleSaveFileManager
     Inherits SaveManager
@@ -16,7 +16,7 @@ Public Class SampleSaveFileManager
                       Roaming().
                       HasSaveId(233).
                       Indelible()
-        PartialSaveFiles = (Await PartialSaveFileLoader(Of SamplePartialData).CreateAsync(Await PlatformSaveManager.OpenSaveFolderAsync(Storage.SaveLocations.LocalPartial))).
+        PartialSaveFiles = (Await PartialSaveFileLoader(Of SamplePartialData).CreateAsync(Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.LocalPartial))).
                            HasBaseName("Branch")
 
     End Sub

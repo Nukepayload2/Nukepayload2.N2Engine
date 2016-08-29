@@ -1,6 +1,6 @@
 ﻿Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
-Imports Nukepayload2.N2Engine.Core
+Imports Nukepayload2.N2Engine.UI.Elements
 ''' <summary>
 ''' UWP的画布渲染器的基类。将N2引擎的视图与UWP的视图连接起来。
 ''' </summary>

@@ -1,4 +1,7 @@
-﻿Namespace ParticleSystem
+﻿Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.N2Engine.UI.Elements
+
+Namespace ParticleSystem
     ''' <summary>
     ''' 固定数量粒子的粒子系统。在开始的时候释放粒子。对于老的粒子实行回收和重生。
     ''' </summary>

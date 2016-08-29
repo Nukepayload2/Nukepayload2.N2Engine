@@ -1,6 +1,7 @@
 ﻿Imports System.Text
 Imports Newtonsoft.Json
-Imports Nukepayload2.N2Engine.Core
+Imports Nukepayload2.N2Engine.Platform
+
 Namespace Global.Nukepayload2.N2Engine.Storage
     Public Class SaveFolder
         Inherits PlatformSaveDirectoryBase

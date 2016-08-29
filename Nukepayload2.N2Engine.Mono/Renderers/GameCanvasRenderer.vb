@@ -1,6 +1,7 @@
 ﻿Imports System.Collections.Specialized
 Imports Microsoft.Xna.Framework
-Imports Nukepayload2.N2Engine.Core
+Imports Nukepayload2.N2Engine.Renderers
+Imports Nukepayload2.N2Engine.UI.Elements
 
 Public Class GameCanvasRenderer
     Inherits RendererBase(Of GameCanvas)

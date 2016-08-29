@@ -1,5 +1,6 @@
 ﻿Imports System.Numerics
-Imports Nukepayload2.N2Engine.Core
+Imports Nukepayload2.N2Engine.UI.Elements
+Imports Nukepayload2.N2Engine.UI.Views
 
 Public Class SparksView
     Inherits GameCanvas

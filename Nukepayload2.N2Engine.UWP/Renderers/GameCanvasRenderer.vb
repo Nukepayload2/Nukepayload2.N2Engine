@@ -1,7 +1,7 @@
 ﻿Imports System.Collections.Specialized
 Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
-Imports Nukepayload2.N2Engine.Core
+Imports Nukepayload2.N2Engine.UI.Elements
 
 Public Class GameCanvasRenderer
     Inherits CanvasRendererBase(Of GameCanvas)

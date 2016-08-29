@@ -1,3 +1,5 @@
-﻿Public Class SoundPlayer
+﻿Namespace Media
+    Public Class SoundPlayer
 
-End Class
+    End Class
+End Namespace

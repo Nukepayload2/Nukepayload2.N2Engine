@@ -1,5 +1,4 @@
-﻿Imports Box2D.UWPExtensions
-Imports Nukepayload2.N2Engine.Core
+﻿Imports Nukepayload2.N2Engine.Foundation
 
 Namespace Global.Box2D
     Public Class World

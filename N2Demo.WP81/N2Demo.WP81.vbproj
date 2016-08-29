@@ -96,6 +96,10 @@
       <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
       <Name>Nukepayload2.N2Engine.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.RolePlayGames.Core\Nukepayload2.N2Engine.RolePlayGames.Core.vbproj">
+      <Project>{acbc1542-df92-44ae-845c-2ffd089fc2d6}</Project>
+      <Name>Nukepayload2.N2Engine.RolePlayGames.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine.Wp81\Nukepayload2.N2Engine.Wp81.vbproj">
       <Project>{50a081cb-e5dd-4528-a9ee-5885bd8f35a3}</Project>
       <Name>Nukepayload2.N2Engine.Wp81</Name>

@@ -7,7 +7,7 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{A30BD00A-8BD6-4BD7-8C88-74992C489C25}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>Nukepayload2.N2Engine.Core</RootNamespace>
+    <RootNamespace>Nukepayload2.N2Engine</RootNamespace>
     <AssemblyName>Nukepayload2.N2Engine.Core</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <ProjectTypeGuids>{14182A97-F7F0-4C62-8B27-98AA8AE2109A};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
@@ -97,13 +97,13 @@
     <Compile Include="Animations\LoopInformation.vb" />
     <Compile Include="Animations\Trailer.vb" />
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
-    <Compile Include="Data\SaveFile\PlatformSaveManagerBase.vb" />
-    <Compile Include="Data\SaveFile\PlatformSaveDirectoryBase.vb" />
-    <Compile Include="Data\SaveFile\SaveFile.vb" />
-    <Compile Include="Data\SaveFile\SaveFileHelper.vb" />
-    <Compile Include="Data\SaveFile\PartialSaveFileLoader.vb" />
-    <Compile Include="Data\SaveFile\SaveFileStatus.vb" />
-    <Compile Include="Data\SaveFile\SaveManager.vb" />
+    <Compile Include="Storage\PlatformSaveManagerBase.vb" />
+    <Compile Include="Storage\PlatformSaveDirectoryBase.vb" />
+    <Compile Include="Storage\SaveFile\SaveFile.vb" />
+    <Compile Include="Storage\SaveFile\SaveFileHelper.vb" />
+    <Compile Include="Storage\SaveFile\PartialSaveFileLoader.vb" />
+    <Compile Include="Storage\SaveFile\SaveFileStatus.vb" />
+    <Compile Include="Storage\SaveFile\SaveManager.vb" />
     <Compile Include="Extensibility\ExtensionPreviewLevels.vb" />
     <Compile Include="Extensibility\ExtensionStages.vb" />
     <Compile Include="Extensibility\IExtendable.vb" />
@@ -230,9 +230,9 @@
     <Compile Include="Box2D\WorldManifold.vb" />
     <Compile Include="Box2D\XForm.vb" />
     <Compile Include="Foundation\Color.vb" />
-    <Compile Include="Platform\Platform.vb" />
+    <Compile Include="Platform\Platforms.vb" />
     <Compile Include="Platform\PlatformImplRegistration.vb" />
-    <Compile Include="Platform\RendererBase.vb" />
+    <Compile Include="UI\Renderers\RendererBase.vb" />
     <Compile Include="Resources\GameResourceModelBase.vb" />
     <Compile Include="Resources\ResourceId.vb" />
     <Compile Include="Resources\ResourceLoader.vb" />
@@ -244,21 +244,21 @@
     <Compile Include="Behaviors\BehaviorBase.vb" />
     <Compile Include="Behaviors\ApplyForceBehavior.vb" />
     <Compile Include="Behaviors\ShakeBehavior.vb" />
-    <Compile Include="Views\Foundation\ColorValues.vb" />
-    <Compile Include="Views\Foundation\GameCanvas.vb" />
-    <Compile Include="Views\Foundation\GameEffect.vb" />
-    <Compile Include="Views\Foundation\GameElement.vb" />
-    <Compile Include="Views\Foundation\GameObject.vb" />
-    <Compile Include="Views\Foundation\GameEntity.vb" />
-    <Compile Include="Views\Foundation\GameSoundPlayer.vb" />
-    <Compile Include="Views\Foundation\GameVisual.vb" />
+    <Compile Include="Foundation\ColorValues.vb" />
+    <Compile Include="UI\Elements\GameCanvas.vb" />
+    <Compile Include="UI\Elements\GameEffect.vb" />
+    <Compile Include="UI\Elements\GameElement.vb" />
+    <Compile Include="UI\Elements\GameObject.vb" />
+    <Compile Include="UI\Elements\GameEntity.vb" />
+    <Compile Include="UI\Elements\GameSoundPlayer.vb" />
+    <Compile Include="UI\Elements\GameVisual.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Platform\PlatformImplAttribute.vb" />
     <Compile Include="Foundation\SingleInstance.vb" />
-    <Compile Include="Views\Foundation\RendererRegistrationRequestedEventArgs.vb" />
+    <Compile Include="UI\Elements\RendererRegistrationRequestedEventArgs.vb" />
     <Compile Include="ParticleSystem\SparkParticleSystem.vb" />
-    <Compile Include="Views\ParticleSystem\ParticleSystemView.vb" />
-    <Compile Include="Views\ParticleSystem\SparkParticleSystemView.vb" />
+    <Compile Include="UI\Views\ParticleSystemView.vb" />
+    <Compile Include="UI\Views\SparkParticleSystemView.vb" />
     <Compile Include="Triggers\GameDataTrigger.vb" />
     <Compile Include="Triggers\GameEventTrigger.vb" />
     <Compile Include="Triggers\GameTriggerBase.vb" />
@@ -275,7 +275,9 @@
     <None Include="Docs\游戏存档的结构.md" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Data\" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

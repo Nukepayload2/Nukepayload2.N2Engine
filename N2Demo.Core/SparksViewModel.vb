@@ -1,6 +1,6 @@
 ﻿Imports System.Numerics
-Imports Nukepayload2.N2Engine.Core
-Imports Nukepayload2.N2Engine.Core.ParticleSystem
+Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.N2Engine.ParticleSystem
 
 Public Class SparksViewModel
     Public ReadOnly Property RemoveFromVisualTree As New PropertyBinder(Of Action)

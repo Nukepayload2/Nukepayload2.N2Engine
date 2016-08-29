@@ -1,4 +1,7 @@
-﻿Namespace Animations
+﻿Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.N2Engine.Resources
+
+Namespace Animations
     ''' <summary>
     ''' 表示位图动画
     ''' </summary>

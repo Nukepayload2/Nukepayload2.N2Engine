@@ -1,5 +1,5 @@
 ﻿Imports System.Text
-Imports Nukepayload2.N2Engine.Core
+Imports Nukepayload2.N2Engine.Foundation
 
 Namespace Battle
 

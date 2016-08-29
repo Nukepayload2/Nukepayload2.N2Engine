@@ -1,18 +1,21 @@
-﻿''' <summary>
-''' 游戏的画布，是全部可见元素的父级。
-''' </summary>
-Public Class GameCanvas
-    Inherits GameVisual
+﻿Imports Nukepayload2.N2Engine.Foundation
+
+Namespace UI.Elements
     ''' <summary>
-    ''' 画板的子元素
+    ''' 游戏的画布，是全部可见元素的父级。
     ''' </summary>
-    Public ReadOnly Property Children As New ObservableCollection(Of GameElement)
-    ''' <summary>
-    ''' 这个画布
-    ''' </summary>
-    Public ReadOnly Property Paused As New PropertyBinder(Of Boolean)
-    Sub New()
-        AddHandler Children.CollectionChanged,
+    Public Class GameCanvas
+        Inherits GameVisual
+        ''' <summary>
+        ''' 画板的子元素
+        ''' </summary>
+        Public ReadOnly Property Children As New ObservableCollection(Of GameElement)
+        ''' <summary>
+        ''' 这个画布
+        ''' </summary>
+        Public ReadOnly Property Paused As New PropertyBinder(Of Boolean)
+        Sub New()
+            AddHandler Children.CollectionChanged,
             Sub(sender, e)
                 Dim removeFromChildren As EventHandler = Sub(ele, args) Children.Remove(DirectCast(ele, GameElement))
                 If e.NewItems IsNot Nothing Then
@@ -26,5 +29,6 @@ Public Class GameCanvas
                     Next
                 End If
             End Sub
-    End Sub
-End Class
+        End Sub
+    End Class
+End Namespace

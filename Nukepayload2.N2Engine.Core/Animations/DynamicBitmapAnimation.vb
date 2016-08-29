@@ -1,4 +1,6 @@
-﻿Namespace Animations
+﻿Imports Nukepayload2.N2Engine.Resources
+
+Namespace Animations
     ''' <summary>
     ''' 带有动态信息的动画。但由于动态性能较低，此类动画中的动态信息多用于Mod。
     ''' </summary>

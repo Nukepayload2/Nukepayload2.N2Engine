@@ -1,7 +1,5 @@
 ﻿Imports System.Text
 Imports Newtonsoft.Json
-Imports Nukepayload2.N2Engine.Core
-Imports Nukepayload2.N2Engine.Core.Storage
 Imports Windows.Storage
 
 Namespace Global.Nukepayload2.N2Engine.Storage
@@ -25,7 +23,7 @@ Namespace Global.Nukepayload2.N2Engine.Storage
                 Case SaveLocations.LocalMaster
                     sav.curFolder = appdata.LocalFolder
                 Case SaveLocations.LocalPartial
-                    sav.curFolder = Await appdata.LocalFolder.CreateFolderAsync("Partial", CreationCollisionOption.OpenIfExists)
+                    sav.curFolder = Await appdata.LocalFolder.CreateFolderAsync(SaveManagerImpl.SharedFolderName, CreationCollisionOption.OpenIfExists)
                 Case SaveLocations.Roaming
                     sav.curFolder = appdata.RoamingFolder
                 Case Else

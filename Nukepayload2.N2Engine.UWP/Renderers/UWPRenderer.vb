@@ -1,6 +1,7 @@
 ﻿Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
-Imports Nukepayload2.N2Engine.Core
+Imports Nukepayload2.N2Engine.Renderers
+Imports Nukepayload2.N2Engine.UI.Elements
 ''' <summary>
 ''' UWP的渲染器的基类。
 ''' </summary>

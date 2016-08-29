@@ -28,7 +28,7 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <AndroidUseSharedRuntime>False</AndroidUseSharedRuntime>
-    <AndroidLinkMode>SdkOnly</AndroidLinkMode>
+    <AndroidLinkMode>None</AndroidLinkMode>
     <EmbedAssembliesIntoApk>True</EmbedAssembliesIntoApk>
     <BundleAssemblies>False</BundleAssemblies>
     <AndroidCreatePackagePerAbi>False</AndroidCreatePackagePerAbi>
@@ -71,6 +71,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="GettingStarted.Xamarin" />
     <None Include="packages.config" />
     <None Include="Resources\AboutResources.txt" />
@@ -106,6 +107,10 @@
     <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
       <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
       <Name>Nukepayload2.N2Engine.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.RolePlayGames.Core\Nukepayload2.N2Engine.RolePlayGames.Core.vbproj">
+      <Project>{acbc1542-df92-44ae-845c-2ffd089fc2d6}</Project>
+      <Name>Nukepayload2.N2Engine.RolePlayGames.Core</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />

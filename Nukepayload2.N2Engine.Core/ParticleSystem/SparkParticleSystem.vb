@@ -1,5 +1,7 @@
 ﻿Option Strict Off
-Imports Nukepayload2.N2Engine.Core.Numerics
+Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.N2Engine.Numerics
+
 Namespace ParticleSystem
     ''' <summary>
     ''' 火花粒子系统

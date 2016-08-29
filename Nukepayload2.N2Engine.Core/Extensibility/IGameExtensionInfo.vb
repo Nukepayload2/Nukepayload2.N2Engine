@@ -1,21 +1,25 @@
-﻿Public Interface IGameExtensionInfo
+﻿Imports Nukepayload2.N2Engine.Resources
 
-    ReadOnly Property Description As String
+Namespace Extensibility
+    Public Interface IGameExtensionInfo
 
-    ReadOnly Property DisplayName As String
+        ReadOnly Property Description As String
 
-    ReadOnly Property ExtensionMinPreviewLevel As ExtensionPreviewLevels
+        ReadOnly Property DisplayName As String
 
-    ReadOnly Property ExtensionStage As ExtensionStages
+        ReadOnly Property ExtensionMinPreviewLevel As ExtensionPreviewLevels
 
-    ReadOnly Property ExtensionVersion As Version
+        ReadOnly Property ExtensionStage As ExtensionStages
 
-    ReadOnly Property ClientVersion As Version
+        ReadOnly Property ExtensionVersion As Version
 
-    ReadOnly Property Icon As BitmapResource
+        ReadOnly Property ClientVersion As Version
 
-    ReadOnly Property VendorInfo As String
+        ReadOnly Property Icon As BitmapResource
 
-    ReadOnly Property Website As Uri
+        ReadOnly Property VendorInfo As String
 
-End Interface
+        ReadOnly Property Website As Uri
+
+    End Interface
+End Namespace

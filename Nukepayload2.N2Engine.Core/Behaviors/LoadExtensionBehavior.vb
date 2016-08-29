@@ -1,13 +1,19 @@
-﻿Public Class LoadExtensionBehavior(Of TExtendableVisual As {GameVisual, IExtendable}, TExtension As IGameExtensionInfo)
-    Inherits BehaviorBase(Of TExtendableVisual)
+﻿Imports Nukepayload2.N2Engine.Extensibility
+Imports Nukepayload2.N2Engine.UI.Elements
 
-    Sub New(extension As TExtension)
-        Me.Extension = extension
-    End Sub
+Namespace Behaviors
+    Public Class LoadExtensionBehavior(Of TExtendableVisual As {GameVisual, IExtendable}, TExtension As IGameExtensionInfo)
+        Inherits BehaviorBase(Of TExtendableVisual)
 
-    Public Property Extension As TExtension
+        Sub New(extension As TExtension)
+            Me.Extension = extension
+        End Sub
 
-    Protected Overrides Sub OnAttached(visual As TExtendableVisual)
-        visual.Extensions.Add(Extension)
-    End Sub
-End Class
+        Public Property Extension As TExtension
+
+        Protected Overrides Sub OnAttached(visual As TExtendableVisual)
+            visual.Extensions.Add(Extension)
+        End Sub
+    End Class
+
+End Namespace

@@ -1,4 +1,4 @@
-﻿Imports Nukepayload2.N2Engine.Core.Animations
+﻿Imports Nukepayload2.N2Engine.Animations
 
 Namespace ParticleSystem
 

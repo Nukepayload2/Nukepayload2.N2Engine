@@ -1,4 +1,6 @@
-﻿Namespace ParticleSystem
+﻿Imports Nukepayload2.N2Engine.Foundation
+
+Namespace ParticleSystem
     ''' <summary>
     ''' 持续释放和销毁的粒子系统
     ''' </summary>

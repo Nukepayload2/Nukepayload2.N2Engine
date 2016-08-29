@@ -1,4 +1,4 @@
-﻿Imports Nukepayload2.N2Engine.Core
+﻿Imports Nukepayload2.N2Engine.Platform
 
 <Assembly: InternalsVisibleTo("Nukepayload2.N2Engine.Core")>
 
@@ -10,7 +10,7 @@ Public Class UWPImplRegistration
     ''' 将UWP的实现全部注册到 <see cref="PlatformImplRegistration"/> 。这个操作必须在引擎正式使用前执行。
     ''' </summary>
     Public Shared Sub Register()
-        Using reg As New PlatformImplRegistration(Platform.UniversalWindows)
+        Using reg As New PlatformImplRegistration(Platforms.UniversalWindows)
             Dim regSuccess = reg.RegsterImplAssembly(GetType(UWPImplRegistration))
             If Not regSuccess Then
                 Throw New InvalidOperationException("检测到不完整的UWP实现重复注册。这通常说明存在失败的平台实现注册。")

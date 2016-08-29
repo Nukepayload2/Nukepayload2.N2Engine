@@ -1,3 +1,5 @@
-﻿Public MustInherit Class AudioPlayerBase
+﻿Namespace Media
+    Public MustInherit Class AudioPlayerBase
 
-End Class
+    End Class
+End Namespace

@@ -3,7 +3,7 @@ Imports System.Runtime.CompilerServices
 #End If
 
 Imports System.Reflection
-Imports Nukepayload2.N2Engine.Core
+Imports Nukepayload2.N2Engine.Platform
 
 <Assembly: InternalsVisibleTo("Nukepayload2.N2Engine.Core")>
 

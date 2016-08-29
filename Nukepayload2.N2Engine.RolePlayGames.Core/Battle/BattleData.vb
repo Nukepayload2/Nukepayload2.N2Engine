@@ -1,4 +1,4 @@
-﻿Imports Nukepayload2.N2Engine.Core
+﻿Imports Nukepayload2.N2Engine.Resources
 
 Public Class BattleData
     Public Property Music As ResourceId

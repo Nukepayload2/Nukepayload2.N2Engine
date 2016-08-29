@@ -1,5 +1,5 @@
-﻿Imports Nukepayload2.N2Engine.Core
-Imports System.Reflection
+﻿Imports System.Reflection
+Imports Nukepayload2.N2Engine.Resources
 
 Public Class Resources
     Public Property ResourceLoader As New ResourceLoader

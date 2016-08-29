@@ -1,3 +1,5 @@
-﻿Public Structure N2PortableApiContract
+﻿Namespace Foundation
+    Public Structure N2PortableApiContract
 
-End Structure
+    End Structure
+End Namespace

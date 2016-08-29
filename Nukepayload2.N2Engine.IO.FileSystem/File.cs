@@ -1,4 +1,5 @@
-﻿using Nukepayload2.N2Engine.Core;
+﻿using Nukepayload2.N2Engine.Platform;
+using Nukepayload2.N2Engine.Storage;
 using System;
 using System.IO;
 using System.Threading.Tasks;
