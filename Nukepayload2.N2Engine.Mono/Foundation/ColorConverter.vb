@@ -1,4 +1,4 @@
-﻿#If WINDOWS_DESKTOP Then
+﻿#If WINDOWS_DESKTOP Or DESKTOP_OPENGL Then
 Imports System.Runtime.CompilerServices
 #End If
 
