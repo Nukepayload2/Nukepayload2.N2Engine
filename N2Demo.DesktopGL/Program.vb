@@ -18,14 +18,22 @@ Public Module Program
         sparks = New SparksView
         sparksRenderer = New GameCanvasRenderer(sparks, gameHandler)
 
-        Application.Init()
-        Dim wnd As New Window("游戏控制台")
-
-        wnd.Add(New Button() With {.Label = "这绝对是gtk窗口，不信看这个按钮", .WidthRequest = 300, .HeightRequest = 120, .Visible = True})
-        wnd.Show()
-
+        'GTK
+        Call New Threading.Thread(Sub()
+                                      Application.Init()
+                                      Dim wnd As New Window("游戏控制台")
+                                      wnd.Add(New Button() With {.Label = "这绝对是gtk窗口，不信看这个按钮", .WidthRequest = 300, .HeightRequest = 120, .Visible = True})
+                                      wnd.Show()
+                                      Application.Run()
+                                  End Sub).Start()
+        '运行游戏
         gameHandler.Run()
     End Sub
+
+    Private Sub gameHandler_Exiting(sender As Object, e As EventArgs) Handles gameHandler.Exiting
+        End
+    End Sub
+
     Private Sub GameHandler_Updating(sender As Game, args As MonogameUpdateEventArgs) Handles gameHandler.Updating
         Dim mouseState = Mouse.GetState(sender.Window)
         Dim touchState = Touch.TouchPanel.GetState
