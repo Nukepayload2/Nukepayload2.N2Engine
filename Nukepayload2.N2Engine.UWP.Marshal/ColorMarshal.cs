@@ -15,5 +15,6 @@ namespace Nukepayload2.N2Engine.UWP.Marshal
         {
             return *(Windows.UI.Color*)(&color);
         }
+
     }
 }

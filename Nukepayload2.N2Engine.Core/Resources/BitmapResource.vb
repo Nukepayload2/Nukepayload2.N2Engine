@@ -2,7 +2,7 @@
     ''' <summary>
     ''' 代表位图资源
     ''' </summary>
-    Public Class BitmapResource
+    Public MustInherit Class BitmapResource
         Inherits GameResourceBase
 
         Sub New(uriPath As Uri)
