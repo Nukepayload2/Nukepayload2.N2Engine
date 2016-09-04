@@ -85,7 +85,12 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="Ability\Ability.vb" />
+    <Compile Include="Ability\RemainingCounter.vb" />
+    <Compile Include="Character\GameCharacterData.vb" />
+    <Compile Include="Foundation\AvaliableValue.vb" />
+    <Compile Include="GameMode\MultiplayerMode.vb" />
+    <Compile Include="Mission\MissionData.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
