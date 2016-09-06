@@ -1,5 +1,5 @@
 ﻿''' <summary>
-''' 表示物品或技能的可用量计数器
+''' 表示角色数值、物品或技能的可用量计数器
 ''' </summary>
 Public Class RemainingCounter
     ''' <summary>
