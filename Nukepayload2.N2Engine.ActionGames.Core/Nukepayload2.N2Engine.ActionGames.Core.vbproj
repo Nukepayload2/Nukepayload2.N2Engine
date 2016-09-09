@@ -85,9 +85,22 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
+    <Compile Include="Ability\Ability.vb" />
+    <Compile Include="Ability\RemainingCounter.vb" />
+    <Compile Include="Character\Base\Character.vb" />
+    <Compile Include="Character\Base\ICharacter.vb" />
+    <Compile Include="Character\NonePlayer\Camp.vb" />
+    <Compile Include="Character\NonePlayer\NPC.vb" />
+    <Compile Include="Character\Player\Player.vb" />
+    <Compile Include="Foundation\AvaliableValue.vb" />
+    <Compile Include="GameMode\MultiplayerMode.vb" />
+    <Compile Include="Mission\Block.vb" />
+    <Compile Include="Mission\DirectionEnum.vb" />
+    <Compile Include="Mission\Location.vb" />
+    <Compile Include="Mission\MissionData.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
