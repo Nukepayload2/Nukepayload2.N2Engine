@@ -11,8 +11,8 @@ Imports System.Reflection
 <Assembly: AssemblyTitle("Nukepayload2.N2Engine.ActionGames.Core")> 
 <Assembly: AssemblyDescription("")> 
 <Assembly: AssemblyCompany("")> 
-<Assembly: AssemblyProduct("Nukepayload2.N2Engine.ActionGames.Core")> 
-<Assembly: AssemblyCopyright("版权所有(C)  2016")> 
+<Assembly: AssemblyProduct("Nukepayload2.N2Engine.ActionGames.Core")>
+<Assembly: AssemblyCopyright("Copyright ExperDot, Nukepayload2 2016")>
 <Assembly: AssemblyTrademark("")> 
 <Assembly: NeutralResourcesLanguage("zh-Hans")>
 

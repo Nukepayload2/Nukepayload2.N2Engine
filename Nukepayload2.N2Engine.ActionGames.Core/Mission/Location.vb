@@ -13,5 +13,5 @@ Public Structure Location
     ''' <summary>
     ''' 方向
     ''' </summary>
-    Property Direction As DirectionEnum
+    Property Direction As Directions
 End Structure

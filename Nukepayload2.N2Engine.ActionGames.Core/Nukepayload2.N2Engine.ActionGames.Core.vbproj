@@ -95,7 +95,7 @@
     <Compile Include="Foundation\AvaliableValue.vb" />
     <Compile Include="GameMode\MultiplayerMode.vb" />
     <Compile Include="Mission\Block.vb" />
-    <Compile Include="Mission\DirectionEnum.vb" />
+    <Compile Include="Mission\Directions.vb" />
     <Compile Include="Mission\Location.vb" />
     <Compile Include="Mission\MissionData.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
