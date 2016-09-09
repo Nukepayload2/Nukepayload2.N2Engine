@@ -83,7 +83,7 @@
             _Setter = Nothing
         End Sub
         ''' <summary>
-        ''' 创建反向单项绑定
+        ''' 创建反向单向绑定
         ''' </summary>
         Public Sub Bind(value As T, setter As Action(Of T))
             _Getter = Function() value
@@ -116,17 +116,17 @@
         ''' 绑定到另一个绑定器
         ''' </summary>
         Public Sub Bind(another As PropertyBinder(Of T))
-            Bind(another.Getter, another.Setter)
+            Bind(Function() another.Getter.Invoke, Sub(d) another.Setter.Invoke(d))
         End Sub
         ''' <summary>
         ''' 绑定的数据有变化
         ''' </summary>
-        Public Event DataChanged As EventHandler(Of T)
+        Public Event DataChanged As EventHandler(Of PropertyBinderDataChangedEventArgs(Of T))
         ''' <summary>
         ''' 绑定的数据变动后，手动报告数据已经改动。
         ''' </summary>
-        Public Sub ReportDataChanged()
-            RaiseEvent DataChanged(Me, Value)
+        Public Sub ReportDataChanged(oldValue As T, newValue As T)
+            RaiseEvent DataChanged(Me, New PropertyBinderDataChangedEventArgs(Of T)(oldValue, newValue))
         End Sub
     End Class
 End Namespace

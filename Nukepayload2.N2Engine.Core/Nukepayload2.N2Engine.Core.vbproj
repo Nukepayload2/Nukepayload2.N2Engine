@@ -98,6 +98,7 @@
     <Compile Include="Animations\LoopInformation.vb" />
     <Compile Include="Animations\Trailer.vb" />
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
+    <Compile Include="Foundation\PropertyDataChangedEventArgs.vb" />
     <Compile Include="Storage\PlatformSaveManagerBase.vb" />
     <Compile Include="Storage\PlatformSaveDirectoryBase.vb" />
     <Compile Include="Storage\SaveFile\SaveFile.vb" />

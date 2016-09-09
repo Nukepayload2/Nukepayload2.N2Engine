@@ -3,7 +3,6 @@ Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UI.Views
 Imports Nukepayload2.N2Engine.UWP.Marshal
-Imports Windows.UI
 
 Friend Class SparkParticleSystemRenderer
 
