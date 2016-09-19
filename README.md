@@ -1,9 +1,11 @@
 #Nukepayload2.N2Engine
-升级版的 Nukepayload2.Graphics.N2Engine，能够同时适应 Win2D 和 MonoGame 两种图形框架，并且添加了制作游戏必备的助手库。
-##支持的编程语言
+升级版的 Nukepayload2.Graphics.N2Engine。</br>
+用于支持<strong>任意</strong>能够生成<strong>可移植类库</strong>的<strong>.NET语言</strong>制作基于 Win2D 和 MonoGame 两种图形框架的跨平台游戏。
+##支持编程语言的优先级
 <li>Microsoft Visual Basic, 版本 >= 14.0</li>
 <li>Microsoft Visual C#, 版本 >= 6.0</li>
 <li>Microsoft Visual F#, 版本 >= 4.0</li>
+<li>其它语言</li>
 ##支持的平台
 <li>Universal Windows 10, 版本 >= 5.2.2</li>
 <li>Windows 桌面, 版本 >= 6.1.7.7601</li>
