@@ -1,9 +1,10 @@
-﻿Imports System.Runtime.InteropServices
+﻿Imports System.Numerics
+Imports System.Runtime.InteropServices
 Imports Box2D.UWPExtensions
 
 Namespace Global.Box2D
     Public Class DynamicTree
-        
+
         ' Methods
         Public Sub New()
             Me._nodes = New DynamicTreeNode(Me._nodeCapacity - 1) {}

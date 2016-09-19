@@ -1,4 +1,5 @@
-﻿Imports Nukepayload2.N2Engine.Foundation
+﻿Imports System.Numerics
+Imports Nukepayload2.N2Engine.Foundation
 
 Namespace Global.Box2D
     Public Class World

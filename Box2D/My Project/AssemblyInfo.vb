@@ -1,7 +1,6 @@
 ﻿Imports System
 Imports System.Resources
 Imports System.Reflection
-Imports Nukepayload2.N2Engine.Foundation
 
 ' 有关程序集的一般信息由以下
 ' 控制。更改这些特性值可修改
@@ -9,12 +8,12 @@ Imports Nukepayload2.N2Engine.Foundation
 
 '查看程序集特性的值
 
-<Assembly: AssemblyTitle("Nukepayload2.N2Engine.Core")>
-<Assembly: AssemblyDescription("")>
-<Assembly: AssemblyCompany("")>
-<Assembly: AssemblyProduct("Nukepayload2.N2Engine.Core")>
-<Assembly: AssemblyCopyright("版权所有(C)  2016")>
-<Assembly: AssemblyTrademark("")>
+<Assembly: AssemblyTitle("Box2D")> 
+<Assembly: AssemblyDescription("")> 
+<Assembly: AssemblyCompany("")> 
+<Assembly: AssemblyProduct("Box2D")> 
+<Assembly: AssemblyCopyright("版权所有(C)  2016")> 
+<Assembly: AssemblyTrademark("")> 
 <Assembly: NeutralResourcesLanguage("zh-Hans")>
 
 ' 程序集的版本信息由下列四个值组成: 
@@ -28,8 +27,5 @@ Imports Nukepayload2.N2Engine.Foundation
 ' 方法是按如下所示使用“*”: :
 ' <Assembly: AssemblyVersion("1.0.*")> 
 
-<Assembly: AssemblyVersion("1.0.0.0")>
-<Assembly: AssemblyFileVersion("1.0.0.0")>
-
-<Assembly: TypeForwardedTo(GetType(Color))>
-<Assembly: TypeForwardedTo(GetType(ColorEx))>
+<Assembly: AssemblyVersion("1.0.0.0")> 
+<Assembly: AssemblyFileVersion("1.0.0.0")> 

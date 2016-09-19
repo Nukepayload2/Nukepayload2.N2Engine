@@ -21,8 +21,8 @@ Namespace Triggers
 
         Protected MustOverride Function GetPropBinder(visual As TVisual) As PropertyBinder(Of TData)
 
-        Private Sub CallAction(sender As Object, e As TData)
-            If Condition(e) Then Action.Invoke
+        Private Sub CallAction(sender As Object, e As PropertyBinderDataChangedEventArgs(Of TData))
+            If Condition(e.NewValue) Then Action.Invoke
         End Sub
 
         Public Overrides Sub Detach(visual As TVisual)

@@ -98,7 +98,6 @@
     <Compile Include="Animations\LoopInformation.vb" />
     <Compile Include="Animations\Trailer.vb" />
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
-    <Compile Include="Foundation\PropertyDataChangedEventArgs.vb" />
     <Compile Include="Storage\PlatformSaveManagerBase.vb" />
     <Compile Include="Storage\PlatformSaveDirectoryBase.vb" />
     <Compile Include="Storage\SaveFile\SaveFile.vb" />
@@ -110,9 +109,6 @@
     <Compile Include="Extensibility\ExtensionStages.vb" />
     <Compile Include="Extensibility\IExtendable.vb" />
     <Compile Include="Extensibility\IGameExtensionInfo.vb" />
-    <Compile Include="Foundation\IGameCommand.vb" />
-    <Compile Include="Foundation\SimpleCommand.vb" />
-    <Compile Include="Foundation\N2PortableApiContract.vb" />
     <Compile Include="Math\RandomGenerator.vb" />
     <Compile Include="Media\AudioPlayerBase.vb" />
     <Compile Include="Media\IMusicPlayer.vb" />
@@ -133,105 +129,6 @@
     <Compile Include="Platform\PlatformActivator.vb" />
     <Compile Include="Resources\BitmapResource.vb" />
     <Compile Include="Resources\GameResourceBase.vb" />
-    <Compile Include="Foundation\PropertyBinder.vb" />
-    <Compile Include="Box2D\AABB.vb" />
-    <Compile Include="Box2D\Body.vb" />
-    <Compile Include="Box2D\BodyDef.vb" />
-    <Compile Include="Box2D\BodyFlags.vb" />
-    <Compile Include="Box2D\BodyType.vb" />
-    <Compile Include="Box2D\BroadPhase.vb" />
-    <Compile Include="Box2D\CircleContact.vb" />
-    <Compile Include="Box2D\CircleShape.vb" />
-    <Compile Include="Box2D\ClipVertex.vb" />
-    <Compile Include="Box2D\Collision.vb" />
-    <Compile Include="Foundation\ColorEx.vb" />
-    <Compile Include="Box2D\Contact.vb" />
-    <Compile Include="Box2D\ContactConstraint.vb" />
-    <Compile Include="Box2D\ContactConstraintPoint.vb" />
-    <Compile Include="Box2D\ContactEdge.vb" />
-    <Compile Include="Box2D\ContactFlags.vb" />
-    <Compile Include="Box2D\ContactID.vb" />
-    <Compile Include="Box2D\ContactImpulse.vb" />
-    <Compile Include="Box2D\ContactManager.vb" />
-    <Compile Include="Box2D\ContactSolver.vb" />
-    <Compile Include="Box2D\DebugDraw.vb" />
-    <Compile Include="Box2D\DebugDrawFlags.vb" />
-    <Compile Include="Box2D\DefaultContactFilter.vb" />
-    <Compile Include="Box2D\DefaultContactListener.vb" />
-    <Compile Include="Box2D\Distance.vb" />
-    <Compile Include="Box2D\DistanceInput.vb" />
-    <Compile Include="Box2D\DistanceJoint.vb" />
-    <Compile Include="Box2D\DistanceJointDef.vb" />
-    <Compile Include="Box2D\DistanceOutput.vb" />
-    <Compile Include="Box2D\DynamicTree.vb" />
-    <Compile Include="Box2D\DynamicTreeNode.vb" />
-    <Compile Include="Box2D\Extension.vb" />
-    <Compile Include="Box2D\Features.vb" />
-    <Compile Include="Box2D\Filter.vb" />
-    <Compile Include="Box2D\FixedArray2!1.vb" />
-    <Compile Include="Box2D\FixedArray3!1.vb" />
-    <Compile Include="Box2D\FixedArray4!1.vb" />
-    <Compile Include="Box2D\FixedArray8!1.vb" />
-    <Compile Include="Box2D\Fixture.vb" />
-    <Compile Include="Box2D\FixtureDef.vb" />
-    <Compile Include="Box2D\GearJoint.vb" />
-    <Compile Include="Box2D\GearJointDef.vb" />
-    <Compile Include="Box2D\GrammarCastHelper.vb" />
-    <Compile Include="Box2D\IContactFilter.vb" />
-    <Compile Include="Box2D\IContactListener.vb" />
-    <Compile Include="Box2D\IDestructionListener.vb" />
-    <Compile Include="Box2D\Island.vb" />
-    <Compile Include="Box2D\Jacobian.vb" />
-    <Compile Include="Box2D\Joint.vb" />
-    <Compile Include="Box2D\JointDef.vb" />
-    <Compile Include="Box2D\JointEdge.vb" />
-    <Compile Include="Box2D\JointType.vb" />
-    <Compile Include="Box2D\LimitState.vb" />
-    <Compile Include="Box2D\LineJoint.vb" />
-    <Compile Include="Box2D\LineJointDef.vb" />
-    <Compile Include="Box2D\Manifold.vb" />
-    <Compile Include="Box2D\ManifoldPoint.vb" />
-    <Compile Include="Box2D\ManifoldType.vb" />
-    <Compile Include="Box2D\MassData.vb" />
-    <Compile Include="Box2D\Mat22.vb" />
-    <Compile Include="Box2D\Mat33.vb" />
-    <Compile Include="Box2D\MathUtils.vb" />
-    <Compile Include="Box2D\MouseJoint.vb" />
-    <Compile Include="Box2D\MouseJointDef.vb" />
-    <Compile Include="Box2D\Pair.vb" />
-    <Compile Include="Box2D\PointState.vb" />
-    <Compile Include="Box2D\PolygonAndCircleContact.vb" />
-    <Compile Include="Box2D\PolygonContact.vb" />
-    <Compile Include="Box2D\PolygonShape.vb" />
-    <Compile Include="Box2D\PositionSolverManifold.vb" />
-    <Compile Include="Box2D\PrismaticJoint.vb" />
-    <Compile Include="Box2D\PrismaticJointDef.vb" />
-    <Compile Include="Box2D\Proxy.vb" />
-    <Compile Include="Box2D\PulleyJoint.vb" />
-    <Compile Include="Box2D\PulleyJointDef.vb" />
-    <Compile Include="Box2D\RayCastInput.vb" />
-    <Compile Include="Box2D\RayCastOutput.vb" />
-    <Compile Include="Box2D\RevoluteJoint.vb" />
-    <Compile Include="Box2D\RevoluteJointDef.vb" />
-    <Compile Include="Box2D\Segment.vb" />
-    <Compile Include="Box2D\SegmentCollide.vb" />
-    <Compile Include="Box2D\SeparationFunction.vb" />
-    <Compile Include="Box2D\SeparationFunctionType.vb" />
-    <Compile Include="Box2D\Settings.vb" />
-    <Compile Include="Box2D\Shape.vb" />
-    <Compile Include="Box2D\ShapeType.vb" />
-    <Compile Include="Box2D\Simplex.vb" />
-    <Compile Include="Box2D\SimplexCache.vb" />
-    <Compile Include="Box2D\SimplexVertex.vb" />
-    <Compile Include="Box2D\Sweep.vb" />
-    <Compile Include="Box2D\TimeOfImpact.vb" />
-    <Compile Include="Box2D\TimeStep.vb" />
-    <Compile Include="Box2D\TOIInput.vb" />
-    <Compile Include="Box2D\World.vb" />
-    <Compile Include="Box2D\WorldFlags.vb" />
-    <Compile Include="Box2D\WorldManifold.vb" />
-    <Compile Include="Box2D\XForm.vb" />
-    <Compile Include="Foundation\Color.vb" />
     <Compile Include="Platform\Platforms.vb" />
     <Compile Include="Platform\PlatformImplRegistration.vb" />
     <Compile Include="UI\Renderers\RendererBase.vb" />
@@ -246,7 +143,6 @@
     <Compile Include="Behaviors\BehaviorBase.vb" />
     <Compile Include="Behaviors\ApplyForceBehavior.vb" />
     <Compile Include="Behaviors\ShakeBehavior.vb" />
-    <Compile Include="Foundation\ColorValues.vb" />
     <Compile Include="UI\Elements\GameCanvas.vb" />
     <Compile Include="UI\Elements\GameEffect.vb" />
     <Compile Include="UI\Elements\GameElement.vb" />
@@ -256,7 +152,6 @@
     <Compile Include="UI\Elements\GameVisual.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Platform\PlatformImplAttribute.vb" />
-    <Compile Include="Foundation\SingleInstance.vb" />
     <Compile Include="UI\Elements\RendererRegistrationRequestedEventArgs.vb" />
     <Compile Include="ParticleSystem\SparkParticleSystem.vb" />
     <Compile Include="UI\Views\ParticleSystemView.vb" />
@@ -279,6 +174,16 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Box2D\Box2D.vbproj">
+      <Project>{c79b0816-973d-4a57-8aa5-f37e00fe7cf8}</Project>
+      <Name>Box2D</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
+      <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
+      <Name>Nukepayload2.N2Engine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

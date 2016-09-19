@@ -10,7 +10,7 @@ Namespace Animations
         ''' 仅使用图像列表初始化
         ''' </summary>
         ''' <param name="Frames">图像列表</param>
-        Sub New(Frames As IList(Of BitmapResource))
+        Sub New(Frames As IList(Of BitmapFrame))
             MyBase.New(Frames)
         End Sub
         ''' <summary>
@@ -19,7 +19,7 @@ Namespace Animations
         ''' <param name="Frames">图像列表</param>
         ''' <param name="Transform">二位变换</param>
         ''' <param name="Opacity">透明度。0透明，1不透明</param>
-        Sub New(Frames As IList(Of BitmapResource), Transform As Matrix3x2, Opacity!)
+        Sub New(Frames As IList(Of BitmapFrame), Transform As Matrix3x2, Opacity!)
             MyBase.New(Frames, Transform, Opacity)
         End Sub
         ''' <summary>
@@ -29,7 +29,7 @@ Namespace Animations
         ''' <param name="Transform">二位变换</param>
         ''' <param name="Opacity">透明度。0透明，1不透明</param>
         ''' <param name="Perspective">三维场景的透视</param>
-        Sub New(Frames As IList(Of BitmapResource), Transform As Matrix3x2, Opacity!, Perspective As Matrix4x4)
+        Sub New(Frames As IList(Of BitmapFrame), Transform As Matrix3x2, Opacity!, Perspective As Matrix4x4)
             MyBase.New(Frames, Transform, Opacity, Perspective)
         End Sub
         ''' <summary>

@@ -1,0 +1,207 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C79B0816-973D-4A57-8AA5-F37E00FE7CF8}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <RootNamespace>Box2D</RootNamespace>
+    <AssemblyName>Box2D</AssemblyName>
+    <DefaultLanguage>zh-CN</DefaultLanguage>
+    <ProjectTypeGuids>{14182A97-F7F0-4C62-8B27-98AA8AE2109A};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
+    <TargetFrameworkProfile>Profile111</TargetFrameworkProfile>
+    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <DefineDebug>true</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DefineConstants>
+    </DefineConstants>
+    <OutputPath>bin\Debug</OutputPath>
+    <DocumentationFile>Box2D.xml</DocumentationFile>
+    <NoWarn>40057,42016,41999,42020,42021,42022</NoWarn>
+    <WarningsAsErrors>42017,42018,42019,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <DefineDebug>false</DefineDebug>
+    <DefineTrace>true</DefineTrace>
+    <DefineConstants>
+    </DefineConstants>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release</OutputPath>
+    <DocumentationFile>Box2D.xml</DocumentationFile>
+    <NoWarn>40057,42016,41999,42020,42021,42022</NoWarn>
+    <WarningsAsErrors>42017,42018,42019,42032,42036</WarningsAsErrors>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionExplicit>On</OptionExplicit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionCompare>Binary</OptionCompare>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionStrict>Off</OptionStrict>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OptionInfer>On</OptionInfer>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .NET Framework and Windows SDK is automatically included -->
+    <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Import Include="Microsoft.VisualBasic" />
+    <Import Include="System" />
+    <Import Include="System.Collections" />
+    <Import Include="System.Collections.Generic" />
+    <Import Include="System.Collections.ObjectModel" />
+    <Import Include="System.ComponentModel" />
+    <Import Include="System.Diagnostics" />
+    <Import Include="System.IO" />
+    <Import Include="System.Linq" />
+    <Import Include="System.Numerics" />
+    <Import Include="System.Runtime.CompilerServices" />
+    <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Xml.Linq" />
+    <Import Include="Windows.ApplicationModel" />
+    <Import Include="Windows.ApplicationModel.Activation" />
+    <Import Include="Windows.Foundation" />
+    <Import Include="Windows.Foundation.Collections" />
+    <Import Include="Windows.Graphics.Display" />
+    <Import Include="Windows.UI.ViewManagement" />
+    <Import Include="Windows.UI.Xaml" />
+    <Import Include="Windows.UI.Xaml.Controls" />
+    <Import Include="Windows.UI.Xaml.Controls.Primitives" />
+    <Import Include="Windows.UI.Xaml.Data" />
+    <Import Include="Windows.UI.Xaml.Input" />
+    <Import Include="Windows.UI.Xaml.Media" />
+    <Import Include="Windows.UI.Xaml.Media.Imaging" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AABB.vb" />
+    <Compile Include="Body.vb" />
+    <Compile Include="BodyDef.vb" />
+    <Compile Include="BodyFlags.vb" />
+    <Compile Include="BodyType.vb" />
+    <Compile Include="BroadPhase.vb" />
+    <Compile Include="CircleContact.vb" />
+    <Compile Include="CircleShape.vb" />
+    <Compile Include="ClipVertex.vb" />
+    <Compile Include="Collision.vb" />
+    <Compile Include="Contact.vb" />
+    <Compile Include="ContactConstraint.vb" />
+    <Compile Include="ContactConstraintPoint.vb" />
+    <Compile Include="ContactEdge.vb" />
+    <Compile Include="ContactFlags.vb" />
+    <Compile Include="ContactID.vb" />
+    <Compile Include="ContactImpulse.vb" />
+    <Compile Include="ContactManager.vb" />
+    <Compile Include="ContactSolver.vb" />
+    <Compile Include="DebugDraw.vb" />
+    <Compile Include="DebugDrawFlags.vb" />
+    <Compile Include="DefaultContactFilter.vb" />
+    <Compile Include="DefaultContactListener.vb" />
+    <Compile Include="Distance.vb" />
+    <Compile Include="DistanceInput.vb" />
+    <Compile Include="DistanceJoint.vb" />
+    <Compile Include="DistanceJointDef.vb" />
+    <Compile Include="DistanceOutput.vb" />
+    <Compile Include="DynamicTree.vb" />
+    <Compile Include="DynamicTreeNode.vb" />
+    <Compile Include="Extension.vb" />
+    <Compile Include="Features.vb" />
+    <Compile Include="Filter.vb" />
+    <Compile Include="FixedArray2!1.vb" />
+    <Compile Include="FixedArray3!1.vb" />
+    <Compile Include="FixedArray4!1.vb" />
+    <Compile Include="FixedArray8!1.vb" />
+    <Compile Include="Fixture.vb" />
+    <Compile Include="FixtureDef.vb" />
+    <Compile Include="GearJoint.vb" />
+    <Compile Include="GearJointDef.vb" />
+    <Compile Include="GrammarCastHelper.vb" />
+    <Compile Include="IContactFilter.vb" />
+    <Compile Include="IContactListener.vb" />
+    <Compile Include="IDestructionListener.vb" />
+    <Compile Include="Island.vb" />
+    <Compile Include="Jacobian.vb" />
+    <Compile Include="Joint.vb" />
+    <Compile Include="JointDef.vb" />
+    <Compile Include="JointEdge.vb" />
+    <Compile Include="JointType.vb" />
+    <Compile Include="LimitState.vb" />
+    <Compile Include="LineJoint.vb" />
+    <Compile Include="LineJointDef.vb" />
+    <Compile Include="Manifold.vb" />
+    <Compile Include="ManifoldPoint.vb" />
+    <Compile Include="ManifoldType.vb" />
+    <Compile Include="MassData.vb" />
+    <Compile Include="Mat22.vb" />
+    <Compile Include="Mat33.vb" />
+    <Compile Include="MathUtils.vb" />
+    <Compile Include="MouseJoint.vb" />
+    <Compile Include="MouseJointDef.vb" />
+    <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="Pair.vb" />
+    <Compile Include="PointState.vb" />
+    <Compile Include="PolygonAndCircleContact.vb" />
+    <Compile Include="PolygonContact.vb" />
+    <Compile Include="PolygonShape.vb" />
+    <Compile Include="PositionSolverManifold.vb" />
+    <Compile Include="PrismaticJoint.vb" />
+    <Compile Include="PrismaticJointDef.vb" />
+    <Compile Include="Proxy.vb" />
+    <Compile Include="PulleyJoint.vb" />
+    <Compile Include="PulleyJointDef.vb" />
+    <Compile Include="RayCastInput.vb" />
+    <Compile Include="RayCastOutput.vb" />
+    <Compile Include="RevoluteJoint.vb" />
+    <Compile Include="RevoluteJointDef.vb" />
+    <Compile Include="Segment.vb" />
+    <Compile Include="SegmentCollide.vb" />
+    <Compile Include="SeparationFunction.vb" />
+    <Compile Include="SeparationFunctionType.vb" />
+    <Compile Include="Settings.vb" />
+    <Compile Include="Shape.vb" />
+    <Compile Include="ShapeType.vb" />
+    <Compile Include="Simplex.vb" />
+    <Compile Include="SimplexCache.vb" />
+    <Compile Include="SimplexVertex.vb" />
+    <Compile Include="Sweep.vb" />
+    <Compile Include="TimeOfImpact.vb" />
+    <Compile Include="TimeStep.vb" />
+    <Compile Include="TOIInput.vb" />
+    <Compile Include="World.vb" />
+    <Compile Include="WorldFlags.vb" />
+    <Compile Include="WorldManifold.vb" />
+    <Compile Include="XForm.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.1.1\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ReadMe.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
+      <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
+      <Name>Nukepayload2.N2Engine</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.InteropServices
+﻿Imports System.Numerics
+Imports System.Runtime.InteropServices
 Imports Box2D.UWPExtensions
 
 Namespace Global.Box2D

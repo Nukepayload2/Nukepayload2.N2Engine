@@ -1,10 +1,9 @@
 ﻿Namespace Foundation
-
     ''' <summary>
     ''' 针对 <see cref="Color"/> 的拓展方法 
     ''' </summary>
+    <TypeForwardedFrom("Nukepayload2.N2Engine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")>
     Public Class ColorEx
-
         Public Shared Function FromScRgb(ByVal r As Single, ByVal g As Single, ByVal b As Single) As Color
             Return FromScRgb(1.0!, r, g, b)
         End Function
