@@ -96,12 +96,15 @@
     <Compile Include="Animations\BitmapFrame.vb" />
     <Compile Include="Animations\DynamicBitmapAnimation.vb" />
     <Compile Include="Animations\LoopInformation.vb" />
+    <Compile Include="Animations\TimelineAnimation.vb" />
     <Compile Include="Animations\Trailer.vb" />
     <Compile Include="Animations\TransitionAnimation.vb" />
     <Compile Include="Behaviors\IGameBehavior.vb" />
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
+    <Compile Include="Triggers\TimerTrigger.vb" />
     <Compile Include="UI\Elements\DrawingVisual.vb" />
     <Compile Include="UI\Elements\GameCompositeModes.vb" />
+    <Compile Include="Threading\GameDispatcher.vb" />
     <Compile Include="UI\GameObjectState.vb" />
     <Compile Include="UI\GameVisualStateManager.vb" />
     <Compile Include="UI\GameInsetClip.vb" />
@@ -145,6 +148,7 @@
     <Compile Include="UI\Elements\EntityLayer.vb" />
     <Compile Include="UI\Elements\GameControl.vb" />
     <Compile Include="UI\Elements\PanelLayer.vb" />
+    <Compile Include="UI\ITimeAction.vb" />
     <Compile Include="UI\Matrix3x2Transform.vb" />
     <Compile Include="UI\PlaneTransform.vb" />
     <Compile Include="UI\Elements\SpriteElement.vb" />
@@ -162,6 +166,7 @@
     <Compile Include="Storage\IDirectory.vb" />
     <Compile Include="Storage\IFile.vb" />
     <Compile Include="Storage\SaveLocations.vb" />
+    <Compile Include="UI\TimeAction.vb" />
     <Compile Include="Utilities\AsyncHelper.vb" />
     <Compile Include="Utilities\Vector2Extensions.vb" />
     <Compile Include="Behaviors\BehaviorBase.vb" />

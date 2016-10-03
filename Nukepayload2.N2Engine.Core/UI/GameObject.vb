@@ -1,10 +1,15 @@
 ﻿Imports Nukepayload2.N2Engine.Resources
+Imports Nukepayload2.N2Engine.Threading
 
 Namespace UI
     ''' <summary>
     ''' 游戏中最基础的元素，可以是可见的，也可以不可见。
     ''' </summary>
     Public MustInherit Class GameObject
+        ''' <summary>
+        ''' 用于在游戏画布线程执行某些代码
+        ''' </summary>
+        Public Property Dispatcher As GameDispatcher
         ''' <summary>
         ''' 描述游戏对象切换状态时的行为
         ''' </summary>

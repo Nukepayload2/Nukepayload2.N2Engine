@@ -1,5 +1,4 @@
 ﻿Namespace Foundation
-
     ''' <summary>
     ''' 强类型的轻量级的数据绑定。功能不如弱类型版本灵活，但是性能接近编译的绑定。
     ''' </summary>
