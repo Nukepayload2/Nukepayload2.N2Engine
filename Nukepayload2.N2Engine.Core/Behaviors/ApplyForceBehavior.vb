@@ -9,6 +9,7 @@ Namespace Behaviors
         Inherits BehaviorBase(Of GameEntity)
         Public ReadOnly Property Force As New PropertyBinder(Of Vector2)
         Protected Overrides Sub OnAttached(visual As GameEntity)
+            MyBase.OnAttached(visual)
             Dim body = visual.Body.Value
             body.ApplyImpulse(Force.Value, body.WorldCenter)
         End Sub

@@ -70,6 +70,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		README.md = README.md
 		代码规范.md = 代码规范.md
 		可移植的粒子系统.md = 可移植的粒子系统.md
+		程序集命名规范.md = 程序集命名规范.md
 	EndProjectSection
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.Win32", "Nukepayload2.N2Engine.Win32\Nukepayload2.N2Engine.Win32.vbproj", "{79CA7B28-8AA2-4C54-85CE-E44C52E719A0}"

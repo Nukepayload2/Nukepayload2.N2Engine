@@ -12,6 +12,7 @@ Namespace Behaviors
         Public Property Extension As TExtension
 
         Protected Overrides Sub OnAttached(visual As TExtendableVisual)
+            MyBase.OnAttached(visual)
             visual.Extensions.Add(Extension)
         End Sub
     End Class

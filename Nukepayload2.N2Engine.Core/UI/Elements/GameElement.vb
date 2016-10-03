@@ -1,5 +1,4 @@
-﻿Imports Nukepayload2.N2Engine.Foundation
-Imports Nukepayload2.N2Engine.Renderers
+﻿Imports Nukepayload2.N2Engine.Renderers
 
 Namespace UI.Elements
     ''' <summary>
@@ -7,15 +6,6 @@ Namespace UI.Elements
     ''' </summary>
     Public MustInherit Class GameElement
         Inherits GameVisual
-
-        ''' <summary>
-        ''' Z序越高越靠外，反之靠里
-        ''' </summary>
-        Public ReadOnly Property ZIndex As New PropertyBinder(Of Integer)
-        ''' <summary>
-        ''' 视图的位置。这通常是物体的左上角的坐标。
-        ''' </summary>
-        Public Overridable ReadOnly Property Location As New PropertyBinder(Of Vector2)
         ''' <summary>
         ''' 需要让渲染器开始处理平台渲染控件的事件
         ''' </summary>
@@ -36,21 +26,9 @@ Namespace UI.Elements
         Public Sub UnloadRenderer(parentRenderer As RendererBase)
             RaiseEvent RendererUnloadRequested(Me, New RendererRegistrationRequestedEventArgs(parentRenderer))
         End Sub
-        ''' <summary>
-        ''' 主动请求从游戏画布移除
-        ''' </summary>
-        Public Event RemoveFromGameCanvasReuqested As EventHandler
-        ''' <summary>
-        ''' 从游戏画布移除
-        ''' </summary>
-        Public Sub RemoveFromGameCanvas()
-            RaiseEvent RemoveFromGameCanvasReuqested(Me, EventArgs.Empty)
-        End Sub
         Sub New()
             RendererBase.CreateElementRenderer(Me)
         End Sub
-        Public Overridable Property UpdateCommand As IGameCommand = New SimpleCommand(Sub() RaiseEvent Updating())
 
-        Public Event Updating()
     End Class
 End Namespace

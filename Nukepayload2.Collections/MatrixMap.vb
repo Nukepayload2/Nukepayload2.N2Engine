@@ -11,15 +11,15 @@ Public Class MatrixMap(Of TVertex As IEquatable(Of TVertex), TConnection As Stru
     ''' </summary>
     ''' <param name="Vertexes">顶点本身以及各个边和对应的顶点</param>
     Sub New(Vertexes As Tuple(Of TVertex, Tuple(Of TConnection, TVertex)())())
-        Dim ucase = Vertexes.Count - 1
-        ReDim Values(ucase)
-        ReDim Connections(ucase, ucase)
-        For i = 0 To ucase
+        Dim ub = Vertexes.Count - 1
+        ReDim Values(ub)
+        ReDim Connections(ub, ub)
+        For i = 0 To ub
             Values(i) = Vertexes(i).Item1
             Connections(i, i) = New TConnection
             Dim targets = Vertexes(i).Item2
             For j = 0 To targets.Length - 1
-                For k = 0 To ucase
+                For k = 0 To ub
                     If Values(k).Equals(targets(j).Item2) Then
                         Connections(i, k) = targets(j).Item1
                         Exit For

@@ -1,6 +1,6 @@
 ﻿Imports Nukepayload2.N2Engine.Renderers
 
-Namespace UI.Elements
+Namespace UI
 
     ''' <summary>
     ''' 渲染器请求注册

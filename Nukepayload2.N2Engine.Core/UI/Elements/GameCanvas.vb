@@ -1,34 +1,14 @@
-﻿Imports Nukepayload2.N2Engine.Foundation
+﻿Imports Nukepayload2.N2Engine.Animations
 
 Namespace UI.Elements
     ''' <summary>
     ''' 游戏的画布，是全部可见元素的父级。
     ''' </summary>
     Public Class GameCanvas
-        Inherits GameVisual
+        Inherits GameVisualContainter(Of GameVisual)
         ''' <summary>
-        ''' 画板的子元素
+        ''' 默认的场景导航动画表
         ''' </summary>
-        Public ReadOnly Property Children As New ObservableCollection(Of GameElement)
-        ''' <summary>
-        ''' 这个画布
-        ''' </summary>
-        Public ReadOnly Property Paused As New PropertyBinder(Of Boolean)
-        Sub New()
-            AddHandler Children.CollectionChanged,
-            Sub(sender, e)
-                Dim removeFromChildren As EventHandler = Sub(ele, args) Children.Remove(DirectCast(ele, GameElement))
-                If e.NewItems IsNot Nothing Then
-                    For Each newItem As GameElement In e.NewItems
-                        AddHandler newItem.RemoveFromGameCanvasReuqested, removeFromChildren
-                    Next
-                End If
-                If e.OldItems IsNot Nothing Then
-                    For Each oldItem As GameElement In e.OldItems
-                        RemoveHandler oldItem.RemoveFromGameCanvasReuqested, removeFromChildren
-                    Next
-                End If
-            End Sub
-        End Sub
+        Public Property ContentTransitions As IList(Of TransitionAnimation)
     End Class
 End Namespace

@@ -1,10 +1,18 @@
 ﻿Imports Nukepayload2.N2Engine.Resources
 
-Namespace UI.Elements
+Namespace UI
     ''' <summary>
     ''' 游戏中最基础的元素，可以是可见的，也可以不可见。
     ''' </summary>
     Public MustInherit Class GameObject
+        ''' <summary>
+        ''' 描述游戏对象切换状态时的行为
+        ''' </summary>
+        Public Property StateManager As GameObjectStateManager
+        ''' <summary>
+        ''' 查找游戏对象树时，可按名称查找
+        ''' </summary>
+        Public Property Name As String
         ''' <summary>
         ''' 平台无关的资源
         ''' </summary>
@@ -18,5 +26,6 @@ Namespace UI.Elements
         Sub New()
             CreateResources()
         End Sub
+
     End Class
 End Namespace
