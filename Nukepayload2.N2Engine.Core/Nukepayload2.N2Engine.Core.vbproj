@@ -105,6 +105,7 @@
     <Compile Include="UI\Elements\DrawingVisual.vb" />
     <Compile Include="UI\Elements\GameCompositeModes.vb" />
     <Compile Include="Threading\GameDispatcher.vb" />
+    <Compile Include="UI\Elements\VisualTreeHelper.vb" />
     <Compile Include="UI\GameObjectState.vb" />
     <Compile Include="UI\GameVisualStateManager.vb" />
     <Compile Include="UI\GameInsetClip.vb" />
@@ -201,6 +202,7 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="Collections\" />
     <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>

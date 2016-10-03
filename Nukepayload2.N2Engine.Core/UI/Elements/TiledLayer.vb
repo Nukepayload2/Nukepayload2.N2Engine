@@ -2,7 +2,7 @@
 
 Namespace UI.Elements
     Public Class TiledLayer(Of TTile As TileElement)
-        Inherits GameLayer
+        Inherits GameLayer(Of TileElement)
         ''' <summary>
         ''' 图块数据
         ''' </summary>

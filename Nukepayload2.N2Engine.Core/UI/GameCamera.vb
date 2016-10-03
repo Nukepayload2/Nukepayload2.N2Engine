@@ -18,6 +18,11 @@ Namespace UI
         ''' 视图的中心点
         ''' </summary>
         Public Property LookingAt As Vector2
-
+        ''' <summary>
+        ''' 导致场景的当前摄像机切换到此摄像机
+        ''' </summary>
+        Public Sub Active()
+            _Current = Me
+        End Sub
     End Class
 End Namespace
