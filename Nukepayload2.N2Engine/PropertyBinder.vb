@@ -55,6 +55,22 @@
         ''' </summary>
         Public ReadOnly Property Setter As Action(Of T)
         ''' <summary>
+        ''' 检查是否可以读取值
+        ''' </summary>
+        Public ReadOnly Property CanRead As Boolean
+            Get
+                Return Getter IsNot Nothing
+            End Get
+        End Property
+        ''' <summary>
+        ''' 检查是否可以写入值
+        ''' </summary>
+        Public ReadOnly Property CanWrite As Boolean
+            Get
+                Return Setter IsNot Nothing
+            End Get
+        End Property
+        ''' <summary>
         ''' 获取或设置绑定的数据值。如果缺少 <see cref="Getter"/> 则返回对应类型的默认值。如果缺少 <see cref="Setter"/> ，则会丢失写入更改。
         ''' </summary>
         Public Property Value As T

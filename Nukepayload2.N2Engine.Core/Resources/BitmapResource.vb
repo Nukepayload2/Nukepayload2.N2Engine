@@ -1,6 +1,6 @@
 ﻿Namespace Resources
     ''' <summary>
-    ''' 代表位图资源
+    ''' 代表平台特定的位图资源
     ''' </summary>
     Public MustInherit Class BitmapResource
         Inherits GameResourceBase

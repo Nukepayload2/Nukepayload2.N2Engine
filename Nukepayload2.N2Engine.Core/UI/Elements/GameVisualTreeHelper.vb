@@ -1,7 +1,14 @@
-﻿Namespace UI.Elements
+﻿Imports System.Collections.Specialized
 
-    Public Class VisualTreeHelper
-        Public Shared Sub AddChildrenChangedHandler(Of TVisual As GameVisual)(Children As ObservableCollection(Of TVisual))
+Namespace UI.Elements
+    ''' <summary>
+    ''' 提供游戏可见对象树的帮助
+    ''' </summary>
+    Public Class GameVisualTreeHelper
+        ''' <summary>
+        ''' 订阅子元素变更的通知, 让子元素可以主动从父元素移除。
+        ''' </summary>
+        Public Shared Sub AddChildrenChangedHandler(Of TVisual As GameVisual, TCollection As {ICollection(Of TVisual), INotifyCollectionChanged})(Children As TCollection)
             AddHandler Children.CollectionChanged,
             Sub(sender, e)
                 Dim removeFromChildren As EventHandler = Sub(ele, args) Children.Remove(DirectCast(ele, TVisual))

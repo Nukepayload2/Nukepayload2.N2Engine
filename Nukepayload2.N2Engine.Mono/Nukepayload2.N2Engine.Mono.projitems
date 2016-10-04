@@ -9,6 +9,7 @@
     <Import_RootNamespace>Nukepayload2.N2Engine.Mono</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Device\GraphicsDeviceManagerExtension.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\ColorConverter.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonoAPIContract.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameCreateResourcesEventArgs.vb" />
@@ -22,5 +23,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameElementRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
   </ItemGroup>
 </Project>

@@ -12,7 +12,7 @@ Public Class SparksView
         sparks.Data.Bind(Function() SparksData.SparkSys)
         SparksData.RemoveFromVisualTree.Bind(Function() AddressOf sparks.RemoveFromGameCanvas)
 
-        Children.Add(sparks)
+        Add(sparks)
     End Sub
     ''' <summary>
     ''' 平台特定实现点击此视图时，调用此方法

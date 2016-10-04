@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Media\SoundPlayer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\SaveManagerImpl.vb" />
   </ItemGroup>
 </Project>
