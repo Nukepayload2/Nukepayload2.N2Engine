@@ -51,10 +51,6 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework and Windows SDK is automatically included -->
-    <None Include="packages.config" />
-  </ItemGroup>
-  <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
     <Import Include="System" />
     <Import Include="System.Collections" />
@@ -83,103 +79,103 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AABB.vb" />
-    <Compile Include="Body.vb" />
-    <Compile Include="BodyDef.vb" />
-    <Compile Include="BodyFlags.vb" />
-    <Compile Include="BodyType.vb" />
-    <Compile Include="BroadPhase.vb" />
-    <Compile Include="CircleContact.vb" />
-    <Compile Include="CircleShape.vb" />
-    <Compile Include="ClipVertex.vb" />
-    <Compile Include="Collision.vb" />
-    <Compile Include="Contact.vb" />
-    <Compile Include="ContactConstraint.vb" />
-    <Compile Include="ContactConstraintPoint.vb" />
-    <Compile Include="ContactEdge.vb" />
-    <Compile Include="ContactFlags.vb" />
-    <Compile Include="ContactID.vb" />
-    <Compile Include="ContactImpulse.vb" />
-    <Compile Include="ContactManager.vb" />
-    <Compile Include="ContactSolver.vb" />
-    <Compile Include="DebugDraw.vb" />
-    <Compile Include="DebugDrawFlags.vb" />
-    <Compile Include="DefaultContactFilter.vb" />
-    <Compile Include="DefaultContactListener.vb" />
-    <Compile Include="Distance.vb" />
-    <Compile Include="DistanceInput.vb" />
-    <Compile Include="DistanceJoint.vb" />
-    <Compile Include="DistanceJointDef.vb" />
-    <Compile Include="DistanceOutput.vb" />
-    <Compile Include="DynamicTree.vb" />
-    <Compile Include="DynamicTreeNode.vb" />
-    <Compile Include="Extension.vb" />
-    <Compile Include="Features.vb" />
-    <Compile Include="Filter.vb" />
-    <Compile Include="FixedArray2!1.vb" />
-    <Compile Include="FixedArray3!1.vb" />
-    <Compile Include="FixedArray4!1.vb" />
-    <Compile Include="FixedArray8!1.vb" />
-    <Compile Include="Fixture.vb" />
-    <Compile Include="FixtureDef.vb" />
-    <Compile Include="GearJoint.vb" />
-    <Compile Include="GearJointDef.vb" />
-    <Compile Include="GrammarCastHelper.vb" />
-    <Compile Include="IContactFilter.vb" />
-    <Compile Include="IContactListener.vb" />
-    <Compile Include="IDestructionListener.vb" />
-    <Compile Include="Island.vb" />
-    <Compile Include="Jacobian.vb" />
-    <Compile Include="Joint.vb" />
-    <Compile Include="JointDef.vb" />
-    <Compile Include="JointEdge.vb" />
-    <Compile Include="JointType.vb" />
-    <Compile Include="LimitState.vb" />
-    <Compile Include="LineJoint.vb" />
-    <Compile Include="LineJointDef.vb" />
-    <Compile Include="Manifold.vb" />
-    <Compile Include="ManifoldPoint.vb" />
-    <Compile Include="ManifoldType.vb" />
-    <Compile Include="MassData.vb" />
-    <Compile Include="Mat22.vb" />
-    <Compile Include="Mat33.vb" />
-    <Compile Include="MathUtils.vb" />
-    <Compile Include="MouseJoint.vb" />
-    <Compile Include="MouseJointDef.vb" />
+    <Compile Include="Collision\AABB.vb" />
+    <Compile Include="Collision\Collision.vb" />
+    <Compile Include="Collision\Distance.vb" />
+    <Compile Include="Collision\DistanceInput.vb" />
+    <Compile Include="Collision\DistanceOutput.vb" />
+    <Compile Include="Collision\DynamicTree.vb" />
+    <Compile Include="Collision\DynamicTreeNode.vb" />
+    <Compile Include="Collision\Pair.vb" />
+    <Compile Include="Collision\SegmentCollide.vb" />
+    <Compile Include="Collision\SeparationFunction.vb" />
+    <Compile Include="Collision\SeparationFunctionType.vb" />
+    <Compile Include="Collision\Shapes\CircleShape.vb" />
+    <Compile Include="Collision\Shapes\DefaultContactFilter.vb" />
+    <Compile Include="Collision\Shapes\PolygonShape.vb" />
+    <Compile Include="Collision\Shapes\Shape.vb" />
+    <Compile Include="Collision\Shapes\ShapeType.vb" />
+    <Compile Include="Collision\TimeOfImpact.vb" />
+    <Compile Include="Common\FixedArray2!1.vb" />
+    <Compile Include="Common\FixedArray3!1.vb" />
+    <Compile Include="Common\FixedArray4!1.vb" />
+    <Compile Include="Common\FixedArray8!1.vb" />
+    <Compile Include="Common\Mat22.vb" />
+    <Compile Include="Common\Mat33.vb" />
+    <Compile Include="Common\Settings.vb" />
+    <Compile Include="Common\XForm.vb" />
+    <Compile Include="DebugDraw\DebugDraw.vb" />
+    <Compile Include="DebugDraw\DebugDrawFlags.vb" />
+    <Compile Include="Dynamics\Body.vb" />
+    <Compile Include="Dynamics\BodyDef.vb" />
+    <Compile Include="Dynamics\BodyFlags.vb" />
+    <Compile Include="Dynamics\BodyType.vb" />
+    <Compile Include="Dynamics\BroadPhase.vb" />
+    <Compile Include="Dynamics\ClipVertex.vb" />
+    <Compile Include="Dynamics\Contacts\CircleContact.vb" />
+    <Compile Include="Dynamics\Contacts\Contact.vb" />
+    <Compile Include="Dynamics\Contacts\ContactConstraint.vb" />
+    <Compile Include="Dynamics\Contacts\ContactConstraintPoint.vb" />
+    <Compile Include="Dynamics\Contacts\ContactEdge.vb" />
+    <Compile Include="Dynamics\Contacts\ContactFlags.vb" />
+    <Compile Include="Dynamics\Contacts\ContactID.vb" />
+    <Compile Include="Dynamics\Contacts\ContactImpulse.vb" />
+    <Compile Include="Dynamics\Contacts\ContactManager.vb" />
+    <Compile Include="Dynamics\Contacts\ContactSolver.vb" />
+    <Compile Include="Dynamics\Contacts\DefaultContactListener.vb" />
+    <Compile Include="Dynamics\Contacts\IContactFilter.vb" />
+    <Compile Include="Dynamics\Contacts\IContactListener.vb" />
+    <Compile Include="Dynamics\Contacts\PolygonAndCircleContact.vb" />
+    <Compile Include="Dynamics\Contacts\PolygonContact.vb" />
+    <Compile Include="Dynamics\Extension.vb" />
+    <Compile Include="Dynamics\Features.vb" />
+    <Compile Include="Dynamics\Filter.vb" />
+    <Compile Include="Dynamics\Fixture.vb" />
+    <Compile Include="Dynamics\FixtureDef.vb" />
+    <Compile Include="Dynamics\GrammarCastHelper.vb" />
+    <Compile Include="Dynamics\IDestructionListener.vb" />
+    <Compile Include="Dynamics\Island.vb" />
+    <Compile Include="Dynamics\Jacobian.vb" />
+    <Compile Include="Dynamics\Joints\DistanceJoint.vb" />
+    <Compile Include="Dynamics\Joints\DistanceJointDef.vb" />
+    <Compile Include="Dynamics\Joints\GearJoint.vb" />
+    <Compile Include="Dynamics\Joints\GearJointDef.vb" />
+    <Compile Include="Dynamics\Joints\Joint.vb" />
+    <Compile Include="Dynamics\Joints\JointDef.vb" />
+    <Compile Include="Dynamics\Joints\JointEdge.vb" />
+    <Compile Include="Dynamics\Joints\JointType.vb" />
+    <Compile Include="Dynamics\Joints\LineJoint.vb" />
+    <Compile Include="Dynamics\Joints\LineJointDef.vb" />
+    <Compile Include="Dynamics\Joints\MouseJoint.vb" />
+    <Compile Include="Dynamics\Joints\MouseJointDef.vb" />
+    <Compile Include="Dynamics\Joints\PrismaticJoint.vb" />
+    <Compile Include="Dynamics\Joints\PrismaticJointDef.vb" />
+    <Compile Include="Dynamics\Joints\PulleyJoint.vb" />
+    <Compile Include="Dynamics\Joints\PulleyJointDef.vb" />
+    <Compile Include="Dynamics\Joints\RevoluteJoint.vb" />
+    <Compile Include="Dynamics\Joints\RevoluteJointDef.vb" />
+    <Compile Include="Dynamics\LimitState.vb" />
+    <Compile Include="Dynamics\Manifold.vb" />
+    <Compile Include="Dynamics\ManifoldPoint.vb" />
+    <Compile Include="Dynamics\ManifoldType.vb" />
+    <Compile Include="Dynamics\MassData.vb" />
+    <Compile Include="Dynamics\MathUtils.vb" />
+    <Compile Include="Dynamics\PointState.vb" />
+    <Compile Include="Dynamics\PositionSolverManifold.vb" />
+    <Compile Include="Dynamics\Proxy.vb" />
+    <Compile Include="Dynamics\RayCastInput.vb" />
+    <Compile Include="Dynamics\RayCastOutput.vb" />
+    <Compile Include="Dynamics\Segment.vb" />
+    <Compile Include="Dynamics\Simplex.vb" />
+    <Compile Include="Dynamics\SimplexCache.vb" />
+    <Compile Include="Dynamics\SimplexVertex.vb" />
+    <Compile Include="Dynamics\Sweep.vb" />
+    <Compile Include="Dynamics\TimeStep.vb" />
+    <Compile Include="Dynamics\TOIInput.vb" />
+    <Compile Include="Dynamics\World.vb" />
+    <Compile Include="Dynamics\WorldFlags.vb" />
+    <Compile Include="Dynamics\WorldManifold.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="Pair.vb" />
-    <Compile Include="PointState.vb" />
-    <Compile Include="PolygonAndCircleContact.vb" />
-    <Compile Include="PolygonContact.vb" />
-    <Compile Include="PolygonShape.vb" />
-    <Compile Include="PositionSolverManifold.vb" />
-    <Compile Include="PrismaticJoint.vb" />
-    <Compile Include="PrismaticJointDef.vb" />
-    <Compile Include="Proxy.vb" />
-    <Compile Include="PulleyJoint.vb" />
-    <Compile Include="PulleyJointDef.vb" />
-    <Compile Include="RayCastInput.vb" />
-    <Compile Include="RayCastOutput.vb" />
-    <Compile Include="RevoluteJoint.vb" />
-    <Compile Include="RevoluteJointDef.vb" />
-    <Compile Include="Segment.vb" />
-    <Compile Include="SegmentCollide.vb" />
-    <Compile Include="SeparationFunction.vb" />
-    <Compile Include="SeparationFunctionType.vb" />
-    <Compile Include="Settings.vb" />
-    <Compile Include="Shape.vb" />
-    <Compile Include="ShapeType.vb" />
-    <Compile Include="Simplex.vb" />
-    <Compile Include="SimplexCache.vb" />
-    <Compile Include="SimplexVertex.vb" />
-    <Compile Include="Sweep.vb" />
-    <Compile Include="TimeOfImpact.vb" />
-    <Compile Include="TimeStep.vb" />
-    <Compile Include="TOIInput.vb" />
-    <Compile Include="World.vb" />
-    <Compile Include="WorldFlags.vb" />
-    <Compile Include="WorldManifold.vb" />
-    <Compile Include="XForm.vb" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System.Numerics.Vectors, Version=4.1.1.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
@@ -188,13 +184,13 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <None Include="ReadMe.md" />
-  </ItemGroup>
-  <ItemGroup>
     <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
       <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
       <Name>Nukepayload2.N2Engine</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Dynamics\Controllers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
