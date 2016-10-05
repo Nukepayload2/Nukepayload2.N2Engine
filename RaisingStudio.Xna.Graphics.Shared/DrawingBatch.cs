@@ -594,6 +594,61 @@ namespace RaisingStudio.Xna.Graphics
         }
         #endregion
 
+        #region DrawBezierCurve
+        /// <summary>
+        /// Draws the Bezier quadratic curve.
+        /// </summary>
+        /// <param name="src">The start point.</param>
+        /// <param name="dest">The end point.</param>
+        /// <param name="c0">The control point.</param>
+        /// <param name="color">The color tint.</param>
+        public virtual void DrawBezierQuadratic(Vector2 src, Vector2 c0, Vector2 dest, Color color)
+        {
+            DrawBezier(src, dest, color, (t) =>
+            {
+                var t2 = 1 - t;
+                return t2 * t2 * src + 2 * t * t2 * c0 + t * t * dest;
+            });
+        }
+        /// <summary>
+        /// Draws a custom Bezier curve.
+        /// </summary>
+        /// <param name="src">The start point.</param>
+        /// <param name="dest">The end point.</param>
+        /// <param name="color">The color tint.</param>
+        public virtual void DrawBezier(Vector2 src, Vector2 dest, Color color, Func<float, Vector2> nextVector)
+        {
+            var pointCount = (int)(src - dest).Length();
+            var verts = new Vector2[pointCount];
+            var step = 1 / pointCount;
+            float t = step;
+            verts[0] = src;
+            for (int i = 1; i < pointCount - 1; i++)
+            {
+                verts[i] = nextVector(t);
+                t += step;
+            }
+            verts[pointCount - 1] = dest;
+            DrawPolyline(verts, 0, -1, false, color);
+        }
+
+        /// <summary>
+        /// Draws the Bezier cubic curve.
+        /// </summary>
+        /// <param name="src">The start point.</param>
+        /// <param name="dest">The end point.</param>
+        /// <param name="c0">The control point 0.</param>
+        /// <param name="c1">The control point 1.</param>
+        /// <param name="color">The color tint.</param>
+        public virtual void DrawBezierCubic(Vector2 src, Vector2 c0, Vector2 c1, Vector2 dest, Color color)
+        {
+            DrawBezier(src, dest, color, (t) =>
+            {
+                var t2 = 1 - t;
+                return t2 * t2 * t2 * src + 3 * t * t2 * t2 * c0 + 3 * t * t * t2 * c1 + t * t * t * dest;
+            });
+        }
+        #endregion
 
         #region DrawFilledRectangle
         /// <summary>
