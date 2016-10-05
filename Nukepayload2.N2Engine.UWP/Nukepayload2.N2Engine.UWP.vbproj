@@ -50,7 +50,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>NETFX_CORE,WINDOWS_UWP</DefineConstants>
+    <DefineConstants>NETFX_CORE,WINDOWS_UWP,WIN2D</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -141,6 +141,14 @@
     <Compile Include="Media\SoundPlayer.vb" />
     <Compile Include="Renderers\GameCanvasRenderer.vb" />
     <Compile Include="Renderers\GameElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\BezierCubicElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\BezierCurveCustomElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\BezierQuadraticElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\EllipseElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\LineElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\PolylineElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\RectangleElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\TriangleElementRenderer.vb" />
     <Compile Include="Renderers\SparkParticleSystemRenderer.vb" />
     <Compile Include="Platform\UWPImplRegistration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

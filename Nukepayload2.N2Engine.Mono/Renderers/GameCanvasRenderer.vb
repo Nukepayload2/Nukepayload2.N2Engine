@@ -34,7 +34,7 @@ Public Class GameCanvasRenderer
         Next
     End Sub
 
-    Private Sub Game_GameLoopEnded(sender As Game, args As Object) Handles Game.GameLoopEnded
+    Private Sub Game_GameLoopEnded(sender As Game, args As Object) Handles Game.GameLoopStopped
         View.Clear()
     End Sub
 

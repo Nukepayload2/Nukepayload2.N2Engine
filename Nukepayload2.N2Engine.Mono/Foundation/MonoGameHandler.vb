@@ -15,7 +15,7 @@ Public Class MonoGameHandler
 
     Public Event GameLoopStarting As TypedEventHandler(Of Game, Object)
     Public Event CreateResources As TypedEventHandler(Of Game, MonogameCreateResourcesEventArgs)
-    Public Event GameLoopEnded As TypedEventHandler(Of Game, Object)
+    Public Event GameLoopStopped As TypedEventHandler(Of Game, Object)
     Public Event Drawing As TypedEventHandler(Of Game, MonogameDrawEventArgs)
     Public Event Updating As TypedEventHandler(Of Game, MonogameUpdateEventArgs)
 
@@ -93,7 +93,7 @@ Public Class MonoGameHandler
     ''' </summary>
     Protected Overrides Sub UnloadContent()
         ' TODO: 卸载任何非 ContentManager 内容
-        RaiseEvent GameLoopEnded(Me, Nothing)
+        RaiseEvent GameLoopStopped(Me, Nothing)
     End Sub
 
     ''' <summary>

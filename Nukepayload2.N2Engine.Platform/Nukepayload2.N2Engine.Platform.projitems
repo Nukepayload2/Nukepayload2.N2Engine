@@ -12,6 +12,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Media\SoundPlayer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GeometryElementRenderers.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\SaveManagerImpl.vb" />

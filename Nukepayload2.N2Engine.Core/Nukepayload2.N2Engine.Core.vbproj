@@ -101,11 +101,13 @@
     <Compile Include="Animations\TransitionAnimation.vb" />
     <Compile Include="Behaviors\IGameBehavior.vb" />
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
+    <Compile Include="Math\Combination.vb" />
     <Compile Include="Triggers\TimerTrigger.vb" />
     <Compile Include="UI\Elements\DrawingVisual.vb" />
     <Compile Include="UI\Elements\GameCompositeModes.vb" />
     <Compile Include="Threading\GameDispatcher.vb" />
     <Compile Include="UI\Elements\GameVisualTreeHelper.vb" />
+    <Compile Include="UI\Elements\GeometryElement.vb" />
     <Compile Include="UI\GameObjectState.vb" />
     <Compile Include="UI\GameVisualStateManager.vb" />
     <Compile Include="UI\GameInsetClip.vb" />
@@ -169,6 +171,7 @@
     <Compile Include="Storage\SaveLocations.vb" />
     <Compile Include="UI\TimeAction.vb" />
     <Compile Include="Utilities\AsyncHelper.vb" />
+    <Compile Include="Math\FastFactorial.vb" />
     <Compile Include="Utilities\Vector2Extensions.vb" />
     <Compile Include="Behaviors\BehaviorBase.vb" />
     <Compile Include="Behaviors\ApplyForceBehavior.vb" />

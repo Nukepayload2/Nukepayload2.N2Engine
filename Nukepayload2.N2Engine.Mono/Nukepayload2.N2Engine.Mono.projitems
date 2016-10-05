@@ -22,6 +22,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Media\SoundPlayer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\BezierCubicElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\BezierCurveCustomElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\BezierQuadraticElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\EllipseElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\LineElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\PolylineElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\RectangleElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\TriangleElementRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
   </ItemGroup>

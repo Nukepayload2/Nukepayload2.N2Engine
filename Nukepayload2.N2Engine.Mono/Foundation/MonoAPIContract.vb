@@ -9,7 +9,11 @@
 #ElseIf iOS_APP Then
     '编写苹果代码
 #ElseIf WINDOWS_UWP Then
-    '编写UWP代码
+#If MONO Then
+    '编写Mono UWP代码
+#Else
+    '编写Win2D UWP代码
+#End If
 #End If
 
 #If OPENGL Then
