@@ -14,7 +14,7 @@ Public Class GameCanvasRenderer
     Sub New(view As GameCanvas, win2DCanvas As CanvasAnimatedControl)
         MyBase.New(view, win2DCanvas)
         HandleNewElements(view)
-        AddHandler view.Children.CollectionChanged, AddressOf OnChildrenChanged
+        view.RegisterOnChildrenChanged(AddressOf OnChildrenChanged)
     End Sub
 
     Private Sub HandleNewElements(view As GameCanvas)
@@ -28,7 +28,7 @@ Public Class GameCanvasRenderer
     ''' </summary>
     Public Overrides Sub DisposeResources()
         MyBase.DisposeResources()
-        View.Children.Clear()
+        View.Clear()
     End Sub
     ''' <summary>
     ''' 更新Renderer的事件订阅

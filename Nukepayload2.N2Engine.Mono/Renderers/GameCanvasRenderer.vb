@@ -11,7 +11,7 @@ Public Class GameCanvasRenderer
         MyBase.New(view)
         Me.Game = game
         HandleNewElements(view)
-        AddHandler view.Children.CollectionChanged, AddressOf OnChildrenChanged
+        view.RegisterOnChildrenChanged(AddressOf OnChildrenChanged)
     End Sub
 
     ''' <summary>
@@ -35,7 +35,7 @@ Public Class GameCanvasRenderer
     End Sub
 
     Private Sub Game_GameLoopEnded(sender As Game, args As Object) Handles Game.GameLoopEnded
-        View.Children.Clear()
+        View.Clear()
     End Sub
 
     Public Overrides Sub DisposeResources()

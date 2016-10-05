@@ -134,7 +134,7 @@ Namespace Concurrent
         ''' 返回一个循环访问集合的的副本枚举器。创建副本的过程是互斥的。
         ''' </summary>
         Public Function GetEnumerator() As IEnumerator(Of T) Implements IEnumerable(Of T).GetEnumerator
-            Return list.ToArray.GetEnumerator()
+            Return list.ToArray.AsEnumerable.GetEnumerator
         End Function
 
         Public Function IndexOf(item As T) As Integer Implements IList(Of T).IndexOf

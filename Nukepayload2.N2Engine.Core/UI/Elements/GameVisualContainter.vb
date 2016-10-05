@@ -1,4 +1,5 @@
-﻿Imports Nukepayload2.Collections.Concurrent
+﻿Imports System.Collections.Specialized
+Imports Nukepayload2.Collections.Concurrent
 
 Namespace UI.Elements
     Public Class GameVisualContainter
@@ -55,5 +56,23 @@ Namespace UI.Elements
                 Return _Children.Count
             End Get
         End Property
+        ''' <summary>
+        ''' 移除全部子元素
+        ''' </summary>
+        Public Sub Clear()
+            _Children.Clear()
+        End Sub
+        ''' <summary>
+        ''' 订阅子元素变更的通知
+        ''' </summary>
+        Public Sub RegisterOnChildrenChanged(collectionChanged As NotifyCollectionChangedEventHandler)
+            AddHandler _Children.CollectionChanged, collectionChanged
+        End Sub
+        ''' <summary>
+        ''' 取消订阅子元素变更的通知
+        ''' </summary>
+        Public Sub UnregisterOnChildrenChanged(collectionChanged As NotifyCollectionChangedEventHandler)
+            RemoveHandler _Children.CollectionChanged, collectionChanged
+        End Sub
     End Class
 End Namespace
