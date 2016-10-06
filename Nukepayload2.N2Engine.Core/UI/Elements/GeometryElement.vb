@@ -37,7 +37,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 是否是闭合的折线段
         ''' </summary>
-        Public ReadOnly Property Closed As New PropertyBinder(Of Boolean)
+        Public ReadOnly Property IsClosed As New PropertyBinder(Of Boolean)
 
     End Class
     ''' <summary>

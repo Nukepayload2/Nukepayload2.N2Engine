@@ -8,6 +8,7 @@ Friend Class SparkParticleSystemRenderer
     End Sub
 
     Public Overrides Sub DisposeResources()
+        MyBase.DisposeResources()
         Debug.WriteLine("释放全部火花资源")
     End Sub
 
@@ -21,17 +22,5 @@ Friend Class SparkParticleSystemRenderer
         For Each part In SparkSys.Particles
             ds.DrawFilledRectangle(part.Location.X, part.Location.Y, part.SparkSize, part.SparkSize, part.SparkColor.AsXnaColor)
         Next
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStarting(sender As Game, args As Object)
-
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStopped(sender As Game, args As Object)
-
-    End Sub
-
-    Protected Overrides Sub OnUpdate(sender As Game, args As MonogameUpdateEventArgs)
-        View.UpdateCommand.Execute()
     End Sub
 End Class

@@ -1,29 +1,20 @@
-﻿Imports Microsoft.Graphics.Canvas.UI
+﻿Imports Microsoft.Graphics.Canvas.Geometry
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UI.Elements
+Imports Nukepayload2.N2Engine.UWP.Marshal
 
 Friend Class TriangleElementRenderer
     Sub New(view As TriangleElement)
         MyBase.New(view)
     End Sub
 
-    Protected Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
-        Throw New NotImplementedException()
-    End Sub
-
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStopped(sender As ICanvasAnimatedControl, args As Object)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
-        Throw New NotImplementedException()
+        Dim pb As New CanvasPathBuilder(sender)
+        pb.BeginFigure(View.Point1.Value)
+        pb.AddLine(View.Point2.Value)
+        pb.AddLine(View.Point3.Value)
+        pb.EndFigure(CanvasFigureLoop.Closed)
+        If View.Fill.CanRead Then args.DrawingSession.FillGeometry(CanvasGeometry.CreatePath(pb), View.Location.Value, View.Fill.Value.AsWindowsColor)
+        If View.Stroke.CanRead Then args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), View.Location.Value, View.Stroke.Value.AsWindowsColor)
     End Sub
 End Class

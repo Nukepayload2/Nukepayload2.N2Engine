@@ -5,24 +5,15 @@ Friend Class RectangleElementRenderer
     Sub New(view As RectangleElement)
         MyBase.New(view)
     End Sub
-
-    Protected Overrides Sub OnCreateResources(sender As Game, args As MonogameCreateResourcesEventArgs)
-        Throw New NotImplementedException()
-    End Sub
-
     Protected Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStarting(sender As Game, args As Object)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStopped(sender As Game, args As Object)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnUpdate(sender As Game, args As MonogameUpdateEventArgs)
-        Throw New NotImplementedException()
+        Dim size = View.Size.Value
+        Dim loc = View.Location.Value
+        Dim rect = New Rectangle(loc.X, loc.Y, size.X, size.Y)
+        With args.DrawingContext
+            Dim fill = View.Fill
+            If fill.CanRead Then .DrawFilledRectangle(rect, fill.Value.AsXnaColor)
+            Dim stroke = View.Stroke
+            If stroke.CanRead Then .DrawRectangle(rect, stroke.Value.AsXnaColor)
+        End With
     End Sub
 End Class

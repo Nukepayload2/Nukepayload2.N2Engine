@@ -10,7 +10,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Device\GraphicsDeviceManagerExtension.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Foundation\ColorConverter.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\Conversion.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonoAPIContract.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameCreateResourcesEventArgs.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameDrawEventArgs.vb" />

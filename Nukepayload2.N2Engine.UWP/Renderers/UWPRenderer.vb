@@ -15,7 +15,9 @@ Public MustInherit Class UWPRenderer(Of T As GameVisual)
     ''' <summary>
     ''' 派生类继承时，定义手动引发 CreateResources 事件的行为 
     ''' </summary>
-    Protected MustOverride Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
+    Protected Overridable Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
+
+    End Sub
     ''' <summary>
     ''' 派生类继承时，定义手动引发 Draw 事件的行为 
     ''' </summary>
@@ -23,11 +25,15 @@ Public MustInherit Class UWPRenderer(Of T As GameVisual)
     ''' <summary>
     ''' 派生类继承时，定义手动引发 GameLoopStarting 事件的行为 
     ''' </summary>
-    Protected MustOverride Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object)
+    Protected Overridable Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object)
+
+    End Sub
     ''' <summary>
     ''' 派生类继承时，定义手动引发 GameLoopStopped 事件的行为 
     ''' </summary>
-    Protected MustOverride Sub OnGameLoopStopped(sender As ICanvasAnimatedControl, args As Object)
+    Protected Overridable Sub OnGameLoopStopped(sender As ICanvasAnimatedControl, args As Object)
+
+    End Sub
     ''' <summary>
     ''' 派生类继承时，定义手动引发 Update 事件的行为 
     ''' </summary>

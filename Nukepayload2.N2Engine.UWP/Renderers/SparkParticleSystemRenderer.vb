@@ -21,17 +21,6 @@ Friend Class SparkParticleSystemRenderer
             ds.FillRectangle(New Rect(part.Location.ToPoint, New Size(part.SparkSize, part.SparkSize)), part.SparkColor.AsWindowsColor)
         Next
     End Sub
-    Protected Overrides Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object)
-
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStopped(sender As ICanvasAnimatedControl, args As Object)
-
-    End Sub
-
-    Protected Overrides Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
-        View.UpdateCommand.Execute()
-    End Sub
 
     Public Overrides Sub DisposeResources()
         MyBase.DisposeResources()

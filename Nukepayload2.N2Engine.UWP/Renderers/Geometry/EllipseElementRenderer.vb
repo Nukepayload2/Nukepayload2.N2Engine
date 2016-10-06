@@ -1,29 +1,17 @@
-﻿Imports Microsoft.Graphics.Canvas.UI
-Imports Microsoft.Graphics.Canvas.UI.Xaml
+﻿Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UI.Elements
+Imports Nukepayload2.N2Engine.UWP.Marshal
 
 Friend Class EllipseElementRenderer
     Sub New(view As EllipseElement)
         MyBase.New(view)
     End Sub
 
-    Protected Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
-        Throw New NotImplementedException()
-    End Sub
-
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStopped(sender As ICanvasAnimatedControl, args As Object)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
-        Throw New NotImplementedException()
+        Dim loc = View.Location.Value
+        Dim hsize = View.Size.Value / 2
+        Dim center = loc - hsize
+        If View.Fill.CanRead Then args.DrawingSession.FillEllipse(center, hsize.X, hsize.Y, View.Fill.Value.AsWindowsColor)
+        If View.Stroke.CanRead Then args.DrawingSession.DrawEllipse(center, hsize.X, hsize.Y, View.Stroke.Value.AsWindowsColor)
     End Sub
 End Class

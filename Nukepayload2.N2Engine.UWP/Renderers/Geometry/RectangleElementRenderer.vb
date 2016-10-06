@@ -1,29 +1,15 @@
-﻿Imports Microsoft.Graphics.Canvas.UI
-Imports Microsoft.Graphics.Canvas.UI.Xaml
+﻿Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UI.Elements
+Imports Nukepayload2.N2Engine.UWP.Marshal
 
 Friend Class RectangleElementRenderer
     Sub New(view As RectangleElement)
         MyBase.New(view)
     End Sub
-
-    Protected Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
-        Throw New NotImplementedException()
-    End Sub
-
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStopped(sender As ICanvasAnimatedControl, args As Object)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
-        Throw New NotImplementedException()
+        Dim loc = View.Location.Value
+        Dim size = View.Size.Value
+        If View.Fill.CanRead Then args.DrawingSession.FillRectangle(loc.X, loc.Y, size.X, size.Y, View.Fill.Value.AsWindowsColor)
+        If View.Stroke.CanRead Then args.DrawingSession.DrawRectangle(loc.X, loc.Y, size.X, size.Y, View.Fill.Value.AsWindowsColor)
     End Sub
 End Class

@@ -6,23 +6,10 @@ Friend Class BezierCurveCustomElementRenderer
         MyBase.New(view)
     End Sub
 
-    Protected Overrides Sub OnCreateResources(sender As Game, args As MonogameCreateResourcesEventArgs)
-        Throw New NotImplementedException()
-    End Sub
-
     Protected Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStarting(sender As Game, args As Object)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStopped(sender As Game, args As Object)
-        Throw New NotImplementedException()
-    End Sub
-
-    Protected Overrides Sub OnUpdate(sender As Game, args As MonogameUpdateEventArgs)
-        Throw New NotImplementedException()
+        Dim loc = View.Location.Value.AsXnaVector2
+        args.DrawingContext.DrawBezier(loc + View.StartPoint.Value.AsXnaVector2,
+                                       loc + View.EndPoint.Value.AsXnaVector2,
+                                       View.Stroke.Value.AsXnaColor, Function(t) loc + View.GetVertex(t).AsXnaVector2)
     End Sub
 End Class
