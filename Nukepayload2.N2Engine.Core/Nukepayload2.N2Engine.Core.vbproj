@@ -103,6 +103,11 @@
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
     <Compile Include="Math\Combination.vb" />
     <Compile Include="Triggers\TimerTrigger.vb" />
+    <Compile Include="UI\Text\FontStretch.vb" />
+    <Compile Include="UI\Text\FontStyle.vb" />
+    <Compile Include="UI\Text\FontWeight.vb" />
+    <Compile Include="UI\Text\GameFont.vb" />
+    <Compile Include="UI\Controls\TextBlock.vb" />
     <Compile Include="UI\Elements\DrawingVisual.vb" />
     <Compile Include="UI\Elements\GameCompositeModes.vb" />
     <Compile Include="Threading\GameDispatcher.vb" />
@@ -149,7 +154,7 @@
     <Compile Include="UI\CompositeTransform.vb" />
     <Compile Include="UI\Elements\ControlLayer.vb" />
     <Compile Include="UI\Elements\EntityLayer.vb" />
-    <Compile Include="UI\Elements\GameControl.vb" />
+    <Compile Include="UI\Controls\GameControl.vb" />
     <Compile Include="UI\Elements\PanelLayer.vb" />
     <Compile Include="UI\ITimeAction.vb" />
     <Compile Include="UI\Matrix3x2Transform.vb" />

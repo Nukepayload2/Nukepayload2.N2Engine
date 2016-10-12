@@ -14,6 +14,7 @@ Friend Class SparkParticleSystemRenderer
 
     Protected Overrides Sub OnCreateResources(sender As Game, args As MonogameCreateResourcesEventArgs)
         Debug.WriteLine("准备火花资源")
+        View.Data.Value.RemoveFromGameCanvasCallback.Bind(Function() AddressOf View.RemoveFromGameCanvas)
     End Sub
 
     Protected Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)

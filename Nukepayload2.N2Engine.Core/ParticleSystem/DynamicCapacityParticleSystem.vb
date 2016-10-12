@@ -10,10 +10,9 @@ Namespace ParticleSystem
 
         Dim lock As New Object
 
-        Sub New(spawnCount As Integer, spawnDuration As Integer, spawnInterval As Integer, removeFromGameCanvasCallback As PropertyBinder(Of Action))
+        Sub New(spawnCount As Integer, spawnDuration As Integer, spawnInterval As Integer)
             MyBase.New(spawnCount, spawnDuration)
             Me.SpawnInterval = spawnInterval
-            Me.RemoveFromGameCanvasCallback = removeFromGameCanvasCallback
         End Sub
         Public Property Particles As New Queue(Of TParticle)
         ''' <summary>
