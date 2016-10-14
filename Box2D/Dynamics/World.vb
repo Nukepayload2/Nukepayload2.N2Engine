@@ -1,6 +1,4 @@
 ﻿Imports System.Numerics
-Imports Nukepayload2.N2Engine.Foundation
-
 Namespace Global.Box2D
     Public Class World
 
@@ -219,10 +217,10 @@ Namespace Global.Box2D
                             Dim aabb As AABB
                             phase.GetAABB(fixture2._proxyId, aabb)
                             Dim vertices As New FixedArray8(Of Vector2)
-                            vertices.Item(0) = New Vector2(aabb.lowerBound.X, aabb.lowerBound.Y)
-                            vertices.Item(1) = New Vector2(aabb.upperBound.X, aabb.lowerBound.Y)
-                            vertices.Item(2) = New Vector2(aabb.upperBound.X, aabb.upperBound.Y)
-                            vertices.Item(3) = New Vector2(aabb.lowerBound.X, aabb.upperBound.Y)
+                            vertices.Item(0) = New Vector2(aabb.LowerBound.X, aabb.LowerBound.Y)
+                            vertices.Item(1) = New Vector2(aabb.UpperBound.X, aabb.LowerBound.Y)
+                            vertices.Item(2) = New Vector2(aabb.UpperBound.X, aabb.UpperBound.Y)
+                            vertices.Item(3) = New Vector2(aabb.LowerBound.X, aabb.UpperBound.Y)
                             Me.DebugDraw.DrawPolygon(vertices, 4, color)
                             fixture2 = fixture2.GetNext
                         Loop
@@ -281,19 +279,19 @@ Namespace Global.Box2D
             Select Case fixture.ShapeType
                 Case ShapeType.Circle
                     Dim shape As CircleShape = DirectCast(fixture.GetShape, CircleShape)
-                    Dim center As Vector2 = MathUtils.Multiply(xf, shape._p)
-                    Dim radius As Single = shape._radius
-                    Dim axis As Vector2 = xf.R.col1
+                    Dim center As Vector2 = MathUtils.Multiply(xf, shape.Position)
+                    Dim radius As Single = shape.Radius
+                    Dim axis As Vector2 = xf.RoateMatrix.Column1
                     Me.DebugDraw.DrawSolidCircle(center, radius, axis, color)
                     Exit Select
                 Case ShapeType.Polygon
                     Dim shape2 As PolygonShape = DirectCast(fixture.GetShape, PolygonShape)
-                    Dim count As Integer = shape2._vertexCount
+                    Dim count As Integer = shape2.VertexCount
                     Debug.Assert((count <= Settings.b2_maxPolygonVertices))
                     Dim vertices As New FixedArray8(Of Vector2)
                     Dim i As Integer
                     For i = 0 To count - 1
-                        vertices.Item(i) = MathUtils.Multiply(xf, shape2._vertices.Item(i))
+                        vertices.Item(i) = MathUtils.Multiply(xf, shape2.Vertices.Item(i))
                     Next i
                     Me.DebugDraw.DrawSolidPolygon(vertices, count, color)
                     Exit Select
