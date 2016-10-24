@@ -4,9 +4,9 @@ Imports Nukepayload2.N2Engine.Resources
 Public Class PlatformBitmapResource
     Public Property Texture As Texture2D
 
-    Public Sub Load(uriPath As Uri)
+    Public Sub Load()
         Dim resmgr = ResourceLoader.GetForCurrentView()
-        Texture = Texture2D.FromStream(GraphicsDeviceManagerExtension.SharedDevice, resmgr.GetResourceEmbeddedStream(uriPath))
+        Texture = Texture2D.FromStream(GraphicsDeviceManagerExtension.SharedDevice, resmgr.GetResourceEmbeddedStream(UriPath))
     End Sub
 
     Private Sub ReleaseBitmap()

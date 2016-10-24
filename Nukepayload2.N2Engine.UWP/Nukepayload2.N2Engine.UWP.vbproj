@@ -141,6 +141,7 @@
     <Compile Include="Media\SoundPlayer.vb" />
     <Compile Include="Renderers\GameCanvasRenderer.vb" />
     <Compile Include="Renderers\GameElementRenderer.vb" />
+    <Compile Include="Renderers\GameSpriteElementRenderer.vb" />
     <Compile Include="Renderers\Geometry\BezierCubicElementRenderer.vb" />
     <Compile Include="Renderers\Geometry\BezierCurveCustomElementRenderer.vb" />
     <Compile Include="Renderers\Geometry\BezierQuadraticElementRenderer.vb" />

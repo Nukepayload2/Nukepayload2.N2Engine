@@ -7,7 +7,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 表示贴图的路径
         ''' </summary>
-        Public Property Sprite As BitmapResource
+        Public Property Sprite As New PropertyBinder(Of BitmapResource)
         ''' <summary>
         ''' 指定大于0的值可以延迟加载。当加载被延迟时，将不会在Loading界面加载这些内容，而是在游戏开始后才加载。值越大，加载优先级越低。
         ''' </summary>
