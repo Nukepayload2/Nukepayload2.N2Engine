@@ -116,12 +116,14 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CharacterSheet.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="ColorizedBound.vb" />
+    <Compile Include="ResourceRouteConfig.vb" />
     <Compile Include="Resources.vb" />
     <Compile Include="Save\SampleMasterData.vb" />
     <Compile Include="Save\SamplePartialData.vb" />
@@ -141,7 +143,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CoreImages\CharacterSheet.png" />
+    <EmbeddedResource Include="Images\CharacterSheet.png" />
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>

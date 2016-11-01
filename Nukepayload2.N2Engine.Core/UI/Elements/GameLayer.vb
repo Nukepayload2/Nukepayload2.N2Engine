@@ -9,7 +9,7 @@
         ''' 添加一个新的 <typeparamref name="TVisual"/>
         ''' </summary>
         Public Overloads Sub Add(visual As TVisual)
-            MyBase.Add(visual)
+            MyBase.AddVisual(visual)
         End Sub
         ''' <summary>
         ''' 添加一组新的 <typeparamref name="TVisual"/>

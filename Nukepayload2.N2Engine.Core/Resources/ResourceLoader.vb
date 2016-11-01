@@ -4,7 +4,7 @@ Imports System.Threading
 
 Namespace Resources
     ''' <summary>
-    ''' 处理资源加载或键映射
+    ''' 处理资源加载或资源键映射
     ''' </summary>
     Public Class ResourceLoader
         ''' <summary>
@@ -249,11 +249,11 @@ Namespace Resources
             End If
             If path.LastIndexOf("/") > 0 Then
                 '带文件夹名字的嵌入资源
-                Dim asmName = GetUriPathRoot(path, second)
-                If Not String.IsNullOrEmpty(asmName) AndAlso assemblyRoutes.ContainsKey(asmName) Then
-                    Dim asm = assemblyRoutes(asmName)
-                    Dim asmFullName = asm.FullName
-                    Dim resKey = asmFullName
+                Dim asmID = GetUriPathRoot(path, second)
+                If Not String.IsNullOrEmpty(asmID) AndAlso assemblyRoutes.ContainsKey(asmID) Then
+                    Dim asm = assemblyRoutes(asmID)
+                    Dim asmName = asm.GetName.Name
+                    Dim resKey = asmName + path.Substring(second).Replace("/", ".")
                     Return asm.GetManifestResourceStream(resKey)
                 End If
             Else

@@ -1,7 +1,7 @@
 ﻿Imports Microsoft.Xna.Framework.Graphics
 Imports Nukepayload2.N2Engine.Resources
 
-Public Class PlatformBitmapResource
+Friend Class PlatformBitmapResource
     Public Property Texture As Texture2D
 
     Public Sub Load()

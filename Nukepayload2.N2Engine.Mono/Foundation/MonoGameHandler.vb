@@ -61,7 +61,6 @@ Public Class MonoGameHandler
 
     Sub New()
         graphics = New GraphicsDeviceManager(Me)
-        GraphicsDeviceManagerExtension.SharedDevice = GraphicsDevice
         Content.RootDirectory = "Content"
         graphics.SupportedOrientations = DisplayOrientation.LandscapeLeft Or DisplayOrientation.LandscapeRight
     End Sub
@@ -74,6 +73,7 @@ Public Class MonoGameHandler
     Protected Overrides Sub Initialize()
         ' TODO: 初始化游戏逻辑
         RaiseEvent GameLoopStarting(Me, Nothing)
+        GraphicsDeviceManagerExtension.SharedDevice = GraphicsDevice
 
         MyBase.Initialize()
     End Sub

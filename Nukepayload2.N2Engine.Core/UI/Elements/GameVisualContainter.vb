@@ -20,7 +20,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 添加一个新的 <see cref="GameVisual"/> 
         ''' </summary>
-        Public Sub Add(visual As GameVisual)
+        Public Sub AddVisual(visual As GameVisual)
             _Children.Add(visual)
         End Sub
         ''' <summary>

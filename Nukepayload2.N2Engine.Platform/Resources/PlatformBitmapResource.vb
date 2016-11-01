@@ -2,7 +2,7 @@
 Imports Nukepayload2.N2Engine.Resources
 
 <PlatformImpl(GetType(BitmapResource))>
-Partial Public Class PlatformBitmapResource
+Partial Friend Class PlatformBitmapResource
     Inherits BitmapResource
     Implements IDisposable
 

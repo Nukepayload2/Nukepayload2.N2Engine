@@ -1,7 +1,7 @@
 ﻿Imports Microsoft.Graphics.Canvas
 Imports Nukepayload2.N2Engine.Resources
 
-Public Class PlatformBitmapResource
+Friend Class PlatformBitmapResource
     Public Property Texture As CanvasBitmap
 
     Public Async Function LoadAsync() As Task
