@@ -165,7 +165,7 @@
     <Compile Include="UI\GameCamera.vb" />
     <Compile Include="UI\Elements\GameLayer.vb" />
     <Compile Include="UI\Elements\GameScene.vb" />
-    <Compile Include="UI\Elements\GameVisualContainter.vb" />
+    <Compile Include="UI\Elements\GameVisualContainer.vb" />
     <Compile Include="UI\Elements\VisualizingScrollViewer.vb" />
     <Compile Include="UI\Renderers\RendererBase.vb" />
     <Compile Include="Resources\GameResourceModelBase.vb" />
@@ -177,6 +177,7 @@
     <Compile Include="UI\TimeAction.vb" />
     <Compile Include="Utilities\AsyncHelper.vb" />
     <Compile Include="Math\FastFactorial.vb" />
+    <Compile Include="Utilities\TreeHelper.vb" />
     <Compile Include="Utilities\Vector2Extensions.vb" />
     <Compile Include="Behaviors\BehaviorBase.vb" />
     <Compile Include="Behaviors\ApplyForceBehavior.vb" />

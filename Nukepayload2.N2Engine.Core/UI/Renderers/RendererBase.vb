@@ -13,9 +13,9 @@ Namespace Renderers
         ''' <summary>
         ''' 注册渲染器后，元素视图可以用这个方法创建渲染器
         ''' </summary>
-        Friend Shared Sub CreateElementRenderer(view As GameElement)
-            PlatformActivator.CreateInstance(view)
-        End Sub
+        Friend Shared Function CreateVisualRenderer(view As GameVisual) As RendererBase
+            Return DirectCast(PlatformActivator.CreateInstance(view), RendererBase)
+        End Function
 
         Public Property View As GameVisual
     End Class

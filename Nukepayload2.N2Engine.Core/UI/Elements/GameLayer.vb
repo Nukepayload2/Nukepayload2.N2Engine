@@ -1,6 +1,6 @@
 ﻿Namespace UI.Elements
     Public MustInherit Class GameLayer
-        Inherits GameVisualContainter
+        Inherits GameVisualContainer
 
     End Class
     Public MustInherit Class GameLayer(Of TVisual As GameVisual)

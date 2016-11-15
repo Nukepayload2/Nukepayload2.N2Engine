@@ -3,7 +3,7 @@
     ''' 用于滚动查看游戏对象。如果不使用场景，则建议使用此元素作为游戏对象树的根。
     ''' </summary>
     Public Class VisualizingScrollViewer
-        Inherits GameVisualContainter
+        Inherits GameVisualContainer
 
         Public ReadOnly Property Offset As Vector2
         Public ReadOnly Property Zoom As Single = 1

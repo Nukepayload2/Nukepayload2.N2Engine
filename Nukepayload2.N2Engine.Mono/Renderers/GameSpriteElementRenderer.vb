@@ -8,7 +8,7 @@ Friend Class GameSpriteElementRenderer
 
     Dim drawOperation As TypedEventHandler(Of Game, MonogameDrawEventArgs)
 
-    Protected Overrides Sub OnCreateResources(sender As Game, args As MonogameCreateResourcesEventArgs)
+    Friend Overrides Sub OnCreateResources(sender As Game, args As MonogameCreateResourcesEventArgs)
         MyBase.OnCreateResources(sender, args)
         Dim bmp = DirectCast(View.Sprite.Value, PlatformBitmapResource)
         If View.DefferedLoadLevel.Value <= 0 Then
@@ -35,7 +35,7 @@ Friend Class GameSpriteElementRenderer
         Dim size = View.Size.Value
         args.DrawingContext.DrawFilledRectangle(New Rectangle(loc.X, loc.Y, size.X, size.Y), View.LoadingColor.Value.AsXnaColor)
     End Sub
-    Protected Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
+    Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
         drawOperation.Invoke(sender, args)
     End Sub
 End Class

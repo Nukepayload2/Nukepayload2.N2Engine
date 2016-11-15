@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\TypedEventHandler.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Media\SoundPlayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasContainerRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameElementRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameSpriteElementRenderer.vb" />
@@ -31,6 +32,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\PolylineElementRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\RectangleElementRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\TriangleElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\MonoGameRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
   </ItemGroup>

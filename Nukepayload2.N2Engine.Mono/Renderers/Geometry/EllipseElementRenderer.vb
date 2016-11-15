@@ -6,7 +6,7 @@ Friend Class EllipseElementRenderer
         MyBase.New(view)
     End Sub
 
-    Protected Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
+    Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
         Dim size = View.Size.Value
         Dim loc = View.Location.Value
         Dim rect = New Rectangle(loc.X, loc.Y, size.X, size.Y)

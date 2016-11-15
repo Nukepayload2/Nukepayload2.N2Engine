@@ -8,16 +8,15 @@ Friend Class SparkParticleSystemRenderer
     End Sub
 
     Public Overrides Sub DisposeResources()
-        MyBase.DisposeResources()
         Debug.WriteLine("释放全部火花资源")
     End Sub
 
-    Protected Overrides Sub OnCreateResources(sender As Game, args As MonogameCreateResourcesEventArgs)
+    Friend Overrides Sub OnCreateResources(sender As Game, args As MonogameCreateResourcesEventArgs)
         Debug.WriteLine("准备火花资源")
         View.Data.Value.RemoveFromGameCanvasCallback.Bind(Function() AddressOf View.RemoveFromGameCanvas)
     End Sub
 
-    Protected Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
+    Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
         Dim ds = args.DrawingContext
         Dim SparkSys = View.Data.Value
         For Each part In SparkSys.Particles

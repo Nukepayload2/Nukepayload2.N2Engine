@@ -2,6 +2,7 @@
 Imports Microsoft.Xna.Framework
 Imports Nukepayload2.N2Engine.Renderers
 Imports Nukepayload2.N2Engine.UI.Elements
+Imports Nukepayload2.N2Engine.Linq
 
 Public Class GameCanvasRenderer
     Inherits RendererBase(Of GameCanvas)
@@ -10,35 +11,37 @@ Public Class GameCanvasRenderer
     Sub New(view As GameCanvas, game As MonoGameHandler)
         MyBase.New(view)
         Me.Game = game
-        HandleNewElements(view)
-        view.RegisterOnChildrenChanged(AddressOf OnChildrenChanged)
-    End Sub
-
-    ''' <summary>
-    ''' 更新Renderer的事件订阅
-    ''' </summary>
-    Protected Overridable Sub OnChildrenChanged(sender As Object, e As NotifyCollectionChangedEventArgs)
-        If e.NewItems IsNot Nothing Then
-            HandleNewElements(View)
-        End If
-        If e.OldItems IsNot Nothing Then
-            For Each oldItems As GameElement In e.OldItems
-                oldItems.UnloadRenderer(Me)
-            Next
-        End If
-    End Sub
-
-    Private Sub HandleNewElements(view As GameCanvas)
-        For Each newItems As GameElement In view.Children
-            newItems.HandleRenderer(Me)
-        Next
-    End Sub
-
-    Private Sub Game_GameLoopEnded(sender As Game, args As Object) Handles Game.GameLoopStopped
-        View.Clear()
     End Sub
 
     Public Overrides Sub DisposeResources()
 
+    End Sub
+
+    Private Sub DoCanvasOperation(act As Action(Of MonoGameRenderer(Of GameVisual)))
+        For Each vie In DirectCast(View, GameVisual).HierarchyForEach(Function(n) TryCast(n, GameVisualContainer)?.Children).Skip(1).Reverse
+            Dim renderer = vie.Renderer
+            act(CType(renderer, MonoGameRenderer(Of GameVisual)))
+        Next
+    End Sub
+
+    Private Sub Game_GameLoopEnded(sender As Game, args As Object) Handles Game.GameLoopStopped
+        DoCanvasOperation(Sub(renderer) renderer.OnGameLoopStopped(sender, args))
+        View.Clear()
+    End Sub
+
+    Private Sub Game_CreateResources(sender As Game, args As MonogameCreateResourcesEventArgs) Handles Game.CreateResources
+        DoCanvasOperation(Sub(renderer) renderer.OnCreateResources(sender, args))
+    End Sub
+
+    Private Sub Game_Drawing(sender As Game, args As MonogameDrawEventArgs) Handles Game.Drawing
+        DoCanvasOperation(Sub(renderer) renderer.OnDraw(sender, args))
+    End Sub
+
+    Private Sub Game_GameLoopStarting(sender As Game, args As Object) Handles Game.GameLoopStarting
+        DoCanvasOperation(Sub(renderer) renderer.OnGameLoopStarting(sender, args))
+    End Sub
+
+    Private Sub Game_Updating(sender As Game, args As MonogameUpdateEventArgs) Handles Game.Updating
+        DoCanvasOperation(Sub(renderer) renderer.OnUpdate(sender, args))
     End Sub
 End Class

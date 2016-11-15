@@ -2,7 +2,7 @@
 Imports Nukepayload2.Collections.Concurrent
 
 Namespace UI.Elements
-    Public Class GameVisualContainter
+    Public Class GameVisualContainer
         Inherits GameVisual
 
         Private _Children As New ConcurrentObservableCollection(Of GameVisual)

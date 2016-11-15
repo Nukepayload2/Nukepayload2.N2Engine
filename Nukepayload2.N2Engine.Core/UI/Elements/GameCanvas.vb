@@ -5,7 +5,7 @@ Namespace UI.Elements
     ''' 游戏的画布，是全部可见元素的父级。
     ''' </summary>
     Public Class GameCanvas
-        Inherits GameVisualContainter
+        Inherits GameVisualContainer
         ''' <summary>
         ''' 默认的场景导航动画表
         ''' </summary>
