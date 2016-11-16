@@ -5,6 +5,6 @@ Imports Nukepayload2.N2Engine.UI.Views
 ''' </summary>
 <PlatformImpl(GetType(SparkParticleSystemView))>
 Partial Friend Class SparkParticleSystemRenderer
-    Inherits GameElementRenderer(Of SparkParticleSystemView)
+    Inherits GameElementRenderer
 
 End Class

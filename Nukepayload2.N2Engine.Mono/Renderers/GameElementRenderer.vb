@@ -2,8 +2,8 @@
 Imports Nukepayload2.N2Engine.Renderers
 Imports Nukepayload2.N2Engine.UI.Elements
 
-Public MustInherit Class GameElementRenderer(Of T As GameElement)
-    Inherits MonoGameRenderer(Of T)
+Public MustInherit Class GameElementRenderer
+    Inherits MonoGameRenderer
 
     Public Overrides Sub DisposeResources()
 

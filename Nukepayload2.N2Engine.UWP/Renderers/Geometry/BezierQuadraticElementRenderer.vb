@@ -9,6 +9,7 @@ Friend Class BezierQuadraticElementRenderer
     End Sub
 
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
+        Dim view = DirectCast(Me.View, BezierQuadraticElement)
         Dim pb As New CanvasPathBuilder(sender)
         pb.BeginFigure(View.StartPoint.Value)
         pb.AddQuadraticBezier(View.ControlPoint.Value, View.EndPoint.Value)

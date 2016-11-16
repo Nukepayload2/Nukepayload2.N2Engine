@@ -4,9 +4,8 @@ Imports Nukepayload2.N2Engine.UI.Elements
 ''' <summary>
 ''' UWP的画布渲染器的基类。将N2引擎的视图与UWP的视图连接起来。
 ''' </summary>
-''' <typeparam name="T">N2引擎视图</typeparam>
-Public MustInherit Class CanvasRendererBase(Of T As GameVisual)
-    Inherits UWPRenderer(Of T)
+Public MustInherit Class CanvasRendererBase
+    Inherits UWPRenderer
     ''' <summary>
     ''' 用于呈现即时2D动画的Xaml控件
     ''' </summary>
@@ -16,7 +15,7 @@ Public MustInherit Class CanvasRendererBase(Of T As GameVisual)
     ''' </summary>
     ''' <param name="view">N2引擎的视图</param>
     ''' <param name="win2DCanvas">UWP的画布</param>
-    Sub New(view As T, win2DCanvas As CanvasAnimatedControl)
+    Sub New(view As GameVisual, win2DCanvas As CanvasAnimatedControl)
         MyBase.New(view)
         Me.Win2DCanvas = win2DCanvas
     End Sub

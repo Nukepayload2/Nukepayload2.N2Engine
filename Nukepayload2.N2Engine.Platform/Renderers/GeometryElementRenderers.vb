@@ -6,7 +6,7 @@ Imports Nukepayload2.N2Engine.UI.Elements
 ''' </summary>
 <PlatformImpl(GetType(LineElement))>
 Partial Friend Class LineElementRenderer
-    Inherits GameElementRenderer(Of LineElement)
+    Inherits GameElementRenderer
 
 End Class
 
@@ -15,7 +15,7 @@ End Class
 ''' </summary>
 <PlatformImpl(GetType(PolylineElement))>
 Partial Friend Class PolylineElementRenderer
-    Inherits GameElementRenderer(Of PolylineElement)
+    Inherits GameElementRenderer
 
 End Class
 
@@ -24,7 +24,7 @@ End Class
 ''' </summary>
 <PlatformImpl(GetType(BezierQuadraticElement))>
 Partial Friend Class BezierQuadraticElementRenderer
-    Inherits GameElementRenderer(Of BezierQuadraticElement)
+    Inherits GameElementRenderer
 
 End Class
 
@@ -34,7 +34,7 @@ End Class
 ''' </summary>
 <PlatformImpl(GetType(BezierCubicElement))>
 Partial Friend Class BezierCubicElementRenderer
-    Inherits GameElementRenderer(Of BezierCubicElement)
+    Inherits GameElementRenderer
 
 End Class
 
@@ -44,7 +44,7 @@ End Class
 ''' </summary>
 <PlatformImpl(GetType(BezierCurveCustomElement))>
 Partial Friend Class BezierCurveCustomElementRenderer
-    Inherits GameElementRenderer(Of BezierCurveCustomElement)
+    Inherits GameElementRenderer
 
 End Class
 
@@ -53,7 +53,7 @@ End Class
 ''' </summary>
 <PlatformImpl(GetType(RectangleElement))>
 Partial Friend Class RectangleElementRenderer
-    Inherits GameElementRenderer(Of RectangleElement)
+    Inherits GameElementRenderer
 
 End Class
 
@@ -62,7 +62,7 @@ End Class
 ''' </summary>
 <PlatformImpl(GetType(EllipseElement))>
 Partial Friend Class EllipseElementRenderer
-    Inherits GameElementRenderer(Of EllipseElement)
+    Inherits GameElementRenderer
 
 End Class
 
@@ -71,6 +71,6 @@ End Class
 ''' </summary>
 <PlatformImpl(GetType(TriangleElement))>
 Partial Friend Class TriangleElementRenderer
-    Inherits GameElementRenderer(Of TriangleElement)
+    Inherits GameElementRenderer
 
 End Class

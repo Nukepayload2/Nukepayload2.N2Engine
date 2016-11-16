@@ -1,11 +1,12 @@
 ﻿Imports Microsoft.Xna.Framework
+Imports Microsoft.Xna.Framework.Graphics
 Imports Nukepayload2.N2Engine.Renderers
 Imports Nukepayload2.N2Engine.UI.Elements
 
-Public MustInherit Class MonoGameRenderer(Of T As GameVisual)
-    Inherits RendererBase(Of T)
+Public MustInherit Class MonoGameRenderer
+    Inherits RendererBase
 
-    Sub New(view As T)
+    Sub New(view As GameVisual)
         MyBase.New(view)
     End Sub
 

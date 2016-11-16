@@ -10,30 +10,33 @@ Friend Class GameSpriteElementRenderer
     Dim drawOperation As TypedEventHandler(Of ICanvasAnimatedControl, CanvasAnimatedDrawEventArgs)
     Protected Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
         MyBase.OnCreateResources(sender, args)
-        Dim bmp = DirectCast(View.Sprite.Value, PlatformBitmapResource)
-        If View.DefferedLoadLevel.Value <= 0 Then
+        Dim view = DirectCast(Me.View, SpriteElement)
+        Dim bmp = DirectCast(view.Sprite.Value, PlatformBitmapResource)
+        If view.DefferedLoadLevel.Value <= 0 Then
             args.TrackAsyncAction(bmp.LoadAsync().AsAsyncAction)
             drawOperation = AddressOf DrawImage
         Else
             drawOperation = AddressOf DrawColor
             bmp.LoadAsync.ContinueWith(Sub(th) drawOperation = AddressOf DrawImage)
         End If
-        AddHandler View.Sprite.DataChanged,
+        AddHandler view.Sprite.DataChanged,
             Sub(snd, e)
                 drawOperation = AddressOf DrawColor
-                DirectCast(View.Sprite.Value, PlatformBitmapResource).LoadAsync.ContinueWith(Sub(th) drawOperation = AddressOf DrawImage)
+                DirectCast(view.Sprite.Value, PlatformBitmapResource).LoadAsync.ContinueWith(Sub(th) drawOperation = AddressOf DrawImage)
             End Sub
     End Sub
     Sub DrawImage(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
-        Dim bmp = DirectCast(View.Sprite.Value, PlatformBitmapResource)
-        Dim loc = View.Location.Value
-        Dim size = View.Size.Value
+        Dim view = DirectCast(Me.View, SpriteElement)
+        Dim bmp = DirectCast(view.Sprite.Value, PlatformBitmapResource)
+        Dim loc = view.Location.Value
+        Dim size = view.Size.Value
         args.DrawingSession.DrawImage(bmp.Texture, New Rect(loc.X, loc.Y, size.X, size.Y))
     End Sub
     Sub DrawColor(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
-        Dim loc = View.Location.Value
-        Dim size = View.Size.Value
-        args.DrawingSession.FillRectangle(New Rect(loc.X, loc.Y, size.X, size.Y), View.LoadingColor.Value.AsWindowsColor())
+        Dim view = DirectCast(Me.View, SpriteElement)
+        Dim loc = view.Location.Value
+        Dim size = view.Size.Value
+        args.DrawingSession.FillRectangle(New Rect(loc.X, loc.Y, size.X, size.Y), view.LoadingColor.Value.AsWindowsColor())
     End Sub
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         drawOperation.Invoke(sender, args)

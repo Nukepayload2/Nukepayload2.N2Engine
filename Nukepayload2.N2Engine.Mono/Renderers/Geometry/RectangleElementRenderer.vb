@@ -6,7 +6,8 @@ Friend Class RectangleElementRenderer
         MyBase.New(view)
     End Sub
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
-        Dim size = View.Size.Value
+        Dim view = DirectCast(Me.View, RectangleElement)
+        Dim size = view.Size.Value
         Dim loc = View.Location.Value
         Dim rect = New Rectangle(loc.X, loc.Y, size.X, size.Y)
         With args.DrawingContext

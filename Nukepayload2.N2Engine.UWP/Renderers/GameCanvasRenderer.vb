@@ -4,7 +4,7 @@ Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UI.Elements
 
 Public Class GameCanvasRenderer
-    Inherits CanvasRendererBase(Of GameCanvas)
+    Inherits CanvasRendererBase
 
     ''' <summary>
     ''' 初始化总的渲染器
@@ -13,14 +13,6 @@ Public Class GameCanvasRenderer
     ''' <param name="win2DCanvas">UWP的画布</param>
     Sub New(view As GameCanvas, win2DCanvas As CanvasAnimatedControl)
         MyBase.New(view, win2DCanvas)
-        HandleNewElements(view)
-        view.RegisterOnChildrenChanged(AddressOf OnChildrenChanged)
-    End Sub
-
-    Private Sub HandleNewElements(view As GameCanvas)
-        For Each newItems As GameElement In view.Children
-            newItems.HandleRenderer(Me)
-        Next
     End Sub
 
     ''' <summary>
@@ -28,23 +20,7 @@ Public Class GameCanvasRenderer
     ''' </summary>
     Public Overrides Sub DisposeResources()
         MyBase.DisposeResources()
-        View.Clear()
-    End Sub
-    ''' <summary>
-    ''' 更新Renderer的事件订阅
-    ''' </summary>
-    Protected Overridable Sub OnChildrenChanged(sender As Object, e As NotifyCollectionChangedEventArgs)
-        If e.NewItems IsNot Nothing Then
-            HandleNewElements(View)
-        End If
-        If e.OldItems IsNot Nothing Then
-            Dim result = Win2DCanvas.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
-            Sub()
-                For Each oldItems As GameElement In e.OldItems
-                    oldItems.UnloadRenderer(Me)
-                Next
-            End Sub)
-        End If
+        DirectCast(View, GameCanvas).Clear()
     End Sub
     ''' <summary>
     ''' 创建画布渲染器级别的资源

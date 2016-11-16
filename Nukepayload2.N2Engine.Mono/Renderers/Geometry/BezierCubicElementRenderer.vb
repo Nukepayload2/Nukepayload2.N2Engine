@@ -6,6 +6,7 @@ Friend Class BezierCubicElementRenderer
     End Sub
 
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
+        Dim view = DirectCast(Me.View, BezierCubicElement)
         Dim loc = View.Location.Value.AsXnaVector2
         args.DrawingContext.DrawBezierCubic(loc + View.StartPoint.Value.AsXnaVector2,
                                             loc + View.ControlPoint1.Value.AsXnaVector2,

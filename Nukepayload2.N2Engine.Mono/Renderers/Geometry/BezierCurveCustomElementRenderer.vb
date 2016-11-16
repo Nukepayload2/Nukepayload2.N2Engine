@@ -7,7 +7,8 @@ Friend Class BezierCurveCustomElementRenderer
     End Sub
 
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
-        Dim loc = View.Location.Value.AsXnaVector2
+        Dim view = DirectCast(Me.View, BezierCurveCustomElement)
+        Dim loc = view.Location.Value.AsXnaVector2
         args.DrawingContext.DrawBezier(loc + View.StartPoint.Value.AsXnaVector2,
                                        loc + View.EndPoint.Value.AsXnaVector2,
                                        View.Stroke.Value.AsXnaColor, Function(t) loc + View.GetVertex(t).AsXnaVector2)

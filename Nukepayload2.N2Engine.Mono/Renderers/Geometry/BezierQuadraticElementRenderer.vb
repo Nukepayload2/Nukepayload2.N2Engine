@@ -7,7 +7,8 @@ Friend Class BezierQuadraticElementRenderer
     End Sub
 
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
-        Dim loc = View.Location.Value.AsXnaVector2
+        Dim view = DirectCast(Me.View, BezierQuadraticElement)
+        Dim loc = view.Location.Value.AsXnaVector2
         args.DrawingContext.DrawBezierQuadratic(loc + View.StartPoint.Value.AsXnaVector2,
                                                 loc + View.ControlPoint.Value.AsXnaVector2,
                                                 loc + View.EndPoint.Value.AsXnaVector2,

@@ -5,10 +5,12 @@ Imports Nukepayload2.N2Engine.UI.Elements
 ''' </summary>
 <PlatformImpl(GetType(SpriteElement))>
 Partial Friend Class GameSpriteElementRenderer
-    Inherits GameElementRenderer(Of SpriteElement)
+    Inherits GameElementRenderer
 
     Public Overrides Sub DisposeResources()
+#If Not WIN2D Then
         MyBase.DisposeResources()
-        DirectCast(View.Sprite.Value, PlatformBitmapResource).Dispose()
+#End If
+        DirectCast(DirectCast(View, SpriteElement).Sprite.Value, PlatformBitmapResource).Dispose()
     End Sub
 End Class

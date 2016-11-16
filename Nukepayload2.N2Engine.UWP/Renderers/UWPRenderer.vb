@@ -5,11 +5,10 @@ Imports Nukepayload2.N2Engine.UI.Elements
 ''' <summary>
 ''' UWP的渲染器的基类。
 ''' </summary>
-''' <typeparam name="T">N2引擎视图</typeparam>
-Public MustInherit Class UWPRenderer(Of T As GameVisual)
-    Inherits RendererBase(Of T)
+Public MustInherit Class UWPRenderer
+    Inherits RendererBase
 
-    Sub New(view As T)
+    Sub New(view As GameVisual)
         MyBase.New(view)
     End Sub
     ''' <summary>
@@ -39,4 +38,7 @@ Public MustInherit Class UWPRenderer(Of T As GameVisual)
     ''' </summary>
     Protected MustOverride Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
 
+    Public Overrides Sub DisposeResources()
+
+    End Sub
 End Class

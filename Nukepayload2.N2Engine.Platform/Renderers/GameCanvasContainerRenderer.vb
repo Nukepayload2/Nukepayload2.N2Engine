@@ -4,5 +4,5 @@ Imports Nukepayload2.N2Engine.UI.Elements
 ''' 用于给缓存的渲染结果附加特效，变换等行为。
 ''' </summary>
 Partial Public MustInherit Class GameCanvasContainerRenderer
-    Public Property SubRenderers As New List(Of RendererBase)
+
 End Class

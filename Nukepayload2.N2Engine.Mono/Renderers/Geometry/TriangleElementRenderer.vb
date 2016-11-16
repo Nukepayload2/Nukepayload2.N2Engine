@@ -7,7 +7,8 @@ Friend Class TriangleElementRenderer
     End Sub
 
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
-        Dim loc = View.Location.Value.AsXnaVector2
+        Dim view = DirectCast(Me.View, TriangleElement)
+        Dim loc = view.Location.Value.AsXnaVector2
         Dim v1 = View.Point1.Value.AsXnaVector2 + loc
         Dim v2 = View.Point2.Value.AsXnaVector2 + loc
         Dim v3 = View.Point3.Value.AsXnaVector2 + loc

@@ -9,6 +9,7 @@ Friend Class LineElementRenderer
     End Sub
 
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
+        Dim view = DirectCast(Me.View, LineElement)
         Dim loc = View.Location.Value
         args.DrawingSession.DrawLine(View.StartPoint.Value + loc, View.EndPoint.Value + loc, View.Stroke.Value.AsWindowsColor)
     End Sub

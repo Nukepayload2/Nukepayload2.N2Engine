@@ -9,6 +9,7 @@ Friend Class BezierCubicElementRenderer
     End Sub
 
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
+        Dim view = DirectCast(Me.View, BezierCubicElement)
         Dim pb As New CanvasPathBuilder(sender)
         pb.BeginFigure(View.StartPoint.Value)
         pb.AddCubicBezier(View.ControlPoint1.Value, View.ControlPoint2.Value, View.EndPoint.Value)

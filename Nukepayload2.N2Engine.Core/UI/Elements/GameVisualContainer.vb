@@ -9,7 +9,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 画板的子元素。添加或删除元素时会在此画板引发一个通知。
         ''' </summary>
-        Public ReadOnly Property Children As IEnumerable(Of GameVisual)
+        Public ReadOnly Property Children As IList(Of GameVisual)
             Get
                 Return _Children
             End Get

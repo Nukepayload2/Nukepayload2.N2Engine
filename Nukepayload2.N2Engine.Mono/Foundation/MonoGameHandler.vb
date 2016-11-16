@@ -123,9 +123,7 @@ Public Class MonoGameHandler
         GraphicsDevice.Clear(Background)
 
         ' TODO: 在此添加绘制代码
-        drawingContext.Begin()
         RaiseEvent Drawing(Me, New MonogameDrawEventArgs(drawingContext, timing))
-        drawingContext.End()
 
         MyBase.Draw(timing)
     End Sub

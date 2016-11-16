@@ -13,12 +13,14 @@ Friend Class SparkParticleSystemRenderer
 
     Friend Overrides Sub OnCreateResources(sender As Game, args As MonogameCreateResourcesEventArgs)
         Debug.WriteLine("准备火花资源")
-        View.Data.Value.RemoveFromGameCanvasCallback.Bind(Function() AddressOf View.RemoveFromGameCanvas)
+        Dim view = DirectCast(Me.View, SparkParticleSystemView)
+        view.Data.Value.RemoveFromGameCanvasCallback.Bind(Function() AddressOf View.RemoveFromGameCanvas)
     End Sub
 
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
         Dim ds = args.DrawingContext
-        Dim SparkSys = View.Data.Value
+        Dim view = DirectCast(Me.View, SparkParticleSystemView)
+        Dim SparkSys = view.Data.Value
         For Each part In SparkSys.Particles
             ds.DrawFilledRectangle(part.Location.X, part.Location.Y, part.SparkSize, part.SparkSize, part.SparkColor.AsXnaColor)
         Next

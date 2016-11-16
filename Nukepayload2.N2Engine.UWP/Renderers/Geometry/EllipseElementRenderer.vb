@@ -8,7 +8,8 @@ Friend Class EllipseElementRenderer
     End Sub
 
     Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
-        Dim loc = View.Location.Value
+        Dim view = DirectCast(Me.View, EllipseElement)
+        Dim loc = view.Location.Value
         Dim hsize = View.Size.Value / 2
         Dim center = loc - hsize
         If View.Fill.CanRead Then args.DrawingSession.FillEllipse(center, hsize.X, hsize.Y, View.Fill.Value.AsWindowsColor)
