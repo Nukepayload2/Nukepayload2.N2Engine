@@ -20,7 +20,7 @@ Public Class GameCanvasRenderer
     ''' </summary>
     Public Overrides Sub DisposeResources()
         MyBase.DisposeResources()
-        DirectCast(View, GameCanvas).Clear()
+        DirectCast(View, GameCanvas).Children.Clear()
     End Sub
     ''' <summary>
     ''' 创建画布渲染器级别的资源

@@ -13,10 +13,11 @@ Namespace UI.Elements
         ''' 父级的容器（如果存在）
         ''' </summary>
         Public Property Parent As GameVisualContainer
+
         ''' <summary>
         ''' 与这个可见对象关联的渲染器
         ''' </summary>
-        Public ReadOnly Property Renderer As RendererBase
+        Public Property Renderer As RendererBase
         ''' <summary>
         ''' 此元素与背景混合时，应该怎样进行蒙版
         ''' </summary>
@@ -114,6 +115,10 @@ Namespace UI.Elements
         Public Event Updating As GameObjectEventHandler(Of GameVisual, EventArgs)
 
         Sub New()
+            CreateRenderer()
+        End Sub
+
+        Protected Overridable Sub CreateRenderer()
             Renderer = RendererBase.CreateVisualRenderer(Me)
         End Sub
     End Class

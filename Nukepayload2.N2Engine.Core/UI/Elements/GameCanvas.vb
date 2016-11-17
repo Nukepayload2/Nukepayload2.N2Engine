@@ -10,5 +10,11 @@ Namespace UI.Elements
         ''' 默认的场景导航动画表
         ''' </summary>
         Public Property ContentTransitions As IList(Of TransitionAnimation)
+        ''' <summary>
+        ''' 这个类型不自动创建渲染器
+        ''' </summary>
+        Protected Overrides Sub CreateRenderer()
+
+        End Sub
     End Class
 End Namespace

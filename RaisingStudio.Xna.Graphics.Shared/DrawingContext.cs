@@ -253,7 +253,6 @@ namespace RaisingStudio.Xna.Graphics
             this.transformMatrix = transformMatrix;
         }
 
-
         public override void End()
         {
             if (SortMode == DrawingSortMode.Order)

@@ -16,24 +16,26 @@ Public Class SparksView
     Sub New()
         ApplyRoute()
 
+        Location.Bind(New Vector2)
+
         sparks.Data.Bind(Function() sparksData.SparkSys)
-        AddVisual(sparks)
+        Children.Add(sparks)
 
         redBlock.Fill.Bind(Function() sparksData.RedCircle.Color)
         redBlock.Location.Bind(Function() sparksData.RedCircle.Position)
         redBlock.Size.Bind(Function() sparksData.RedCircle.Size)
-        AddVisual(redBlock)
+        Children.Add(redBlock)
 
         greenEllipse.Stroke.Bind(Function() sparksData.GreenRectangle.Color)
         greenEllipse.Location.Bind(Function() sparksData.GreenRectangle.Position)
         greenEllipse.Size.Bind(Function() sparksData.GreenRectangle.Size)
-        AddVisual(greenEllipse)
+        Children.Add(greenEllipse)
 
         characterSheetSprite = BitmapResource.Create(sparksData.CharacterSheet.Source)
         charaSheet.Sprite.Bind(Function() characterSheetSprite)
         charaSheet.Size.Bind(Function() sparksData.CharacterSheet.Size)
         charaSheet.Location.Bind(Function() sparksData.CharacterSheet.Location)
-        AddVisual(charaSheet)
+        Children.Add(charaSheet)
     End Sub
     ''' <summary>
     ''' 平台特定实现点击此视图时，调用此方法。通用的输入事件完成后，此方法将过时。
