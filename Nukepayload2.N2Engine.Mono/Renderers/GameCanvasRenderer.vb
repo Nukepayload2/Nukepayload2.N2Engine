@@ -36,9 +36,12 @@ Public Class GameCanvasRenderer
     Private Sub Game_Drawing(sender As Game, args As MonogameDrawEventArgs) Handles Game.Drawing
         OnDraw(sender, args)
     End Sub
-
-    Protected Overrides Sub DrawOnParent(device As GraphicsDevice, dc As DrawingContext)
+    ''' <summary>
+    ''' 在 backbuffer 绘制
+    ''' </summary>
+    Protected Overrides Sub CommitRenderTargetToParent(device As GraphicsDevice, dc As DrawingContext)
         device.SetRenderTarget(Nothing)
+        device.Clear(Color.White)
         dc.Begin()
         Dim loc = View.Location.Value
         dc.DrawTexture(RenderTarget, New Rectangle(loc.X, loc.Y, RenderTarget.Width, RenderTarget.Height), Color.White)
