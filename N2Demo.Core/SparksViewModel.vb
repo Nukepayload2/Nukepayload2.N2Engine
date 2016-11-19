@@ -16,5 +16,6 @@ Public Class SparksViewModel
         .Color = New Color(ColorValues.Green),
         .Size = New Vector2(233, 100)
     }
+    Public Property ShakingViewer As New ShakingViewer
     Public ReadOnly Property CharacterSheet As New CharacterSheet
 End Class

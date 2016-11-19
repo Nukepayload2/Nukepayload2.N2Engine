@@ -129,6 +129,7 @@
     <Compile Include="Save\SamplePartialData.vb" />
     <Compile Include="Save\SampleSaveFileManager.vb" />
     <Compile Include="Save\SampleSavePollution.vb" />
+    <Compile Include="ShakingViewer.vb" />
     <Compile Include="SparksView.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="SparksViewModel.vb" />

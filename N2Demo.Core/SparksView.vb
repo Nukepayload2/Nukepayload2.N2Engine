@@ -1,46 +1,56 @@
 ﻿Imports System.Numerics
+Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Resources
+Imports Nukepayload2.N2Engine.UI
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports Nukepayload2.N2Engine.UI.Views
 
 Public Class SparksView
     Inherits GameCanvas
 
-    Dim redBlock As New EllipseElement
-    Dim greenEllipse As New RectangleElement
+    Dim redEllipse As New EllipseElement
+    Dim greenRect As New RectangleElement
     Dim sparks As New SparkParticleSystemView
     Dim charaSheet As New SpriteElement
     Dim sparksData As New SparksViewModel
+    Dim scrollViewer As New GameVisualizingScrollViewer
     Dim characterSheetSprite As BitmapResource
 
     Sub New()
         ApplyRoute()
 
-        Location.Bind(New Vector2)
-
-        sparks.Data.Bind(Function() sparksData.SparkSys)
-        Children.Add(sparks)
-
-        redBlock.Fill.Bind(Function() sparksData.RedCircle.Color)
-        redBlock.Location.Bind(Function() sparksData.RedCircle.Position)
-        redBlock.Size.Bind(Function() sparksData.RedCircle.Size)
-        Children.Add(redBlock)
-
-        greenEllipse.Stroke.Bind(Function() sparksData.GreenRectangle.Color)
-        greenEllipse.Location.Bind(Function() sparksData.GreenRectangle.Position)
-        greenEllipse.Size.Bind(Function() sparksData.GreenRectangle.Size)
-        Children.Add(greenEllipse)
-
         characterSheetSprite = BitmapResource.Create(sparksData.CharacterSheet.Source)
-        charaSheet.Sprite.Bind(Function() characterSheetSprite)
-        charaSheet.Size.Bind(Function() sparksData.CharacterSheet.Size)
-        charaSheet.Location.Bind(Function() sparksData.CharacterSheet.Location)
-        Children.Add(charaSheet)
+
+        Bind(Function(m) m.Location, New Vector2).
+        Bind(Function(m) m.ZIndex, 0).
+        AddChild(
+            scrollViewer.
+                OnUpdate(sparksData.ShakingViewer.UpdateCommand).
+                Bind(Function(m) m.Location, sparksData.ShakingViewer.Offset).
+                Bind(Function(m) m.ZIndex, 0).
+                AddChild(sparks.
+                    Bind(Function(s) s.Data, Function() sparksData.SparkSys)).
+                AddChild(redEllipse.
+                    Bind(Function(r) r.Fill, Function() sparksData.RedCircle.Color).
+                    Bind(Function(r) r.Location, Function() sparksData.RedCircle.Position).
+                    Bind(Function(r) r.Size, Function() sparksData.RedCircle.Size)).
+                AddChild(greenRect.
+                    Bind(Function(r) r.Stroke, Function() sparksData.GreenRectangle.Color).
+                    Bind(Function(r) r.Location, Function() sparksData.GreenRectangle.Position).
+                    Bind(Function(r) r.Size, Function() sparksData.GreenRectangle.Size)).
+                AddChild(charaSheet.
+                    Bind(Function(r) r.Sprite, Function() characterSheetSprite).
+                    Bind(Function(r) r.Location, Function() sparksData.CharacterSheet.Size).
+                    Bind(Function(r) r.Size, Function() sparksData.CharacterSheet.Location)
+            )
+        )
+
     End Sub
     ''' <summary>
     ''' 平台特定实现点击此视图时，调用此方法。通用的输入事件完成后，此方法将过时。
     ''' </summary>
     Public Sub OnTapped(pos As Vector2)
         sparksData.SparkSys.Location = pos
+        sparksData.ShakingViewer.Shake(50.0F, 0)
     End Sub
 End Class

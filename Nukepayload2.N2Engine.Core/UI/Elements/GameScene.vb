@@ -36,7 +36,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 根据此场景的数据，创建一个虚拟化滚动面板用于呈现。默认情况下会创建一个与场景没有关联的面板。
         ''' </summary>
-        Public Property Template As Func(Of GameScene, VisualizingScrollViewer) = Function(s) New VisualizingScrollViewer
+        Public Property Template As Func(Of GameScene, GameVisualizingScrollViewer) = Function(s) New GameVisualizingScrollViewer
     End Class
 
 End Namespace

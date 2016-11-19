@@ -114,17 +114,15 @@ Public Class MonoGameHandler
         MyBase.Update(timing)
     End Sub
 
-    Public Property Background As Color = Color.White
     ''' <summary>
     ''' 在游戏应该绘制的时候调用
     ''' </summary>
     ''' <param name="timing">提供时间的快照</param>
     Protected Overrides Sub Draw(timing As GameTime)
-        GraphicsDevice.Clear(Background)
+        MyBase.Draw(timing)
 
         ' TODO: 在此添加绘制代码
         RaiseEvent Drawing(Me, New MonogameDrawEventArgs(drawingContext, timing))
 
-        MyBase.Draw(timing)
     End Sub
 End Class

@@ -21,16 +21,35 @@ Public MustInherit Class GameCanvasContainerRenderer
     Private Sub CreateRenderTarget(sender As Game)
         Dim device = GraphicsDeviceManagerExtension.SharedDevice
         Dim size = device.PresentationParameters
+        Debug.WriteLine($"为 {Me.GetType.Name} 分配缓存纹理。")
         RenderTarget = New RenderTarget2D(sender.GraphicsDevice, size.BackBufferWidth, size.BackBufferHeight)
     End Sub
 
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
         Dim device = GraphicsDeviceManagerExtension.SharedDevice
+        Debug.WriteLine($"设置绘制目标为：{Me.GetType.Name} 的缓存纹理。")
+        device.SetRenderTarget(RenderTarget)
+        Debug.WriteLine("清屏: 透明色。" + Me.GetType.Name)
+        device.Clear(Color.Transparent)
+        Debug.WriteLine("开始绘制元素。" + Me.GetType.Name)
         Dim dc = args.DrawingContext
-        For Each child In DirectCast(View, GameVisualContainer).Children
-            device.SetRenderTarget(RenderTarget)
-            device.Clear(Color.Transparent)
-            CType(child.Renderer, MonoGameRenderer).OnDraw(sender, args)
+        dc.Begin()
+        Dim children = DirectCast(View, GameVisualContainer).Children
+        Dim containers As New List(Of GameVisualContainer)
+        For Each child In children
+            Dim cont = TryCast(child, GameVisualContainer)
+            If cont IsNot Nothing Then
+                containers.Add(child)
+            Else
+                Debug.WriteLine($"绘制元素: {Me.GetType.Name} ---> {child.GetType.Name}")
+                CType(child.Renderer, MonoGameRenderer).OnDraw(sender, args)
+            End If
+        Next
+        dc.End()
+        Debug.WriteLine("结束绘制元素。" + Me.GetType.Name)
+        For Each cont In containers
+            Debug.WriteLine($"处理元素容器: {Me.GetType.Name} ---> {cont.GetType.Name}")
+            CType(cont.Renderer, MonoGameRenderer).OnDraw(sender, args)
         Next
         ApplyEffect(sender, args)
         CommitRenderTargetToParent(device, dc)
@@ -38,13 +57,17 @@ Public MustInherit Class GameCanvasContainerRenderer
 
     Protected Overridable Sub CommitRenderTargetToParent(device As GraphicsDevice, dc As RaisingStudio.Xna.Graphics.DrawingContext)
         Dim parent = View.Parent
-        If parent IsNot Nothing Then
-            Dim parentRT = DirectCast(parent.Renderer, GameCanvasContainerRenderer).RenderTarget
-            device.SetRenderTarget(parentRT)
-            Dim loc = View.Location.Value
-            Dim drawRect As New Rectangle(loc.X, loc.Y, parentRT.Width, parentRT.Height)
-            dc.DrawTexture(RenderTarget, drawRect, Color.White)
-        End If
+        Dim parentRenderer = parent.Renderer
+        Dim parentRT = DirectCast(parentRenderer, GameCanvasContainerRenderer).RenderTarget
+        Debug.WriteLine($"设置绘制目标为：{parentRenderer.GetType.Name} 的缓存纹理。")
+        device.SetRenderTarget(parentRT)
+        device.Clear(Color.White)
+        dc.Begin()
+        Dim loc = View.Location.Value
+        Dim drawRect As New Rectangle(loc.X, loc.Y, parentRT.Width, parentRT.Height)
+        Debug.WriteLine($"提交绘制结果: {parentRenderer.GetType.Name} <--- {Me.GetType.Name}")
+        dc.DrawTexture(RenderTarget, drawRect, Color.White)
+        dc.End()
     End Sub
 
     ''' <summary>

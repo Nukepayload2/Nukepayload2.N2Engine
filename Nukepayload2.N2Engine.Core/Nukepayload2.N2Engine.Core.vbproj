@@ -177,6 +177,7 @@
     <Compile Include="UI\TimeAction.vb" />
     <Compile Include="Utilities\AsyncHelper.vb" />
     <Compile Include="Math\FastFactorial.vb" />
+    <Compile Include="Utilities\GameVisualInitializers.vb" />
     <Compile Include="Utilities\TreeHelper.vb" />
     <Compile Include="Utilities\Vector2Extensions.vb" />
     <Compile Include="Behaviors\BehaviorBase.vb" />

@@ -2,7 +2,7 @@
 
 Namespace UI.Elements
     Public Class ControlLayer
-        Inherits GameLayer(Of GameControl)
+        Inherits GameLayer
 
     End Class
 End Namespace
