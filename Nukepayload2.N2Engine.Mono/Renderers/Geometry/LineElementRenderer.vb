@@ -9,8 +9,8 @@ Friend Class LineElementRenderer
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
         Dim view = DirectCast(Me.View, LineElement)
         Dim loc = view.Location.Value.AsXnaVector2
-        args.DrawingContext.DrawLine(loc + View.StartPoint.Value.AsXnaVector2,
-                                     loc + View.EndPoint.Value.AsXnaVector2,
-                                     View.Stroke.Value.AsXnaColor)
+        args.DrawingContext.DrawLine(loc + view.StartPoint.Value.AsXnaVector2,
+                                     loc + view.EndPoint.Value.AsXnaVector2,
+                                     view.Stroke.Value.AsXnaColor)
     End Sub
 End Class

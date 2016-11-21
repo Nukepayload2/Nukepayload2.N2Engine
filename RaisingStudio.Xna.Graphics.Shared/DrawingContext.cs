@@ -20,6 +20,16 @@ namespace RaisingStudio.Xna.Graphics
         private Matrix transformMatrix;
 
         #region Constructor
+        public DrawingContext(SpriteBatch spriteBatch)
+            : base(spriteBatch.GraphicsDevice)
+        {
+            SpriteBatch = spriteBatch;
+        }
+        public DrawingContext(SpriteBatch spriteBatch, RenderTarget2D renderTarget)
+            : base(renderTarget)
+        {
+            SpriteBatch = spriteBatch;
+        }
         public DrawingContext(GraphicsDevice graphicsDevice)
             : base(graphicsDevice)
         {
@@ -41,7 +51,7 @@ namespace RaisingStudio.Xna.Graphics
 
         #region Commands
 
-		private ConcurrentQueue<ContextCommand> _commands = new ConcurrentQueue<ContextCommand>();
+        private ConcurrentQueue<ContextCommand> _commands = new ConcurrentQueue<ContextCommand>();
 
         #endregion
 
@@ -297,7 +307,7 @@ namespace RaisingStudio.Xna.Graphics
                         }
                     case CommandType.DrawColors:
                         {
-                            if(command.Addtions[0] is VertexPositionColor[])
+                            if (command.Addtions[0] is VertexPositionColor[])
                             {
                                 RenderColors(this.SpriteBatch, (VertexPositionColor[])command.Addtions[0], command.Vectors[0]);
                             }
@@ -588,7 +598,7 @@ namespace RaisingStudio.Xna.Graphics
                             latestPrimitives = false;
                             break;
                         }
-                    #endregion
+                        #endregion
                 }
             }
             if (latestSprite)
@@ -597,43 +607,43 @@ namespace RaisingStudio.Xna.Graphics
             }
         }
 
-	
-        public virtual Texture2D CreateTexture ()
-		{
-			PresentationParameters pp = GraphicsDevice.PresentationParameters;
-        	int bufferWidth = pp.BackBufferWidth;
-        	int bufferHeight = pp.BackBufferHeight;
-        	Texture2D texture = new Texture2D(GraphicsDevice, bufferWidth, bufferHeight);
-			return texture;
-		}
-		
+
+        public virtual Texture2D CreateTexture()
+        {
+            PresentationParameters pp = GraphicsDevice.PresentationParameters;
+            int bufferWidth = pp.BackBufferWidth;
+            int bufferHeight = pp.BackBufferHeight;
+            Texture2D texture = new Texture2D(GraphicsDevice, bufferWidth, bufferHeight);
+            return texture;
+        }
+
         protected virtual void RenderPoints(SpriteBatch spriteBatch, Vector2[] points, Vector2 location, Color color)
         {
-            Texture2D texture = CreateTexture();	
-			Color[] data = new Color[texture.Width * texture.Height];
-			TextureContext textureContext = new TextureContext(data, texture.Width, texture.Height);
-			textureContext.DrawPoints(points, location, color);
-			texture.SetData<Color>(textureContext.Data);
+            Texture2D texture = CreateTexture();
+            Color[] data = new Color[texture.Width * texture.Height];
+            TextureContext textureContext = new TextureContext(data, texture.Width, texture.Height);
+            textureContext.DrawPoints(points, location, color);
+            texture.SetData<Color>(textureContext.Data);
             spriteBatch.Draw(texture, Vector2.Zero, Color.White);
         }
 
         protected virtual void RenderColors(SpriteBatch spriteBatch, VertexPositionColor[] colors, Vector2 location)
         {
-            Texture2D texture = CreateTexture();			
-			Color[] data = new Color[texture.Width * texture.Height];
-			TextureContext textureContext = new TextureContext(data, texture.Width, texture.Height);
-			textureContext.DrawColors(colors, location);
-			texture.SetData<Color>(textureContext.Data);
+            Texture2D texture = CreateTexture();
+            Color[] data = new Color[texture.Width * texture.Height];
+            TextureContext textureContext = new TextureContext(data, texture.Width, texture.Height);
+            textureContext.DrawColors(colors, location);
+            texture.SetData<Color>(textureContext.Data);
             spriteBatch.Draw(texture, Vector2.Zero, Color.White);
         }
 
         protected virtual void RenderColors(SpriteBatch spriteBatch, Color[] colors, Vector2 size, Vector2 location)
         {
-            Texture2D texture = CreateTexture();			
-			Color[] data = new Color[texture.Width * texture.Height];
-			TextureContext textureContext = new TextureContext(data, texture.Width, texture.Height);
-			textureContext.DrawColors(colors, size, location);
-			texture.SetData<Color>(textureContext.Data);
+            Texture2D texture = CreateTexture();
+            Color[] data = new Color[texture.Width * texture.Height];
+            TextureContext textureContext = new TextureContext(data, texture.Width, texture.Height);
+            textureContext.DrawColors(colors, size, location);
+            texture.SetData<Color>(textureContext.Data);
             spriteBatch.Draw(texture, Vector2.Zero, Color.White);
         }
         #endregion

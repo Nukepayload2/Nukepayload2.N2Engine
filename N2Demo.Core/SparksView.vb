@@ -26,7 +26,7 @@ Public Class SparksView
         AddChild(
             scrollViewer.
                 OnUpdate(sparksData.ShakingViewer.UpdateCommand).
-                Bind(Function(m) m.Location, sparksData.ShakingViewer.Offset).
+                Bind(Function(m) m.Location, Function() sparksData.ShakingViewer.Offset).
                 Bind(Function(m) m.ZIndex, 0).
                 AddChild(sparks.
                     Bind(Function(s) s.Data, Function() sparksData.SparkSys)).
@@ -41,8 +41,7 @@ Public Class SparksView
                 AddChild(charaSheet.
                     Bind(Function(r) r.Sprite, Function() characterSheetSprite).
                     Bind(Function(r) r.Location, Function() sparksData.CharacterSheet.Size).
-                    Bind(Function(r) r.Size, Function() sparksData.CharacterSheet.Location)
-            )
+                    Bind(Function(r) r.Size, Function() sparksData.CharacterSheet.Location))
         )
 
     End Sub

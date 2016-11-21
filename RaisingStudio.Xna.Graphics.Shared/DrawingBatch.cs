@@ -1260,6 +1260,7 @@ namespace RaisingStudio.Xna.Graphics
 
         public virtual void Begin()
         {
+            
         }
 
         public virtual void End()

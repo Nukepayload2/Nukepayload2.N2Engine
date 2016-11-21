@@ -13,9 +13,9 @@ Friend Class TriangleElementRenderer
         Dim v2 = View.Point2.Value.AsXnaVector2 + loc
         Dim v3 = View.Point3.Value.AsXnaVector2 + loc
         With args.DrawingContext
-            Dim fill = View.Fill
+            Dim fill = view.Fill
             If fill.CanRead Then .DrawFilledTriangle(v1, v2, v3, fill.Value.AsXnaColor)
-            Dim stroke = View.Stroke
+            Dim stroke = view.Stroke
             If stroke.CanRead Then .DrawTriangle(v1, v2, v3, stroke.Value.AsXnaColor)
         End With
     End Sub

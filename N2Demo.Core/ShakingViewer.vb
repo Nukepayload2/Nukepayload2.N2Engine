@@ -13,8 +13,8 @@ Public Class ShakingViewer
     End Sub
 
     Public Sub Update()
-        ShakeX = -ShakeX * 0.99F
-        ShakeY = -ShakeY * 0.99F
+        ShakeX = -ShakeX * 0.9F
+        ShakeY = -ShakeY * 0.9F
         Offset = New Vector2(ShakeX, ShakeY)
     End Sub
 

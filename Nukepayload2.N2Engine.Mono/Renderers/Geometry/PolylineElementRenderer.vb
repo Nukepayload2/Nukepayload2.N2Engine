@@ -9,7 +9,7 @@ Friend Class PolylineElementRenderer
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
         Dim view = DirectCast(Me.View, PolylineElement)
         Dim loc = view.Location.Value.AsXnaVector2
-        args.DrawingContext.DrawPolyline(View.Points.Value.Select(Function(p) loc + p.AsXnaVector2).ToArray,
-                                         View.Stroke.Value.AsXnaColor)
+        args.DrawingContext.DrawPolyline(view.Points.Value.Select(Function(p) loc + p.AsXnaVector2).ToArray,
+                                         view.Stroke.Value.AsXnaColor)
     End Sub
 End Class

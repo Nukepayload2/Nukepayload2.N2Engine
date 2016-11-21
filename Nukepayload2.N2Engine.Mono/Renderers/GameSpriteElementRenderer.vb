@@ -30,13 +30,13 @@ Friend Class GameSpriteElementRenderer
         Dim bmp = DirectCast(view.Sprite.Value, PlatformBitmapResource)
         Dim loc = view.Location.Value
         Dim size = view.Size.Value
-        args.DrawingContext.DrawTexture(bmp.Texture, New Rectangle(loc.X, loc.Y, size.x, size.y), Color.White)
+        args.DrawingContext.DrawTexture(bmp.Texture, New Rectangle(loc.X, loc.Y, size.X, size.Y), Color.White)
     End Sub
     Sub DrawColor(sender As Game, args As MonogameDrawEventArgs)
         Dim view = DirectCast(Me.View, SpriteElement)
         Dim loc = view.Location.Value
         Dim size = View.Size.Value
-        args.DrawingContext.DrawFilledRectangle(New Rectangle(loc.X, loc.Y, size.X, size.Y), View.LoadingColor.Value.AsXnaColor)
+        args.DrawingContext.DrawFilledRectangle(New Rectangle(loc.X, loc.Y, size.X, size.Y), view.LoadingColor.Value.AsXnaColor)
     End Sub
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
         drawOperation.Invoke(sender, args)

@@ -11,7 +11,7 @@ Public Class MonoGameHandler
     Inherits Game
 
     Dim graphics As GraphicsDeviceManager
-    Dim drawingContext As DrawingContext
+    Dim spriteBatch As SpriteBatch
 
     Public Event GameLoopStarting As TypedEventHandler(Of Game, Object)
     Public Event CreateResources As TypedEventHandler(Of Game, MonogameCreateResourcesEventArgs)
@@ -83,7 +83,7 @@ Public Class MonoGameHandler
     ''' </summary>
     Protected Overrides Sub LoadContent()
         ' 新建用于绘制纹理的 SpriteBatch
-        drawingContext = New DrawingContext(GraphicsDevice)
+        spriteBatch = New SpriteBatch(GraphicsDevice)
         ' TODO: 使用 Me.Content 装载游戏内容
         RaiseEvent CreateResources(Me, New MonogameCreateResourcesEventArgs(GraphicsDevice))
     End Sub
@@ -122,7 +122,7 @@ Public Class MonoGameHandler
         MyBase.Draw(timing)
 
         ' TODO: 在此添加绘制代码
-        RaiseEvent Drawing(Me, New MonogameDrawEventArgs(drawingContext, timing))
+        RaiseEvent Drawing(Me, New MonogameDrawEventArgs(spriteBatch, timing))
 
     End Sub
 End Class

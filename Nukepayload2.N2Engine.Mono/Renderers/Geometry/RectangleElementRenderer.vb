@@ -11,9 +11,9 @@ Friend Class RectangleElementRenderer
         Dim loc = View.Location.Value
         Dim rect = New Rectangle(loc.X, loc.Y, size.X, size.Y)
         With args.DrawingContext
-            Dim fill = View.Fill
+            Dim fill = view.Fill
             If fill.CanRead Then .DrawFilledRectangle(rect, fill.Value.AsXnaColor)
-            Dim stroke = View.Stroke
+            Dim stroke = view.Stroke
             If stroke.CanRead Then .DrawRectangle(rect, stroke.Value.AsXnaColor)
         End With
     End Sub
