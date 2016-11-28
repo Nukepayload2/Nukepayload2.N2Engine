@@ -14,29 +14,31 @@ Public MustInherit Class UWPRenderer
     ''' <summary>
     ''' 派生类继承时，定义手动引发 CreateResources 事件的行为 
     ''' </summary>
-    Protected Overridable Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
+    Friend Overridable Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
 
     End Sub
     ''' <summary>
     ''' 派生类继承时，定义手动引发 Draw 事件的行为 
     ''' </summary>
-    Protected MustOverride Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
+    Friend MustOverride Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
     ''' <summary>
     ''' 派生类继承时，定义手动引发 GameLoopStarting 事件的行为 
     ''' </summary>
-    Protected Overridable Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object)
+    Friend Overridable Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object)
 
     End Sub
     ''' <summary>
     ''' 派生类继承时，定义手动引发 GameLoopStopped 事件的行为 
     ''' </summary>
-    Protected Overridable Sub OnGameLoopStopped(sender As ICanvasAnimatedControl, args As Object)
+    Friend Overridable Sub OnGameLoopStopped(sender As ICanvasAnimatedControl, args As Object)
 
     End Sub
     ''' <summary>
     ''' 派生类继承时，定义手动引发 Update 事件的行为 
     ''' </summary>
-    Protected MustOverride Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
+    Friend Overridable Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
+        View.UpdateCommand.Execute()
+    End Sub
 
     Public Overrides Sub DisposeResources()
 

@@ -5,7 +5,7 @@ Imports Nukepayload2.N2Engine.UI.Elements
 Imports RaisingStudio.Xna.Graphics
 
 Public Class GameCanvasRenderer
-    Inherits GameCanvasContainerRenderer
+    Inherits GameVisualContainerRenderer
 
     Public WithEvents Game As MonoGameHandler
     Sub New(view As GameCanvas, game As MonoGameHandler)
@@ -15,18 +15,17 @@ Public Class GameCanvasRenderer
     End Sub
 
     Public Overrides Sub DisposeResources()
-
+        DirectCast(View, GameCanvas).Children.Clear()
     End Sub
 
     Private Sub DoCanvasOperation(act As Action(Of MonoGameRenderer))
         For Each vie In View.HierarchyForEach(Function(node) TryCast(node, GameVisualContainer)?.Children)
-            act(CType(vie.Renderer, MonoGameRenderer))
+            act(DirectCast(vie.Renderer, MonoGameRenderer))
         Next
     End Sub
 
     Private Sub Game_GameLoopEnded(sender As Game, args As Object) Handles Game.GameLoopStopped
         DoCanvasOperation(Sub(renderer) renderer.OnGameLoopStopped(sender, args))
-        DirectCast(View, GameCanvas).Children.Clear()
     End Sub
 
     Private Sub Game_CreateResources(sender As Game, args As MonogameCreateResourcesEventArgs) Handles Game.CreateResources

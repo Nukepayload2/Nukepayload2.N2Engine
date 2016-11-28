@@ -7,7 +7,7 @@ Friend Class EllipseElementRenderer
         MyBase.New(view)
     End Sub
 
-    Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
+    Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, EllipseElement)
         Dim loc = view.Location.Value
         Dim hsize = View.Size.Value / 2

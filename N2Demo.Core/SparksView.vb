@@ -23,13 +23,13 @@ Public Class SparksView
 
         Bind(Function(m) m.Location, New Vector2).
         Bind(Function(m) m.ZIndex, 0).
+        AddChild(sparks.
+            Bind(Function(s) s.Data, Function() sparksData.SparkSys)).
         AddChild(
             scrollViewer.
                 OnUpdate(sparksData.ShakingViewer.UpdateCommand).
                 Bind(Function(m) m.Location, Function() sparksData.ShakingViewer.Offset).
                 Bind(Function(m) m.ZIndex, 0).
-                AddChild(sparks.
-                    Bind(Function(s) s.Data, Function() sparksData.SparkSys)).
                 AddChild(redEllipse.
                     Bind(Function(r) r.Fill, Function() sparksData.RedCircle.Color).
                     Bind(Function(r) r.Location, Function() sparksData.RedCircle.Position).

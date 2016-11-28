@@ -4,9 +4,9 @@ Imports Nukepayload2.N2Engine.Resources
 Friend Class PlatformBitmapResource
     Public Property Texture As CanvasBitmap
 
-    Public Async Function LoadAsync() As Task
+    Public Async Function LoadAsync(device As ICanvasResourceCreator) As Task
         Dim resmgr = ResourceLoader.GetForCurrentView()
-        Texture = Await CanvasBitmap.LoadAsync(CanvasDevice.GetSharedDevice, resmgr.GetResourceEmbeddedStream(UriPath).AsRandomAccessStream)
+        Texture = Await CanvasBitmap.LoadAsync(device, resmgr.GetResourceEmbeddedStream(UriPath).AsRandomAccessStream)
     End Function
 
     Private Sub ReleaseBitmap()

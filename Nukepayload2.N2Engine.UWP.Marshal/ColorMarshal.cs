@@ -7,7 +7,7 @@
         /// </summary>
         public unsafe static Windows.UI.Color AsWindowsColor(this Foundation.Color color)
         {
-            return *(Windows.UI.Color*)(&color);
+            return *(Windows.UI.Color*)(&color); // Windows.UI.Color.FromArgb(color.A, color.R, color.G, color.B);
         }
 
     }

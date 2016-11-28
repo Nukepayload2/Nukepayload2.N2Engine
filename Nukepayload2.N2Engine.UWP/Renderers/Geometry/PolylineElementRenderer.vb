@@ -7,7 +7,7 @@ Friend Class PolylineElementRenderer
     Sub New(view As PolylineElement)
         MyBase.New(view)
     End Sub
-    Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
+    Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, PolylineElement)
         Dim pb As New CanvasPathBuilder(sender)
         Dim lines = View.Points.Value

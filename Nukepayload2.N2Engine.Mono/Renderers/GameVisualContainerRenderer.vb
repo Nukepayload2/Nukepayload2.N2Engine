@@ -3,7 +3,7 @@ Imports Microsoft.Xna.Framework.Graphics
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports RaisingStudio.Xna.Graphics
 
-Public MustInherit Class GameCanvasContainerRenderer
+Public MustInherit Class GameVisualContainerRenderer
     Inherits MonoGameRenderer
     Sub New(view As GameVisualContainer)
         MyBase.New(view)
@@ -44,7 +44,7 @@ Public MustInherit Class GameCanvasContainerRenderer
                 containers.Add(cont)
             Else
                 'Debug.WriteLine($"绘制元素: {Me.GetType.Name} ---> {child.GetType.Name}")
-                CType(child.Renderer, MonoGameRenderer).OnDraw(sender, args)
+                DirectCast(child.Renderer, MonoGameRenderer).OnDraw(sender, args)
             End If
         Next
         dc.End()
@@ -52,31 +52,30 @@ Public MustInherit Class GameCanvasContainerRenderer
         'Debug.WriteLine("结束绘制元素。" + Me.GetType.Name)
         For Each cont In containers
             'Debug.WriteLine($"处理元素容器: {Me.GetType.Name} ---> {cont.GetType.Name}")
-            CType(cont.Renderer, MonoGameRenderer).OnDraw(sender, args)
+            DirectCast(cont.Renderer, MonoGameRenderer).OnDraw(sender, args)
         Next
-        ApplyEffect(sender, args)
         CommitRenderTargetToParent(device, args.SpriteBatch)
     End Sub
 
     Protected Overridable Sub CommitRenderTargetToParent(device As GraphicsDevice, dc As SpriteBatch)
         Dim parent = View.Parent
         Dim parentRenderer = parent.Renderer
-        Dim parentRT = DirectCast(parentRenderer, GameCanvasContainerRenderer).RenderTarget
+        Dim parentRT = DirectCast(parentRenderer, GameVisualContainerRenderer).RenderTarget
         'Debug.WriteLine($"设置绘制目标为：{parentRenderer.GetType.Name} 的缓存纹理。")
         device.SetRenderTarget(parentRT)
         dc.Begin()
         Dim loc = View.Location.Value
         'Debug.WriteLine($"提交绘制结果: {parentRenderer.GetType.Name} <--- {Me.GetType.Name}")
-        dc.Draw(RenderTarget, New Rectangle(loc.X, loc.Y, parentRT.Width, parentRT.Height), Color.White)
+        dc.Draw(ApplyEffect(RenderTarget), New Rectangle(loc.X, loc.Y, parentRT.Width, parentRT.Height), Color.White)
         dc.End()
     End Sub
 
     ''' <summary>
-    ''' 元素绘制后，向父级 <see cref="RenderTarget"/> 绘制之前调用此过程。通常用于对当前 <see cref="RenderTarget"/> 进行修改，以便附加着色器效果。
+    ''' 元素绘制后，向父级 <see cref="RenderTarget"/> 绘制之前调用此过程。通常用当前 <see cref="RenderTarget"/> 作为着色器效果的输入，返回着色器效果。
     ''' </summary>
-    Protected Overridable Sub ApplyEffect(sender As Game, args As MonogameDrawEventArgs)
-
-    End Sub
+    Protected Overridable Function ApplyEffect(source As RenderTarget2D) As Texture2D
+        Return source
+    End Function
 
     Public Overrides Sub DisposeResources()
         RenderTarget?.Dispose()

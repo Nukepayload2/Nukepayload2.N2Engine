@@ -8,7 +8,7 @@ Friend Class TriangleElementRenderer
         MyBase.New(view)
     End Sub
 
-    Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
+    Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, TriangleElement)
         Dim pb As New CanvasPathBuilder(sender)
         pb.BeginFigure(View.Point1.Value)

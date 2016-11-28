@@ -2,8 +2,8 @@
 Imports Nukepayload2.N2Engine.UI.Elements
 
 <PlatformImpl(GetType(GameVisualizingScrollViewer))>
-Partial Friend Class GameVisualizingScrollViewerRenderer
-    Inherits GameCanvasContainerRenderer
+Friend Class GameVisualizingScrollViewerRenderer
+    Inherits GameVisualContainerRenderer
 
     Sub New(panel As GameVisualizingScrollViewer)
         MyBase.New(panel)

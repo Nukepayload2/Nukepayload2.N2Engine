@@ -8,7 +8,7 @@ Friend Class BezierCurveCustomElementRenderer
         MyBase.New(view)
     End Sub
 
-    Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
+    Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, BezierCurveCustomElement)
         Dim pb As New CanvasPathBuilder(sender)
         pb.BeginFigure(view.StartPoint.Value)
