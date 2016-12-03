@@ -56,6 +56,9 @@ Public MustInherit Class GameVisualContainerRenderer
     ''' 元素绘制后，向父级 <see cref="RenderTarget"/> 绘制之前调用此过程。通常用当前 <see cref="RenderTarget"/> 作为着色器效果的输入，返回着色器效果。
     ''' </summary>
     Protected Overridable Function ApplyEffect(source As CanvasRenderTarget) As ICanvasImage
+        If View.Effect Is Nothing Then
+            Return source
+        End If
         Return source
     End Function
 

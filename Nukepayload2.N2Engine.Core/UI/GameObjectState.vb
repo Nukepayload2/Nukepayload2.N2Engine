@@ -2,6 +2,9 @@
 Imports Nukepayload2.N2Engine.UI.Elements
 
 Namespace UI
+    ''' <summary>
+    ''' 表示游戏对象的一个状态
+    ''' </summary>
     Public Class GameObjectState
         Inherits GameObject
         ''' <summary>
@@ -9,13 +12,13 @@ Namespace UI
         ''' </summary>
         Public Property Parent As GameObjectStateManager
         ''' <summary>
-        ''' 与本状态关联的存储在相应 <see cref="GameVisual"/> 的触发器。任意一个触发器满足条件，都会引发动作列表。
+        ''' 与本状态关联的存储在相应 <see cref="GameVisual"/> 的触发器。
         ''' </summary>
-        Public Property Triggers As New List(Of IGameTrigger)
+        Public Property Triggers As IGameTrigger
         ''' <summary>
-        ''' 当任意一个 Trigger 被满足时，执行这些动作。
+        ''' 当任意一个 Trigger 被满足时，执行动作。
         ''' </summary>
-        Public Property Actions As New List(Of ITimeAction)
+        Public Property Actions As IGameAction
 
     End Class
 End Namespace

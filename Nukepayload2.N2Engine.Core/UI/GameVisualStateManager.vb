@@ -3,6 +3,6 @@
 Namespace UI
     Public Class GameObjectStateManager
         Public ReadOnly Property States As New List(Of GameObjectState)
-        Public Property TargetVisual As GameVisual
+        Public ReadOnly Property Transitions As New List(Of GameObjectStateTransition)
     End Class
 End Namespace

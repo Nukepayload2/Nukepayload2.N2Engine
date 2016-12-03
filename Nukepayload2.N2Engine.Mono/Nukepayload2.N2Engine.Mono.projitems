@@ -10,6 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Device\GraphicsDeviceManagerExtension.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\GaussianBlurEffectImpl.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\IMonoGameEffect.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\Conversion.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonoAPIContract.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameCreateResourcesEventArgs.vb" />

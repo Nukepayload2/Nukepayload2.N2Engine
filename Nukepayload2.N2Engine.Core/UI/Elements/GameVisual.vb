@@ -2,6 +2,7 @@
 Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Renderers
 Imports Nukepayload2.N2Engine.Triggers
+Imports Nukepayload2.N2Engine.UI.Effects
 
 Namespace UI.Elements
     ''' <summary>
@@ -9,6 +10,8 @@ Namespace UI.Elements
     ''' </summary>
     Public MustInherit Class GameVisual
         Inherits GameObject
+        Implements IGameEffectSource
+
         ''' <summary>
         ''' 父级的容器（如果存在）
         ''' </summary>
@@ -19,7 +22,7 @@ Namespace UI.Elements
         ''' </summary>
         Public Property Renderer As RendererBase
         ''' <summary>
-        ''' 此元素与背景混合时，应该怎样进行蒙版
+        ''' 元素与背景混合时的行为
         ''' </summary>
         Public Property CompositeMode As GameCompositeModes
         ''' <summary>
@@ -121,5 +124,8 @@ Namespace UI.Elements
         Protected Overridable Sub CreateRenderer()
             Renderer = RendererBase.CreateVisualRenderer(Me)
         End Sub
+
+        Public MustOverride Function GetChildEffectSources() As IEnumerable(Of IGameEffectSource) Implements IGameEffectSource.GetChildEffectSources
+
     End Class
 End Namespace

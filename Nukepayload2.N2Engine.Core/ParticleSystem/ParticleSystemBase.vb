@@ -27,7 +27,7 @@ Namespace ParticleSystem
         ''' </summary>
         Public Property Location As Vector2
         ''' <summary>
-        ''' 注册一个回调，处理与它对应的 <see cref="GameEffect"/> 从 <see cref="GameCanvas"/>移除这个过程。 
+        ''' 注册一个回调，处理与它对应的 <see cref="GameElement"/> 从 <see cref="GameCanvas"/>移除这个过程。 
         ''' </summary>
         Public ReadOnly Property RemoveFromGameCanvasCallback As New PropertyBinder(Of Action)
         ''' <summary>

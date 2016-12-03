@@ -1,5 +1,4 @@
 ﻿Imports System.Numerics
-Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Resources
 Imports Nukepayload2.N2Engine.UI
 Imports Nukepayload2.N2Engine.UI.Elements

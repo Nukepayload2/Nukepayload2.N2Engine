@@ -103,6 +103,9 @@
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
     <Compile Include="Math\Combination.vb" />
     <Compile Include="Triggers\TimerTrigger.vb" />
+    <Compile Include="UI\Effects\GaussianBlurEffect.vb" />
+    <Compile Include="UI\Effects\IGameEffectSource.vb" />
+    <Compile Include="UI\GameObjectStateTransition.vb" />
     <Compile Include="UI\Text\FontStretch.vb" />
     <Compile Include="UI\Text\FontStyle.vb" />
     <Compile Include="UI\Text\FontWeight.vb" />
@@ -156,7 +159,7 @@
     <Compile Include="UI\Elements\EntityLayer.vb" />
     <Compile Include="UI\Controls\GameControl.vb" />
     <Compile Include="UI\Elements\PanelLayer.vb" />
-    <Compile Include="UI\ITimeAction.vb" />
+    <Compile Include="UI\IGameAction.vb" />
     <Compile Include="UI\Matrix3x2Transform.vb" />
     <Compile Include="UI\PlaneTransform.vb" />
     <Compile Include="UI\Elements\SpriteElement.vb" />
@@ -184,7 +187,7 @@
     <Compile Include="Behaviors\ApplyForceBehavior.vb" />
     <Compile Include="Behaviors\ShakeBehavior.vb" />
     <Compile Include="UI\Elements\GameCanvas.vb" />
-    <Compile Include="UI\GameEffect.vb" />
+    <Compile Include="UI\Effects\GameEffect.vb" />
     <Compile Include="UI\Elements\GameElement.vb" />
     <Compile Include="UI\GameObject.vb" />
     <Compile Include="UI\Elements\GameEntity.vb" />

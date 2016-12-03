@@ -1,8 +1,9 @@
 ﻿Imports Nukepayload2.N2Engine.Animations
+Imports Nukepayload2.N2Engine.UI.Effects
 
 Namespace UI.Elements
     ''' <summary>
-    ''' 场景 - 层 - 元素 游戏对象树模型下的根节点。
+    ''' 舞台 - 场景 - 层 - 元素 游戏对象树模型下的场景。
     ''' </summary>
     Public Class GameScene
         Inherits GameVisual
@@ -26,13 +27,18 @@ Namespace UI.Elements
                 Throw New ArgumentNullException(NameOf(camera))
             End If
             If String.IsNullOrEmpty(camera.Name) Then
-                Throw New ArgumentNullException("Camera.Name")
+                Throw New ArgumentException("camera.Name 不能为空")
             End If
             If Cameras.ContainsKey(camera.Name) Then
                 Throw New InvalidOperationException("试图添加一个重名的摄像机")
             End If
             Cameras.Add(camera.Name, camera)
         End Sub
+
+        Public Overrides Function GetChildEffectSources() As IEnumerable(Of IGameEffectSource)
+            Return Children
+        End Function
+
         ''' <summary>
         ''' 根据此场景的数据，创建一个虚拟化滚动面板用于呈现。默认情况下会创建一个与场景没有关联的面板。
         ''' </summary>

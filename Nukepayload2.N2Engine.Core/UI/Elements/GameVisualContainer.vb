@@ -1,5 +1,6 @@
 ﻿Imports System.Collections.Specialized
 Imports Nukepayload2.Collections.Concurrent
+Imports Nukepayload2.N2Engine.UI.Effects
 
 Namespace UI.Elements
     Public Class GameVisualContainer
@@ -30,5 +31,9 @@ Namespace UI.Elements
         Public Sub UnregisterOnChildrenChanged(collectionChanged As NotifyCollectionChangedEventHandler)
             RemoveHandler _Children.CollectionChanged, collectionChanged
         End Sub
+
+        Public Overrides Function GetChildEffectSources() As IEnumerable(Of IGameEffectSource)
+            Return Children
+        End Function
     End Class
 End Namespace

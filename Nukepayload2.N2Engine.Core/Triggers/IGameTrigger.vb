@@ -2,7 +2,7 @@
 
 Namespace Triggers
     ''' <summary>
-    ''' 对全部可见物体通用的触发器
+    ''' 对全部游戏对象通用的触发器
     ''' </summary>
     Public Interface IGameTrigger
         Sub Attach(visual As GameVisual)
