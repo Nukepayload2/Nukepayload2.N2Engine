@@ -101,11 +101,14 @@
     <Compile Include="Animations\TransitionAnimation.vb" />
     <Compile Include="Behaviors\IGameBehavior.vb" />
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
+    <Compile Include="Input\TappedEventArgs.vb" />
     <Compile Include="Math\Combination.vb" />
     <Compile Include="Triggers\TimerTrigger.vb" />
     <Compile Include="UI\Effects\GaussianBlurEffect.vb" />
     <Compile Include="UI\Effects\IGameEffectSource.vb" />
     <Compile Include="UI\GameObjectStateTransition.vb" />
+    <Compile Include="Input\GameKeyboardEventArgs.vb" />
+    <Compile Include="Input\Key.vb" />
     <Compile Include="UI\Text\FontStretch.vb" />
     <Compile Include="UI\Text\FontStyle.vb" />
     <Compile Include="UI\Text\FontWeight.vb" />
