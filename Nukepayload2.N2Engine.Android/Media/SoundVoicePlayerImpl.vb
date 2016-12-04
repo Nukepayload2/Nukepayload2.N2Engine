@@ -1,4 +1,5 @@
 ﻿Imports Nukepayload2.N2Engine.Media
+Imports Nukepayload2.N2Engine.Tasks
 
 Friend Class SoundVoicePlayerImpl
 
@@ -24,7 +25,7 @@ Friend Class SoundVoicePlayerImpl
     End Property
 
     Private Sub Prepare(musicPlayer As IMusicPlayer)
-
+        Task.WhenAll(_soundPlayer.LoadAsync(), _voicePlayer.LoadAsync()).Track
     End Sub
 
     Public Async Function PlaySoundAsync(soundUri As Uri) As Task Implements ISoundVoicePlayer.PlaySoundAsync
