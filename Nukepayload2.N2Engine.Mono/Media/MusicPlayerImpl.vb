@@ -1,6 +1,10 @@
 ﻿Imports Nukepayload2.N2Engine.Media
 
-Friend Class MusicPlayer
+Friend Class MusicPlayerImpl
+
+    Public Function LoadAsync() As Task Implements IMusicPlayer.LoadAsync
+        Throw New NotImplementedException()
+    End Function
 
     Public ReadOnly Property PlayingIndex As Integer Implements IMusicPlayer.PlayingIndex
         Get
@@ -33,7 +37,7 @@ Friend Class MusicPlayer
         Throw New NotImplementedException()
     End Sub
 
-    Public Sub StopMusic() Implements IMusicPlayer.StopMusic
+    Public Sub [Stop]() Implements IMusicPlayer.Stop
         Throw New NotImplementedException()
     End Sub
 

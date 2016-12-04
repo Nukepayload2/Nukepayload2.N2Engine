@@ -137,10 +137,10 @@
     <Compile Include="Foundation\Cache.vb" />
     <Compile Include="Foundation\CacheOverflowException.vb" />
     <Compile Include="Media\MusicPlayback.vb" />
-    <Compile Include="Media\MusicPlayer.vb" />
+    <Compile Include="Media\MusicPlayerImpl.vb" />
     <Compile Include="Media\SoundMixListFullOperation.vb" />
     <Compile Include="Media\SoundPlayback.vb" />
-    <Compile Include="Media\SoundPlayer.vb" />
+    <Compile Include="Media\SoundVoicePlayerImpl.vb" />
     <Compile Include="Renderers\GameVisualContainerRenderer.vb" />
     <Compile Include="Renderers\GameCanvasRenderer.vb" />
     <Compile Include="Renderers\GameElementRenderer.vb" />
@@ -205,9 +205,6 @@
       <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
       <Name>Nukepayload2.N2Engine</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Media\Nukepayload2.N2Engine.Media.vbproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Storage\" />

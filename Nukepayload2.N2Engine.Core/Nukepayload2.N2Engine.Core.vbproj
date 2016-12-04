@@ -103,6 +103,7 @@
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
     <Compile Include="Input\TappedEventArgs.vb" />
     <Compile Include="Math\Combination.vb" />
+    <Compile Include="Media\MediaPlayerFactory.vb" />
     <Compile Include="Triggers\TimerTrigger.vb" />
     <Compile Include="UI\Effects\GaussianBlurEffect.vb" />
     <Compile Include="UI\Effects\IGameEffectSource.vb" />
@@ -140,9 +141,6 @@
     <Compile Include="Media\IMusicPlayer.vb" />
     <Compile Include="Media\ISoundVoicePlayer.vb" />
     <Compile Include="Media\MediaPlayerExtensions.vb" />
-    <Compile Include="Media\MusicPlayer.vb" />
-    <Compile Include="Media\SoundPlayer.vb" />
-    <Compile Include="Media\SoundVoicePlayer.vb" />
     <Compile Include="ParticleSystem\FixedCapacityParticleSystem.vb" />
     <Compile Include="ParticleSystem\ImageParticle.vb" />
     <Compile Include="ParticleSystem\IParticle.vb" />

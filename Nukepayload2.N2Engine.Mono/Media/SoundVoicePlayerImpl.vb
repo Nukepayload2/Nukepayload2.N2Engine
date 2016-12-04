@@ -1,6 +1,6 @@
 ﻿Imports Nukepayload2.N2Engine.Media
 
-Friend Class SoundPlayer
+Friend Class SoundVoicePlayerImpl
 
     Public Property SoundVolume As Double Implements ISoundVoicePlayer.SoundVolume
         Get

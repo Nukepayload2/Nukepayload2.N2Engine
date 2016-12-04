@@ -3,11 +3,10 @@
         <Extension>
         Public Async Function PlayNextAsync(player As IMusicPlayer) As Task
             If ((player.Sources?.Any()).GetValueOrDefault()) Then
-                Dim ubound = player.Sources.Count - 1
-                If (player.PlayingIndex < ubound) Then
+                If (player.PlayingIndex < player.Sources.Count - 1) Then
                     Await player.SetPlayingIndexAsync(player.PlayingIndex + 1)
                 Else
-                    Await player.SetPlayingIndexAsync(ubound)
+                    Await player.SetPlayingIndexAsync(0)
                 End If
             End If
         End Function

@@ -10,8 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Effects\GaussianBlurEffectImpl.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayer.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Media\SoundPlayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayerImpl.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\SoundVoicePlayerImpl.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameVisualContainerRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameElementRenderer.vb" />

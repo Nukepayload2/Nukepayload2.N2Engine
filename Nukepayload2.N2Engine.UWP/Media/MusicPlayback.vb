@@ -1,7 +1,7 @@
 ﻿Imports Windows.Media.Audio
 Imports Windows.Media.Render
 Imports Windows.Storage
-Imports Windows.Storage.Pickers
+
 Namespace Media
     ''' <summary>
     ''' 使用 <see cref="AudioGraph"/> 回放音乐。支持 wma,wav,mp3,m4a 等格式。
@@ -116,24 +116,9 @@ Namespace Media
             RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(propName))
         End Sub
         ''' <summary>
-        ''' 选取受支持的音乐文件
-        ''' </summary>
-        Public Async Function PickMusicFileAsync() As Task(Of StorageFile)
-            With New FileOpenPicker
-                .SuggestedStartLocation = PickerLocationId.MusicLibrary
-                .FileTypeFilter.Add(".mp3")
-                .FileTypeFilter.Add(".wav")
-                .FileTypeFilter.Add(".wma")
-                .FileTypeFilter.Add(".m4a")
-                .CommitButtonText = "打开音乐"
-                .ViewMode = PickerViewMode.Thumbnail
-                Return Await .PickSingleFileAsync()
-            End With
-        End Function
-        ''' <summary>
         ''' 加载某个音频文件
         ''' </summary>
-        Public Async Function LoadFile(file As StorageFile) As Task
+        Public Async Function LoadFileAsync(file As StorageFile) As Task
             ' 没选文件
             If file Is Nothing Then
                 Return
