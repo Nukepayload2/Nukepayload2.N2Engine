@@ -9,6 +9,15 @@
     <Import_RootNamespace>Nukepayload2.N2Engine.WinRT</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\Cache.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\CacheOverflowException.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\AudioState.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\AudioStateCacheFactory.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayback.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayerImpl.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\SoundMixListFullOperation.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\SoundPlayback.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\SoundVoicePlayerImpl.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\SaveFolder.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\SaveManagerImpl.vb" />
   </ItemGroup>

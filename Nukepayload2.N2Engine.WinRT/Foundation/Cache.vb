@@ -1,7 +1,7 @@
 ﻿Option Strict On
 
 ''' <summary>
-''' 表示缓存
+''' 表示缓存或者是池
 ''' </summary>
 Public MustInherit Class Cache(Of T)
 

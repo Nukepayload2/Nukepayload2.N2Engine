@@ -77,6 +77,8 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Media\MusicPlayerImpl.vb" />
+    <Compile Include="Media\SoundVoicePlayerImpl.vb" />
     <Compile Include="MonoAPIContract.vb" />
     <Compile Include="SaveManagerImpl.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

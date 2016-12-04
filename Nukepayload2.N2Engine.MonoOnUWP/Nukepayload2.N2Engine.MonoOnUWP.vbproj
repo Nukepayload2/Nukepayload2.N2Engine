@@ -25,7 +25,7 @@
     <OutputPath>bin\Debug</OutputPath>
     <DocumentationFile>Nukepayload2.N2Engine.MonoOnUWP.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <DefineConstants>NETFX_CORE,WINDOWS_UWP</DefineConstants>
+    <DefineConstants>NETFX_CORE,WINDOWS_UWP,MONO</DefineConstants>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">

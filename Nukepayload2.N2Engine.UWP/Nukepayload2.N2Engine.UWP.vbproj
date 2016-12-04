@@ -132,15 +132,6 @@
   <ItemGroup>
     <Compile Include="Effects\GaussianBlurEffectImpl.vb" />
     <Compile Include="Effects\IWin2DEffect.vb" />
-    <Compile Include="Media\AudioState.vb" />
-    <Compile Include="Media\AudioStateCacheFactory.vb" />
-    <Compile Include="Foundation\Cache.vb" />
-    <Compile Include="Foundation\CacheOverflowException.vb" />
-    <Compile Include="Media\MusicPlayback.vb" />
-    <Compile Include="Media\MusicPlayerImpl.vb" />
-    <Compile Include="Media\SoundMixListFullOperation.vb" />
-    <Compile Include="Media\SoundPlayback.vb" />
-    <Compile Include="Media\SoundVoicePlayerImpl.vb" />
     <Compile Include="Renderers\GameVisualContainerRenderer.vb" />
     <Compile Include="Renderers\GameCanvasRenderer.vb" />
     <Compile Include="Renderers\GameElementRenderer.vb" />
