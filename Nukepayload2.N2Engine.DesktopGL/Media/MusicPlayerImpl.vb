@@ -1,33 +1,41 @@
-﻿Imports Nukepayload2.N2Engine.Media
+﻿Imports Microsoft.Xna.Framework.Media
+Imports Nukepayload2.N2Engine.Media
 
 Friend Class MusicPlayerImpl
 
-    Public Function LoadAsync() As Task Implements IMusicPlayer.LoadAsync
-        Throw New NotImplementedException()
+    Dim curSong As Song
+
+    Public Async Function LoadAsync() As Task Implements IMusicPlayer.LoadAsync
+        Await Task.Delay(0)
     End Function
 
     Public Property Volume As Double Implements IMusicPlayer.Volume
         Get
-            Throw New NotImplementedException()
+            Return MediaPlayer.Volume
         End Get
         Set(value As Double)
-            Throw New NotImplementedException()
+            MediaPlayer.Volume = value
         End Set
     End Property
 
     Public Sub Pause() Implements IMusicPlayer.Pause
-        Throw New NotImplementedException()
+        MediaPlayer.Pause()
     End Sub
 
     Public Sub Play() Implements IMusicPlayer.Play
-        Throw New NotImplementedException()
+        MediaPlayer.Play(curSong)
     End Sub
 
     Public Sub [Stop]() Implements IMusicPlayer.Stop
-        Throw New NotImplementedException()
+        MediaPlayer.Stop()
     End Sub
 
-    Public Function SetPlayingIndexAsync(value As Integer) As Task Implements IMusicPlayer.SetPlayingIndexAsync
-        Throw New NotImplementedException()
+    Public Async Function SetPlayingIndexAsync(value As Integer) As Task Implements IMusicPlayer.SetPlayingIndexAsync
+        Dim cur = Sources(value)
+        Dim absolutePath = cur.AbsolutePath
+        curSong?.Dispose()
+        curSong = Await Task.Run(Function() Song.FromUri(absolutePath.Substring(absolutePath.LastIndexOf("/") + 1),
+                                                         Resources.ResourceLoader.GetForCurrentView.GetResourceUri(cur)))
+        _PlayingIndex = value
     End Function
 End Class
