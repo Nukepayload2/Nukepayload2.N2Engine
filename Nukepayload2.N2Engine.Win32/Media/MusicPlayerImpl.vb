@@ -19,8 +19,10 @@ Friend Class MusicPlayerImpl
         Throw New NotImplementedException()
     End Sub
 
+    Dim MediaCtrl As DirectShowLib.IMediaControl = DirectCast(New DirectShowLib.FilterGraph, DirectShowLib.IMediaControl)
+
     Public Sub Play() Implements IMusicPlayer.Play
-        Throw New NotImplementedException()
+        MediaCtrl.Run()
     End Sub
 
     Public Sub [Stop]() Implements IMusicPlayer.Stop
@@ -28,6 +30,9 @@ Friend Class MusicPlayerImpl
     End Sub
 
     Public Function SetPlayingIndexAsync(value As Integer) As Task Implements IMusicPlayer.SetPlayingIndexAsync
-        Throw New NotImplementedException()
+        Dim musicUri = Sources(value)
+        Dim cur = Resources.ResourceLoader.GetForCurrentView.GetResourceUri(musicUri)
+        Dim absolutePath = cur.AbsolutePath
+        MediaCtrl.RenderFile(absolutePath)
     End Function
 End Class
