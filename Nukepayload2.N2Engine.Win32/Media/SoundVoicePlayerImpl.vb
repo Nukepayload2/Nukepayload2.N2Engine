@@ -67,4 +67,9 @@ Friend Class SoundVoicePlayerImpl
     Public Async Function PlayVoiceAsync(voiceUri As Uri) As Task Implements ISoundVoicePlayer.PlayVoiceAsync
         Await PlayAsync(voiceUri, VoicePlayer, VoiceVolume)
     End Function
+
+    Private Sub DisposePlayers()
+        DisposePlayers(Sub(p)
+                       End Sub, SEPlayer, VoicePlayer)
+    End Sub
 End Class

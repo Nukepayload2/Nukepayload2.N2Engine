@@ -1,5 +1,6 @@
 ﻿Imports Android.App
 Imports Android.Media
+Imports Android.Runtime
 Imports Nukepayload2.N2Engine.Media
 Imports AndroidUri = Android.Net.Uri
 
@@ -14,7 +15,27 @@ Friend Class MusicPlayerImpl
         Dim vol = am.GetStreamVolume(Stream.Music)
         Dim vMax = am.GetStreamMaxVolume(Stream.Music)
         _volume = vol / vMax
+        mp.SetOnCompletionListener(New OnCompletionListener(Me))
     End Function
+
+    Private Sub RaiseComplete()
+        RaiseEvent SingleSongComplete(Me, EventArgs.Empty)
+    End Sub
+
+    Private Class OnCompletionListener
+        Inherits Java.Lang.Object
+        Implements MediaPlayer.IOnCompletionListener
+
+        Dim _parent As MusicPlayerImpl
+        Sub New(parent As MusicPlayerImpl)
+            _parent = parent
+        End Sub
+
+        Public Sub OnCompletion(mp As MediaPlayer) Implements MediaPlayer.IOnCompletionListener.OnCompletion
+            _parent.RaiseComplete()
+        End Sub
+
+    End Class
 
     Public Property Volume As Double Implements IMusicPlayer.Volume
         Get
@@ -41,6 +62,7 @@ Friend Class MusicPlayerImpl
     Public Async Function SetPlayingIndexAsync(value As Integer) As Task Implements IMusicPlayer.SetPlayingIndexAsync
         Dim uri = Sources(value)
         Await mp.SetDataSourceAsync(AndroidUri.Parse(Resources.ResourceLoader.GetForCurrentView.GetResourceUri(uri).AbsolutePath))
+        Volume = Volume
         _PlayingIndex = value
     End Function
 End Class

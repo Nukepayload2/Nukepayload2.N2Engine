@@ -3,6 +3,7 @@
     ''' 背景音乐的播放器。
     ''' </summary>
     Public Interface IMusicPlayer
+        Inherits IDisposable
         ''' <summary>
         ''' 加载播放器所需资源
         ''' </summary>

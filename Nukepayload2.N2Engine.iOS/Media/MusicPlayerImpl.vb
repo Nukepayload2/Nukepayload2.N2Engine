@@ -44,7 +44,7 @@ Friend Class MusicPlayerImpl
                            Avp?.Dispose()
                            Avp = New AVAudioPlayer(New NSUrl(absolutePath),
                                                    absolutePath.Substring(absolutePath.LastIndexOf(".") + 1),
-                                                   err)
+                                                   err) With {.Volume = Volume}
                        End Sub)
     End Function
 

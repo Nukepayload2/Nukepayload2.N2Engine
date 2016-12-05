@@ -3,6 +3,7 @@
     ''' 用于播放短暂但要求时效性强的声音
     ''' </summary>
     Public Interface ISoundVoicePlayer
+        Inherits IDisposable
         ''' <summary>
         ''' 0到100的音效音量
         ''' </summary>
