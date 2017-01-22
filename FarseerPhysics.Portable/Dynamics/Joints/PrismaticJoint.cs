@@ -515,7 +515,7 @@ namespace FarseerPhysics.Dynamics.Joints
                 MotorImpulse = 0.0f;
             }
 
-            if (Settings.EnableWarmstarting)
+#if (EnableWarmstarting)
             {
                 // Account for variable time step.
                 _impulse *= data.step.dtRatio;
@@ -531,12 +531,12 @@ namespace FarseerPhysics.Dynamics.Joints
                 vB += mB * P;
                 wB += iB * LB;
             }
-            else
+#else
             {
                 _impulse = Vector3.Zero;
                 MotorImpulse = 0.0f;
             }
-
+#endif
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
             data.velocities[_indexB].v = vB;

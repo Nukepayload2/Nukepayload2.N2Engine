@@ -314,7 +314,7 @@ namespace FarseerPhysics.Dynamics.Joints
             // Compute effective mass.
             _mass = _mass > 0.0f ? 1.0f / _mass : 0.0f;
 
-            if (Settings.EnableWarmstarting)
+#if (EnableWarmstarting)
             {
                 vA += (_mA * _impulse) * _JvAC;
                 wA += _iA * _impulse * _JwA;
@@ -325,11 +325,11 @@ namespace FarseerPhysics.Dynamics.Joints
                 vD -= (_mD * _impulse) * _JvBD;
                 wD -= _iD * _impulse * _JwD;
             }
-            else
+#else
             {
                 _impulse = 0.0f;
             }
-
+#endif
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
             data.velocities[_indexB].v = vB;

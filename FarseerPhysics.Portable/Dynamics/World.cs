@@ -1012,11 +1012,12 @@ namespace FarseerPhysics.Dynamics
                 // Also, some contacts can be destroyed.
                 ContactManager.FindNewContacts();
 
-                if (Settings.EnableSubStepping)
+#if (EnableSubStepping)
                 {
                     _stepComplete = false;
                     break;
                 }
+#endif
             }
 #if OPTIMIZE_TOI
             if (wasStepComplete)

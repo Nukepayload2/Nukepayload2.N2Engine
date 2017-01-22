@@ -97,9 +97,9 @@ namespace FarseerPhysics.Common.Decomposition
 #endif
                     break;
                 case TriangulationAlgorithm.Bayazit:
-                    if (Settings.SkipSanityChecks)
+#if (SkipSanityChecks)
                         Debug.Assert(vertices.IsCounterClockWise(), "The polygon is not counter clockwise. This is needed for Bayazit to work correctly.");
-                    else
+#else
                     {
                         if (!vertices.IsCounterClockWise())
                         {
@@ -110,11 +110,12 @@ namespace FarseerPhysics.Common.Decomposition
                         else
                             results = BayazitDecomposer.ConvexPartition(vertices);
                     }
+#endif
                     break;
                 case TriangulationAlgorithm.Flipcode:
-                    if (Settings.SkipSanityChecks)
+#if (SkipSanityChecks)
                         Debug.Assert(vertices.IsCounterClockWise(), "The polygon is not counter clockwise. This is needed for Bayazit to work correctly.");
-                    else
+#else
                     {
                         if (!vertices.IsCounterClockWise())
                         {
@@ -125,6 +126,7 @@ namespace FarseerPhysics.Common.Decomposition
                         else
                             results = FlipcodeDecomposer.ConvexPartition(vertices);
                     }
+#endif
                     break;
                 case TriangulationAlgorithm.Seidel:
                     results = SeidelDecomposer.ConvexPartition(vertices, tolerance);
