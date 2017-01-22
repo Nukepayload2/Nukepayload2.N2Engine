@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using Microsoft.Xna.Framework;
+using System.Numerics;
+using FarseerPhysics.Portable.Common;
 
 namespace FarseerPhysics.Common
 {
@@ -118,8 +119,7 @@ namespace FarseerPhysics.Common
         /// <param name="value">The amount to rotate by in radians.</param>
         public void Rotate(float value)
         {
-            Matrix rotationMatrix;
-            Matrix.CreateRotationZ(value, out rotationMatrix);
+            Matrix4x4 rotationMatrix = Matrix4x4.CreateRotationZ(value);
 
             for (int i = 0; i < ControlPoints.Count; i++)
                 ControlPoints[i] = Vector2.Transform(ControlPoints[i], rotationMatrix);
@@ -192,7 +192,7 @@ namespace FarseerPhysics.Common
                 // relative time
                 float lt = (time - _deltaT * p) / _deltaT;
 
-                temp = Vector2.CatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3], lt);
+                temp = Vector2Extensions.CatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3], lt);
 
                 RemoveAt(ControlPoints.Count - 1);
             }
@@ -217,7 +217,7 @@ namespace FarseerPhysics.Common
                 // relative time
                 float lt = (time - _deltaT * p) / _deltaT;
 
-                temp = Vector2.CatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3], lt);
+                temp = Vector2Extensions.CatmullRom(ControlPoints[p0], ControlPoints[p1], ControlPoints[p2], ControlPoints[p3], lt);
             }
 
             return temp;
@@ -237,7 +237,7 @@ namespace FarseerPhysics.Common
 
             Vector2 output, temp;
 
-            Vector2.Subtract(ref a, ref b, out temp);
+            temp = Vector2.Subtract(a, b);
 
 #if (XBOX360 || WINDOWS_PHONE)
 output = new Vector2();
@@ -245,7 +245,7 @@ output = new Vector2();
             output.X = -temp.Y;
             output.Y = temp.X;
 
-            Vector2.Normalize(ref output, out output);
+            output = Vector2.Normalize(output);
 
             return output;
         }

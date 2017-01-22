@@ -26,7 +26,7 @@ using System.Diagnostics;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
-using Microsoft.Xna.Framework;
+using System.Numerics;
 
 namespace FarseerPhysics.Dynamics.Contacts
 {
@@ -301,15 +301,11 @@ namespace FarseerPhysics.Dynamics.Contacts
 
                         // Report the collision to both participants. Track which ones returned true so we can
                         // later call OnSeparation if the contact is disabled for a different reason.
-                        if (FixtureA.OnCollision != null)
-                            foreach (OnCollisionEventHandler handler in FixtureA.OnCollision.GetInvocationList())
-                                enabledA = handler(FixtureA, FixtureB, this) && enabledA;
+                        enabledA = FixtureA.RaiseOnCollision(FixtureA, FixtureB, this) && enabledA;
 
                         // Reverse the order of the reported fixtures. The first fixture is always the one that the
                         // user subscribed to.
-                        if (FixtureB.OnCollision != null)
-                            foreach (OnCollisionEventHandler handler in FixtureB.OnCollision.GetInvocationList())
-                                enabledB = handler(FixtureB, FixtureA, this) && enabledB;
+                        enabledB = FixtureB.RaiseOnCollision(FixtureB, FixtureA, this) && enabledB;
 
                         Enabled = enabledA && enabledB;
 
@@ -320,15 +316,11 @@ namespace FarseerPhysics.Dynamics.Contacts
                     else
                     {
                         //Report the collision to both participants:
-                        if (FixtureA.OnCollision != null)
-                            foreach (OnCollisionEventHandler handler in FixtureA.OnCollision.GetInvocationList())
-                                Enabled = handler(FixtureA, FixtureB, this);
+                        Enabled = FixtureA.RaiseOnCollision(FixtureA, FixtureB, this);
 
                         //Reverse the order of the reported fixtures. The first fixture is always the one that the
                         //user subscribed to.
-                        if (FixtureB.OnCollision != null)
-                            foreach (OnCollisionEventHandler handler in FixtureB.OnCollision.GetInvocationList())
-                                Enabled = handler(FixtureB, FixtureA, this);
+                        Enabled = FixtureB.RaiseOnCollision(FixtureB, FixtureA, this);
 
                         //BeginContact can also return false and disable the contact
                         if (contactManager.BeginContact != null)
@@ -347,16 +339,13 @@ namespace FarseerPhysics.Dynamics.Contacts
                 if (touching == false)
                 {
                     //Report the separation to both participants:
-                    if (FixtureA != null && FixtureA.OnSeparation != null)
-                        FixtureA.OnSeparation(FixtureA, FixtureB);
+                    FixtureA?.RaiseOnSeparation(FixtureA, FixtureB);
 
                     //Reverse the order of the reported fixtures. The first fixture is always the one that the
                     //user subscribed to.
-                    if (FixtureB != null && FixtureB.OnSeparation != null)
-                        FixtureB.OnSeparation(FixtureB, FixtureA);
+                    FixtureB?.RaiseOnSeparation(FixtureB, FixtureA);
 
-                    if (contactManager.EndContact != null)
-                        contactManager.EndContact(this);
+                    contactManager.EndContact?.Invoke(this);
                 }
             }
 

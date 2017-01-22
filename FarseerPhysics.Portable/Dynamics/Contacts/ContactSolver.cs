@@ -25,7 +25,7 @@ using System.Diagnostics;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
-using Microsoft.Xna.Framework;
+using System.Numerics;
 
 namespace FarseerPhysics.Dynamics.Contacts
 {
@@ -479,7 +479,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                     // Compute b'
                     b -= MathUtils.Mul(ref vc.K, a);
 
-                    const float k_errorTol = 1e-3f;
+                    // const float k_errorTol = 1e-3f;
                     //B2_NOT_USED(k_errorTol);
 
                     for (; ; )
@@ -877,7 +877,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                             if (Vector2.DistanceSquared(pointA, pointB) > Settings.Epsilon * Settings.Epsilon)
                             {
                                 normal = pointB - pointA;
-                                normal.Normalize();
+                                normal=Vector2.Normalize(normal);
                             }
 
                             Vector2 cA = pointA + radiusA * normal;
@@ -935,7 +935,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                             Vector2 pointA = MathUtils.Mul(ref xfA, pc.localPoint);
                             Vector2 pointB = MathUtils.Mul(ref xfB, pc.localPoints[0]);
                             normal = pointB - pointA;
-                            normal.Normalize();
+                            normal=Vector2.Normalize(normal);
                             point = 0.5f * (pointA + pointB);
                             separation = Vector2.Dot(pointB - pointA, normal) - pc.radiusA - pc.radiusB;
                         }

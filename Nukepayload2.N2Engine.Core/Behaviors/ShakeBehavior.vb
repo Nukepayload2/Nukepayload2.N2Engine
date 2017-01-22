@@ -10,7 +10,7 @@ Namespace Behaviors
 
         Protected Overrides Sub OnAttached(visual As GameEntity)
             Dim body = visual.Body.Value
-            AddHandler visual.Updating, Sub() body.ApplyImpulse(ShakeRate.Value * RandomGenerator.RandomSingle, body.WorldCenter)
+            AddHandler visual.Updating, Sub() body.ApplyLinearImpulse(ShakeRate.Value * RandomGenerator.RandomSingle)
         End Sub
     End Class
 End Namespace

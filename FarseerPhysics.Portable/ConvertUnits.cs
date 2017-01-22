@@ -3,7 +3,7 @@
 * Copyright (c) 2012 Ian Qvist
 */
 
-using Microsoft.Xna.Framework;
+using System.Numerics;
 
 namespace FarseerPhysics
 {
@@ -38,7 +38,7 @@ namespace FarseerPhysics
 
         public static void ToDisplayUnits(ref Vector2 simUnits, out Vector2 displayUnits)
         {
-            Vector2.Multiply(ref simUnits, _displayUnitsToSimUnitsRatio, out displayUnits);
+            displayUnits = Vector2.Multiply(simUnits, _displayUnitsToSimUnitsRatio);
         }
 
         public static Vector3 ToDisplayUnits(Vector3 simUnits)
@@ -85,7 +85,7 @@ namespace FarseerPhysics
 
         public static void ToSimUnits(ref Vector2 displayUnits, out Vector2 simUnits)
         {
-            Vector2.Multiply(ref displayUnits, _simUnitsToDisplayUnitsRatio, out simUnits);
+            simUnits = Vector2.Multiply(displayUnits, _simUnitsToDisplayUnitsRatio);
         }
 
         public static Vector2 ToSimUnits(float x, float y)

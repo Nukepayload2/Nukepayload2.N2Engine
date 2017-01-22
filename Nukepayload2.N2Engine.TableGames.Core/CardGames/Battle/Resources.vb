@@ -68,7 +68,7 @@ Namespace Battle
     End Class
     Public Class BattleStringLoader
         Implements IBattleStringLoader
-        Dim resLdr As New ResourceLoader
+        Dim resLdr As ResourceLoader = ResourceLoader.GetForCurrentView
         Public Shared ReadOnly Property Cuttent As IBattleStringLoader
         Sub New()
             _Cuttent = Me

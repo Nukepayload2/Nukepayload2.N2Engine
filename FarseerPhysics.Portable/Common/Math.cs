@@ -23,6 +23,7 @@
 using System;
 using System.Diagnostics;
 using System.Runtime.InteropServices;
+using System.Numerics;
 using Microsoft.Xna.Framework;
 
 namespace FarseerPhysics.Common

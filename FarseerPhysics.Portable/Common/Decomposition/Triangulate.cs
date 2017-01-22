@@ -80,7 +80,9 @@ namespace FarseerPhysics.Common.Decomposition
             {
                 case TriangulationAlgorithm.Earclip:
                     if (Settings.SkipSanityChecks)
+                    {
                         Debug.Assert(!vertices.IsCounterClockWise(), "The Earclip algorithm expects the polygon to be clockwise.");
+                    }
                     else
                     {
                         if (vertices.IsCounterClockWise())

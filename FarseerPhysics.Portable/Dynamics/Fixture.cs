@@ -28,7 +28,7 @@ using FarseerPhysics.Collision;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
 using FarseerPhysics.Dynamics.Contacts;
-using Microsoft.Xna.Framework;
+using System.Numerics;
 
 namespace FarseerPhysics.Dynamics
 {
@@ -108,26 +108,46 @@ namespace FarseerPhysics.Dynamics
         /// <summary>
         /// Fires after two shapes has collided and are solved. This gives you a chance to get the impact force.
         /// </summary>
-        public AfterCollisionEventHandler AfterCollision;
+        public event AfterCollisionEventHandler AfterCollision;
+
+        internal void RaiseAfterCollision(Fixture fixtureA, Fixture fixtureB, Contact contact, ContactVelocityConstraint impulse)
+        {
+            AfterCollision(fixtureA, fixtureB, contact, impulse);
+        }
 
         /// <summary>
         /// Fires when two fixtures are close to each other.
         /// Due to how the broadphase works, this can be quite inaccurate as shapes are approximated using AABBs.
         /// </summary>
-        public BeforeCollisionEventHandler BeforeCollision;
+        public event BeforeCollisionEventHandler BeforeCollision;
+
+        internal bool RaiseBeforeCollision(Fixture fixtureA, Fixture fixtureB)
+        {
+            return BeforeCollision(fixtureA, fixtureB);
+        }
 
         /// <summary>
         /// Fires when two shapes collide and a contact is created between them.
         /// Note that the first fixture argument is always the fixture that the delegate is subscribed to.
         /// </summary>
-        public OnCollisionEventHandler OnCollision;
+        public event OnCollisionEventHandler OnCollision;
+
+        internal bool RaiseOnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
+        {
+            return OnCollision(fixtureA, fixtureB, contact);
+        }
 
         /// <summary>
         /// Fires when two shapes separate and a contact is removed between them.
         /// Note: This can in some cases be called multiple times, as a fixture can have multiple contacts.
         /// Note The first fixture argument is always the fixture that the delegate is subscribed to.
         /// </summary>
-        public OnSeparationEventHandler OnSeparation;
+        public event OnSeparationEventHandler OnSeparation;
+
+        internal void RaiseOnSeparation(Fixture fixtureA, Fixture fixtureB)
+        {
+            OnSeparation(fixtureA, fixtureB);
+        }
 
         internal Fixture()
         {

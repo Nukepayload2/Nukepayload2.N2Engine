@@ -386,7 +386,7 @@ Namespace Battle
         Public Async Function HMLead() As Task Implements IPlayer.HMLead
             If Await LeadStateCommon() Then
                 PlayerAera.HumanPlayerLeadMode = True
-                Dim Cancel As New Threading.CancellationToken
+                Dim Cancel As New System.Threading.CancellationToken
                 Cancel.Register(AddressOf PlayerAera.HumanPlayerProcedureEndedButton.OnClick)
                 Await Task.Delay(BattleGameSettingsManager.Current.HumanPlayerTimeout, Cancel)
                 PlayerAera.HumanPlayerLeadMode = False
@@ -409,7 +409,7 @@ Namespace Battle
         Public Async Function HMEnded() As Task Implements IPlayer.HMEnded
             If Await EndedStageCommon() Then
                 PlayerAera.HumanPlayerDiscardMode = True
-                Dim Cancel As New Threading.CancellationToken
+                Dim Cancel As New System.Threading.CancellationToken
                 Cancel.Register(AddressOf PlayerAera.HumanPlayerProcedureEndedButton.OnClick)
                 Await Task.Delay(BattleGameSettingsManager.Current.HumanPlayerTimeout, Cancel)
                 PlayerAera.HumanPlayerDiscardMode = False

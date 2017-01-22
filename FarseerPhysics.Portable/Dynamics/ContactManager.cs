@@ -141,10 +141,10 @@ namespace FarseerPhysics.Dynamics
                 return;
 
             //FPE feature: BeforeCollision delegate
-            if (fixtureA.BeforeCollision != null && fixtureA.BeforeCollision(fixtureA, fixtureB) == false)
+            if (fixtureA.RaiseBeforeCollision(fixtureA, fixtureB) == false)
                 return;
 
-            if (fixtureB.BeforeCollision != null && fixtureB.BeforeCollision(fixtureB, fixtureA) == false)
+            if (fixtureB.RaiseBeforeCollision(fixtureB, fixtureA) == false)
                 return;
 
             // Call the factory.
@@ -214,13 +214,11 @@ namespace FarseerPhysics.Dynamics
             if (contact.IsTouching)
             {
                 //Report the separation to both participants:
-                if (fixtureA != null && fixtureA.OnSeparation != null)
-                    fixtureA.OnSeparation(fixtureA, fixtureB);
+                fixtureA?.RaiseOnSeparation(fixtureA, fixtureB);
 
                 //Reverse the order of the reported fixtures. The first fixture is always the one that the
                 //user subscribed to.
-                if (fixtureB != null && fixtureB.OnSeparation != null)
-                    fixtureB.OnSeparation(fixtureB, fixtureA);
+                fixtureB?.RaiseOnSeparation(fixtureB, fixtureA);
 
                 if (EndContact != null)
                     EndContact(contact);

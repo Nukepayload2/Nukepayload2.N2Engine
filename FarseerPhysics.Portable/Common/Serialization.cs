@@ -10,41 +10,10 @@ using System.Xml.Serialization;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Dynamics.Joints;
-using Microsoft.Xna.Framework;
+using System.Numerics;
 
 namespace FarseerPhysics.Common
 {
-    /// <summary>
-    /// Serialize the world into an XML file
-    /// </summary>
-    public static class WorldSerializer
-    {
-        /// <summary>
-        /// Serialize the world to an XML file
-        /// </summary>
-        /// <param name="world"></param>
-        /// <param name="filename"></param>
-        public static void Serialize(World world, string filename)
-        {
-            using (FileStream fs = new FileStream(filename, FileMode.Create))
-            {
-                WorldXmlSerializer.Serialize(world, fs);
-            }
-        }
-
-        /// <summary>
-        /// Deserialize the world from an XML file
-        /// </summary>
-        /// <param name="filename"></param>
-        public static World Deserialize(string filename)
-        {
-            using (FileStream fs = new FileStream(filename, FileMode.Open))
-            {
-                return WorldXmlDeserializer.Deserialize(fs);
-            }
-        }
-    }
-
     internal static class WorldXmlSerializer
     {
         private static XmlWriter _writer;
@@ -468,7 +437,7 @@ namespace FarseerPhysics.Common
             _writer.WriteEndElement();
 
             _writer.Flush();
-            _writer.Close();
+            _writer.Dispose();
         }
     }
 
@@ -1253,12 +1222,6 @@ namespace FarseerPhysics.Common
         public XMLFragmentParser(Stream stream)
         {
             Load(stream);
-        }
-
-        public XMLFragmentParser(string fileName)
-        {
-            using (FileStream fs = new FileStream(fileName, FileMode.Open, FileAccess.Read))
-                Load(fs);
         }
 
         public XMLFragmentElement RootNode

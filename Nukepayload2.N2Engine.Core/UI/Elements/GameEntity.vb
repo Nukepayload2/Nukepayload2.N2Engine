@@ -1,4 +1,5 @@
-﻿Imports Box2D
+﻿
+Imports FarseerPhysics.Dynamics
 Imports Nukepayload2.N2Engine.Foundation
 
 Namespace UI.Elements
@@ -12,13 +13,14 @@ Namespace UI.Elements
         ''' </summary>
         Public ReadOnly Property Body As New PropertyBinder(Of Body)
         ''' <summary>
-        ''' 视图的位置。这通常是物体的左上角的坐标。此属性默认情况下绑定到 <see cref="Body"/> 的 <see cref="XForm"/> 上。 
+        ''' 视图的位置。这通常是物体的左上角的坐标。此属性默认情况下绑定到 <see cref="Body"/> 上。 
         ''' </summary>
         Public Overrides ReadOnly Property Location As New PropertyBinder(Of Vector2)(
         Function() Body.Value.Position,
         Sub(v)
             Dim bdy = Body.Value
-            bdy.SetXForm(v, bdy.Angle)
+            bdy.Position = v
+            Dim f1 = bdy.FixtureList.First
         End Sub)
 
     End Class

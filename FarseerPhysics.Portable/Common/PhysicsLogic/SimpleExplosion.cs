@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using FarseerPhysics.Collision;
 using FarseerPhysics.Dynamics;
+using System.Numerics;
 using Microsoft.Xna.Framework;
 
 namespace FarseerPhysics.Common.PhysicsLogic
@@ -70,7 +71,7 @@ namespace FarseerPhysics.Common.PhysicsLogic
                     forceVector *= MathHelper.Min(force * forcePercent, maxForce);
                     forceVector *= -1;
 
-                    overlappingBody.ApplyLinearImpulse(forceVector);
+                    overlappingBody.ApplyLinearImpulse(ref forceVector);
                     forces.Add(overlappingBody, forceVector);
                 }
             }

@@ -3,7 +3,7 @@
     "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
     "MonoGame.Framework.WindowsUniversal": "3.5.1.1679",
     "Newtonsoft.Json": "9.0.1",
-    "System.Numerics.Vectors": "4.1.1"
+    "System.Numerics.Vectors": "4.3.0"
   },
   "frameworks": {
     "uap10.0": {}

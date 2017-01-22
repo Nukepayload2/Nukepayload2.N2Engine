@@ -3,7 +3,7 @@ using System.Diagnostics;
 using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Dynamics;
 using FarseerPhysics.Factories;
-using Microsoft.Xna.Framework;
+using System.Numerics;
 
 namespace FarseerPhysics.Common.PolygonManipulation
 {
@@ -111,7 +111,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
                 {
                     offset = (newPolygon[n][newPolygon[n].Count - 1] - newPolygon[n][0]);
                 }
-                offset.Normalize();
+                offset = Vector2.Normalize(offset);
 
                 if (!offset.IsValid())
                     offset = Vector2.One;
@@ -126,7 +126,7 @@ namespace FarseerPhysics.Common.PolygonManipulation
                 {
                     offset = (newPolygon[n][0] - newPolygon[n][newPolygon[n].Count - 1]);
                 }
-                offset.Normalize();
+                offset = Vector2.Normalize(offset);
 
                 if (!offset.IsValid())
                     offset = Vector2.One;

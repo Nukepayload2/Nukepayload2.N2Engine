@@ -513,13 +513,13 @@ namespace Microsoft.Xna.Framework
             return sb.ToString();
         }
 
-        public static Vector3 Transform(Vector3 position, Matrix matrix)
+        public static Vector3 Transform(Vector3 position, Matrix4x4 matrix)
         {
             Transform(ref position, ref matrix, out position);
             return position;
         }
 
-        public static void Transform(ref Vector3 position, ref Matrix matrix, out Vector3 result)
+        public static void Transform(ref Vector3 position, ref Matrix4x4 matrix, out Vector3 result)
         {
             result =
                 new Vector3((position.X*matrix.M11) + (position.Y*matrix.M21) + (position.Z*matrix.M31) + matrix.M41,
@@ -527,35 +527,35 @@ namespace Microsoft.Xna.Framework
                             (position.X*matrix.M13) + (position.Y*matrix.M23) + (position.Z*matrix.M33) + matrix.M43);
         }
 
-        public static void Transform(Vector3[] sourceArray, ref Matrix matrix, Vector3[] destinationArray)
+        public static void Transform(Vector3[] sourceArray, ref Matrix4x4 matrix, Vector3[] destinationArray)
         {
             throw new NotImplementedException();
         }
 
-        public static void Transform(Vector3[] sourceArray, int sourceIndex, ref Matrix matrix,
+        public static void Transform(Vector3[] sourceArray, int sourceIndex, ref Matrix4x4 matrix,
                                      Vector3[] destinationArray, int destinationIndex, int length)
         {
             throw new NotImplementedException();
         }
 
-        public static void TransformNormal(Vector3[] sourceArray, ref Matrix matrix, Vector3[] destinationArray)
+        public static void TransformNormal(Vector3[] sourceArray, ref Matrix4x4 matrix, Vector3[] destinationArray)
         {
             throw new NotImplementedException();
         }
 
-        public static void TransformNormal(Vector3[] sourceArray, int sourceIndex, ref Matrix matrix,
+        public static void TransformNormal(Vector3[] sourceArray, int sourceIndex, ref Matrix4x4 matrix,
                                            Vector3[] destinationArray, int destinationIndex, int length)
         {
             throw new NotImplementedException();
         }
 
-        public static Vector3 TransformNormal(Vector3 normal, Matrix matrix)
+        public static Vector3 TransformNormal(Vector3 normal, Matrix4x4 matrix)
         {
             TransformNormal(ref normal, ref matrix, out normal);
             return normal;
         }
 
-        public static void TransformNormal(ref Vector3 normal, ref Matrix matrix, out Vector3 result)
+        public static void TransformNormal(ref Vector3 normal, ref Matrix4x4 matrix, out Vector3 result)
         {
             result = new Vector3((normal.X*matrix.M11) + (normal.Y*matrix.M21) + (normal.Z*matrix.M31),
                                  (normal.X*matrix.M12) + (normal.Y*matrix.M22) + (normal.Z*matrix.M32),

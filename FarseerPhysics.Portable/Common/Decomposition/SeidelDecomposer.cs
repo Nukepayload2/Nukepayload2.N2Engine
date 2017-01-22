@@ -6,7 +6,7 @@
 using System.Collections.Generic;
 using System.Diagnostics;
 using FarseerPhysics.Common.Decomposition.Seidel;
-using Microsoft.Xna.Framework;
+using System.Numerics;
 using Point = FarseerPhysics.Common.Decomposition.Seidel.Point;
 
 namespace FarseerPhysics.Common.Decomposition

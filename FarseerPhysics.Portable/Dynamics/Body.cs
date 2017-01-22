@@ -31,7 +31,7 @@ using FarseerPhysics.Common.PhysicsLogic;
 using FarseerPhysics.Controllers;
 using FarseerPhysics.Dynamics.Contacts;
 using FarseerPhysics.Dynamics.Joints;
-using Microsoft.Xna.Framework;
+using System.Numerics;
 
 namespace FarseerPhysics.Dynamics
 {
@@ -894,16 +894,6 @@ namespace FarseerPhysics.Dynamics
 
                 _torque += torque;
             }
-        }
-
-        /// <summary>
-        /// Apply an impulse at a point. This immediately modifies the velocity.
-        /// This wakes up the body.
-        /// </summary>
-        /// <param name="impulse">The world impulse vector, usually in N-seconds or kg-m/s.</param>
-        public void ApplyLinearImpulse(Vector2 impulse)
-        {
-            ApplyLinearImpulse(ref impulse);
         }
 
         /// <summary>

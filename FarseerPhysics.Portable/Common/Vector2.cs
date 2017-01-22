@@ -444,47 +444,47 @@ namespace Microsoft.Xna.Framework
             result.Y = value1.Y - value2.Y;
         }
 
-        public static Vector2 Transform(Vector2 position, Matrix matrix)
+        public static Vector2 Transform(Vector2 position, Matrix4x4 matrix)
         {
             Transform(ref position, ref matrix, out position);
             return position;
         }
 
-        public static void Transform(ref Vector2 position, ref Matrix matrix, out Vector2 result)
+        public static void Transform(ref Vector2 position, ref Matrix4x4 matrix, out Vector2 result)
         {
             result = new Vector2((position.X*matrix.M11) + (position.Y*matrix.M21) + matrix.M41,
                                  (position.X*matrix.M12) + (position.Y*matrix.M22) + matrix.M42);
         }
 
-        public static void Transform(Vector2[] sourceArray, ref Matrix matrix, Vector2[] destinationArray)
+        public static void Transform(Vector2[] sourceArray, ref Matrix4x4 matrix, Vector2[] destinationArray)
         {
             throw new NotImplementedException();
         }
 
-        public static void Transform(Vector2[] sourceArray, int sourceIndex, ref Matrix matrix,
+        public static void Transform(Vector2[] sourceArray, int sourceIndex, ref Matrix4x4 matrix,
                                      Vector2[] destinationArray, int destinationIndex, int length)
         {
             throw new NotImplementedException();
         }
 
-        public static Vector2 TransformNormal(Vector2 normal, Matrix matrix)
+        public static Vector2 TransformNormal(Vector2 normal, Matrix4x4 matrix)
         {
             TransformNormal(ref normal, ref matrix, out normal);
             return normal;
         }
 
-        public static void TransformNormal(ref Vector2 normal, ref Matrix matrix, out Vector2 result)
+        public static void TransformNormal(ref Vector2 normal, ref Matrix4x4 matrix, out Vector2 result)
         {
             result = new Vector2((normal.X*matrix.M11) + (normal.Y*matrix.M21),
                                  (normal.X*matrix.M12) + (normal.Y*matrix.M22));
         }
 
-        public static void TransformNormal(Vector2[] sourceArray, ref Matrix matrix, Vector2[] destinationArray)
+        public static void TransformNormal(Vector2[] sourceArray, ref Matrix4x4 matrix, Vector2[] destinationArray)
         {
             throw new NotImplementedException();
         }
 
-        public static void TransformNormal(Vector2[] sourceArray, int sourceIndex, ref Matrix matrix,
+        public static void TransformNormal(Vector2[] sourceArray, int sourceIndex, ref Matrix4x4 matrix,
                                            Vector2[] destinationArray, int destinationIndex, int length)
         {
             throw new NotImplementedException();

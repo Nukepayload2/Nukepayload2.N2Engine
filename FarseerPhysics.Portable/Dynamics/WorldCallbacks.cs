@@ -53,6 +53,8 @@ namespace FarseerPhysics.Dynamics
 
     public delegate void BroadphaseDelegate(ref FixtureProxy proxyA, ref FixtureProxy proxyB);
 
+    #region Event handlers
+
     public delegate bool BeforeCollisionEventHandler(Fixture fixtureA, Fixture fixtureB);
 
     public delegate bool OnCollisionEventHandler(Fixture fixtureA, Fixture fixtureB, Contact contact);
@@ -60,4 +62,5 @@ namespace FarseerPhysics.Dynamics
     public delegate void AfterCollisionEventHandler(Fixture fixtureA, Fixture fixtureB, Contact contact, ContactVelocityConstraint impulse);
 
     public delegate void OnSeparationEventHandler(Fixture fixtureA, Fixture fixtureB);
+    #endregion
 }

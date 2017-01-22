@@ -4,6 +4,7 @@ using FarseerPhysics.Collision.Shapes;
 using FarseerPhysics.Common;
 using FarseerPhysics.Common.Decomposition;
 using FarseerPhysics.Dynamics;
+using System.Numerics;
 using Microsoft.Xna.Framework;
 
 namespace FarseerPhysics.Factories

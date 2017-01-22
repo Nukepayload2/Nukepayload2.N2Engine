@@ -25,7 +25,7 @@ using System.Diagnostics;
 using FarseerPhysics.Common;
 using FarseerPhysics.Dynamics.Contacts;
 using FarseerPhysics.Dynamics.Joints;
-using Microsoft.Xna.Framework;
+using System.Numerics;
 
 namespace FarseerPhysics.Dynamics
 {
@@ -433,16 +433,11 @@ namespace FarseerPhysics.Dynamics
 
                 //FPE optimization: We don't store the impulses and send it to the delegate. We just send the whole contact.
                 //FPE feature: added after collision
-                if (c.FixtureA.AfterCollision != null)
-                    c.FixtureA.AfterCollision(c.FixtureA, c.FixtureB, c, constraints[i]);
+                c.FixtureA.RaiseAfterCollision(c.FixtureA, c.FixtureB, c, constraints[i]);
 
-                if (c.FixtureB.AfterCollision != null)
-                    c.FixtureB.AfterCollision(c.FixtureB, c.FixtureA, c, constraints[i]);
+                c.FixtureB.RaiseAfterCollision(c.FixtureB, c.FixtureA, c, constraints[i]);
 
-                if (_contactManager.PostSolve != null)
-                {
-                    _contactManager.PostSolve(c, constraints[i]);
-                }
+                _contactManager.PostSolve?.Invoke(c, constraints[i]);
             }
         }
     }

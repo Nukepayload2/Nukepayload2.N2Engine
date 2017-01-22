@@ -23,7 +23,7 @@
 using System;
 using System.Diagnostics;
 using FarseerPhysics.Common;
-using Microsoft.Xna.Framework;
+using System.Numerics;
 
 namespace FarseerPhysics.Collision
 {
@@ -99,7 +99,7 @@ namespace FarseerPhysics.Collision
                 Vector2 pointA = MathUtils.Mul(ref xfA, localPointA);
                 Vector2 pointB = MathUtils.Mul(ref xfB, localPointB);
                 _axis = pointB - pointA;
-                _axis.Normalize();
+                _axis = Vector2.Normalize(_axis);
             }
             else if (cache.IndexA[0] == cache.IndexA[1])
             {
@@ -110,7 +110,7 @@ namespace FarseerPhysics.Collision
 
                 Vector2 a = localPointB2 - localPointB1;
                 _axis = new Vector2(a.Y, -a.X);
-                _axis.Normalize();
+                _axis = Vector2.Normalize(_axis);
                 Vector2 normal = MathUtils.Mul(ref xfB.q, _axis);
 
                 _localPoint = 0.5f * (localPointB1 + localPointB2);
@@ -134,7 +134,7 @@ namespace FarseerPhysics.Collision
 
                 Vector2 a = localPointA2 - localPointA1;
                 _axis = new Vector2(a.Y, -a.X);
-                _axis.Normalize();
+                _axis=Vector2.Normalize(_axis);
                 Vector2 normal = MathUtils.Mul(ref xfA.q, _axis);
 
                 _localPoint = 0.5f * (localPointA1 + localPointA2);

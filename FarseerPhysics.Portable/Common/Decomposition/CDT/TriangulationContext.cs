@@ -38,7 +38,7 @@ namespace FarseerPhysics.Common.Decomposition.CDT
     {
         public readonly List<TriangulationPoint> Points = new List<TriangulationPoint>(200);
         public readonly List<DelaunayTriangle> Triangles = new List<DelaunayTriangle>();
-        private int _stepTime = -1;
+        // private int _stepTime = -1;
 
         public TriangulationContext()
         {

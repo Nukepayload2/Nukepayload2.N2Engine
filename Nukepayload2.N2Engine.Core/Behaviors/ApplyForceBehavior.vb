@@ -11,7 +11,7 @@ Namespace Behaviors
         Protected Overrides Sub OnAttached(visual As GameEntity)
             MyBase.OnAttached(visual)
             Dim body = visual.Body.Value
-            body.ApplyImpulse(Force.Value, body.WorldCenter)
+            body.ApplyLinearImpulse(Force.Value)
         End Sub
     End Class
 End Namespace

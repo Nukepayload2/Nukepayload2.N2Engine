@@ -1,6 +1,6 @@
 ﻿using System;
 using FarseerPhysics.Dynamics;
-using Microsoft.Xna.Framework;
+using System.Numerics;
 using Curve = FarseerPhysics.Common.Curve;
 using CurveKey = FarseerPhysics.Common.CurveKey;
 
