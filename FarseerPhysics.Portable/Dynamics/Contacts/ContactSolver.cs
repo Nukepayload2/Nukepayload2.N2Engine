@@ -169,17 +169,17 @@ namespace FarseerPhysics.Dynamics.Contacts
                     ManifoldPoint cp = manifold.Points[j];
                     VelocityConstraintPoint vcp = vc.points[j];
 
-                    if (Settings.EnableWarmstarting)
+#if (EnableWarmstarting)
                     {
                         vcp.normalImpulse = _step.dtRatio * cp.NormalImpulse;
                         vcp.tangentImpulse = _step.dtRatio * cp.TangentImpulse;
                     }
-                    else
+#else
                     {
                         vcp.normalImpulse = 0.0f;
                         vcp.tangentImpulse = 0.0f;
                     }
-
+#endif
                     vcp.rA = Vector2.Zero;
                     vcp.rB = Vector2.Zero;
                     vcp.normalMass = 0.0f;
@@ -513,7 +513,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                             cp1.normalImpulse = x.X;
                             cp2.normalImpulse = x.Y;
 
-#if B2_DEBUG_SOLVER 
+#if B2_DEBUG_SOLVER
 					// Postconditions
 					dv1 = vB + MathUtils.Cross(wB, cp1.rB) - vA - MathUtils.Cross(wA, cp1.rA);
 					dv2 = vB + MathUtils.Cross(wB, cp2.rB) - vA - MathUtils.Cross(wA, cp2.rA);

@@ -213,17 +213,17 @@ namespace FarseerPhysics.Dynamics.Joints
             // Cheat with some damping
             wA *= 0.98f;
 
-            if (Settings.EnableWarmstarting)
+#if (EnableWarmstarting)
             {
                 _impulse *= data.step.dtRatio;
                 vA += _invMassA * _impulse;
                 wA += _invIA * MathUtils.Cross(_rA, _impulse);
             }
-            else
+#else
             {
                 _impulse = Vector2.Zero;
             }
-
+#endif
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
         }
