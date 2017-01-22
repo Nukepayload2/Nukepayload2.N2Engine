@@ -112,7 +112,7 @@ namespace FarseerPhysics.Dynamics
 
         internal void RaiseAfterCollision(Fixture fixtureA, Fixture fixtureB, Contact contact, ContactVelocityConstraint impulse)
         {
-            AfterCollision(fixtureA, fixtureB, contact, impulse);
+            AfterCollision?.Invoke(fixtureA, fixtureB, contact, impulse);
         }
 
         /// <summary>
@@ -123,7 +123,7 @@ namespace FarseerPhysics.Dynamics
 
         internal bool RaiseBeforeCollision(Fixture fixtureA, Fixture fixtureB)
         {
-            return BeforeCollision(fixtureA, fixtureB);
+            return BeforeCollision?.Invoke(fixtureA, fixtureB) ?? false;
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace FarseerPhysics.Dynamics
 
         internal bool RaiseOnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            return OnCollision(fixtureA, fixtureB, contact);
+            return OnCollision?.Invoke(fixtureA, fixtureB, contact) ?? false;
         }
 
         /// <summary>
@@ -146,7 +146,7 @@ namespace FarseerPhysics.Dynamics
 
         internal void RaiseOnSeparation(Fixture fixtureA, Fixture fixtureB)
         {
-            OnSeparation(fixtureA, fixtureB);
+            OnSeparation?.Invoke(fixtureA, fixtureB);
         }
 
         internal Fixture()
