@@ -79,11 +79,11 @@ namespace FarseerPhysics.Common.Decomposition
             switch (algorithm)
             {
                 case TriangulationAlgorithm.Earclip:
-                    if (Settings.SkipSanityChecks)
+#if (SkipSanityChecks)
                     {
                         Debug.Assert(!vertices.IsCounterClockWise(), "The Earclip algorithm expects the polygon to be clockwise.");
                     }
-                    else
+#else
                     {
                         if (vertices.IsCounterClockWise())
                         {
@@ -94,6 +94,7 @@ namespace FarseerPhysics.Common.Decomposition
                         else
                             results = EarclipDecomposer.ConvexPartition(vertices, tolerance);
                     }
+#endif
                     break;
                 case TriangulationAlgorithm.Bayazit:
                     if (Settings.SkipSanityChecks)

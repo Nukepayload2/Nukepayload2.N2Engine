@@ -295,7 +295,7 @@ namespace FarseerPhysics.Dynamics.Contacts
             {
                 if (touching)
                 {
-                    if (Settings.AllCollisionCallbacksAgree)
+#if (AllCollisionCallbacksAgree)
                     {
                         bool enabledA = true, enabledB = true;
 
@@ -313,7 +313,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                         if (enabledA && enabledB && contactManager.BeginContact != null)
                             Enabled = contactManager.BeginContact(this);
                     }
-                    else
+#else
                     {
                         //Report the collision to both participants:
                         Enabled = FixtureA.RaiseOnCollision(FixtureA, FixtureB, this);
@@ -326,7 +326,7 @@ namespace FarseerPhysics.Dynamics.Contacts
                         if (contactManager.BeginContact != null)
                             Enabled = contactManager.BeginContact(this);
                     }
-
+#endif
                     // If the user disabled the contact (needed to exclude it in TOI solver) at any point by
                     // any of the callbacks, we need to mark it as not touching and call any separation
                     // callbacks for fixtures that didn't explicitly disable the collision.
@@ -450,7 +450,7 @@ namespace FarseerPhysics.Dynamics.Contacts
             Reset(null, 0, null, 0);
         }
 
-        #region Nested type: ContactType
+#region Nested type: ContactType
 
         private enum ContactType
         {
@@ -464,6 +464,6 @@ namespace FarseerPhysics.Dynamics.Contacts
             ChainAndCircle,
         }
 
-        #endregion
+#endregion
     }
 }

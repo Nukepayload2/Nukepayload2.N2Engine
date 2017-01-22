@@ -183,7 +183,7 @@ namespace FarseerPhysics.Dynamics.Joints
                 _angularMass = 1.0f / _angularMass;
             }
 
-            if (Settings.EnableWarmstarting)
+#if (EnableWarmstarting)
             {
                 // Scale impulses to support a variable time step.
                 _linearImpulse *= data.step.dtRatio;
@@ -195,12 +195,12 @@ namespace FarseerPhysics.Dynamics.Joints
                 vB += mB * P;
                 wB += iB * (MathUtils.Cross(_rB, P) + _angularImpulse);
             }
-            else
+#else
             {
                 _linearImpulse = Vector2.Zero;
                 _angularImpulse = 0.0f;
             }
-
+#endif
             data.velocities[_indexA].v = vA;
             data.velocities[_indexA].w = wA;
             data.velocities[_indexB].v = vB;
