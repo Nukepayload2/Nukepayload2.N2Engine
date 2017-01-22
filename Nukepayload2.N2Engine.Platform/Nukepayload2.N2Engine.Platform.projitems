@@ -9,10 +9,17 @@
     <Import_RootNamespace>Nukepayload2.N2Engine.Platform</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayer.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Media\SoundPlayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\GaussianBlurEffectImpl.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayerImpl.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Media\SoundVoicePlayerImpl.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameVisualContainerRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameSpriteElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameVisualizingScrollViewerRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GeometryElementRenderers.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\SaveManagerImpl.vb" />
   </ItemGroup>
 </Project>

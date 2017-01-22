@@ -1,6 +1,6 @@
 ﻿Namespace Concurrent
     ''' <summary>
-    ''' 线程安全的线性表。全部操作会被加锁。
+    ''' 线程安全的线性表。全部操作会被加锁。性能警告：使用 For Each (Visual Basic) 循环 （在 Visual C# 为 foreach）会创建此集合的副本来满足线程安全。
     ''' </summary>
     ''' <typeparam name="T">表内的数据类型</typeparam>
     Public Class ConcurrentList(Of T)
@@ -100,12 +100,10 @@
             End SyncLock
         End Function
         ''' <summary>
-        ''' 返回一个循环访问集合的枚举器
+        ''' 返回一个循环访问集合的的副本枚举器。创建副本的过程是互斥的。
         ''' </summary>
         Public Function GetEnumerator() As IEnumerator(Of T) Implements IEnumerable(Of T).GetEnumerator
-            SyncLock lock
-                Return DirectCast(list, IList(Of T)).GetEnumerator()
-            End SyncLock
+            Return DirectCast(list, IList(Of T)).ToArray.GetEnumerator()
         End Function
 
         Public Function IndexOf(item As T) As Integer Implements IList(Of T).IndexOf
@@ -125,7 +123,7 @@
 
         Private Function IEnumerable_GetEnumerator() As IEnumerator Implements IEnumerable.GetEnumerator
             SyncLock lock
-                Return DirectCast(list, IList(Of T)).GetEnumerator()
+                Return DirectCast(list, IList(Of T)).ToArray.GetEnumerator()
             End SyncLock
         End Function
         ''' <summary>

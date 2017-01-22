@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.CompilerServices
 
-Partial Module ColorConverter
+Partial Module Conversion
     <Extension>
     Function AsGtkColor(color As Microsoft.Xna.Framework.Color) As Gdk.RGBA
         Dim col As New Gdk.RGBA

@@ -10,8 +10,8 @@
     <AssemblyName>Nukepayload2.N2Engine.UWP</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
-    <TargetPlatformVersion>10.0.10586.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.10240.0</TargetPlatformMinVersion>
+    <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
   </PropertyGroup>
@@ -50,7 +50,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x86\Debug\</OutputPath>
-    <DefineConstants>NETFX_CORE,WINDOWS_UWP</DefineConstants>
+    <DefineConstants>NETFX_CORE,WINDOWS_UWP,WIN2D</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
@@ -130,22 +130,25 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Media\AudioState.vb" />
-    <Compile Include="Media\AudioStateCacheFactory.vb" />
-    <Compile Include="Foundation\Cache.vb" />
-    <Compile Include="Foundation\CacheOverflowException.vb" />
-    <Compile Include="Media\MusicPlayback.vb" />
-    <Compile Include="Media\MusicPlayer.vb" />
-    <Compile Include="Media\SoundMixListFullOperation.vb" />
-    <Compile Include="Media\SoundPlayback.vb" />
-    <Compile Include="Media\SoundPlayer.vb" />
+    <Compile Include="Effects\GaussianBlurEffectImpl.vb" />
+    <Compile Include="Effects\IWin2DEffect.vb" />
+    <Compile Include="Renderers\GameVisualContainerRenderer.vb" />
     <Compile Include="Renderers\GameCanvasRenderer.vb" />
     <Compile Include="Renderers\GameElementRenderer.vb" />
+    <Compile Include="Renderers\GameSpriteElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\BezierCubicElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\BezierCurveCustomElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\BezierQuadraticElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\EllipseElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\LineElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\PolylineElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\RectangleElementRenderer.vb" />
+    <Compile Include="Renderers\Geometry\TriangleElementRenderer.vb" />
     <Compile Include="Renderers\SparkParticleSystemRenderer.vb" />
     <Compile Include="Platform\UWPImplRegistration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="Renderers\CanvasRendererBase.vb" />
     <Compile Include="Renderers\UWPRenderer.vb" />
+    <Compile Include="Resources\PlatformBitmapResource.vb" />
     <Compile Include="Utilities\CanvasGeometryExtension.vb" />
     <Compile Include="Utilities\LightClipCalculator.vb" />
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.UWP.rd.xml" />
@@ -193,9 +196,6 @@
       <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
       <Name>Nukepayload2.N2Engine</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Content Include="Media\Nukepayload2.N2Engine.Media.vbproj" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Storage\" />

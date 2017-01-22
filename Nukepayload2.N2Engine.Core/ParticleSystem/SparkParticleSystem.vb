@@ -9,8 +9,8 @@ Namespace ParticleSystem
     Public Class SparkParticleSystem
         Inherits DynamicParticleSystem(Of SparkParticle)
 
-        Public Sub New(spawnCount As Integer, spawnDuration As Integer, spawnInterval As Integer, particleLife As Integer, removeFromGameCanvasCallback As PropertyBinder(Of Action))
-            MyBase.New(spawnCount, spawnDuration, spawnInterval, removeFromGameCanvasCallback)
+        Public Sub New(spawnCount As Integer, spawnDuration As Integer, spawnInterval As Integer, particleLife As Integer)
+            MyBase.New(spawnCount, spawnDuration, spawnInterval)
             Me.ParticleLife = particleLife
             For i = 0 To spawnCount - 1
                 Dim p = CreateParticle()

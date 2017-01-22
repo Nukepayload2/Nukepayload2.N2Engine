@@ -1,26 +1,25 @@
-﻿Imports System.Collections.Specialized
+﻿Imports Microsoft.Graphics.Canvas
 Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
+Imports Nukepayload2.N2Engine.Linq
 Imports Nukepayload2.N2Engine.UI.Elements
 
 Public Class GameCanvasRenderer
-    Inherits CanvasRendererBase(Of GameCanvas)
+    Inherits GameVisualContainerRenderer
 
+    ''' <summary>
+    ''' 用于呈现即时2D动画的Xaml控件
+    ''' </summary>
+    Public WithEvents Win2DCanvas As CanvasAnimatedControl
     ''' <summary>
     ''' 初始化总的渲染器
     ''' </summary>
     ''' <param name="view">N2引擎的视图</param>
     ''' <param name="win2DCanvas">UWP的画布</param>
     Sub New(view As GameCanvas, win2DCanvas As CanvasAnimatedControl)
-        MyBase.New(view, win2DCanvas)
-        HandleNewElements(view)
-        AddHandler view.Children.CollectionChanged, AddressOf OnChildrenChanged
-    End Sub
-
-    Private Sub HandleNewElements(view As GameCanvas)
-        For Each newItems As GameElement In view.Children
-            newItems.HandleRenderer(Me)
-        Next
+        MyBase.New(view)
+        Me.Win2DCanvas = win2DCanvas
+        view.Renderer = Me
     End Sub
 
     ''' <summary>
@@ -28,52 +27,51 @@ Public Class GameCanvasRenderer
     ''' </summary>
     Public Overrides Sub DisposeResources()
         MyBase.DisposeResources()
-        View.Children.Clear()
+        DirectCast(View, GameCanvas).Children.Clear()
+        _Win2DCanvas = Nothing
     End Sub
+
+    Private Sub DoCanvasOperation(act As Action(Of UWPRenderer))
+        For Each vie In View.HierarchyForEach(Function(node) TryCast(node, GameVisualContainer)?.Children)
+            act(DirectCast(vie.Renderer, UWPRenderer))
+        Next
+    End Sub
+
     ''' <summary>
-    ''' 更新Renderer的事件订阅
+    ''' 处理游戏循环结束
     ''' </summary>
-    Protected Overridable Sub OnChildrenChanged(sender As Object, e As NotifyCollectionChangedEventArgs)
-        If e.NewItems IsNot Nothing Then
-            HandleNewElements(View)
-        End If
-        If e.OldItems IsNot Nothing Then
-            Dim result = Win2DCanvas.Dispatcher.RunAsync(Windows.UI.Core.CoreDispatcherPriority.Normal,
-            Sub()
-                For Each oldItems As GameElement In e.OldItems
-                    oldItems.UnloadRenderer(Me)
-                Next
-            End Sub)
-        End If
+    Private Sub Game_GameLoopStopped(sender As ICanvasAnimatedControl, args As Object) Handles Win2DCanvas.GameLoopStopped
+        DoCanvasOperation(Sub(renderer) renderer.OnGameLoopStopped(sender, args))
     End Sub
+
     ''' <summary>
     ''' 创建画布渲染器级别的资源
     ''' </summary>
-    Protected Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs) Handles MyBase.CreateResources
-
+    Private Sub Game_CreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs) Handles Win2DCanvas.CreateResources
+        DoCanvasOperation(Sub(renderer) renderer.OnCreateResources(sender, args))
     End Sub
     ''' <summary>
     ''' 绘制水印
     ''' </summary>
-    Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs) Handles MyBase.Draw
-
+    Private Sub Game_Draw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs) Handles Win2DCanvas.Draw
+        OnDraw(sender, args)
     End Sub
+
+    Protected Overrides Sub CommitRenderTargetToParent(backBuffer As CanvasDrawingSession)
+        Dim loc = View.Location.Value
+        backBuffer.DrawImage(RenderTarget, loc.X, loc.Y)
+    End Sub
+
     ''' <summary>
     ''' 处理开始游戏
     ''' </summary>
-    Protected Overrides Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object) Handles MyBase.GameLoopStarting
-
-    End Sub
-    ''' <summary>
-    ''' 处理游戏循环结束
-    ''' </summary>
-    Protected Overrides Sub OnGameLoopStopped(sender As ICanvasAnimatedControl, args As Object) Handles MyBase.GameLoopStopped
-
+    Private Sub Game_GameLoopStarting(sender As ICanvasAnimatedControl, args As Object) Handles Win2DCanvas.GameLoopStarting
+        DoCanvasOperation(Sub(renderer) renderer.OnGameLoopStarting(sender, args))
     End Sub
     ''' <summary>
     ''' 处理水印的更新
     ''' </summary>
-    Protected Overrides Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs) Handles MyBase.Update
-
+    Private Sub Game_Update(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs) Handles Win2DCanvas.Update
+        DoCanvasOperation(Sub(renderer) renderer.OnUpdate(sender, args))
     End Sub
 End Class

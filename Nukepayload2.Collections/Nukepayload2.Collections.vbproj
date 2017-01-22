@@ -84,6 +84,7 @@
     <Compile Include="ConcurrentLinkedList.vb" />
     <Compile Include="ConcurrentLinkedListNode.vb" />
     <Compile Include="ConcurrentList.vb" />
+    <Compile Include="ConcurrentObservableCollection.vb" />
     <Compile Include="MatrixMap.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>

@@ -5,18 +5,45 @@
     <TypeForwardedFrom("Nukepayload2.N2Engine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")>
     Public Structure Color
         Implements IEquatable(Of Color)
+        ''' <summary>
+        ''' 通过 Alpha, Red, Green, Blue 通道初始化颜色。
+        ''' </summary>
         Sub New(a As Byte, r As Byte, g As Byte, b As Byte)
             Me.A = a
             Me.R = r
             Me.G = g
             Me.B = b
         End Sub
+        ''' <summary>
+        ''' 使用编码的 32 位数字初始化颜色。
+        ''' </summary>
+        Sub New(value As Integer)
+            A = (value >> 24) And &HFF
+            R = (value >> 16) And &HFF
+            G = (value >> 8) And &HFF
+            B = value And &HFF
+        End Sub
+        ''' <summary>
+        ''' 通过 Red, Green, Blue 通道初始化颜色。
+        ''' </summary>
         Sub New(r As Byte, g As Byte, b As Byte)
             MyClass.New(255, r, g, b)
         End Sub
+        ''' <summary>
+        ''' Alpha 通道
+        ''' </summary>
         Public Property A As Byte
+        ''' <summary>
+        ''' Red 通道
+        ''' </summary>
         Public Property R As Byte
+        ''' <summary>
+        ''' Green 通道
+        ''' </summary>
         Public Property G As Byte
+        ''' <summary>
+        ''' Blue 通道
+        ''' </summary>
         Public Property B As Byte
         Public Shared Function FromArgb(a As Byte, r As Byte, g As Byte, b As Byte) As Color
             Return New Color(a, r, g, b)

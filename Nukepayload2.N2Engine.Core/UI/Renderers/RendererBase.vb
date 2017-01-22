@@ -6,6 +6,7 @@ Namespace Renderers
     ''' 渲染器的基类
     ''' </summary>
     Public MustInherit Class RendererBase
+        Implements IDisposable
         Sub New(view As GameVisual)
             Me.View = view
         End Sub
@@ -13,29 +14,11 @@ Namespace Renderers
         ''' <summary>
         ''' 注册渲染器后，元素视图可以用这个方法创建渲染器
         ''' </summary>
-        Friend Shared Sub CreateElementRenderer(view As GameElement)
-            PlatformActivator.CreateInstance(view)
-        End Sub
+        Friend Shared Function CreateVisualRenderer(view As GameVisual) As RendererBase
+            Return DirectCast(PlatformActivator.CreateInstance(view), RendererBase)
+        End Function
 
         Public Property View As GameVisual
-    End Class
-
-    Public MustInherit Class RendererBase(Of T As GameVisual)
-        Inherits RendererBase
-        Implements IDisposable
-
-        Sub New(view As T)
-            MyBase.New(view)
-        End Sub
-
-        Public Overloads Property View As T
-            Get
-                Return DirectCast(MyBase.View, T)
-            End Get
-            Set(value As T)
-                MyBase.View = value
-            End Set
-        End Property
 
 #Region "IDisposable Support"
         Private disposedValue As Boolean ' 要检测冗余调用

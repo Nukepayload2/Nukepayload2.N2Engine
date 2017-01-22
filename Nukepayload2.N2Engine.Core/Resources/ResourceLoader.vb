@@ -1,10 +1,18 @@
 ﻿Imports System.Reflection
 Imports System.Resources
+Imports System.Threading
+
 Namespace Resources
     ''' <summary>
-    ''' 处理资源加载或键映射
+    ''' 处理资源加载或资源键映射
     ''' </summary>
     Public Class ResourceLoader
+        ''' <summary>
+        ''' 对于不能跨线程共享的资源提供同步
+        ''' </summary>
+        Dim _syncContext As SynchronizationContext
+
+        Shared instances As New Dictionary(Of SynchronizationContext, ResourceLoader)
         ''' <summary>
         ''' 在特定平台按照 "内容" 生成的资源。
         ''' </summary>
@@ -37,9 +45,21 @@ Namespace Resources
         ''' 从自定义字符串映射到自定义加载委托
         ''' </summary>
         Dim customRoutes As New Dictionary(Of String, Func(Of String, Object))
-        Sub New()
-
+        Protected Sub New(curSync As SynchronizationContext)
+            _syncContext = curSync
+            instances.Add(curSync, Me)
         End Sub
+        ''' <summary>
+        ''' 为当前线程获取一个资源加载器。在 UI 线程（STA 或 MTA） 进行这个操作一定会成功。
+        ''' </summary>
+        ''' <exception cref="InvalidOperationException"/>
+        Public Shared Function GetForCurrentView() As ResourceLoader
+            Dim curSync = SynchronizationContext.Current
+            If curSync Is Nothing Then
+                Throw New InvalidOperationException("当前线程并没有同步上下文。请确保在UI线程调用这个方法。")
+            End If
+            Return If(instances.ContainsKey(curSync), instances(curSync), New ResourceLoader(curSync))
+        End Function
         Public Property UICulture As Globalization.CultureInfo = Globalization.CultureInfo.CurrentUICulture
         ''' <summary>
         ''' 添加嵌入的资源加载Uri路由。示例：资源包名是StringPack, 字符串资源加载器是 resMgr, 当前语言标识为 CurrentCulture，那么映射是：n2-res-str:///StringPack/Welcome -> resMgr.GetString("Welcome", UICulture)
@@ -84,7 +104,7 @@ Namespace Resources
             customRoutes.Add(resKey, load)
         End Sub
         ''' <summary>
-        ''' 从Uri解析出相应的资源或方案映射。如果是平台内容，则返回相应的映射字符串。如果是嵌入资源，则打开资源流。如果是自定义资源，则返回注册的资源加载器的执行结果。
+        ''' 从Uri解析出相应的动态资源或方案映射。如果是平台内容，则返回相应的映射字符串。如果是嵌入资源，则打开资源流。如果是自定义资源，则返回注册的资源加载器的执行结果。
         ''' </summary>
         Public Function GetResource(resourceKey As Uri) As Object
             Dim scheme = resourceKey.Scheme
@@ -106,7 +126,77 @@ Namespace Resources
                 Throw New ArgumentException("无法检索相应的资源, 由于提供了错误的Uri。", NameOf(resourceKey), ex)
             End Try
         End Function
-
+        ''' <summary>
+        ''' 通过 Uri 检索资源流
+        ''' </summary>
+        Public Function GetResourceEmbeddedStream(resourceKey As Uri) As Stream
+            Dim scheme = resourceKey.Scheme
+            Dim path = resourceKey.AbsolutePath
+            Try
+                Select Case scheme
+                    Case EmbeddedScheme
+                        Return GetEmbeddedResource(path)
+                    Case Else
+                        Throw New ArgumentException($"未识别的方案{scheme}")
+                End Select
+            Catch ex As ArgumentException
+                Throw New ArgumentException("无法检索相应的资源, 由于提供了错误的Uri。", NameOf(resourceKey), ex)
+            End Try
+        End Function
+        ''' <summary>
+        ''' 通过 Uri 检索并执行获取自定义资源的动作
+        ''' </summary>
+        Public Function GetResourceObject(resourceKey As Uri) As Object
+            Dim scheme = resourceKey.Scheme
+            Dim path = resourceKey.AbsolutePath
+            Try
+                Select Case scheme
+                    Case CustomScheme
+                        Return GetCustomResource(path)
+                    Case Else
+                        Throw New ArgumentException($"未识别的方案{scheme}")
+                End Select
+            Catch ex As ArgumentException
+                Throw New ArgumentException("无法检索相应的资源, 由于提供了错误的Uri。", NameOf(resourceKey), ex)
+            End Try
+        End Function
+        ''' <summary>
+        ''' 将 n2引擎的 Uri 转换为平台资源的 Uri。
+        ''' </summary>
+        Public Function GetResourceUri(resourceKey As Uri) As Uri
+            Dim scheme = resourceKey.Scheme
+            Dim path = resourceKey.AbsolutePath
+            Try
+                Select Case scheme
+                    Case PlatformContentScheme
+                        Return GetPlatformContentKey(path)
+                    Case Else
+                        Throw New ArgumentException($"未识别的方案{scheme}")
+                End Select
+            Catch ex As ArgumentException
+                Throw New ArgumentException("无法检索相应的资源, 由于提供了错误的Uri。", NameOf(resourceKey), ex)
+            End Try
+        End Function
+        ''' <summary>
+        ''' 从 Uri 获取本地化字符串
+        ''' </summary>
+        Public Function GetResourceString(resourceKey As Uri) As String
+            Dim scheme = resourceKey.Scheme
+            Dim path = resourceKey.AbsolutePath
+            Try
+                Select Case scheme
+                    Case StringScheme
+                        Return GetString(path)
+                    Case Else
+                        Throw New ArgumentException($"未识别的方案{scheme}")
+                End Select
+            Catch ex As ArgumentException
+                Throw New ArgumentException("无法检索相应的资源, 由于提供了错误的Uri。", NameOf(resourceKey), ex)
+            End Try
+        End Function
+        ''' <summary>
+        ''' 从已解析的 Uri 的 Path(以 / 开始) 获取本地化字符串
+        ''' </summary>
         Public Function GetString(path As String) As String
             Dim paths = path.Split({"/"c}, StringSplitOptions.RemoveEmptyEntries)
             If path.Length <> 2 Then
@@ -137,12 +227,12 @@ Namespace Resources
         ''' <summary>
         ''' 从已解析的 Uri 的 Path(以 / 开始) 获取平台内容资源键
         ''' </summary>
-        Public Function GetPlatformContentKey(path As String) As String
+        Public Function GetPlatformContentKey(path As String) As Uri
             Dim second As Integer = 0
             Dim platformName = GetUriPathRoot(path, second)
             If Not String.IsNullOrEmpty(platformName) AndAlso prefixRoutes.ContainsKey(platformName) Then
                 Dim routePrefix = prefixRoutes(platformName)
-                Return routePrefix + path.Substring(second)
+                Return New Uri(routePrefix + path.Substring(second))
             End If
             Throw New ArgumentException($"Uri平台名称未映射", NameOf(path))
         End Function
@@ -159,11 +249,11 @@ Namespace Resources
             End If
             If path.LastIndexOf("/") > 0 Then
                 '带文件夹名字的嵌入资源
-                Dim asmName = GetUriPathRoot(path, second)
-                If Not String.IsNullOrEmpty(asmName) AndAlso assemblyRoutes.ContainsKey(asmName) Then
-                    Dim asm = assemblyRoutes(asmName)
-                    Dim asmFullName = asm.FullName
-                    Dim resKey = asmFullName
+                Dim asmID = GetUriPathRoot(path, second)
+                If Not String.IsNullOrEmpty(asmID) AndAlso assemblyRoutes.ContainsKey(asmID) Then
+                    Dim asm = assemblyRoutes(asmID)
+                    Dim asmName = asm.GetName.Name
+                    Dim resKey = asmName + path.Substring(second).Replace("/", ".")
                     Return asm.GetManifestResourceStream(resKey)
                 End If
             Else

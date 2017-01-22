@@ -1,7 +1,9 @@
 ﻿Namespace UI.Elements
-
+    ''' <summary>
+    ''' 
+    ''' </summary>
     Public Class PanelLayer
-        Inherits GameLayer(Of GameVisual)
+        Inherits GameLayer
 
     End Class
 

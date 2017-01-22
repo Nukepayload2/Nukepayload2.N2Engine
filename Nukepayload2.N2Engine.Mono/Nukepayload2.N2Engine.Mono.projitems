@@ -9,7 +9,10 @@
     <Import_RootNamespace>Nukepayload2.N2Engine.Mono</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Foundation\ColorConverter.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Device\GraphicsDeviceManagerExtension.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\GaussianBlurEffectImpl.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\IMonoGameEffect.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\Conversion.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonoAPIContract.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameCreateResourcesEventArgs.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameDrawEventArgs.vb" />
@@ -17,10 +20,20 @@
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameUpdateEventArgs.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonoImplRegistration.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\TypedEventHandler.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayer.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Media\SoundPlayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameVisualContainerRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameSpriteElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\BezierCubicElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\BezierCurveCustomElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\BezierQuadraticElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\EllipseElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\LineElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\PolylineElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\RectangleElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\TriangleElementRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\MonoGameRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
   </ItemGroup>
 </Project>

@@ -2,7 +2,7 @@
 
 Namespace UI.Elements
     Public Class EntityLayer
-        Inherits GameLayer(Of GameEntity)
+        Inherits GameLayer
 
         Sub New(world As World)
             Me.World = world

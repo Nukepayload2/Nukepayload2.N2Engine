@@ -54,15 +54,15 @@ namespace RaisingStudio.Xna.Graphics
 
         #endregion
 		
-#if !NET_4_0
-		public static bool HasFlag (this DrawingSortMode value, DrawingSortMode flag)
-		{
-			ulong mvalue = (ulong)value;
-			ulong fvalue = (ulong)flag;
+//#if !NET_4_0
+//		public static bool HasFlag (this DrawingSortMode value, DrawingSortMode flag)
+//		{
+//			ulong mvalue = (ulong)value;
+//			ulong fvalue = (ulong)flag;
 
-			return ((mvalue & fvalue) == fvalue);
-		}
-#endif
+//			return ((mvalue & fvalue) == fvalue);
+//		}
+//#endif
 
         public static IEnumerable<T> Distinct<T, V>(this IEnumerable<T> source, Func<T, V> keySelector)
         {

@@ -10,31 +10,20 @@ Friend Class SparkParticleSystemRenderer
         MyBase.New(view)
     End Sub
 
-    Protected Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
+    Friend Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
         Debug.WriteLine("准备火花资源")
+        DirectCast(View, SparkParticleSystemView).Data.Value.RemoveFromGameCanvasCallback.Bind(Function() AddressOf View.RemoveFromGameCanvas)
     End Sub
 
-    Protected Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
+    Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim ds = args.DrawingSession
-        Dim SparkSys = View.Data.Value
+        Dim SparkSys = DirectCast(View, SparkParticleSystemView).Data.Value
         For Each part In SparkSys.Particles
             ds.FillRectangle(New Rect(part.Location.ToPoint, New Size(part.SparkSize, part.SparkSize)), part.SparkColor.AsWindowsColor)
         Next
     End Sub
-    Protected Overrides Sub OnGameLoopStarting(sender As ICanvasAnimatedControl, args As Object)
-
-    End Sub
-
-    Protected Overrides Sub OnGameLoopStopped(sender As ICanvasAnimatedControl, args As Object)
-
-    End Sub
-
-    Protected Overrides Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
-        View.UpdateCommand.Execute()
-    End Sub
 
     Public Overrides Sub DisposeResources()
-        MyBase.DisposeResources()
         Debug.WriteLine("释放全部火花资源")
     End Sub
 End Class

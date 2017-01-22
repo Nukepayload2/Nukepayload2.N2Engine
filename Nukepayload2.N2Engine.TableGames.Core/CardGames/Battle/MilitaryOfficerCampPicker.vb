@@ -3,7 +3,7 @@
         Implements ICampManger
         Dim _RegisteredCamp As New List(Of ICamp)
         Sub New()
-            _RegisteredCamp.AddRange({New 平民})
+            _RegisteredCamp.AddRange({New Camp})
         End Sub
         Public ReadOnly Property RegisteredCamp As IList(Of ICamp) Implements ICampManger.RegisteredCamp
             Get

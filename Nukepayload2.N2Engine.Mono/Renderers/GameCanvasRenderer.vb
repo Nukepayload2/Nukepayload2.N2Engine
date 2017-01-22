@@ -1,44 +1,62 @@
-﻿Imports System.Collections.Specialized
-Imports Microsoft.Xna.Framework
-Imports Nukepayload2.N2Engine.Renderers
+﻿Imports Microsoft.Xna.Framework
+Imports Microsoft.Xna.Framework.Graphics
+Imports Nukepayload2.N2Engine.Linq
 Imports Nukepayload2.N2Engine.UI.Elements
+Imports RaisingStudio.Xna.Graphics
 
 Public Class GameCanvasRenderer
-    Inherits RendererBase(Of GameCanvas)
+    Inherits GameVisualContainerRenderer
 
     Public WithEvents Game As MonoGameHandler
     Sub New(view As GameCanvas, game As MonoGameHandler)
         MyBase.New(view)
         Me.Game = game
-        HandleNewElements(view)
-        AddHandler view.Children.CollectionChanged, AddressOf OnChildrenChanged
-    End Sub
-
-    ''' <summary>
-    ''' 更新Renderer的事件订阅
-    ''' </summary>
-    Protected Overridable Sub OnChildrenChanged(sender As Object, e As NotifyCollectionChangedEventArgs)
-        If e.NewItems IsNot Nothing Then
-            HandleNewElements(View)
-        End If
-        If e.OldItems IsNot Nothing Then
-            For Each oldItems As GameElement In e.OldItems
-                oldItems.UnloadRenderer(Me)
-            Next
-        End If
-    End Sub
-
-    Private Sub HandleNewElements(view As GameCanvas)
-        For Each newItems As GameElement In view.Children
-            newItems.HandleRenderer(Me)
-        Next
-    End Sub
-
-    Private Sub Game_GameLoopEnded(sender As Game, args As Object) Handles Game.GameLoopEnded
-        View.Children.Clear()
+        view.Renderer = Me
     End Sub
 
     Public Overrides Sub DisposeResources()
+        DirectCast(View, GameCanvas).Children.Clear()
+    End Sub
 
+    Private Sub DoCanvasOperation(act As Action(Of MonoGameRenderer))
+        For Each vie In View.HierarchyForEach(Function(node) TryCast(node, GameVisualContainer)?.Children)
+            act(DirectCast(vie.Renderer, MonoGameRenderer))
+        Next
+    End Sub
+
+    Private Sub Game_GameLoopEnded(sender As Game, args As Object) Handles Game.GameLoopStopped
+        DoCanvasOperation(Sub(renderer) renderer.OnGameLoopStopped(sender, args))
+    End Sub
+
+    Private Sub Game_CreateResources(sender As Game, args As MonogameCreateResourcesEventArgs) Handles Game.CreateResources
+        DoCanvasOperation(Sub(renderer) renderer.OnCreateResources(sender, args))
+    End Sub
+
+    Private Sub Game_Drawing(sender As Game, args As MonogameDrawEventArgs) Handles Game.Drawing
+        'Debug.WriteLine("开始刷新画面")
+        OnDraw(sender, args)
+        'Debug.WriteLine("完成刷新画面")
+    End Sub
+    ''' <summary>
+    ''' 在 backbuffer 绘制
+    ''' </summary>
+    Protected Overrides Sub CommitRenderTargetToParent(device As GraphicsDevice, dc As SpriteBatch)
+        'Debug.WriteLine("设置绘制目标为：backbuffer")
+        device.SetRenderTarget(Nothing)
+        'Debug.WriteLine("清屏: 白色")
+        device.Clear(Color.White)
+        dc.Begin()
+        Dim loc = View.Location.Value
+        'Debug.WriteLine("绘制画布缓存纹理")
+        dc.Draw(RenderTarget, New Rectangle(loc.X, loc.Y, RenderTarget.Width, RenderTarget.Height), Color.White)
+        dc.End()
+    End Sub
+
+    Private Sub Game_GameLoopStarting(sender As Game, args As Object) Handles Game.GameLoopStarting
+        DoCanvasOperation(Sub(renderer) renderer.OnGameLoopStarting(sender, args))
+    End Sub
+
+    Private Sub Game_Updating(sender As Game, args As MonogameUpdateEventArgs) Handles Game.Updating
+        DoCanvasOperation(Sub(renderer) renderer.OnUpdate(sender, args))
     End Sub
 End Class

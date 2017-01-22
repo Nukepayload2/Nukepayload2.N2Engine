@@ -31,7 +31,7 @@ Namespace Battle
         Public ReadOnly Property OwnedMilitaryOfficer As IList(Of IMilitaryOfficer) = _Commanders Implements ICamp.OwnedMilitaryOfficer
     End Class
 
-    Public Class 平民
+    Public Class Camp
         Inherits CampBase
         Sub New()
             With OwnedHandCard
@@ -47,8 +47,8 @@ Namespace Battle
         Public Overrides ReadOnly Property Uid As String = "Civilian"
         Public Overrides ReadOnly Property SkirmishAvailable As Boolean = False
         Public Overrides ReadOnly Property DefaultAbility As IList(Of IMilitaryOfficerAbility) = {}
-        Public Overrides ReadOnly Property BriefDescription As String = "平民CampUse所有CommonCard"
-        Public Overrides ReadOnly Property ExtendedDescription As String = "平民CampUse所有CommonCard，通常UnableTo再SkirmishUse。"
+        Public Overrides ReadOnly Property BriefDescription As String = "CampCampUse所有CommonCard"
+        Public Overrides ReadOnly Property ExtendedDescription As String = "CampCampUse所有CommonCard，通常UnableTo再SkirmishUse。"
         Public Overrides ReadOnly Property DefaultCampColorArgb As Integer
             Get
                 Return ColorValues.Gray

@@ -11,11 +11,11 @@ Public Class MonoGameHandler
     Inherits Game
 
     Dim graphics As GraphicsDeviceManager
-    Dim drawingContext As DrawingContext
+    Dim spriteBatch As SpriteBatch
 
     Public Event GameLoopStarting As TypedEventHandler(Of Game, Object)
     Public Event CreateResources As TypedEventHandler(Of Game, MonogameCreateResourcesEventArgs)
-    Public Event GameLoopEnded As TypedEventHandler(Of Game, Object)
+    Public Event GameLoopStopped As TypedEventHandler(Of Game, Object)
     Public Event Drawing As TypedEventHandler(Of Game, MonogameDrawEventArgs)
     Public Event Updating As TypedEventHandler(Of Game, MonogameUpdateEventArgs)
 
@@ -73,6 +73,7 @@ Public Class MonoGameHandler
     Protected Overrides Sub Initialize()
         ' TODO: 初始化游戏逻辑
         RaiseEvent GameLoopStarting(Me, Nothing)
+        GraphicsDeviceManagerExtension.SharedDevice = GraphicsDevice
 
         MyBase.Initialize()
     End Sub
@@ -82,7 +83,7 @@ Public Class MonoGameHandler
     ''' </summary>
     Protected Overrides Sub LoadContent()
         ' 新建用于绘制纹理的 SpriteBatch
-        drawingContext = New DrawingContext(GraphicsDevice)
+        spriteBatch = New SpriteBatch(GraphicsDevice)
         ' TODO: 使用 Me.Content 装载游戏内容
         RaiseEvent CreateResources(Me, New MonogameCreateResourcesEventArgs(GraphicsDevice))
     End Sub
@@ -92,7 +93,7 @@ Public Class MonoGameHandler
     ''' </summary>
     Protected Overrides Sub UnloadContent()
         ' TODO: 卸载任何非 ContentManager 内容
-        RaiseEvent GameLoopEnded(Me, Nothing)
+        RaiseEvent GameLoopStopped(Me, Nothing)
     End Sub
 
     ''' <summary>
@@ -113,19 +114,15 @@ Public Class MonoGameHandler
         MyBase.Update(timing)
     End Sub
 
-    Public Property Background As Color = Color.White
     ''' <summary>
     ''' 在游戏应该绘制的时候调用
     ''' </summary>
     ''' <param name="timing">提供时间的快照</param>
     Protected Overrides Sub Draw(timing As GameTime)
-        GraphicsDevice.Clear(Background)
+        MyBase.Draw(timing)
 
         ' TODO: 在此添加绘制代码
-        drawingContext.Begin()
-        RaiseEvent Drawing(Me, New MonogameDrawEventArgs(drawingContext, timing))
-        drawingContext.End()
+        RaiseEvent Drawing(Me, New MonogameDrawEventArgs(spriteBatch, timing))
 
-        MyBase.Draw(timing)
     End Sub
 End Class
