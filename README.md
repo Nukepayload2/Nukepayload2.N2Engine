@@ -26,3 +26,4 @@
 <li>现在我还没有完成版本控制的迁移，所以在我完成之前，直接按修改日期判别版本。</li>
 <li>此解决方案中所有 Nukepayload2.N2Engine 开头的项目使用 GPLv3 协议</li>
 <li>此解决方案中所有 N2Demo 开头的项目使用 LGPLv3 协议</li>
+<li>FarseerPhysics 项目使用 Ms-PL 1.1 协议</li>
