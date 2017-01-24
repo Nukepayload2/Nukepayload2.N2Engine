@@ -116,23 +116,22 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CharacterSheet.vb" />
+    <Compile Include="Models\CharacterSheet.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="ColorizedBound.vb" />
-    <Compile Include="ResourceRouteConfig.vb" />
-    <Compile Include="Resources.vb" />
+    <Compile Include="Models\ColorizedBound.vb" />
+    <Compile Include="Resources\ResourceRouteConfig.vb" />
     <Compile Include="Save\SampleMasterData.vb" />
     <Compile Include="Save\SamplePartialData.vb" />
     <Compile Include="Save\SampleSaveFileManager.vb" />
     <Compile Include="Save\SampleSavePollution.vb" />
-    <Compile Include="ShakingViewer.vb" />
-    <Compile Include="SparksView.vb" />
+    <Compile Include="Models\ShakingViewer.vb" />
+    <Compile Include="Views\SparksView.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="SparksViewModel.vb" />
+    <Compile Include="ViewModels\SparksViewModel.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\CharacterSheet.png" />
@@ -149,6 +148,16 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Audios\Musics\Theme1.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Audios\Sounds\Explosion4.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

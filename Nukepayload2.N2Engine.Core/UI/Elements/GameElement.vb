@@ -1,5 +1,4 @@
-﻿Imports Nukepayload2.N2Engine.Renderers
-Imports Nukepayload2.N2Engine.UI.Effects
+﻿Imports Nukepayload2.N2Engine.UI.Effects
 
 Namespace UI.Elements
     ''' <summary>
@@ -7,6 +6,9 @@ Namespace UI.Elements
     ''' </summary>
     Public MustInherit Class GameElement
         Inherits GameVisual
+        ''' <summary>
+        ''' 这个类型默认没有附加的元素作为效果源。
+        ''' </summary>
         Public Overrides Function GetChildEffectSources() As IEnumerable(Of IGameEffectSource)
             Return Nothing
         End Function

@@ -49,7 +49,6 @@ Namespace Triggers
 
         Public Overrides Sub Detach(visual As TSender)
             UnregisterEvent.Invoke(visual)
-            visual.RemoveTrigger(Me)
             MyBase.Detach(visual)
         End Sub
     End Class

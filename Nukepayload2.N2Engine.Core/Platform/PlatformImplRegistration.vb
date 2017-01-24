@@ -11,7 +11,7 @@ Namespace Platform
         ''' </summary>
         Friend Shared ReadOnly Property Registered As New Dictionary(Of Type, Type)
         ''' <summary>
-        ''' 注册好的平台
+        ''' 注册好的平台。正常运行的情况下只需要注册一个平台。
         ''' </summary>
         Friend Shared ReadOnly Property Platforms As New List(Of Platforms)
         ''' <summary>
@@ -83,5 +83,11 @@ Namespace Platform
         Public Sub Dispose() Implements IDisposable.Dispose
             Platforms.Add(curPlatform)
         End Sub
+        ''' <summary>
+        ''' 查询已经注册的平台
+        ''' </summary>
+        Public Shared Function GetRegisteredPlatforms() As IEnumerable(Of Platforms)
+            Return Platforms
+        End Function
     End Class
 End Namespace

@@ -30,9 +30,9 @@ Namespace Resources
         ''' </summary>
         Public Const CustomScheme = "n2-res-cus"
         ''' <summary>
-        ''' 从n2引擎前缀映射到平台前缀
+        ''' 从n2引擎前缀映射到平台前缀。这是平台相关的。
         ''' </summary>
-        Dim prefixRoutes As New Dictionary(Of String, String)
+        Dim prefixRoutes As New Dictionary(Of String, Dictionary(Of Platform.Platforms, String))
         ''' <summary>
         ''' 从n2引擎前缀映射到存放资源的程序集
         ''' </summary>
@@ -83,15 +83,26 @@ Namespace Resources
             assemblyRoutes.Add(resPackName, assembly)
         End Sub
         ''' <summary>
-        ''' 添加内容资源加载Uri路由。示例：应用名是UWPApp, 平台特定的资源前缀是 ms-appx://，那么映射是：n2-res:///UWPApp/Assets/StoreLogo.png -> ms-appx:///Assets/StoreLogo.png
+        ''' 添加平台相关的内容资源加载Uri路由。示例：应用名是UWPApp, 平台特定的资源前缀是 ms-appx://，那么映射是：n2-res:///UWPApp/Assets/StoreLogo.png -> ms-appx:///Assets/StoreLogo.png
         ''' </summary>
         ''' <param name="appName">指定平台目标应用的名称</param>
+        ''' <param name="platform">这个注册是针对哪个平台的</param>
         ''' <param name="platformPrefix">平台资源前缀</param>
-        Public Sub AddRoute(appName As String, platformPrefix As String)
-            If prefixRoutes.ContainsKey(appName) Then
-                Throw New InvalidOperationException($"前缀{appName}已经被注册过了")
-            End If
-            prefixRoutes.Add(appName, platformPrefix)
+        Public Sub AddRoute(appName As String, platform As Platform.Platforms, platformPrefix As String)
+            Dim values = [Enum].GetValues(GetType(Platform.Platforms))
+            For Each plt As Platform.Platforms In values
+                If plt > 0 AndAlso platform.HasFlag(plt) Then
+                    If Not prefixRoutes.ContainsKey(appName) Then
+                        prefixRoutes.Add(appName, New Dictionary(Of Platform.Platforms, String))
+                    End If
+                    Dim platformDic = prefixRoutes(appName)
+                    If platformDic.ContainsKey(plt) Then
+                        Throw New InvalidOperationException($"前缀 {appName} 已经被注册到 {plt} 平台。")
+                    Else
+                        platformDic.Add(plt, platformPrefix)
+                    End If
+                End If
+            Next
         End Sub
         ''' <summary>
         ''' 添加自定义资源加载动作的路由。示例：资源名是platformName, 那么映射是 n2-res-cus:///platformName -> load("platformName")
@@ -232,7 +243,12 @@ Namespace Resources
             Dim platformName = GetUriPathRoot(path, second)
             If Not String.IsNullOrEmpty(platformName) AndAlso prefixRoutes.ContainsKey(platformName) Then
                 Dim routePrefix = prefixRoutes(platformName)
-                Return New Uri(routePrefix + path.Substring(second))
+                Dim platformPart = routePrefix(Platform.PlatformImplRegistration.GetRegisteredPlatforms.First)
+                Dim relatedPath = path.Substring(second)
+                If String.IsNullOrEmpty(platformPart) Then
+                    platformPart = "n2-file://"
+                End If
+                Return New Uri(platformPart + relatedPath)
             End If
             Throw New ArgumentException($"Uri平台名称未映射", NameOf(path))
         End Function

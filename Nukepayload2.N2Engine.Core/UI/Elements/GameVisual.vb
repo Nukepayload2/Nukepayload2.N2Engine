@@ -13,20 +13,19 @@ Namespace UI.Elements
         Implements IGameEffectSource
 
         ''' <summary>
-        ''' 父级的容器（如果存在）
+        ''' 父级的容器（如果存在）。
         ''' </summary>
         Public Property Parent As GameVisualContainer
-
         ''' <summary>
         ''' 与这个可见对象关联的渲染器
         ''' </summary>
         Public Property Renderer As RendererBase
         ''' <summary>
-        ''' 元素与背景混合时的行为
+        ''' (未实施) 元素与背景混合时的行为
         ''' </summary>
         Public Property CompositeMode As GameCompositeModes
         ''' <summary>
-        ''' 对元素进行裁剪
+        ''' (未实施) 对元素进行裁剪
         ''' </summary>
         Public Property Clip As GameClip
         ''' <summary>
@@ -38,27 +37,27 @@ Namespace UI.Elements
         ''' </summary>
         Public ReadOnly Property Size As New PropertyBinder(Of Vector2)
         ''' <summary>
-        ''' 不透明度。范围是0到1。
+        ''' (未实施) 不透明度。范围是0到1。
         ''' </summary>
         Public ReadOnly Property Opacity As New PropertyBinder(Of Single)
         ''' <summary>
-        ''' Z序越高越靠外，反之靠里
+        ''' (未实施) Z序越高越靠外，反之靠里
         ''' </summary>
         Public ReadOnly Property ZIndex As New PropertyBinder(Of Integer)
         ''' <summary>
-        ''' 是否在碰撞检测中可见
+        ''' (未实施) 是否在碰撞检测中可见
         ''' </summary>
         Public ReadOnly Property IsHitTestVisible As New PropertyBinder(Of Boolean)
         ''' <summary>
-        ''' 是否可见
+        ''' (未实施) 是否可见
         ''' </summary>
         Public ReadOnly Property IsVisible As New PropertyBinder(Of Boolean)
         ''' <summary>
-        ''' 渲染时需要处理的特效
+        ''' (未实施) 渲染时需要处理的特效
         ''' </summary>
         Public ReadOnly Property Effect As GameEffect
         ''' <summary>
-        ''' 二维变换
+        ''' (未实施) 二维变换
         ''' </summary>
         Public ReadOnly Property Transform As PlaneTransform
 
@@ -81,7 +80,7 @@ Namespace UI.Elements
 
         Dim _Behaviors As New List(Of IGameBehavior)
         ''' <summary>
-        ''' 已经安装了哪些触发器
+        ''' 已经安装了哪些附加行为
         ''' </summary>
         Public ReadOnly Property Behaviors As IReadOnlyList(Of IGameBehavior)
             Get

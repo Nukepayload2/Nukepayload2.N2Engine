@@ -7,11 +7,11 @@ Namespace UI
     ''' </summary>
     Public MustInherit Class GameObject
         ''' <summary>
-        ''' 用于在游戏画布线程执行某些代码
+        ''' (未实施) 用于在游戏画布线程执行某些代码
         ''' </summary>
         Public Property Dispatcher As GameDispatcher
         ''' <summary>
-        ''' 描述游戏对象切换状态时的行为
+        ''' (未实施) 描述游戏对象切换状态时的行为
         ''' </summary>
         Public Property StateManager As GameObjectStateManager
         ''' <summary>

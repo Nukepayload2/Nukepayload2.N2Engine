@@ -48,7 +48,7 @@ Public Module Program
             touchPoint = New Numerics.Vector2(mouseState.Position.X, mouseState.Position.Y)
         End If
         If touchPoint.HasValue Then
-            sparks.OnTapped(touchPoint.Value)
+            sparks.OnTappedAsync(touchPoint.Value)
         End If
     End Sub
 End Module

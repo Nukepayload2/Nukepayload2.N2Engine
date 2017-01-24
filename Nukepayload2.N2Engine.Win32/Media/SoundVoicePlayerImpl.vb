@@ -49,7 +49,8 @@ Friend Class SoundVoicePlayerImpl
 
     Private Async Function PlayAsync(soundUri As Uri, players As Queue(Of DirectShowLib.FilterGraph), volume As Double) As Task
         Dim cur = Resources.ResourceLoader.GetForCurrentView.GetResourceUri(soundUri)
-        Dim absolutePath = cur.AbsolutePath
+        ' 开头的斜杠必须去掉
+        Dim absolutePath = CurDir() + cur.AbsolutePath.Replace("/"c, "\"c)
         Await Task.Run(Sub()
                            Do While players.Count >= 8
                                players.Dequeue()
