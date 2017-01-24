@@ -123,7 +123,7 @@ namespace FarseerPhysics.Dynamics
 
         internal bool RaiseBeforeCollision(Fixture fixtureA, Fixture fixtureB)
         {
-            return BeforeCollision?.Invoke(fixtureA, fixtureB) ?? false;
+            return BeforeCollision?.Invoke(fixtureA, fixtureB) ?? true;
         }
 
         /// <summary>
@@ -134,7 +134,7 @@ namespace FarseerPhysics.Dynamics
 
         internal bool RaiseOnCollision(Fixture fixtureA, Fixture fixtureB, Contact contact)
         {
-            return OnCollision?.Invoke(fixtureA, fixtureB, contact) ?? false;
+            return OnCollision?.Invoke(fixtureA, fixtureB, contact) ?? true;
         }
 
         /// <summary>
