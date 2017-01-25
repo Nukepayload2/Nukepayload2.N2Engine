@@ -118,6 +118,8 @@
     <None Include="N2Demo.UWP_TemporaryKey.pfx" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Audios\Musics\Theme1.wma" />
+    <Content Include="Audios\Sounds\Explosion4.wma" />
     <Content Include="My Project\Default.rd.xml" />
     <Content Include="Assets\LockScreenLogo.scale-200.png" />
     <Content Include="Assets\SplashScreen.scale-200.png" />

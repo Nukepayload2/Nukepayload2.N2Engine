@@ -19,10 +19,12 @@ Friend Class SoundVoicePlayerImpl
     End Sub
 
     Public Async Function PlaySoundAsync(soundUri As Uri) As Task Implements ISoundVoicePlayer.PlaySoundAsync
-        Await Playback.PlayAsync(Await StorageFile.GetFileFromApplicationUriAsync(soundUri), SoundVolume)
+        Dim msappxUri = Resources.ResourceLoader.GetForCurrentView.GetResourceUri(soundUri)
+        Await Playback.PlayAsync(Await StorageFile.GetFileFromApplicationUriAsync(msappxUri), SoundVolume)
     End Function
 
     Public Async Function PlayVoiceAsync(voiceUri As Uri) As Task Implements ISoundVoicePlayer.PlayVoiceAsync
-        Await Playback.PlayAsync(Await StorageFile.GetFileFromApplicationUriAsync(voiceUri), VoiceVolume)
+        Dim msappxUri = Resources.ResourceLoader.GetForCurrentView.GetResourceUri(voiceUri)
+        Await Playback.PlayAsync(Await StorageFile.GetFileFromApplicationUriAsync(msappxUri), VoiceVolume)
     End Function
 End Class

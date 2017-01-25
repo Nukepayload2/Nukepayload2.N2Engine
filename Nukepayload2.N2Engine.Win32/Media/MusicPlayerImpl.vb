@@ -1,6 +1,5 @@
 ﻿Imports System.Runtime.InteropServices
 Imports System.Threading
-Imports System.Windows.Forms
 Imports DirectShowLib
 Imports Nukepayload2.N2Engine.Media
 
@@ -63,7 +62,7 @@ Friend Class MusicPlayerImpl
             Task.Run(Sub()
                          mediaEvent.WaitForCompletion(10000000, lastEventCode)
                          Me.Stop()
-                         mainThreadContext.Send(
+                         mainThreadContext.Post(
                          Sub(obj)
                              RaiseEvent SingleSongComplete(Me, EventArgs.Empty)
                          End Sub, Nothing)

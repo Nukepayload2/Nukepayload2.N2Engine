@@ -44,15 +44,17 @@ Friend Class MusicPlayerImpl
 
     Public Async Function SetPlayingIndexAsync(value As Integer) As Task Implements IMusicPlayer.SetPlayingIndexAsync
         _PlayingIndex = value
-        Await Playback.LoadFileAsync(Await StorageFile.GetFileFromApplicationUriAsync(N2Engine.Resources.ResourceLoader.GetForCurrentView.GetResourceUri(Sources(value))))
+        Dim msappxUri = Resources.ResourceLoader.GetForCurrentView.GetResourceUri(Sources(value))
+        Await Playback.LoadFileAsync((Await StorageFile.GetFileFromApplicationUriAsync(msappxUri)))
     End Function
 
     Private Sub RemoveGlobalHandlers()
         Playback.Dispose()
     End Sub
 
+    Shared ReadOnly _10ms As TimeSpan = TimeSpan.FromMilliseconds(10)
     Private Sub StateTracker_Tick(sender As Object, e As Object) Handles StateTracker.Tick
-        If Playback.MusicFileInput.Position >= Playback.MusicFileInput.Duration Then
+        If Playback.MusicFileInput.Duration - Playback.MusicFileInput.Position < _10ms Then
             RaiseEvent SingleSongComplete(Me, EventArgs.Empty)
         End If
     End Sub
