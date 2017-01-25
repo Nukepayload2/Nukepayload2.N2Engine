@@ -1,4 +1,5 @@
-﻿Imports System.Threading
+﻿Imports System.Runtime.InteropServices
+Imports System.Threading
 Imports System.Windows.Forms
 Imports DirectShowLib
 Imports Nukepayload2.N2Engine.Media
@@ -8,7 +9,6 @@ Friend Class MusicPlayerImpl
     Dim gameResourceLoadContext As SynchronizationContext
 
     Public Async Function LoadAsync() As Task Implements IMusicPlayer.LoadAsync
-        graphBuilder.AddFilter(baseFilter, "Base filter for N2Engine")
         mainThreadContext = New System.Windows.Threading.DispatcherSynchronizationContext
         gameResourceLoadContext = SynchronizationContext.Current
         Await Task.Delay(0)
@@ -33,21 +33,32 @@ Friend Class MusicPlayerImpl
         mediaCtrl.Pause()
     End Sub
 
-    Dim filterGraph As New FilterGraph
-    Dim baseFilter As IBaseFilter = DirectCast(New VideoMixingRenderer, IBaseFilter)
-    Dim vmrCfg As IVMRFilterConfig = DirectCast(baseFilter, IVMRFilterConfig)
-    Dim graphBuilder As IGraphBuilder = DirectCast(filterGraph, IGraphBuilder)
+    Dim filterGraph As FilterGraph
+    Dim baseFilter As IBaseFilter
 
-    Dim mediaCtrl As IMediaControl = DirectCast(filterGraph, IMediaControl)
-    Dim mediaEvent As IMediaEvent = DirectCast(filterGraph, IMediaEvent)
-    Dim mediaWindow As IVideoWindow = DirectCast(filterGraph, IVideoWindow)
+    Dim vmrCfg As IVMRFilterConfig
+    Dim graphBuilder As IGraphBuilder
+    Dim mediaCtrl As IMediaControl
+    Dim mediaEvent As IMediaEvent
 
     Dim lastEventCode As EventCode
     Dim isPlaying As New AsyncLocal(Of Boolean)
 
     Public Sub Play() Implements IMusicPlayer.Play
         If Not isPlaying.Value Then
-            mediaCtrl.Run()
+            If graphBuilder Is Nothing Then
+                Throw New InvalidOperationException("播放列表尚未初始化。每次播放之前都要设置播放列表。")
+            End If
+            If mediaEvent Is Nothing Then
+                mediaEvent = DirectCast(filterGraph, IMediaEvent)
+            End If
+            If mediaCtrl Is Nothing Then
+                mediaCtrl = DirectCast(filterGraph, IMediaControl)
+            End If
+            Dim retv = mediaCtrl.Run()
+            If retv <> 1 Then
+                Throw New COMException("背景音乐文件播放失败。")
+            End If
             isPlaying.Value = True
             Task.Run(Sub()
                          mediaEvent.WaitForCompletion(10000000, lastEventCode)
@@ -61,7 +72,13 @@ Friend Class MusicPlayerImpl
     End Sub
 
     Public Sub [Stop]() Implements IMusicPlayer.Stop
-        mediaCtrl.Stop()
+        mediaCtrl?.Stop()
+        mediaCtrl = Nothing
+        graphBuilder = Nothing
+        mediaEvent = Nothing
+        baseFilter = Nothing
+        vmrCfg = Nothing
+        filterGraph = Nothing
         isPlaying.Value = False
     End Sub
 
@@ -70,15 +87,26 @@ Friend Class MusicPlayerImpl
         SynchronizationContext.SetSynchronizationContext(gameResourceLoadContext)
         If isPlaying.Value Then
             Me.Stop()
-            mediaCtrl.StopWhenReady()
         End If
         Dim musicUri = Sources(value)
         Dim cur = Resources.ResourceLoader.GetForCurrentView.GetResourceUri(musicUri)
         Dim absolutePath = CurDir() + cur.AbsolutePath.Replace("/"c, "\"c)
+        If graphBuilder Is Nothing Then
+            If filterGraph Is Nothing Then
+                filterGraph = New FilterGraph
+            End If
+            graphBuilder = DirectCast(filterGraph, IGraphBuilder)
+            If baseFilter Is Nothing Then
+                baseFilter = DirectCast(New VideoMixingRenderer, IBaseFilter)
+            End If
+            If vmrCfg Is Nothing Then
+                vmrCfg = DirectCast(baseFilter, IVMRFilterConfig)
+            End If
+            graphBuilder.AddFilter(baseFilter, "Base filter for N2Engine")
+        End If
         vmrCfg.SetRenderingMode(VMRMode.Windowless)
-        Await Task.Run(Sub()
-                           mediaCtrl.RenderFile(absolutePath)
-                       End Sub)
+        graphBuilder.RenderFile(absolutePath, value.ToString)
+        Await Task.Delay(0)
         Volume = volumeOverride
     End Function
 
