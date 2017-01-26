@@ -1,4 +1,5 @@
-﻿Imports Nukepayload2.N2Engine.Media
+﻿Imports Android.Media
+Imports Nukepayload2.N2Engine.Media
 
 Friend Class SoundVoicePlayerImpl
 

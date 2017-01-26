@@ -34,6 +34,10 @@ Namespace Resources
         ''' </summary>
         Dim prefixRoutes As New Dictionary(Of String, Dictionary(Of Platform.Platforms, String))
         ''' <summary>
+        ''' 从n2引擎Uri路径映射到平台Uri路径。这是平台相关的。
+        ''' </summary>
+        Dim uriPathMappings As New Dictionary(Of String, Dictionary(Of Platform.Platforms, Func(Of String, String)))
+        ''' <summary>
         ''' 从n2引擎前缀映射到存放资源的程序集
         ''' </summary>
         Dim assemblyRoutes As New Dictionary(Of String, Assembly)
@@ -45,6 +49,11 @@ Namespace Resources
         ''' 从自定义字符串映射到自定义加载委托
         ''' </summary>
         Dim customRoutes As New Dictionary(Of String, Func(Of String, Object))
+        ''' <summary>
+        ''' 专门用来注册安卓系统的raw文件夹的资源，从文件名查询文件编号。这些资源是线程安全的。
+        ''' </summary>
+        Shared androidRawResources As New Dictionary(Of String, Integer)
+
         Protected Sub New(curSync As SynchronizationContext)
             _syncContext = curSync
             instances.Add(curSync, Me)
@@ -60,6 +69,7 @@ Namespace Resources
             End If
             Return If(instances.ContainsKey(curSync), instances(curSync), New ResourceLoader(curSync))
         End Function
+
         Public Property UICulture As Globalization.CultureInfo = Globalization.CultureInfo.CurrentUICulture
         ''' <summary>
         ''' 添加嵌入的资源加载Uri路由。示例：资源包名是StringPack, 字符串资源加载器是 resMgr, 当前语言标识为 CurrentCulture，那么映射是：n2-res-str:///StringPack/Welcome -> resMgr.GetString("Welcome", UICulture)
@@ -72,6 +82,32 @@ Namespace Resources
             strMgrRoutes.Add(resPackName, resMgr)
         End Sub
         ''' <summary>
+        ''' 添加安卓 Raw 文件夹下的资源文件名到文件编号的映射。这些资源是线程安全的。
+        ''' </summary>
+        ''' <param name="fileName">要映射的文件名。必须是小写的，否则文件加载不出来。</param>
+        ''' <param name="fileId">文件 Id。使用 Resources.Raw.文件名 获得。</param>
+        Public Shared Sub AddAndroidRawResourceMapping(fileName As String, fileId As Integer)
+            If String.IsNullOrEmpty(fileName) Then
+                Throw New ArgumentNullException(NameOf(fileName))
+            End If
+            If fileName.ToLower <> fileName Then
+                Throw New ArgumentException("文件名必须是小写的")
+            End If
+            If Not androidRawResources.ContainsKey(fileName) Then
+                androidRawResources.Add(fileName, fileId)
+            Else
+                Throw New InvalidOperationException($"资源文件 ""{fileName}"" 已经被注册过了")
+            End If
+        End Sub
+        ''' <summary>
+        ''' 检索安卓 Raw 文件夹下的资源的 Id。
+        ''' </summary>
+        ''' <param name="fileName"></param>
+        ''' <returns></returns>
+        Public Shared Function GetAndroidRawResource(fileName As String) As Integer
+            Return androidRawResources(fileName)
+        End Function
+        ''' <summary>
         ''' 添加嵌入的资源加载Uri路由。示例：资源包名是Images, 程序集是N2Demo.Core，那么映射是：n2-res-emb:///Images/GameLogo.png -> assembly.GetManifestResourceStream("N2Demo.Core.GameLogo.png")
         ''' </summary>
         ''' <param name="resPackName">指定资源包的名字</param>
@@ -83,10 +119,32 @@ Namespace Resources
             assemblyRoutes.Add(resPackName, assembly)
         End Sub
         ''' <summary>
+        ''' 添加平台相关的内容资源加载Uri的路径映射。
+        ''' </summary>
+        ''' <param name="appName">指定平台目标应用的名称</param>
+        ''' <param name="platform">这个注册是针对哪些平台的。可以用按位或的方式针对多个平台。</param>
+        ''' <param name="pathMapping">平台资源映射。输入: 资源 Uri 的绝对路径，输出：资源 Uri 绝对路径在平台上的映射。</param>
+        Public Sub AddUriPathMapping(appName As String, platform As Platform.Platforms, pathMapping As Func(Of String, String))
+            Dim values = [Enum].GetValues(GetType(Platform.Platforms))
+            For Each plt As Platform.Platforms In values
+                If plt > 0 AndAlso platform.HasFlag(plt) Then
+                    If Not uriPathMappings.ContainsKey(appName) Then
+                        uriPathMappings.Add(appName, New Dictionary(Of Platform.Platforms, Func(Of String, String)))
+                    End If
+                    Dim platformDic = uriPathMappings(appName)
+                    If platformDic.ContainsKey(plt) Then
+                        Throw New InvalidOperationException($"应用 {appName} 相关的路径映射已经被注册到 {plt} 平台。")
+                    Else
+                        platformDic.Add(plt, pathMapping)
+                    End If
+                End If
+            Next
+        End Sub
+        ''' <summary>
         ''' 添加平台相关的内容资源加载Uri路由。示例：应用名是UWPApp, 平台特定的资源前缀是 ms-appx://，那么映射是：n2-res:///UWPApp/Assets/StoreLogo.png -> ms-appx:///Assets/StoreLogo.png
         ''' </summary>
         ''' <param name="appName">指定平台目标应用的名称</param>
-        ''' <param name="platform">这个注册是针对哪个平台的</param>
+        ''' <param name="platform">这个注册是针对哪些平台的。可以用按位或的方式针对多个平台。</param>
         ''' <param name="platformPrefix">平台资源前缀</param>
         Public Sub AddRoute(appName As String, platform As Platform.Platforms, platformPrefix As String)
             Dim values = [Enum].GetValues(GetType(Platform.Platforms))
@@ -97,7 +155,7 @@ Namespace Resources
                     End If
                     Dim platformDic = prefixRoutes(appName)
                     If platformDic.ContainsKey(plt) Then
-                        Throw New InvalidOperationException($"前缀 {appName} 已经被注册到 {plt} 平台。")
+                        Throw New InvalidOperationException($"应用 {appName} 已经被注册到 {plt} 平台。")
                     Else
                         platformDic.Add(plt, platformPrefix)
                     End If
@@ -243,8 +301,15 @@ Namespace Resources
             Dim platformName = GetUriPathRoot(path, second)
             If Not String.IsNullOrEmpty(platformName) AndAlso prefixRoutes.ContainsKey(platformName) Then
                 Dim routePrefix = prefixRoutes(platformName)
-                Dim platformPart = routePrefix(Platform.PlatformImplRegistration.GetRegisteredPlatforms.First)
+                Dim primaryPlatform = Platform.PlatformImplRegistration.GetRegisteredPlatforms.First
+                Dim platformPart = routePrefix(primaryPlatform)
                 Dim relatedPath = path.Substring(second)
+                If uriPathMappings.ContainsKey(platformName) Then
+                    Dim appUriPathMap = uriPathMappings(platformName)
+                    If appUriPathMap.ContainsKey(primaryPlatform) Then
+                        relatedPath = appUriPathMap(primaryPlatform)(relatedPath)
+                    End If
+                End If
                 If String.IsNullOrEmpty(platformPart) Then
                     platformPart = "n2-file://"
                 End If
