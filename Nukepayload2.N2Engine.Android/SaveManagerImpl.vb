@@ -7,10 +7,8 @@ Namespace Global.Nukepayload2.N2Engine.Storage
             Dim folder As String = Nothing
             Dim localData = Application.Context.FilesDir.AbsolutePath
             Select Case Location
-                Case SaveLocations.LocalMaster
+                Case SaveLocations.Local
                     folder = localData
-                Case SaveLocations.LocalPartial
-                    folder = Path.Combine(localData, SharedFolderName)
                 Case SaveLocations.Roaming
                     Throw New PlatformNotSupportedException("Android 没有漫游数据目录")
                 Case Else

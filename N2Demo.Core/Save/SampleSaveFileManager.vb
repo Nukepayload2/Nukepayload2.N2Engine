@@ -30,7 +30,7 @@ Public Class SampleSaveFileManager
     ''' </summary>
     Protected Overrides Async Sub OnFileInitializing()
         ' 主存档污染文件保存到 ExtraFlags233 文件，可漫游。
-        Dim savFolder = Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.LocalPartial)
+        Dim savFolder = Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.Local)
         ' 存档加载器可以隐式转换存档的加载结果
         PartialSaveFiles = Await BranchSaveFilesLoader(Of SamplePartialData).CreateAsync(savFolder, "Branch")
         ' 加载完存档一定要告知存档已经加载。
@@ -41,7 +41,7 @@ Public Class SampleSaveFileManager
     ''' 加载主要的存档文件
     ''' </summary>
     Public Async Function LoadMasterSaveFileAsync() As Task(Of SaveFile(Of SampleMasterData))
-        Dim localDir = Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.LocalMaster)
+        Dim localDir = Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.Local)
         Dim actualMasterFiles = From sav In Await localDir.GetSaveFilesAsync(Of SampleMasterData)
                                 Where sav.IsMaster AndAlso sav.BaseName = MasterSaveFile.BaseName
         If actualMasterFiles.Any Then
@@ -56,7 +56,7 @@ Public Class SampleSaveFileManager
     ''' 保存主要的存档文件
     ''' </summary>
     Public Async Function SaveMasterSaveFileAsync() As Task
-        Dim localDir = Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.LocalMaster)
+        Dim localDir = Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.Local)
         Await localDir.SaveAsync(MasterSaveFile, Function(s) s)
     End Function
 End Class

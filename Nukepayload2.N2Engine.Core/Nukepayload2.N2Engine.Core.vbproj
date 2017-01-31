@@ -101,6 +101,7 @@
     <Compile Include="Animations\TransitionAnimation.vb" />
     <Compile Include="Behaviors\IGameBehavior.vb" />
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
+    <Compile Include="Information\GameInformation.vb" />
     <Compile Include="Input\TappedEventArgs.vb" />
     <Compile Include="Math\Combination.vb" />
     <Compile Include="Media\MediaPlayerFactory.vb" />

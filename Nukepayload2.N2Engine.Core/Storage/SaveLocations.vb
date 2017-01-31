@@ -1,13 +1,12 @@
 ﻿Namespace Storage
+    ''' <summary>
+    ''' 存档的保存位置
+    ''' </summary>
     Public Enum SaveLocations
         ''' <summary>
         ''' 非漫游主存档文件夹。这个文件夹在任何平台都可用。
         ''' </summary>
-        LocalMaster
-        ''' <summary>
-        ''' 非漫游分存档文件夹。这个文件夹在任何平台都可用。
-        ''' </summary>
-        LocalPartial
+        Local
         ''' <summary>
         ''' 漫游存档文件夹。这个文件夹仅在 Windows 平台 可用。
         ''' </summary>

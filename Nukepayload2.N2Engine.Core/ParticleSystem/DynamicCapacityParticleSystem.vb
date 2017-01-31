@@ -1,4 +1,4 @@
-﻿Imports Nukepayload2.N2Engine.Foundation
+﻿Imports Newtonsoft.Json
 
 Namespace ParticleSystem
     ''' <summary>
@@ -8,6 +8,7 @@ Namespace ParticleSystem
     Public MustInherit Class DynamicParticleSystem(Of TParticle As IParticle)
         Inherits ParticleSystemBase(Of TParticle)
 
+        <JsonIgnore>
         Dim lock As New Object
 
         Sub New(spawnCount As Integer, spawnDuration As Integer, spawnInterval As Integer)
@@ -34,7 +35,7 @@ Namespace ParticleSystem
                 SpawnDuration -= 1
             Else
                 If Particles.Count = 0 Then
-                    RemoveFromGameCanvasCallback.Value.Invoke
+                    RemoveFromGameCanvasCallback.Invoke
                 End If
             End If
             Dim deq = 0

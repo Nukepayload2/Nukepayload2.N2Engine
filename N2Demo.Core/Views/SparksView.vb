@@ -4,6 +4,8 @@ Imports Nukepayload2.N2Engine.UI
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports Nukepayload2.N2Engine.UI.Views
 Imports Nukepayload2.N2Engine.Media
+Imports Nukepayload2.N2Engine.Information
+Imports System.Reflection
 
 ''' <summary>
 ''' 一个释放随机颜色火花的视图
@@ -38,10 +40,15 @@ Public Class SparksView
     ' 数据
     Dim sparksData As New SparksViewModel
     ' 存档管理器
-    Dim savMgr As New SampleSaveFileManager
+    Dim savMgr As SampleSaveFileManager
 
     Sub New()
+        ' 准备存档
+        GameInformation.SharedLogicAssembly = [GetType].GetTypeInfo.Assembly
+        savMgr = New SampleSaveFileManager
+        ' 准备资源路由
         ApplyRoute()
+        ' 注册这个程序集为共享逻辑程序集
         LoadSceneAsync()
     End Sub
 
@@ -86,8 +93,11 @@ Public Class SparksView
 
         ' 读档
         Dim sav = Await savMgr.LoadMasterSaveFileAsync
+        ' 同步数据
         If sav IsNot Nothing Then
             sparksData = sav.SaveData.LastState
+        Else
+            savMgr.MasterSaveFile.SaveData.LastState = sparksData
         End If
     End Sub
 
@@ -103,9 +113,10 @@ Public Class SparksView
                 ' 播放声音，最短间隔 1000 毫秒。
                 Await soundPlayer.PlaySoundAsync(clockSound)
                 Await Task.Delay(1000)
-                ' 存档
-
                 soundPlaying = False
+                ' 存档
+                savMgr.MasterSaveFile.Status = Nukepayload2.N2Engine.Storage.SaveFileStatus.Modified
+                Await savMgr.SaveMasterSaveFileAsync()
             End If
         End If
     End Sub

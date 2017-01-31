@@ -37,6 +37,10 @@ Namespace Global.Nukepayload2.N2Engine.Storage
             End Using
         End Function
 
+        Public Overrides Async Function OpenOrCreateDirectoryAsync(dirName As String) As Task(Of PlatformSaveDirectoryBase)
+            Return Await CreateAsync(Path.Combine(curFolder, dirName))
+        End Function
+
         Public Overrides Async Function SaveAsync(Of TData)(save As SaveFile(Of TData), encrypt As Func(Of Stream, Stream)) As Task
             Select Case save.Status
                 Case SaveFileStatus.Loaded

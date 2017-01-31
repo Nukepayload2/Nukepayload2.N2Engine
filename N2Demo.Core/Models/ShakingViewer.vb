@@ -1,4 +1,5 @@
 ﻿Imports System.Numerics
+Imports Newtonsoft.Json
 Imports Nukepayload2.N2Engine.Foundation
 
 Public Class ShakingViewer
@@ -18,5 +19,6 @@ Public Class ShakingViewer
         Offset = New Vector2(ShakeX, ShakeY)
     End Sub
 
+    <JsonIgnore>
     Public Property UpdateCommand As New SimpleCommand(AddressOf Update)
 End Class

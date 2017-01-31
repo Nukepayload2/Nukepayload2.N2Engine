@@ -20,10 +20,8 @@ Namespace Global.Nukepayload2.N2Engine.Storage
             Dim appdata = ApplicationData.Current
             Dim sav As New SaveFolder
             Select Case saveLocation
-                Case SaveLocations.LocalMaster
+                Case SaveLocations.Local
                     sav.curFolder = appdata.LocalFolder
-                Case SaveLocations.LocalPartial
-                    sav.curFolder = Await appdata.LocalFolder.CreateFolderAsync(SaveManagerImpl.SharedFolderName, CreationCollisionOption.OpenIfExists)
                 Case SaveLocations.Roaming
                     sav.curFolder = appdata.RoamingFolder
                 Case Else
@@ -33,6 +31,7 @@ Namespace Global.Nukepayload2.N2Engine.Storage
                     Throw New PlatformNotSupportedException("WP 8.1 没有共享本地数据文件夹")
 #End If
             End Select
+            Await Task.Delay(0)
             Return sav
         End Function
 
@@ -51,6 +50,11 @@ Namespace Global.Nukepayload2.N2Engine.Storage
             Using strm = Await curFolder.OpenStreamForReadAsync(save.FileName), sr = New StreamReader(decrypt(strm), Encoding.Unicode)
                 save.SaveData = JsonConvert.DeserializeObject(Of TData)((Await sr.ReadToEndAsync))
             End Using
+        End Function
+
+        Public Overrides Async Function OpenOrCreateDirectoryAsync(dirName As String) As Task(Of PlatformSaveDirectoryBase)
+            Dim newDir = Await curFolder.CreateFolderAsync(dirName, CreationCollisionOption.OpenIfExists)
+            Return New SaveFolder With {.curFolder = newDir}
         End Function
 
         Public Overrides Async Function SaveAsync(Of TData)(save As SaveFile(Of TData), encrypt As Func(Of Stream, Stream)) As Task

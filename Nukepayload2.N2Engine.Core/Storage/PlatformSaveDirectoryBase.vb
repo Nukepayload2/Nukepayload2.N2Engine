@@ -16,6 +16,12 @@
         Public MustOverride Function GetInnerDirectoriesAsync() As Task(Of IEnumerable(Of PlatformSaveDirectoryBase))
 
         ''' <summary>
+        ''' 打开或创建此目录下的目录
+        ''' </summary>
+        ''' <param name="dirName">目录名称</param>
+        Public MustOverride Function OpenOrCreateDirectoryAsync(dirName As String) As Task(Of PlatformSaveDirectoryBase)
+
+        ''' <summary>
         ''' 以 Json 文本方式读取一个存档文件，然后反序列化为 <typeparamref name="TData"/>。
         ''' </summary>
         ''' <typeparam name="TData">要反序列化为这个类型</typeparam>

@@ -1,5 +1,4 @@
-﻿Imports Nukepayload2.N2Engine.Foundation
-Imports Nukepayload2.N2Engine.UI
+﻿Imports Newtonsoft.Json
 Imports Nukepayload2.N2Engine.UI.Elements
 
 Namespace ParticleSystem
@@ -29,7 +28,8 @@ Namespace ParticleSystem
         ''' <summary>
         ''' 注册一个回调，处理与它对应的 <see cref="GameElement"/> 从 <see cref="GameCanvas"/>移除这个过程。 
         ''' </summary>
-        Public ReadOnly Property RemoveFromGameCanvasCallback As New PropertyBinder(Of Action)
+        <JsonIgnore>
+        Public Property RemoveFromGameCanvasCallback As Action
         ''' <summary>
         ''' 新建一个粒子
         ''' </summary>

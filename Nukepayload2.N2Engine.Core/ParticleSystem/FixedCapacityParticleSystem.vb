@@ -42,7 +42,7 @@
                 Next
                 SpawnDuration -= 1
             Else
-                RemoveFromGameCanvasCallback.Value.Invoke
+                RemoveFromGameCanvasCallback.Invoke
             End If
         End Sub
         ''' <summary>

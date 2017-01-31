@@ -5,10 +5,8 @@ Namespace Global.Nukepayload2.N2Engine.Storage
             Dim folder As String
             Dim localData = NSSearchPath.GetDirectories(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomain.User).Last
             Select Case Location
-                Case SaveLocations.LocalMaster
+                Case SaveLocations.Local
                     folder = localData
-                Case SaveLocations.LocalPartial
-                    folder = Path.Combine(localData, SharedFolderName)
                 Case SaveLocations.Roaming
                     Throw New PlatformNotSupportedException("iOS 不支持 iCloud 漫游应用数据")
                 Case Else

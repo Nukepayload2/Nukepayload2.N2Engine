@@ -12,7 +12,7 @@ Friend Class SparkParticleSystemRenderer
 
     Friend Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
         Debug.WriteLine("准备火花资源")
-        DirectCast(View, SparkParticleSystemView).Data.Value.RemoveFromGameCanvasCallback.Bind(Function() AddressOf View.RemoveFromGameCanvas)
+        DirectCast(View, SparkParticleSystemView).Data.Value.RemoveFromGameCanvasCallback = AddressOf View.RemoveFromGameCanvas
     End Sub
 
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
