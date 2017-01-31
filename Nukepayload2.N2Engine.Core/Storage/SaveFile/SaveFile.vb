@@ -1,65 +1,31 @@
 ﻿Namespace Storage
 
     ''' <summary>
-    ''' 空的存档文件。建议使用泛型版本的这个类作为存档文件。
+    ''' 包含数据的存档
     ''' </summary>
-    Public Class SaveFile
+    ''' <typeparam name="TData">存档数据模型</typeparam>
+    Public Class SaveFile(Of TData)
         ''' <summary>
         ''' 这个存档当前的状态
         ''' </summary>
         Public Property Status As SaveFileStatus
-
-        Private _IsIndelible As Boolean
         ''' <summary>
         ''' 使用存档擦除功能时，如果不强制完全擦除，则不会擦除这个存档。
         ''' </summary>
         Public Property IsIndelible As Boolean
-            Get
-                Return _IsIndelible
-            End Get
-            Friend Set
-                _IsIndelible = Value
-            End Set
-        End Property
-
-        Private _IsMaster As Boolean
         ''' <summary>
         ''' 是主存档，而不是分支存档。
         ''' </summary>
         Public Property IsMaster As Boolean
-            Get
-                Return _IsMaster
-            End Get
-            Friend Set
-                _IsMaster = Value
-            End Set
-        End Property
-
-        Private _BaseName As String
         ''' <summary>
         ''' 不带编号的文件名
         ''' </summary>
         Public Property BaseName As String
-            Get
-                Return _BaseName
-            End Get
-            Friend Set
-                _BaseName = Value
-            End Set
-        End Property
-
-        Private _SaveId As Integer?
         ''' <summary>
         ''' 存档文件的编号
         ''' </summary>
         Public Property SaveId As Integer?
-            Get
-                Return _SaveId
-            End Get
-            Friend Set
-                _SaveId = Value
-            End Set
-        End Property
+
         ''' <summary>
         ''' 合成一个文件名
         ''' </summary>
@@ -74,27 +40,23 @@
         ''' </summary>
         Public Property OriginalFileName As String
 
-        Private _IsRoaming As Boolean
-
         ''' <summary>
         ''' 这个存档会自动上传到游戏账号
         ''' </summary>
         Public Property IsRoaming As Boolean
-            Get
-                Return _IsRoaming
-            End Get
-            Friend Set
-                _IsRoaming = Value
-            End Set
-        End Property
-
-    End Class
-
-    Public Class SaveFile(Of TData)
-        Inherits SaveFile
 
         Private _SaveData As TData
 
+        ''' <summary>
+        ''' 仅指定存档类型，不加载存档。
+        ''' </summary>
+        Sub New()
+
+        End Sub
+
+        ''' <summary>
+        ''' 加载存档
+        ''' </summary>
         Sub New(saveData As TData)
             Me.SaveData = saveData
         End Sub

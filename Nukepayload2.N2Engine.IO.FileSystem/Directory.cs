@@ -2,6 +2,7 @@
 using Nukepayload2.N2Engine.Storage;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using DirectoryIO = System.IO.Directory;
 
@@ -31,21 +32,21 @@ namespace Nukepayload2.N2Engine.IO.FileSystem
         {
             await Task.Run(() => DirectoryIO.Move(DirectoryName, dest));
         }
-        public async Task<IEnumerable<string>> EnumerateDirectoriesAsync()
+        public async Task<string[]> EnumerateDirectoriesAsync()
         {
-            return await Task.Run(() => DirectoryIO.EnumerateDirectories(DirectoryName));
+            return await Task.Run(() => DirectoryIO.EnumerateDirectories(DirectoryName).ToArray());
         }
-        public async Task<IEnumerable<string>> EnumerateDirectoriesAsync(string searchPattern)
+        public async Task<string[]> EnumerateDirectoriesAsync(string searchPattern)
         {
-            return await Task.Run(() => DirectoryIO.EnumerateDirectories(DirectoryName, searchPattern));
+            return await Task.Run(() => DirectoryIO.EnumerateDirectories(DirectoryName, searchPattern).ToArray());
         }
-        public async Task<IEnumerable<string>> EnumerateFilesAsync()
+        public async Task<string[]> EnumerateFilesAsync()
         {
-            return await Task.Run(() => DirectoryIO.EnumerateFiles(DirectoryName));
+            return await Task.Run(() => DirectoryIO.EnumerateFiles(DirectoryName).ToArray());
         }
-        public async Task<IEnumerable<string>> EnumerateFilesAsync(string searchPattern)
+        public async Task<string[]> EnumerateFilesAsync(string searchPattern)
         {
-            return await Task.Run(() => DirectoryIO.EnumerateFiles(DirectoryName, searchPattern));
+            return await Task.Run(() => DirectoryIO.EnumerateFiles(DirectoryName, searchPattern).ToArray());
         }
 
         public async Task<System.IO.Stream> OpenStreamForReadAsync(string fileName)

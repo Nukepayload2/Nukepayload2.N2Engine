@@ -19,6 +19,7 @@
         ''' 根据泛型指定的可移植类型的类型创建平台实现类型, 然后强制转换为平台实现的基类型 (使用平台实现类型的公共无参数构造函数)
         ''' </summary>
         ''' <typeparam name="TPortable">可移植类型</typeparam>
+        ''' <typeparam name="TPlatformBase">平台类型的基类</typeparam>
         Public Shared Function CreateBaseInstance(Of TPortable, TPlatformBase)() As TPlatformBase
             Return DirectCast(CreateInstance(GetType(TPortable)), TPlatformBase)
         End Function

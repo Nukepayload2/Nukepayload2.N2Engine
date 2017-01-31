@@ -36,10 +36,15 @@ Namespace Global.Nukepayload2.N2Engine.Storage
             Return sav
         End Function
 
-        Public Overrides Async Function GetSaveFilesAsync() As Task(Of IEnumerable(Of SaveFile))
+        Public Overrides Async Function GetInnerDirectoriesAsync() As Task(Of IEnumerable(Of PlatformSaveDirectoryBase))
+            Return From f In Await curFolder.GetFoldersAsync
+                   Select New SaveFolder() With {.curFolder = f}
+        End Function
+
+        Public Overrides Async Function GetSaveFilesAsync(Of T)() As Task(Of IEnumerable(Of SaveFile(Of T)))
             Return From f In Await curFolder.GetFilesAsync()
                    Where f.Name.ToLowerInvariant.EndsWith(".n2sav")
-                   Select New SaveFile() With {.OriginalFileName = f.Name}
+                   Select New SaveFile(Of T)() With {.OriginalFileName = f.Name}
         End Function
 
         Public Overrides Async Function LoadAsync(Of TData)(save As SaveFile(Of TData), decrypt As Func(Of Stream, Stream)) As Task

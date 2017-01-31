@@ -1,8 +1,6 @@
 ﻿Imports System.Numerics
 Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.ParticleSystem
-Imports Nukepayload2.N2Engine.Platform
-Imports Nukepayload2.N2Engine.Resources
 
 Public Class SparksViewModel
     Public Property SparkSys As New SparkParticleSystem(1000, Integer.MaxValue, 30, 150) With {.Location = New Vector2(150, 150)}

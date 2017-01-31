@@ -10,14 +10,15 @@ Module ResourceRouteConfig
     Sub ApplyRoute()
         If Not routeAdded Then
             Dim resldr = ResourceLoader.GetForCurrentView
-            resldr.AddRoute("Images", GetType(ResourceRouteConfig).GetTypeInfo.Assembly)
+            resldr.AddEmbeddedResourceRoute("Images", GetType(ResourceRouteConfig).GetTypeInfo.Assembly)
             Const ProgramDir = "ProgramDirectory"
-            resldr.AddRoute(ProgramDir, Platforms.WindowsDesktop Or Platforms.DesktopGL Or Platforms.iOS, "")
-            resldr.AddRoute(ProgramDir, Platforms.Android, "android.resource://com.nukepayload2.n2demo/raw")
+            resldr.AddUriPrefixMapping(ProgramDir, Platforms.WindowsDesktop Or Platforms.DesktopGL Or Platforms.iOS, "")
+            resldr.AddUriPrefixMapping(ProgramDir, Platforms.Android, "android.resource://com.nukepayload2.n2demo/raw")
             resldr.AddUriPathMapping(ProgramDir, Platforms.Android,
                                      Function(path)
-                                         ' Android 中使用包内部的音频文件要直接放到 raw 文件夹里面，保持使用小写，并且不支持 wma 格式的声音。
+                                         ' Android 中使用包内部的音频文件要直接放到 raw 文件夹里面，保持使用小写。
                                          Dim fn = path.Substring(path.LastIndexOf("/") + 1)
+                                         ' Android 不支持 wma 格式，所以用 ogg 代替。
                                          If fn.EndsWith(".wma") Then
                                              fn = fn.Substring(0, fn.Length - 4) + ".ogg"
                                              Return "/" & ResourceLoader.GetAndroidRawResource(fn.ToLower)
@@ -25,7 +26,7 @@ Module ResourceRouteConfig
                                              Return path
                                          End If
                                      End Function)
-            resldr.AddRoute(ProgramDir, Platforms.UniversalWindows Or Platforms.WindowsRT81 Or Platforms.WindowsPhone81, "ms-appx://")
+            resldr.AddUriPrefixMapping(ProgramDir, Platforms.UniversalWindows Or Platforms.WindowsRT81 Or Platforms.WindowsPhone81, "ms-appx://")
             routeAdded = True
         End If
     End Sub

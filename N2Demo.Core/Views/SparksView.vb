@@ -4,24 +4,41 @@ Imports Nukepayload2.N2Engine.UI
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports Nukepayload2.N2Engine.UI.Views
 Imports Nukepayload2.N2Engine.Media
-Imports System.Threading
 
+''' <summary>
+''' 一个释放随机颜色火花的视图
+''' </summary>
 Public Class SparksView
     Inherits GameCanvas
 
+#Region "可见元素"
     Dim redEllipse As New EllipseElement
     Dim greenRect As New RectangleElement
     Dim sparks As New SparkParticleSystemView
     Dim charaSheet As New SpriteElement
-    Dim sparksData As New SparksViewModel
     Dim scrollViewer As New GameVisualizingScrollViewer
+
+#End Region
+
+#Region "外部资源"
     Dim characterSheetSprite As BitmapResource
     Dim primaryBgm As New Uri("n2-res:///ProgramDirectory/Audios/Musics/Theme1.wma")
     Dim clockSound As New Uri("n2-res:///ProgramDirectory/Audios/Sounds/Explosion4.wma")
+
+#End Region
+
+#Region "媒体播放"
+    WithEvents MusicPlayer As IMusicPlayer
     Dim soundPlayer As ISoundVoicePlayer
     Dim isSoundLoaded As Boolean
+    Dim soundPlaying As Boolean
 
-    WithEvents MusicPlayer As IMusicPlayer
+#End Region
+
+    ' 数据
+    Dim sparksData As New SparksViewModel
+    ' 存档管理器
+    Dim savMgr As New SampleSaveFileManager
 
     Sub New()
         ApplyRoute()
@@ -32,6 +49,7 @@ Public Class SparksView
         ' 图像资源同步准备
         characterSheetSprite = BitmapResource.Create(sparksData.CharacterSheet.Source)
 
+        ' 可见对象树
         Bind(Function(m) m.Location, New Vector2).
         Bind(Function(m) m.ZIndex, 0).
         AddChild(sparks.
@@ -65,9 +83,14 @@ Public Class SparksView
         soundPlayer.SoundVolume = 0.8
 
         isSoundLoaded = True
+
+        ' 读档
+        Dim sav = Await savMgr.LoadMasterSaveFileAsync
+        If sav IsNot Nothing Then
+            sparksData = sav.SaveData.LastState
+        End If
     End Sub
 
-    Dim soundPlaying As Boolean
     ''' <summary>
     ''' 平台特定实现点击此视图时，调用此方法。通用的输入事件完成后，此方法将过时。
     ''' </summary>
@@ -77,14 +100,18 @@ Public Class SparksView
         If isSoundLoaded Then
             If Not soundPlaying Then
                 soundPlaying = True
+                ' 播放声音，最短间隔 1000 毫秒。
                 Await soundPlayer.PlaySoundAsync(clockSound)
                 Await Task.Delay(1000)
+                ' 存档
+
                 soundPlaying = False
             End If
         End If
     End Sub
 
     Private Async Sub MusicPlayer_SingleSongCompleteAsync(sender As Object, e As EventArgs) Handles MusicPlayer.SingleSongComplete
+        ' 单曲循环
         Await MusicPlayer.SetPlayingIndexAsync(0)
         MusicPlayer.Play()
     End Sub

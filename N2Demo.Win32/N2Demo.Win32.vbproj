@@ -185,5 +185,15 @@
       <Name>Nukepayload2.N2Engine.Win32</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Audios\Musics\Theme1.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Audios\Sounds\Explosion4.wma">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -1,6 +1,3 @@
-﻿Imports Nukepayload2.N2Engine.RolePlayGames.Core
-
-Public Class SampleMasterData
-    Inherits RPGSaveMasterData
-    Public Property IsPeaceRoute As Boolean
+﻿Public Class SampleMasterData
+    Public Property LastState As SparksViewModel
 End Class

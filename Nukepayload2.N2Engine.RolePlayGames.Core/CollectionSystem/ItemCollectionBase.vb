@@ -2,7 +2,7 @@
 
 Public MustInherit Class ItemCollectionBase
 
-    Public Property ItemType As ResourceId
+    Public Property ItemTypeClassId As Guid
     Public Property Place As ResourceId
     Public Property Timestamp As Date
     Public Property NickName As String

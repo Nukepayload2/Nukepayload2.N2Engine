@@ -75,7 +75,7 @@ Namespace Resources
         ''' 添加嵌入的资源加载Uri路由。示例：资源包名是StringPack, 字符串资源加载器是 resMgr, 当前语言标识为 CurrentCulture，那么映射是：n2-res-str:///StringPack/Welcome -> resMgr.GetString("Welcome", UICulture)
         ''' </summary>
         ''' <param name="resPackName">指定资源包的名字</param>
-        Public Sub AddRoute(resPackName As String, resMgr As ResourceManager)
+        Public Sub MapResourceManager(resPackName As String, resMgr As ResourceManager)
             If strMgrRoutes.ContainsKey(resPackName) Then
                 Throw New InvalidOperationException($"前缀{resPackName}已经被注册过了")
             End If
@@ -112,7 +112,7 @@ Namespace Resources
         ''' </summary>
         ''' <param name="resPackName">指定资源包的名字</param>
         ''' <param name="assembly">资源所在程序集</param>
-        Public Sub AddRoute(resPackName As String, assembly As Assembly)
+        Public Sub AddEmbeddedResourceRoute(resPackName As String, assembly As Assembly)
             If assemblyRoutes.ContainsKey(resPackName) Then
                 Throw New InvalidOperationException($"前缀{resPackName}已经被注册过了")
             End If
@@ -141,12 +141,12 @@ Namespace Resources
             Next
         End Sub
         ''' <summary>
-        ''' 添加平台相关的内容资源加载Uri路由。示例：应用名是UWPApp, 平台特定的资源前缀是 ms-appx://，那么映射是：n2-res:///UWPApp/Assets/StoreLogo.png -> ms-appx:///Assets/StoreLogo.png
+        ''' 映射平台相关 Uri 前缀和路径的起始部分。示例：应用名是UWPApp, 平台特定的资源前缀是 ms-appx://，那么映射是：n2-res:///UWPApp/Assets/StoreLogo.png -> ms-appx:///Assets/StoreLogo.png
         ''' </summary>
         ''' <param name="appName">指定平台目标应用的名称</param>
         ''' <param name="platform">这个注册是针对哪些平台的。可以用按位或的方式针对多个平台。</param>
         ''' <param name="platformPrefix">平台资源前缀</param>
-        Public Sub AddRoute(appName As String, platform As Platform.Platforms, platformPrefix As String)
+        Public Sub AddUriPrefixMapping(appName As String, platform As Platform.Platforms, platformPrefix As String)
             Dim values = [Enum].GetValues(GetType(Platform.Platforms))
             For Each plt As Platform.Platforms In values
                 If plt > 0 AndAlso platform.HasFlag(plt) Then

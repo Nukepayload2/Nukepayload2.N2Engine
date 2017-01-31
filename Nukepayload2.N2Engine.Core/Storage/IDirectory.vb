@@ -9,10 +9,10 @@
         Property LastWriteTimeUtc As Date
         Function CreateAsync() As Task
         Function DeleteAsync() As Task
-        Function EnumerateDirectoriesAsync() As Task(Of IEnumerable(Of String))
-        Function EnumerateDirectoriesAsync(searchPattern As String) As Task(Of IEnumerable(Of String))
-        Function EnumerateFilesAsync() As Task(Of IEnumerable(Of String))
-        Function EnumerateFilesAsync(searchPattern As String) As Task(Of IEnumerable(Of String))
+        Function EnumerateDirectoriesAsync() As Task(Of String())
+        Function EnumerateDirectoriesAsync(searchPattern As String) As Task(Of String())
+        Function EnumerateFilesAsync() As Task(Of String())
+        Function EnumerateFilesAsync(searchPattern As String) As Task(Of String())
         Function Exists() As Boolean
         Function MoveAsync(dest As String) As Task
         Function OpenStreamForReadAsync(fileName As String) As Task(Of Stream)
