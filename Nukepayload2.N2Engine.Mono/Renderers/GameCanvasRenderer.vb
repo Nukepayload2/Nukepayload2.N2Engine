@@ -57,6 +57,16 @@ Public Class GameCanvasRenderer
     End Sub
 
     Private Sub Game_Updating(sender As Game, args As MonogameUpdateEventArgs) Handles Game.Updating
-        DoCanvasOperation(Sub(renderer) renderer.OnUpdate(sender, args))
+        Dim isFrozen = View.IsFrozen
+        If isFrozen.CanRead AndAlso isFrozen.Value Then
+            Return
+        End If
+        DoCanvasOperation(Sub(renderer)
+                              Dim frz = renderer.View.IsFrozen
+                              If frz.CanRead AndAlso frz.Value Then
+                                  Return
+                              End If
+                              renderer.OnUpdate(sender, args)
+                          End Sub)
     End Sub
 End Class

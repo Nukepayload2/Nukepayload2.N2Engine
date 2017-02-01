@@ -41,7 +41,7 @@ Public Class SparksView
     Dim sparksData As New SparksViewModel
     ' 存档管理器
     Dim savMgr As SampleSaveFileManager
-    ' 游戏控制
+    ' 游戏控制。这些数据不会被保存。
     Dim isPaused As Boolean
 
     Sub New()
@@ -64,23 +64,22 @@ Public Class SparksView
         Bind(Function(m) m.ZIndex, 0).
         AddChild(sparks.
             Bind(Function(s) s.Data, Function() sparksData.SparkSys)).
-        AddChild(
-            scrollViewer.
-                OnUpdate(sparksData.ShakingViewer.UpdateCommand).
-                Bind(Function(m) m.Location, Function() sparksData.ShakingViewer.Offset).
-                Bind(Function(m) m.ZIndex, 0).
-                AddChild(redEllipse.
-                    Bind(Function(r) r.Fill, Function() sparksData.RedCircle.Color).
-                    Bind(Function(r) r.Location, Function() sparksData.RedCircle.Position).
-                    Bind(Function(r) r.Size, Function() sparksData.RedCircle.Size)).
-                AddChild(greenRect.
-                    Bind(Function(r) r.Stroke, Function() sparksData.GreenRectangle.Color).
-                    Bind(Function(r) r.Location, Function() sparksData.GreenRectangle.Position).
-                    Bind(Function(r) r.Size, Function() sparksData.GreenRectangle.Size)).
-                AddChild(charaSheet.
-                    Bind(Function(r) r.Sprite, Function() characterSheetSprite).
-                    Bind(Function(r) r.Location, Function() sparksData.CharacterSheet.Size).
-                    Bind(Function(r) r.Size, Function() sparksData.CharacterSheet.Location))
+        AddChild(scrollViewer.
+            OnUpdate(sparksData.ShakingViewer.UpdateCommand).
+            Bind(Function(m) m.Location, Function() sparksData.ShakingViewer.Offset).
+            Bind(Function(m) m.ZIndex, 0).
+            AddChild(redEllipse.
+                Bind(Function(r) r.Fill, Function() sparksData.RedCircle.Color).
+                Bind(Function(r) r.Location, Function() sparksData.RedCircle.Position).
+                Bind(Function(r) r.Size, Function() sparksData.RedCircle.Size)).
+            AddChild(greenRect.
+                Bind(Function(r) r.Stroke, Function() sparksData.GreenRectangle.Color).
+                Bind(Function(r) r.Location, Function() sparksData.GreenRectangle.Position).
+                Bind(Function(r) r.Size, Function() sparksData.GreenRectangle.Size)).
+            AddChild(charaSheet.
+                Bind(Function(r) r.Sprite, Function() characterSheetSprite).
+                Bind(Function(r) r.Location, Function() sparksData.CharacterSheet.Size).
+                Bind(Function(r) r.Size, Function() sparksData.CharacterSheet.Location))
         )
 
         ' 延迟加载声音系统
@@ -99,6 +98,7 @@ Public Class SparksView
         ' 同步数据
         If sav IsNot Nothing Then
             sparksData = sav.SaveData.LastState
+            scrollViewer.OnUpdate(sparksData.ShakingViewer.UpdateCommand)
         Else
             savMgr.MasterSaveFile.SaveData = New SampleMasterData With {
                 .LastState = sparksData

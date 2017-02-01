@@ -15,7 +15,14 @@ Namespace ParticleSystem
             MyBase.New(spawnCount, spawnDuration)
             Me.SpawnInterval = spawnInterval
         End Sub
+
+        ' 这个属性非常大，写到存档里面会占用过多的空间。
+#If DO_NOT_SERIALIZE_PARTICLES Then
+        <JsonIgnore>
         Public Property Particles As New Queue(Of TParticle)
+#Else
+        Public Property Particles As New Queue(Of TParticle)
+#End If
         ''' <summary>
         ''' 释放粒子的间隔
         ''' </summary>

@@ -15,7 +15,10 @@ namespace Nukepayload2.N2Engine.IO.FileSystem
     internal class Directory : IDirectory
     {
         public string DirectoryName { get; set; }
-
+        public Directory(string dirName)
+        {
+            DirectoryName = dirName;
+        }
         public bool Exists()
         {
             return DirectoryIO.Exists(DirectoryName);

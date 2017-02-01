@@ -30,9 +30,14 @@ Public Class SampleSaveFileManager
     ''' </summary>
     Protected Overrides Async Sub OnFileInitializing()
         ' 主存档污染文件保存到 ExtraFlags233 文件，可漫游。
-        Dim savFolder = Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.Local)
-        ' 存档加载器可以隐式转换存档的加载结果
-        PartialSaveFiles = Await BranchSaveFilesLoader(Of SamplePartialData).CreateAsync(savFolder, "Branch")
+        Try
+            Dim savFolder = Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.Local)
+            ' 存档加载器可以隐式转换存档的加载结果
+            PartialSaveFiles = Await BranchSaveFilesLoader(Of SamplePartialData).CreateAsync(savFolder, "Branch")
+        Catch ex As Exception
+            Debug.WriteLine(ex.ToString)
+            Stop
+        End Try
         ' 加载完存档一定要告知存档已经加载。
         OnFileInitialized()
     End Sub
@@ -46,7 +51,12 @@ Public Class SampleSaveFileManager
         Dim actualMasterFiles = From sav In files
                                 Where sav.OriginalFileName = MasterSaveFile.FileName
         If actualMasterFiles.Any Then
-            Await localDir.LoadAsync(MasterSaveFile, Function(s) s)
+            Try
+                Await localDir.LoadAsync(MasterSaveFile, Function(s) s)
+            Catch ex As Exception
+                Debug.WriteLine(ex.ToString)
+                MasterSaveFile.SaveData = Nothing
+            End Try
             If MasterSaveFile.SaveData IsNot Nothing Then
                 Return MasterSaveFile
             End If
@@ -59,6 +69,9 @@ Public Class SampleSaveFileManager
     ''' </summary>
     Public Async Function SaveMasterSaveFileAsync() As Task
         Dim localDir = Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.Local)
-        Await localDir.SaveAsync(MasterSaveFile, Function(s) s)
+        Await localDir.SaveAsync(MasterSaveFile, Function(s)
+                                                     s.SetLength(0)
+                                                     Return s
+                                                 End Function)
     End Function
 End Class

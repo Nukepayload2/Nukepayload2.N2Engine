@@ -29,7 +29,7 @@ Namespace Global.Nukepayload2.N2Engine.Storage
         Public Overrides Async Function GetSaveFilesAsync(Of T)() As Task(Of IEnumerable(Of SaveFile(Of T)))
             Return From f In Await curFolder.EnumerateFilesAsync
                    Where f.ToLowerInvariant.EndsWith(".n2sav")
-                   Select New SaveFile(Of T)() With {.OriginalFileName = f}
+                   Select New SaveFile(Of T)() With {.OriginalFileName = Path.GetFileName(f)}
         End Function
 
         Public Overrides Async Function LoadAsync(Of TData)(save As SaveFile(Of TData), decrypt As Func(Of Stream, Stream)) As Task
