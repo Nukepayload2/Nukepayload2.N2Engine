@@ -42,10 +42,10 @@ Public Class SampleSaveFileManager
     ''' </summary>
     Public Async Function LoadMasterSaveFileAsync() As Task(Of SaveFile(Of SampleMasterData))
         Dim localDir = Await PlatformSaveManager.OpenSaveFolderAsync(SaveLocations.Local)
-        Dim actualMasterFiles = From sav In Await localDir.GetSaveFilesAsync(Of SampleMasterData)
-                                Where sav.IsMaster AndAlso sav.BaseName = MasterSaveFile.BaseName
+        Dim files = Await localDir.GetSaveFilesAsync(Of SampleMasterData)
+        Dim actualMasterFiles = From sav In files
+                                Where sav.OriginalFileName = MasterSaveFile.FileName
         If actualMasterFiles.Any Then
-            MasterSaveFile = actualMasterFiles.First
             Await localDir.LoadAsync(MasterSaveFile, Function(s) s)
             Return MasterSaveFile
         End If
