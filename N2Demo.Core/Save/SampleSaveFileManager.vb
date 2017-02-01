@@ -47,7 +47,9 @@ Public Class SampleSaveFileManager
                                 Where sav.OriginalFileName = MasterSaveFile.FileName
         If actualMasterFiles.Any Then
             Await localDir.LoadAsync(MasterSaveFile, Function(s) s)
-            Return MasterSaveFile
+            If MasterSaveFile.SaveData IsNot Nothing Then
+                Return MasterSaveFile
+            End If
         End If
         Return Nothing
     End Function

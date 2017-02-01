@@ -41,6 +41,8 @@ Public Class SparksView
     Dim sparksData As New SparksViewModel
     ' 存档管理器
     Dim savMgr As SampleSaveFileManager
+    ' 游戏控制
+    Dim isPaused As Boolean
 
     Sub New()
         ' 准备存档
@@ -57,6 +59,7 @@ Public Class SparksView
         characterSheetSprite = BitmapResource.Create(sparksData.CharacterSheet.Source)
 
         ' 可见对象树
+        Bind(Function(m) m.IsFrozen, Function() isPaused).
         Bind(Function(m) m.Location, New Vector2).
         Bind(Function(m) m.ZIndex, 0).
         AddChild(sparks.
@@ -97,7 +100,9 @@ Public Class SparksView
         If sav IsNot Nothing Then
             sparksData = sav.SaveData.LastState
         Else
-            savMgr.MasterSaveFile.SaveData.LastState = sparksData
+            savMgr.MasterSaveFile.SaveData = New SampleMasterData With {
+                .LastState = sparksData
+            }
         End If
     End Sub
 
@@ -115,8 +120,10 @@ Public Class SparksView
                 Await Task.Delay(1000)
                 soundPlaying = False
                 ' 存档
+                isPaused = True
                 savMgr.MasterSaveFile.Status = Nukepayload2.N2Engine.Storage.SaveFileStatus.Modified
                 Await savMgr.SaveMasterSaveFileAsync()
+                isPaused = False
             End If
         End If
     End Sub

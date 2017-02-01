@@ -69,9 +69,19 @@ Public Class GameCanvasRenderer
         DoCanvasOperation(Sub(renderer) renderer.OnGameLoopStarting(sender, args))
     End Sub
     ''' <summary>
-    ''' 处理水印的更新
+    ''' 处理视图和水印的更新
     ''' </summary>
     Private Sub Game_Update(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs) Handles Win2DCanvas.Update
-        DoCanvasOperation(Sub(renderer) renderer.OnUpdate(sender, args))
+        Dim isFrozen = View.IsFrozen
+        If isFrozen.CanRead AndAlso isFrozen.Value Then
+            Return
+        End If
+        DoCanvasOperation(Sub(renderer)
+                              Dim frz = renderer.View.IsFrozen
+                              If frz.CanRead AndAlso frz.Value Then
+                                  Return
+                              End If
+                              renderer.OnUpdate(sender, args)
+                          End Sub)
     End Sub
 End Class

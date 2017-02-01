@@ -60,6 +60,10 @@ Namespace UI.Elements
         ''' (未实施) 二维变换
         ''' </summary>
         Public ReadOnly Property Transform As PlaneTransform
+        ''' <summary>
+        ''' 如果这个对象被冻结，则不会主动进行更新。
+        ''' </summary>
+        Public ReadOnly Property IsFrozen As New PropertyBinder(Of Boolean)
 
         Dim _Triggers As New List(Of IGameTrigger)
         ''' <summary>
