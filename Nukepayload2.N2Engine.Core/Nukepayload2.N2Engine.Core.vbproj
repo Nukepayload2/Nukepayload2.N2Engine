@@ -208,6 +208,7 @@
     <None Include="AssemblyDependency.dgml" />
     <None Include="Docs\游戏存档的结构.md" />
     <None Include="packages.config" />
+    <None Include="编译常量说明.md" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Collections\" />
