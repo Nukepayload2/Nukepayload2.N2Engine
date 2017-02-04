@@ -113,6 +113,10 @@
       <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
       <Name>Nukepayload2.N2Engine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.UI.SpriteFonts\Nukepayload2.UI.SpriteFonts.vbproj">
+      <Project>{4edb2801-2f43-4377-9ca8-215e640c5d86}</Project>
+      <Name>Nukepayload2.UI.SpriteFonts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RaisingStudio.Xna.Graphics.Android\RaisingStudio.Xna.Graphics.Android.csproj">
       <Project>{728da484-91f3-4395-8143-91258d30296f}</Project>
       <Name>RaisingStudio.Xna.Graphics.Android</Name>
@@ -124,6 +128,7 @@
   <Import Project="..\Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.Xamarin\Nukepayload2.N2Engine.Xamarin.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.UI.SpriteFonts.MonoGameShared\Nukepayload2.UI.SpriteFonts.MonoGameShared.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -165,6 +165,10 @@
       <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
       <Name>Nukepayload2.N2Engine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.UI.SpriteFonts\Nukepayload2.UI.SpriteFonts.vbproj">
+      <Project>{4edb2801-2f43-4377-9ca8-215e640c5d86}</Project>
+      <Name>Nukepayload2.UI.SpriteFonts</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RaisingStudio.Xna.Graphics.UWP\RaisingStudio.Xna.Graphics.UWP.csproj">
       <Project>{ca20682b-fec9-46e1-8293-6896e8fc16a3}</Project>
       <Name>RaisingStudio.Xna.Graphics.UWP</Name>
@@ -173,6 +177,7 @@
   <Import Project="..\Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.UI.SpriteFonts.MonoGameShared\Nukepayload2.UI.SpriteFonts.MonoGameShared.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
   </PropertyGroup>
