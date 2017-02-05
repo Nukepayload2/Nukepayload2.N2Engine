@@ -119,6 +119,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <Compile Include="Models\ColorizedBound.vb" />
+    <Compile Include="Resources\FontManager.vb" />
     <Compile Include="Resources\ResourceRouteConfig.vb" />
     <Compile Include="Save\SampleMasterData.vb" />
     <Compile Include="Save\SamplePartialData.vb" />
@@ -138,6 +139,7 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="Fonts\SegoeUI14.n2fnt" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>

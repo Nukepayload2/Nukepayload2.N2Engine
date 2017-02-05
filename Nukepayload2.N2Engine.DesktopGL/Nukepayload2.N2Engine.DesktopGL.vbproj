@@ -25,7 +25,7 @@
     <OutputPath>bin\Debug\</OutputPath>
     <DocumentationFile>Nukepayload2.N2Engine.DesktopGL.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <DefineConstants>DESKTOP_OPENGL</DefineConstants>
+    <DefineConstants>STRICT_ARG_CHECK,DESKTOP_OPENGL,MONO</DefineConstants>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +36,7 @@
     <OutputPath>bin\Release\</OutputPath>
     <DocumentationFile>Nukepayload2.N2Engine.DesktopGL.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
+    <DefineConstants>STRICT_ARG_CHECK,DESKTOP_OPENGL,MONO</DefineConstants>
   </PropertyGroup>
   <PropertyGroup>
     <OptionExplicit>On</OptionExplicit>
@@ -109,10 +110,9 @@
     <Import Include="System.Data" />
     <Import Include="System.Drawing" />
     <Import Include="System.Diagnostics" />
-    <Import Include="System.Windows.Forms" />
     <Import Include="System.Linq" />
-    <Import Include="System.Xml.Linq" />
     <Import Include="System.Threading.Tasks" />
+    <Import Include="System.Xml.Linq" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ColorConverter.vb" />

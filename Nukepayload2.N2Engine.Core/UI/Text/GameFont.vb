@@ -1,8 +1,21 @@
-﻿Namespace UI.Text
+﻿Imports Nukepayload2.UI.SpriteFonts
+
+Namespace UI.Text
     ''' <summary>
     ''' 游戏中的字体
     ''' </summary>
-    Public MustInherit Class GameFont
+    Public Class GameFont
+        Sub New(name As String, fontSize As Single, fontFamily As String, fontStretch As FontStretch, fontWeight As FontWeight, fontStyle As FontStyle, isColorFontEnabled As Boolean, spriteFontResourceId As Uri)
+            Me.Name = name
+            Me.FontSize = fontSize
+            Me.FontFamily = fontFamily
+            Me.FontStretch = fontStretch
+            Me.FontWeight = fontWeight
+            Me.FontStyle = fontStyle
+            Me.IsColorFontEnabled = isColorFontEnabled
+            Me.SpriteFontResourceId = spriteFontResourceId
+        End Sub
+
         ''' <summary>
         ''' 字体的名称。
         ''' </summary>
@@ -32,8 +45,12 @@
         ''' </summary>
         Public ReadOnly Property IsColorFontEnabled As Boolean
         ''' <summary>
-        ''' 是不是位图字体。在 MonoGame 实现必须使用位图字体，而发行到 Win2D 则没有这个限制。
+        ''' 贴图字体的资源 Id。在 MonoGame 实现必须使用贴图字体，而发行到 Win2D 则没有这个限制。
         ''' </summary>
-        Public ReadOnly Property IsBitmapFont As Boolean
+        Public ReadOnly Property SpriteFontResourceId As Uri
+        ''' <summary>
+        ''' 特定平台加载后的数据
+        ''' </summary>
+        Public Property PlatformLoadedData As N2SpriteFont
     End Class
 End Namespace

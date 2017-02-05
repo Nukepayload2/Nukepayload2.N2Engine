@@ -10,7 +10,9 @@ Module ResourceRouteConfig
     Sub ApplyRoute()
         If Not routeAdded Then
             Dim resldr = ResourceLoader.GetForCurrentView
-            resldr.AddEmbeddedResourceRoute("Images", GetType(ResourceRouteConfig).GetTypeInfo.Assembly)
+            Dim currentAsm = GetType(ResourceRouteConfig).GetTypeInfo.Assembly
+            resldr.AddEmbeddedResourceRoute("Images", currentAsm)
+            resldr.AddEmbeddedResourceRoute("Fonts", currentAsm)
             Const ProgramDir = "ProgramDirectory"
             resldr.AddUriPrefixMapping(ProgramDir, Platforms.WindowsDesktop Or Platforms.DesktopGL Or Platforms.iOS, "")
             resldr.AddUriPrefixMapping(ProgramDir, Platforms.Android, "android.resource://com.nukepayload2.n2demo/raw")

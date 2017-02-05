@@ -149,6 +149,7 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Renderers\UWPRenderer.vb" />
     <Compile Include="Resources\PlatformBitmapResource.vb" />
+    <Compile Include="Resources\PlatformFontManager.vb" />
     <Compile Include="Utilities\CanvasGeometryExtension.vb" />
     <Compile Include="Utilities\LightClipCalculator.vb" />
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.UWP.rd.xml" />
