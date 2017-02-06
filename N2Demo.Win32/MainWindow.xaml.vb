@@ -4,18 +4,21 @@ Imports N2Demo.Core
 Imports Nukepayload2.N2Engine.Win32
 
 Class MainWindow
+
     WithEvents gameHandler As MonoGameHandler
-    Private Sub MainWindow_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+
+    Private Async Sub MainWindow_LoadedAsync(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         MonoImplRegistration.Register()
         gameHandler = New MonoGameHandler(Sub(ctl) winformHost.Child = ctl, Sub()
                                                                                 Focus()
                                                                                 Width += 1
-                                                                            End Sub)
-        gameHandler.IsMouseVisible = True
+                                                                            End Sub) With {
+                                                                                .IsMouseVisible = True
+                                                                            }
         sparks = New SparksView
+        Await sparks.LoadSceneAsync
         sparksRenderer = New GameCanvasRenderer(sparks, gameHandler)
         gameHandler.Run()
-
     End Sub
 
     Private Sub MainWindow_Unloaded(sender As Object, e As RoutedEventArgs) Handles Me.Unloaded
@@ -48,20 +51,22 @@ Class MainWindow
     End Sub
 
     Private Sub GameHandler_Updating(sender As Game, args As MonogameUpdateEventArgs) Handles gameHandler.Updating
-        Dim mouseState = Mouse.GetState(sender.Window)
-        Dim touchState = Touch.TouchPanel.GetState
-        Dim touchPoint As New Numerics.Vector2?
-        For Each t In touchState
-            If t.State = Touch.TouchLocationState.Pressed Then
-                touchPoint = New Numerics.Vector2(t.Position.X, t.Position.Y)
-                Exit For
+        If sparksRenderer IsNot Nothing Then
+            Dim mouseState = Mouse.GetState(sender.Window)
+            Dim touchState = Touch.TouchPanel.GetState
+            Dim touchPoint As New Numerics.Vector2?
+            For Each t In touchState
+                If t.State = Touch.TouchLocationState.Pressed Then
+                    touchPoint = New Numerics.Vector2(t.Position.X, t.Position.Y)
+                    Exit For
+                End If
+            Next
+            If Not touchPoint.HasValue AndAlso mouseState.LeftButton = ButtonState.Pressed Then
+                touchPoint = New Numerics.Vector2(mouseState.Position.X, mouseState.Position.Y)
             End If
-        Next
-        If Not touchPoint.HasValue AndAlso mouseState.LeftButton = ButtonState.Pressed Then
-            touchPoint = New Numerics.Vector2(mouseState.Position.X, mouseState.Position.Y)
-        End If
-        If touchPoint.HasValue Then
-            sparks.OnTappedAsync(touchPoint.Value)
+            If touchPoint.HasValue Then
+                sparks.OnTappedAsync(touchPoint.Value)
+            End If
         End If
     End Sub
 End Class

@@ -14,9 +14,11 @@ Friend Class PlatformFontLoader
         End If
 #End If
         Dim fnt As New N2SpriteFont
-        Dim res = ResourceLoader.GetForCurrentView
-        Dim strm = res.GetResourceEmbeddedStream(font.SpriteFontResourceId)
-        Await Task.Run(Sub() fnt.Load(Function() strm, Function(t) New N2FontTileMonoGame(t)))
-        font.PlatformLoadedData = fnt
+        Await Task.Run(Sub() fnt.Load(Function()
+                                          Dim res = ResourceLoader.GetForCurrentView
+                                          Dim strm = res.GetResourceEmbeddedStream(font.SpriteFontResourceId)
+                                          Return strm
+                                      End Function, Function(t) New N2FontTileMonoGame(t)))
+        font.SpriteData = fnt
     End Function
 End Class

@@ -22,7 +22,7 @@ namespace N2Demo.iOS
             UIApplication.Main(args, null, "AppDelegate");
         }
 
-        public override void FinishedLaunching(UIApplication app)
+        public override async void FinishedLaunching(UIApplication app)
         {
             if (gameHandler == null)
             {
@@ -31,8 +31,8 @@ namespace N2Demo.iOS
                 gameHandler = new MonoGameHandler();
 
                 sparks = new SparksView();
+                await sparks.LoadSceneAsync();
                 sparksRenderer = new GameCanvasRenderer(sparks, gameHandler);
-
                 gameHandler.Updating += GameHandler_Updating;
                 gameHandler.Run();
             }
@@ -45,7 +45,7 @@ namespace N2Demo.iOS
             {
                 if (touchPoint.State == TouchLocationState.Pressed)
                 {
-                    sparks.OnTapped(new System.Numerics.Vector2(touchPoint.Position.X, touchPoint.Position.Y));
+                    sparks.OnTappedAsync(new System.Numerics.Vector2(touchPoint.Position.X, touchPoint.Position.Y));
                     break;
                 }
             }

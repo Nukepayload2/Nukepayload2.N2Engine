@@ -18,8 +18,8 @@ Public Class GameCanvasRenderer
     ''' <param name="win2DCanvas">UWP的画布</param>
     Sub New(view As GameCanvas, win2DCanvas As CanvasAnimatedControl)
         MyBase.New(view)
-        Me.Win2DCanvas = win2DCanvas
         view.Renderer = Me
+        Me.Win2DCanvas = win2DCanvas
     End Sub
 
     ''' <summary>

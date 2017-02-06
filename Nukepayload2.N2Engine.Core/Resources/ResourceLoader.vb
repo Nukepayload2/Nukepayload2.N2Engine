@@ -2,17 +2,23 @@
 Imports System.Resources
 Imports System.Threading
 
+#Const STA_MODE = True
+
 Namespace Resources
     ''' <summary>
     ''' 处理资源加载或资源键映射
     ''' </summary>
     Public Class ResourceLoader
+#If STA_MODE Then
+        Shared instance As ResourceLoader
+#Else
         ''' <summary>
         ''' 对于不能跨线程共享的资源提供同步
         ''' </summary>
         Dim _syncContext As SynchronizationContext
 
         Shared instances As New Dictionary(Of SynchronizationContext, ResourceLoader)
+#End If
         ''' <summary>
         ''' 在特定平台按照 "内容" 生成的资源。
         ''' </summary>
@@ -54,20 +60,31 @@ Namespace Resources
         ''' </summary>
         Shared androidRawResources As New Dictionary(Of String, Integer)
 
+#If STA_MODE Then
+        Protected Sub New()
+            instance = Me
+        End Sub
+#Else
         Protected Sub New(curSync As SynchronizationContext)
             _syncContext = curSync
             instances.Add(curSync, Me)
         End Sub
+#End If
+
         ''' <summary>
-        ''' 为当前线程获取一个资源加载器。在 UI 线程（STA 或 MTA） 进行这个操作一定会成功。
+        ''' 为当前线程获取一个资源加载器。在 UI 线程进行这个操作一定会成功。
         ''' </summary>
         ''' <exception cref="InvalidOperationException"/>
         Public Shared Function GetForCurrentView() As ResourceLoader
+#If STA_MODE Then
+            Return If(instance, New ResourceLoader)
+#Else
             Dim curSync = SynchronizationContext.Current
             If curSync Is Nothing Then
                 Throw New InvalidOperationException("当前线程并没有同步上下文。请确保在UI线程调用这个方法。")
             End If
             Return If(instances.ContainsKey(curSync), instances(curSync), New ResourceLoader(curSync))
+#End If
         End Function
 
         Public Property UICulture As Globalization.CultureInfo = Globalization.CultureInfo.CurrentUICulture

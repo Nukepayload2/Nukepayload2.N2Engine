@@ -1,6 +1,9 @@
 ﻿Imports Newtonsoft.Json
+
+#Const USE_WEAK_REFERENCE = False
+
 ''' <summary>
-''' 字体图块，包含一个缓存的纹理。一个图块包含 256 个字体轮廓。平台相关实现应当允许 <see cref="GC"/> 可以随时回收纹理。
+''' 字体图块，包含一个缓存的纹理。一个图块包含 256 个字体轮廓。
 ''' </summary>
 Public Class N2FontTile
 
@@ -25,8 +28,9 @@ Public Class N2FontTile
     ''' 为了正确实现处置方式而存在的
     ''' </summary>
     <JsonIgnore>
-    Friend Property AttachedController As IDisposable
+    Public Property AttachedController As IDisposable
 End Class
+
 ''' <summary>
 ''' 用于控制字体图块逻辑
 ''' </summary>
@@ -39,6 +43,8 @@ Public MustInherit Class N2FontTilePlatformControllerBase(Of TTexture As {Class,
     End Sub
 
     Protected _data As N2FontTile
+
+#If USE_WEAK_REFERENCE Then
     Dim _textureCache As WeakReference(Of TTexture)
     ''' <summary>
     ''' 从字体纹理缓存中获取字体纹理，或者加载纹理
@@ -58,6 +64,17 @@ Public MustInherit Class N2FontTilePlatformControllerBase(Of TTexture As {Class,
             Return tex
         End Get
     End Property
+#Else
+    Dim _textureCache As TTexture
+    Public ReadOnly Property Texture As TTexture
+        Get
+            If _textureCache Is Nothing Then
+                _textureCache = LoadTexture()
+            End If
+            Return _textureCache
+        End Get
+    End Property
+#End If
 
     Protected MustOverride Function LoadTexture() As TTexture
 
@@ -69,10 +86,15 @@ Public MustInherit Class N2FontTilePlatformControllerBase(Of TTexture As {Class,
         If Not disposedValue Then
             If disposing Then
                 ' TODO: 释放托管状态(托管对象)。
+#If USE_WEAK_REFERENCE Then
                 Dim tex As TTexture = Nothing
                 If (_textureCache?.TryGetTarget(tex)).GetValueOrDefault Then
                     tex.Dispose()
                 End If
+#Else
+                _textureCache?.Dispose()
+#End If
+
                 _data.AttachedController = Nothing
             End If
 

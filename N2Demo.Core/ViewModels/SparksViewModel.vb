@@ -14,6 +14,12 @@ Public Class SparksViewModel
         .Color = New Color(ColorValues.Green),
         .Size = New Vector2(233, 100)
     }
+
+    Public ReadOnly Property ElderText As String = $"苟利国家生死以，岂因祸福避趋之。
+暴力膜不可取。"
+
     Public Property ShakingViewer As New ShakingViewer
+
     Public ReadOnly Property CharacterSheet As New CharacterSheet
+
 End Class

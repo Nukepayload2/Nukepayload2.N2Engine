@@ -15,11 +15,12 @@ Public NotInheritable Class MainPage
     Dim sparksRenderer As GameCanvasRenderer
     WithEvents game As MonoGameHandler
 
-    Private Sub MainPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+    Private Async Sub MainPage_LoadedAsync(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         game = MonoGame.Framework.XamlGame(Of MonoGameHandler).Create(String.Empty,
                                                                       Window.Current.CoreWindow,
                                                                       GamePanel)
         game.IsMouseVisible = True
+        Await sparks.LoadSceneAsync
         sparksRenderer = New GameCanvasRenderer(sparks, game)
     End Sub
 

@@ -22,7 +22,7 @@ namespace N2Demo.Android
         SparksView sparks;
         GameCanvasRenderer sparksRenderer;
 
-        protected override void OnCreate(Bundle bundle)
+        protected override async void OnCreate(Bundle bundle)
         {
             base.OnCreate(bundle);
 
@@ -38,6 +38,7 @@ namespace N2Demo.Android
 
             // 载入游戏画布
             sparks = new SparksView();
+            await sparks.LoadSceneAsync();
             sparksRenderer = new GameCanvasRenderer(sparks, gameHandler);
 
             gameHandler.Updating += GameHandler_Updating;

@@ -13,9 +13,15 @@ Public Module Program
     Sub Main(args$())
         '初始化 N2Engine 和 Monogame
         MonoImplRegistration.Register()
-        gameHandler = New MonoGameHandler
-        gameHandler.IsMouseVisible = True
+        RunGameAsync()
+    End Sub
+
+    Private Async Sub RunGameAsync()
+        gameHandler = New MonoGameHandler With {
+            .IsMouseVisible = True
+        }
         sparks = New SparksView
+        Await sparks.LoadSceneAsync
         sparksRenderer = New GameCanvasRenderer(sparks, gameHandler)
 
         'GTK

@@ -1,11 +1,12 @@
-﻿Imports Nukepayload2.UI.SpriteFonts
+﻿Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.UI.SpriteFonts
 
 Namespace UI.Text
     ''' <summary>
     ''' 游戏中的字体
     ''' </summary>
     Public Class GameFont
-        Sub New(name As String, fontSize As Single, fontFamily As String, fontStretch As FontStretch, fontWeight As FontWeight, fontStyle As FontStyle, isColorFontEnabled As Boolean, spriteFontResourceId As Uri)
+        Sub New(name As String, fontSize As Single, fontFamily As String, fontStretch As FontStretch, fontWeight As FontWeight, fontStyle As FontStyle, isColorFontEnabled As Boolean, spriteFontResourceId As Uri, color As Color)
             Me.Name = name
             Me.FontSize = fontSize
             Me.FontFamily = fontFamily
@@ -14,8 +15,12 @@ Namespace UI.Text
             Me.FontStyle = fontStyle
             Me.IsColorFontEnabled = isColorFontEnabled
             Me.SpriteFontResourceId = spriteFontResourceId
+            Me.Color = color
         End Sub
-
+        ''' <summary>
+        ''' 字体的颜色
+        ''' </summary>
+        Public ReadOnly Property Color As Color
         ''' <summary>
         ''' 字体的名称。
         ''' </summary>
@@ -49,8 +54,8 @@ Namespace UI.Text
         ''' </summary>
         Public ReadOnly Property SpriteFontResourceId As Uri
         ''' <summary>
-        ''' 特定平台加载后的数据
+        ''' (仅 Mono Game) 贴图字体数据。
         ''' </summary>
-        Public Property PlatformLoadedData As N2SpriteFont
+        Public Property SpriteData As N2SpriteFont
     End Class
 End Namespace

@@ -12,12 +12,15 @@ Public NotInheritable Class MainPage
     Dim sparks As New SparksView
     Dim sparksRenderer As GameCanvasRenderer
 
-    Private Sub MainPage_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+    Private Async Sub MainPage_LoadedAsync(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
+        Await sparks.LoadSceneAsync
         sparksRenderer = New GameCanvasRenderer(sparks, animContent)
     End Sub
 
     Private Sub MainPage_Tapped(sender As Object, e As TappedRoutedEventArgs) Handles Me.Tapped
-        sparks.OnTappedAsync(e.GetPosition(Me).ToVector2 * animContent.DpiScale)
+        If sparksRenderer IsNot Nothing Then
+            sparks.OnTappedAsync(e.GetPosition(Me).ToVector2 * animContent.DpiScale)
+        End If
     End Sub
 
     Private Sub MainPage_Unloaded(sender As Object, e As RoutedEventArgs) Handles Me.Unloaded

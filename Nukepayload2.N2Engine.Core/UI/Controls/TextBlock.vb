@@ -3,7 +3,7 @@ Imports Nukepayload2.N2Engine.UI.Text
 
 Namespace UI.Controls
     ''' <summary>
-    ''' (未实施) 文本块控件。用于显示文字。
+    ''' 文本块控件。用于显示文字。
     ''' </summary>
     Public Class TextBlock
         Inherits GameControl

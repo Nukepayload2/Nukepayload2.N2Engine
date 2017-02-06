@@ -25,7 +25,7 @@
     <OutputPath>bin\Debug</OutputPath>
     <DocumentationFile>Nukepayload2.N2Engine.UWP.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <DefineConstants>NETFX_CORE,WINDOWS_UWP</DefineConstants>
+    <DefineConstants>NETFX_CORE,WINDOWS_UWP,WIN2D</DefineConstants>
     <NoWarn>42314</NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
@@ -40,7 +40,7 @@
     <OutputPath>bin\Release</OutputPath>
     <DocumentationFile>Nukepayload2.N2Engine.UWP.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <DefineConstants>NETFX_CORE,WINDOWS_UWP</DefineConstants>
+    <DefineConstants>NETFX_CORE,WINDOWS_UWP,WIN2D</DefineConstants>
     <NoWarn>42314</NoWarn>
     <WarningsAsErrors>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036</WarningsAsErrors>
   </PropertyGroup>
@@ -147,6 +147,7 @@
     <Compile Include="Renderers\SparkParticleSystemRenderer.vb" />
     <Compile Include="Platform\UWPImplRegistration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="Renderers\TextBlockRenderer.vb" />
     <Compile Include="Renderers\UWPRenderer.vb" />
     <Compile Include="Resources\PlatformBitmapResource.vb" />
     <Compile Include="Resources\PlatformFontManager.vb" />
