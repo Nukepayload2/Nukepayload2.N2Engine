@@ -3,7 +3,7 @@ Imports Nukepayload2.N2Engine.Threading
 
 Namespace UI
     ''' <summary>
-    ''' 游戏中最基础的元素，可以是可见的，也可以不可见。
+    ''' 游戏中最基础的对象，可以是可见的，也可以不可见。
     ''' </summary>
     Public MustInherit Class GameObject
         ''' <summary>

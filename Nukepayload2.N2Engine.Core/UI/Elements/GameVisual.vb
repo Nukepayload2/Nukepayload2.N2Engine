@@ -6,7 +6,7 @@ Imports Nukepayload2.N2Engine.UI.Effects
 
 Namespace UI.Elements
     ''' <summary>
-    ''' 游戏中的基本可见元素
+    ''' 游戏中的基本可见对象
     ''' </summary>
     Public MustInherit Class GameVisual
         Inherits GameObject
@@ -130,5 +130,17 @@ Namespace UI.Elements
 
         Public MustOverride Function GetChildEffectSources() As IEnumerable(Of IGameEffectSource) Implements IGameEffectSource.GetChildEffectSources
 
+#Region "基本交互事件"
+        ' 键盘
+        Public Event KeyDown As GameObjectEventHandler(Of GameVisual, GameKeyboardEventArgs)
+        Public Event KeyUp As GameObjectEventHandler(Of GameVisual, GameKeyboardEventArgs)
+        ' 鼠标
+        Public Event MouseButtonDown As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+        Public Event MouseButtonUp As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+        Public Event MouseWheelChanged As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+        ' 触摸屏
+        Public Event TouchDown As GameObjectEventHandler(Of GameVisual, GameTouchEventArgs)
+        Public Event TouchUp As GameObjectEventHandler(Of GameVisual, GameTouchEventArgs)
+#End Region
     End Class
 End Namespace

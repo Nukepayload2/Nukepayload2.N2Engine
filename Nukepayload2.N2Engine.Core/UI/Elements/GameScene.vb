@@ -39,10 +39,23 @@ Namespace UI.Elements
             Return Children
         End Function
 
+        Dim _Template As Func(Of GameScene, GameVisualizingScrollViewer) = Function(s) New GameVisualizingScrollViewer
         ''' <summary>
         ''' 根据此场景的数据，创建一个虚拟化滚动面板用于呈现。默认情况下会创建一个与场景没有关联的面板。
         ''' </summary>
-        Public Property Template As Func(Of GameScene, GameVisualizingScrollViewer) = Function(s) New GameVisualizingScrollViewer
+        Public Property Template As Func(Of GameScene, GameVisualizingScrollViewer)
+            Get
+                Return _Template
+            End Get
+            Set(value As Func(Of GameScene, GameVisualizingScrollViewer))
+                _Template = value
+                RaiseEvent TemplateChanged(Me, EventArgs.Empty)
+            End Set
+        End Property
+        ''' <summary>
+        ''' 模板发生变化
+        ''' </summary>
+        Public Event TemplateChanged As GameObjectEventHandler(Of GameScene, EventArgs)
     End Class
 
 End Namespace

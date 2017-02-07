@@ -1,6 +1,6 @@
 ﻿Namespace Foundation
     ''' <summary>
-    ''' 代表未预乘的A8R8G8B8颜色。
+    ''' 代表未预乘的A8R8G8B8颜色。可以利用指针强制转换成 Windows.UI.Color。
     ''' </summary>
     <TypeForwardedFrom("Nukepayload2.N2Engine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")>
     Public Structure Color
