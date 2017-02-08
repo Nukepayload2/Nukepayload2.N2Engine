@@ -7,9 +7,6 @@ Namespace UI.Elements
     Public Class GameMouseEventArgs
         Inherits GameRoutedEventArgs
 
-        Sub New()
-
-        End Sub
         ''' <summary>
         ''' 鼠标位置变化时初始化
         ''' </summary>

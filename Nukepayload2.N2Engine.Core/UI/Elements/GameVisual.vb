@@ -1,5 +1,6 @@
 ﻿Imports Nukepayload2.N2Engine.Behaviors
 Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.N2Engine.Input
 Imports Nukepayload2.N2Engine.Renderers
 Imports Nukepayload2.N2Engine.Triggers
 Imports Nukepayload2.N2Engine.UI.Effects
@@ -111,10 +112,10 @@ Namespace UI.Elements
         End Sub
 
         ''' <summary>
-        ''' 绑定更新的命令。默认值是引发Updating事件。
+        ''' 绑定更新的动作。默认值是引发 Updating 事件。
         ''' </summary>
         ''' <returns></returns>
-        Public Overridable Property UpdateCommand As IGameCommand = New SimpleCommand(Sub() RaiseEvent Updating(Me, EventArgs.Empty))
+        Public Overridable Property UpdateAction As Action = Sub() RaiseEvent Updating(Me, EventArgs.Empty)
         ''' <summary>
         ''' 需要更新的时候引发这个事件
         ''' </summary>
@@ -132,15 +133,93 @@ Namespace UI.Elements
 
 #Region "基本交互事件"
         ' 键盘
+        ''' <summary>
+        ''' 当键盘有键按下时引发的事件。
+        ''' </summary>
         Public Event KeyDown As GameObjectEventHandler(Of GameVisual, GameKeyboardEventArgs)
+        ''' <summary>
+        ''' 当键盘上的按键曾经按下，但刚刚松开时引发的事件。
+        ''' </summary>
         Public Event KeyUp As GameObjectEventHandler(Of GameVisual, GameKeyboardEventArgs)
+
         ' 鼠标
+        ''' <summary>
+        ''' 鼠标有某个按键按下
+        ''' </summary>
         Public Event MouseButtonDown As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+        ''' <summary>
+        ''' 鼠标有某个按键松开
+        ''' </summary>
         Public Event MouseButtonUp As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+        ''' <summary>
+        ''' 鼠标滚轮滚动
+        ''' </summary>
         Public Event MouseWheelChanged As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+        ''' <summary>
+        ''' 鼠标滑动
+        ''' </summary>
+        Public Event MouseMove As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+
         ' 触摸屏
+        ''' <summary>
+        ''' 触摸屏按下
+        ''' </summary>
         Public Event TouchDown As GameObjectEventHandler(Of GameVisual, GameTouchEventArgs)
+        ''' <summary>
+        ''' 触摸屏松开
+        ''' </summary>
         Public Event TouchUp As GameObjectEventHandler(Of GameVisual, GameTouchEventArgs)
+#End Region
+
+#Region "引发事件"
+        ''' <summary>
+        ''' 引发键盘按键按下事件。
+        ''' </summary>
+        Public Sub RaiseKeyDown(e As GameKeyboardEventArgs)
+            RaiseEvent KeyDown(Me, e)
+        End Sub
+        ''' <summary>
+        ''' 引发键盘按键松开事件。
+        ''' </summary>
+        Public Sub RaiseKeyUp(e As GameKeyboardEventArgs)
+            RaiseEvent KeyUp(Me, e)
+        End Sub
+        ''' <summary>
+        ''' 引发鼠标按键按下事件
+        ''' </summary>
+        Public Sub RaiseMouseButtonDown(e As GameMouseEventArgs)
+            RaiseEvent MouseButtonDown(Me, e)
+        End Sub
+        ''' <summary>
+        ''' 引发鼠标松开按键事件。
+        ''' </summary>
+        Public Sub RaiseMouseButtonUp(e As GameMouseEventArgs)
+            RaiseEvent MouseButtonUp(Me, e)
+        End Sub
+        ''' <summary>
+        ''' 引发鼠标滚轮变化事件。
+        ''' </summary>
+        Public Sub RaiseMouseWheelChanged(e As GameMouseEventArgs)
+            RaiseEvent MouseWheelChanged(Me, e)
+        End Sub
+        ''' <summary>
+        ''' 引发鼠标滑动事件。
+        ''' </summary>
+        Public Sub RaiseMouseMove(e As GameMouseEventArgs)
+            RaiseEvent MouseMove(Me, e)
+        End Sub
+        ''' <summary>
+        ''' 引发触屏按键按下事件
+        ''' </summary>
+        Public Sub RaiseTouchDown(e As GameTouchEventArgs)
+            RaiseEvent TouchDown(Me, e)
+        End Sub
+        ''' <summary>
+        ''' 引发触屏松开按键事件。
+        ''' </summary>
+        Public Sub RaiseTouchUp(e As GameTouchEventArgs)
+            RaiseEvent TouchUp(Me, e)
+        End Sub
 #End Region
     End Class
 End Namespace

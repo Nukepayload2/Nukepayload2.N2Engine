@@ -76,7 +76,7 @@ Public Class SparksView
         ZIndex.Bind(0)
         AddChild(sparks.Bind(Function(s) s.Data, Function() sparksData.SparkSys))
         AddChild(scrollViewer.
-            OnUpdate(sparksData.ShakingViewer.UpdateCommand).
+            OnUpdate(sparksData.ShakingViewer.UpdateAction).
             Bind(Function(m) m.Location, Function() sparksData.ShakingViewer.Offset).
             Bind(Function(m) m.ZIndex, 0).
             AddChild(redEllipse.
@@ -102,7 +102,7 @@ Public Class SparksView
         ' 同步数据
         If sav IsNot Nothing Then
             sparksData = sav.SaveData.LastState
-            scrollViewer.OnUpdate(sparksData.ShakingViewer.UpdateCommand)
+            scrollViewer.OnUpdate(sparksData.ShakingViewer.UpdateAction)
         Else
             savMgr.MasterSaveFile.SaveData = New SampleMasterData With {
                 .LastState = sparksData

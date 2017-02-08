@@ -1,5 +1,4 @@
 ﻿Imports Microsoft.Xna.Framework
-Imports Microsoft.Xna.Framework.Graphics
 Imports Nukepayload2.N2Engine.Renderers
 Imports Nukepayload2.N2Engine.UI.Elements
 
@@ -18,7 +17,7 @@ Public MustInherit Class MonoGameRenderer
 
     End Sub
     Friend Overridable Sub OnUpdate(sender As Game, args As MonogameUpdateEventArgs)
-        View.UpdateCommand.Execute()
+        View.UpdateAction.Invoke()
     End Sub
     Friend Overridable Sub OnCreateResources(sender As Game, args As MonogameCreateResourcesEventArgs)
 

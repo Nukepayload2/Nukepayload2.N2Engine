@@ -1,19 +1,18 @@
-﻿Imports Nukepayload2.N2Engine.Foundation
-Imports Nukepayload2.N2Engine.ParticleSystem
+﻿Imports Nukepayload2.N2Engine.ParticleSystem
 
 Namespace UI.Views
 
     Public Class SparkParticleSystemView
         Inherits ParticleSystemView(Of SparkParticleSystem)
-        Public Overrides Property UpdateCommand As IGameCommand
+        Public Overrides Property UpdateAction As Action
             Get
-                Return New SimpleCommand(Sub()
-                                             MyBase.UpdateCommand.Execute()
-                                             Data.Value.Update()
-                                         End Sub)
+                Return Sub()
+                           MyBase.UpdateAction.Invoke()
+                           Data.Value.Update()
+                       End Sub
             End Get
-            Set(value As IGameCommand)
-                MyBase.UpdateCommand = value
+            Set(value As Action)
+                MyBase.UpdateAction = value
             End Set
         End Property
     End Class

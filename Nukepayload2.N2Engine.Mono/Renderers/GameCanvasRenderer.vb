@@ -2,7 +2,6 @@
 Imports Microsoft.Xna.Framework.Graphics
 Imports Nukepayload2.N2Engine.Linq
 Imports Nukepayload2.N2Engine.UI.Elements
-Imports RaisingStudio.Xna.Graphics
 
 Public Class GameCanvasRenderer
     Inherits GameVisualContainerRenderer
@@ -33,21 +32,16 @@ Public Class GameCanvasRenderer
     End Sub
 
     Private Sub Game_Drawing(sender As Game, args As MonogameDrawEventArgs) Handles Game.Drawing
-        'Debug.WriteLine("开始刷新画面")
         OnDraw(sender, args)
-        'Debug.WriteLine("完成刷新画面")
     End Sub
     ''' <summary>
     ''' 在 backbuffer 绘制
     ''' </summary>
     Protected Overrides Sub CommitRenderTargetToParent(device As GraphicsDevice, dc As SpriteBatch)
-        'Debug.WriteLine("设置绘制目标为：backbuffer")
         device.SetRenderTarget(Nothing)
-        'Debug.WriteLine("清屏: 白色")
         device.Clear(Color.White)
         dc.Begin()
         Dim loc = View.Location.Value
-        'Debug.WriteLine("绘制画布缓存纹理")
         dc.Draw(RenderTarget, New Rectangle(loc.X, loc.Y, RenderTarget.Width, RenderTarget.Height), Color.White)
         dc.End()
     End Sub

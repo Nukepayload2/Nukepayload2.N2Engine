@@ -37,5 +37,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\TextBlockRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformFontLoader.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameEventMediator.vb" />
   </ItemGroup>
 </Project>

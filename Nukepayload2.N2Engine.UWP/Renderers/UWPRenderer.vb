@@ -37,7 +37,7 @@ Public MustInherit Class UWPRenderer
     ''' 派生类继承时，定义手动引发 Update 事件的行为 
     ''' </summary>
     Friend Overridable Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
-        View.UpdateCommand.Execute()
+        View.UpdateAction.Invoke()
     End Sub
 
     Public Overrides Sub DisposeResources()

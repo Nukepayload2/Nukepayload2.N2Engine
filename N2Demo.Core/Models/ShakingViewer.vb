@@ -1,6 +1,5 @@
 ﻿Imports System.Numerics
 Imports Newtonsoft.Json
-Imports Nukepayload2.N2Engine.Foundation
 
 Public Class ShakingViewer
     Public Property ShakeX As Single
@@ -20,5 +19,5 @@ Public Class ShakingViewer
     End Sub
 
     <JsonIgnore>
-    Public Property UpdateCommand As New SimpleCommand(AddressOf Update)
+    Public Property UpdateAction As Action = AddressOf Update
 End Class

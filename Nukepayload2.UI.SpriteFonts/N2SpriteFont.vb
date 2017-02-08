@@ -38,10 +38,11 @@ Public Class N2SpriteFont
     ''' <param name="offset">在字体文件中的偏移量</param>
     ''' <param name="length">在字体文件中的长度</param>
     Public Function GetTileData(offset As Integer, length As Integer) As Stream
-        Dim strm = _loader.Invoke
-        Using br As New BinaryReader(strm)
-            strm.Position = _dataOffset + offset
-            Return New MemoryStream(br.ReadBytes(length))
+        Using strm = _loader.Invoke
+            Using br As New BinaryReader(strm)
+                strm.Position = _dataOffset + offset
+                Return New MemoryStream(br.ReadBytes(length))
+            End Using
         End Using
     End Function
 
