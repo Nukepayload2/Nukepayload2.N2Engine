@@ -186,10 +186,6 @@
       <Project>{acbc1542-df92-44ae-845c-2ffd089fc2d6}</Project>
       <Name>Nukepayload2.N2Engine.RolePlayGames.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nukepayload2.N2Engine.UWP.Marshal\Nukepayload2.N2Engine.UWP.Marshal.csproj">
-      <Project>{39170bf8-9dec-4f79-87be-58c92dc06ee3}</Project>
-      <Name>Nukepayload2.N2Engine.UWP.Marshal</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine.UWP\Nukepayload2.N2Engine.UWP.vbproj">
       <Project>{80604c90-fb0e-4432-89cc-939a1702a91e}</Project>
       <Name>Nukepayload2.N2Engine.UWP</Name>

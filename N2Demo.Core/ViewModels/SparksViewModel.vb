@@ -1,4 +1,5 @@
 ﻿Imports System.Numerics
+Imports Newtonsoft.Json
 Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.ParticleSystem
 
@@ -22,4 +23,6 @@ Public Class SparksViewModel
 
     Public ReadOnly Property CharacterSheet As New CharacterSheet
 
+    <JsonIgnore>
+    Public Property PressedKeyCount As Integer
 End Class

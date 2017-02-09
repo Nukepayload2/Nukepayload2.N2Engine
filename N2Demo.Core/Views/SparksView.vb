@@ -21,6 +21,7 @@ Public Class SparksView
     Dim charaSheet As New SpriteElement
     Dim scrollViewer As New GameVisualizingScrollViewer
     Dim tblTheElder As New TextBlock
+    Dim tblKeyDownCount As New TextBlock
 
 #End Region
 
@@ -70,10 +71,14 @@ Public Class SparksView
     End Function
 
     Private Sub BuildVisualTree()
+        ' 指定字体
         tblTheElder.Font = fontMgr.SegoeUI14Black
+        tblKeyDownCount.Font = fontMgr.SegoeUI14Black
+        ' 绑定画布的数据
         IsFrozen.Bind(Function() isPaused)
         Location.Bind(New Vector2)
         ZIndex.Bind(0)
+        ' 添加子元素
         AddChild(sparks.Bind(Function(s) s.Data, Function() sparksData.SparkSys))
         AddChild(scrollViewer.
             OnUpdate(sparksData.ShakingViewer.UpdateAction).
@@ -93,7 +98,10 @@ Public Class SparksView
                 Bind(Function(r) r.Size, Function() sparksData.CharacterSheet.Size)).
             AddChild(tblTheElder.
                 Bind(Function(r) r.Text, Function() sparksData.ElderText).
-                Bind(Function(r) r.Location, Function() Vector2.Zero))
+                Bind(Function(r) r.Location, Vector2.Zero)).
+            AddChild(tblKeyDownCount.
+                Bind(Function(r) r.Text, Function() "现在按下的键数量：" + sparksData.PressedKeyCount.ToString).
+                Bind(Function(r) r.Location, New Vector2(10.0F, 80.0F)))
         )
     End Sub
 
@@ -149,5 +157,13 @@ Public Class SparksView
         ' 单曲循环
         Await MusicPlayer.SetPlayingIndexAsync(0)
         MusicPlayer.Play()
+    End Sub
+
+    Private Sub SparksView_KeyDown(sender As GameVisual, e As GameKeyboardEventArgs) Handles Me.KeyDown
+        sparksData.PressedKeyCount += 1
+    End Sub
+
+    Private Sub SparksView_KeyUp(sender As GameVisual, e As GameKeyboardEventArgs) Handles Me.KeyUp
+        sparksData.PressedKeyCount -= 1
     End Sub
 End Class

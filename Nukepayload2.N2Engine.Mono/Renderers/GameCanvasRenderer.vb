@@ -7,10 +7,13 @@ Public Class GameCanvasRenderer
     Inherits GameVisualContainerRenderer
 
     Public WithEvents Game As MonoGameHandler
+    Dim _eventMediator As MonoGameEventMediator
+
     Sub New(view As GameCanvas, game As MonoGameHandler)
         MyBase.New(view)
         Me.Game = game
         view.Renderer = Me
+        _eventMediator = New MonoGameEventMediator(view)
     End Sub
 
     Public Overrides Sub DisposeResources()
@@ -18,7 +21,7 @@ Public Class GameCanvasRenderer
     End Sub
 
     Private Sub DoCanvasOperation(act As Action(Of MonoGameRenderer))
-        For Each vie In View.HierarchyForEach(Function(node) TryCast(node, GameVisualContainer)?.Children)
+        For Each vie In View.HierarchyWalk(Function(node) TryCast(node, GameVisualContainer)?.Children)
             act(DirectCast(vie.Renderer, MonoGameRenderer))
         Next
     End Sub
@@ -55,6 +58,7 @@ Public Class GameCanvasRenderer
         If isFrozen.CanRead AndAlso isFrozen.Value Then
             Return
         End If
+        _eventMediator?.TryRaiseEvent()
         DoCanvasOperation(Sub(renderer)
                               Dim frz = renderer.View.IsFrozen
                               If frz.CanRead AndAlso frz.Value Then

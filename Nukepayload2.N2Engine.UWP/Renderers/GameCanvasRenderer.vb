@@ -11,6 +11,8 @@ Public Class GameCanvasRenderer
     ''' 用于呈现即时2D动画的Xaml控件
     ''' </summary>
     Public WithEvents Win2DCanvas As CanvasAnimatedControl
+
+    Dim _eventMediator As UWPEventMediator
     ''' <summary>
     ''' 初始化总的渲染器
     ''' </summary>
@@ -20,6 +22,7 @@ Public Class GameCanvasRenderer
         MyBase.New(view)
         view.Renderer = Me
         Me.Win2DCanvas = win2DCanvas
+        _eventMediator = New UWPEventMediator(view)
     End Sub
 
     ''' <summary>
@@ -32,7 +35,7 @@ Public Class GameCanvasRenderer
     End Sub
 
     Private Sub DoCanvasOperation(act As Action(Of UWPRenderer))
-        For Each vie In View.HierarchyForEach(Function(node) TryCast(node, GameVisualContainer)?.Children)
+        For Each vie In View.HierarchyWalk(Function(node) TryCast(node, GameVisualContainer)?.Children)
             act(DirectCast(vie.Renderer, UWPRenderer))
         Next
     End Sub

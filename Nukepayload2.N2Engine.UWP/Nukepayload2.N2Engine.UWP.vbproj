@@ -132,6 +132,8 @@
   <ItemGroup>
     <Compile Include="Effects\GaussianBlurEffectImpl.vb" />
     <Compile Include="Effects\IWin2DEffect.vb" />
+    <Compile Include="Marshal\ColorMarshal.vb" />
+    <Compile Include="Marshal\KeyStateMarshal.vb" />
     <Compile Include="Renderers\GameVisualContainerRenderer.vb" />
     <Compile Include="Renderers\GameCanvasRenderer.vb" />
     <Compile Include="Renderers\GameElementRenderer.vb" />
@@ -148,6 +150,7 @@
     <Compile Include="Platform\UWPImplRegistration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Renderers\TextBlockRenderer.vb" />
+    <Compile Include="Renderers\UWPEventMediator.vb" />
     <Compile Include="Renderers\UWPRenderer.vb" />
     <Compile Include="Resources\PlatformBitmapResource.vb" />
     <Compile Include="Resources\PlatformFontManager.vb" />
@@ -189,10 +192,6 @@
     <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
       <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
       <Name>Nukepayload2.N2Engine.Core</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nukepayload2.N2Engine.UWP.Marshal\Nukepayload2.N2Engine.UWP.Marshal.csproj">
-      <Project>{39170bf8-9dec-4f79-87be-58c92dc06ee3}</Project>
-      <Name>Nukepayload2.N2Engine.UWP.Marshal</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
       <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
