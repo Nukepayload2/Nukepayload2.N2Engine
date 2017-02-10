@@ -25,7 +25,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 鼠标滚轮变化时初始化
         ''' </summary>
-        Sub New(keyModifiers As VirtualKeyModifiers, position As Vector2, wheelDelta As Single)
+        Sub New(keyModifiers As VirtualKeyModifiers, position As Vector2, wheelDelta As Integer)
             Me.KeyModifiers = keyModifiers
             Me.Position = position
             Me.WheelDelta = wheelDelta
@@ -47,6 +47,6 @@ Namespace UI.Elements
         ''' <summary>
         ''' 鼠标滚轮的变化
         ''' </summary>
-        Public ReadOnly Property WheelDelta As Single
+        Public ReadOnly Property WheelDelta As Integer
     End Class
 End Namespace

@@ -102,6 +102,7 @@
     <Compile Include="Behaviors\IGameBehavior.vb" />
     <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
     <Compile Include="Information\GameInformation.vb" />
+    <Compile Include="Input\ButtonState.vb" />
     <Compile Include="Input\MouseKeys.vb" />
     <Compile Include="Input\PhysicalKeyStatus.vb" />
     <Compile Include="Input\VirtualKeyModifiers.vb" />
@@ -120,6 +121,10 @@
     <Compile Include="UI\GameObjectStateTransition.vb" />
     <Compile Include="UI\Elements\GameKeyboardEventArgs.vb" />
     <Compile Include="Input\Key.vb" />
+    <Compile Include="UI\IKeyboardEventMediator.vb" />
+    <Compile Include="UI\IEventMediator.vb" />
+    <Compile Include="UI\IMouseEventMediator.vb" />
+    <Compile Include="UI\ITouchStatusProvider.vb" />
     <Compile Include="UI\Text\FontStretch.vb" />
     <Compile Include="UI\Text\FontStyle.vb" />
     <Compile Include="UI\Text\FontWeight.vb" />
@@ -191,6 +196,7 @@
     <Compile Include="Utilities\AsyncHelper.vb" />
     <Compile Include="Math\FastFactorial.vb" />
     <Compile Include="Utilities\GameVisualInitializers.vb" />
+    <Compile Include="Utilities\StaticCast.vb" />
     <Compile Include="Utilities\TreeHelper.vb" />
     <Compile Include="Utilities\Vector2Extensions.vb" />
     <Compile Include="Behaviors\BehaviorBase.vb" />

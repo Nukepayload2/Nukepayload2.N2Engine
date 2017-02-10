@@ -169,6 +169,10 @@ Namespace UI.Elements
         ''' 触摸屏松开
         ''' </summary>
         Public Event TouchUp As GameObjectEventHandler(Of GameVisual, GameTouchEventArgs)
+        ''' <summary>
+        ''' 触摸屏滑动
+        ''' </summary>
+        Public Event TouchMove As GameObjectEventHandler(Of GameVisual, GameTouchEventArgs)
 #End Region
 
 #Region "引发事件"
@@ -209,16 +213,22 @@ Namespace UI.Elements
             RaiseEvent MouseMove(Me, e)
         End Sub
         ''' <summary>
-        ''' 引发触屏按键按下事件
+        ''' 引发触屏按下事件
         ''' </summary>
         Public Sub RaiseTouchDown(e As GameTouchEventArgs)
             RaiseEvent TouchDown(Me, e)
         End Sub
         ''' <summary>
-        ''' 引发触屏松开按键事件。
+        ''' 引发触屏松开事件。
         ''' </summary>
         Public Sub RaiseTouchUp(e As GameTouchEventArgs)
             RaiseEvent TouchUp(Me, e)
+        End Sub
+        ''' <summary>
+        ''' 引发触摸屏上滑动事件。
+        ''' </summary>
+        Public Sub RaiseTouchMove(e As GameTouchEventArgs)
+            RaiseEvent TouchMove(Me, e)
         End Sub
 #End Region
     End Class

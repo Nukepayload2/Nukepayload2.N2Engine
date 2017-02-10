@@ -38,5 +38,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformFontLoader.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameEventMediator.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameKeyboardEventMediator.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameMouseEventMediator.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameTouchEventMediator.vb" />
   </ItemGroup>
 </Project>
