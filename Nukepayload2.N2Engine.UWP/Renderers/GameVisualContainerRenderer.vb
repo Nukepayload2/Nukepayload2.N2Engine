@@ -20,6 +20,13 @@ Public MustInherit Class GameVisualContainerRenderer
     End Sub
 
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
+        ' 对象可见性支持
+        If View.IsVisible.CanRead Then
+            If Not View.IsVisible.Value Then
+                Return
+            End If
+        End If
+        ' 绘制
         Dim children = DirectCast(View, GameVisualContainer).Children
         Dim containers As New List(Of GameVisualContainer)
         Using ds = RenderTarget.CreateDrawingSession
@@ -29,10 +36,12 @@ Public MustInherit Class GameVisualContainerRenderer
                 If cont IsNot Nothing Then
                     containers.Add(cont)
                 Else
+                    ' 绘制子元素
                     DirectCast(child.Renderer, UWPRenderer).OnDraw(sender, New CanvasAnimatedDrawEventArgs(ds, args.Timing))
                 End If
             Next
         End Using
+        ' 下一层绘制
         For Each cont In containers
             DirectCast(cont.Renderer, GameVisualContainerRenderer).OnDraw(sender, args)
         Next

@@ -19,8 +19,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>THROW_IF_DATA_BINDING_FAILED</DefineConstants>
     <OutputPath>bin\Debug</OutputPath>
     <DocumentationFile>Nukepayload2.N2Engine.xml</DocumentationFile>
     <NoWarn>40057,42016,41999,42020,42021,42022</NoWarn>
@@ -30,8 +29,7 @@
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <DefineConstants>
-    </DefineConstants>
+    <DefineConstants>THROW_IF_DATA_BINDING_FAILED</DefineConstants>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <DocumentationFile>Nukepayload2.N2Engine.xml</DocumentationFile>
@@ -53,6 +51,7 @@
   <ItemGroup>
     <!-- A reference to the entire .NET Framework and Windows SDK is automatically included -->
     <None Include="ReadMe.md" />
+    <None Include="编译常量说明.md" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />

@@ -1,12 +1,12 @@
 ﻿Imports System.Numerics
+Imports System.Reflection
+Imports Nukepayload2.N2Engine.Information
+Imports Nukepayload2.N2Engine.Media
 Imports Nukepayload2.N2Engine.Resources
 Imports Nukepayload2.N2Engine.UI
+Imports Nukepayload2.N2Engine.UI.Controls
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports Nukepayload2.N2Engine.UI.Views
-Imports Nukepayload2.N2Engine.Media
-Imports Nukepayload2.N2Engine.Information
-Imports System.Reflection
-Imports Nukepayload2.N2Engine.UI.Controls
 
 ''' <summary>
 ''' 一个释放随机颜色火花的视图

@@ -27,14 +27,19 @@ Public MustInherit Class GameVisualContainerRenderer
     End Sub
 
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
+        ' 对象可见性支持
+        If View.IsVisible.CanRead Then
+            If Not View.IsVisible.Value Then
+                Return
+            End If
+        End If
+        ' 准备绘制
         Dim device = GraphicsDeviceManagerExtension.SharedDevice
-        'Debug.WriteLine($"设置绘制目标为：{Me.GetType.Name} 的缓存纹理。")
         device.SetRenderTarget(RenderTarget)
-        'Debug.WriteLine("清屏: 透明色。" + Me.GetType.Name)
         device.Clear(Color.Transparent)
-        'Debug.WriteLine("开始绘制元素。" + Me.GetType.Name)
         Dim children = DirectCast(View, GameVisualContainer).Children
         Dim containers As New List(Of GameVisualContainer)
+        ' 初始化 DC
         Static dc As New DrawingContext(args.SpriteBatch, RenderTarget)
         args.DrawingContext = dc
         dc.Begin()
@@ -43,15 +48,14 @@ Public MustInherit Class GameVisualContainerRenderer
             If cont IsNot Nothing Then
                 containers.Add(cont)
             Else
-                'Debug.WriteLine($"绘制元素: {Me.GetType.Name} ---> {child.GetType.Name}")
+                ' 绘制子元素
                 DirectCast(child.Renderer, MonoGameRenderer).OnDraw(sender, args)
             End If
         Next
         dc.End()
         args.DrawingContext = Nothing
-        'Debug.WriteLine("结束绘制元素。" + Me.GetType.Name)
         For Each cont In containers
-            'Debug.WriteLine($"处理元素容器: {Me.GetType.Name} ---> {cont.GetType.Name}")
+            ' 绘制容器类型
             DirectCast(cont.Renderer, MonoGameRenderer).OnDraw(sender, args)
         Next
         CommitRenderTargetToParent(device, args.SpriteBatch)

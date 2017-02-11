@@ -2,7 +2,7 @@
 
 Namespace UI.Controls
     ''' <summary>
-    ''' (未实施) 游戏引擎集成的简单控件
+    ''' 游戏引擎集成的简单控件
     ''' </summary>
     Public Class GameControl
         Inherits GameElement

@@ -50,7 +50,7 @@ Namespace UI.Elements
         ''' </summary>
         Public ReadOnly Property IsHitTestVisible As New PropertyBinder(Of Boolean)
         ''' <summary>
-        ''' (未实施) 是否可见
+        ''' 是否可见
         ''' </summary>
         Public ReadOnly Property IsVisible As New PropertyBinder(Of Boolean)
         ''' <summary>

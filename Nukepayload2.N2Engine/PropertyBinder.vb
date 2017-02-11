@@ -71,23 +71,33 @@
             End Get
         End Property
         ''' <summary>
-        ''' 获取或设置绑定的数据值。如果缺少 <see cref="Getter"/> 则返回对应类型的默认值。如果缺少 <see cref="Setter"/> ，则会丢失写入更改。
+        ''' 获取或设置绑定的数据值。默认情况下未定义对应的数据绑定会引发运行时异常。如果取消定义编译常量 THROW_IF_DATA_BINDING_FAILED，此时缺少 <see cref="Getter"/> 则返回对应类型的默认值，如果缺少 <see cref="Setter"/> ，则会丢失写入更改。
         ''' </summary>
         Public Property Value As T
+            <MethodImpl(MethodImplOptions.AggressiveInlining)>
             Get
+#If THROW_IF_DATA_BINDING_FAILED Then
+                Return Getter.Invoke
+#Else
                 If Getter Is Nothing Then
                     Debug.WriteLine("尝试获取没有值的属性。属性类型为：" + GetType(T).Name)
                     Return Nothing
                 Else
                     Return Getter.Invoke
                 End If
+#End If
             End Get
+            <MethodImpl(MethodImplOptions.AggressiveInlining)>
             Set(value As T)
+#If THROW_IF_DATA_BINDING_FAILED Then
+                Setter.Invoke(value)
+#Else
                 If Setter IsNot Nothing Then
                     Setter.Invoke(value)
                 Else
                     Debug.WriteLine("丢失更改：" + value.ToString)
                 End If
+#End If
             End Set
         End Property
         ''' <summary>
