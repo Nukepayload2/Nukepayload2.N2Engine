@@ -25,7 +25,7 @@ Public Class MonoGameTouchEventMediator
         Dim remainingPointIds = Points.Keys.ToList
         For Each pt In touchStat
             Dim pos = pt.Position
-            Dim n2Pos As New Vector2(pos.X, pos.Y)
+            Dim cyrN2Pos As New Vector2(pos.X, pos.Y)
             Dim ptId = pt.Id.ToUInt32
             Dim isPressed = Points.ContainsKey(ptId)
             If isPressed Then
@@ -33,22 +33,26 @@ Public Class MonoGameTouchEventMediator
             End If
             If pt.State = TouchLocationState.Pressed Then
                 If Not isPressed Then
-                    _Points.Add(ptId, n2Pos)
-                    Dim e As New GameTouchEventArgs(n2Pos, ptId, pt.Pressure)
+                    _Points.Add(ptId, cyrN2Pos)
+                    Dim e As New GameTouchEventArgs(cyrN2Pos, ptId, pt.Pressure)
                     AttachedView.RaiseTouchDown(e)
                 End If
             ElseIf pt.State = TouchLocationState.Moved Then
                 Dim loc As New TouchLocation
                 If pt.TryGetPreviousLocation(loc) Then
                     Dim lastLoc = loc.Position
-                    Dim e As New GameTouchEventArgs(n2Pos, New Vector2(lastLoc.X, lastLoc.Y), ptId, pt.Pressure)
-                    AttachedView.RaiseTouchMove(e)
+                    Dim lastN2Pos As New Vector2(lastLoc.X, lastLoc.Y)
+                    If lastN2Pos <> cyrN2Pos Then
+                        Dim e As New GameTouchEventArgs(cyrN2Pos, lastN2Pos, ptId, pt.Pressure)
+                        AttachedView.RaiseTouchMove(e)
+                    End If
                 End If
             End If
         Next
         For Each ptId In remainingPointIds
             Dim e As New GameTouchEventArgs(ptId, Points(ptId))
-            AttachedView.RaiseTouchDown(e)
+            AttachedView.RaiseTouchUp(e)
+            _Points.Remove(ptId)
         Next
     End Sub
 

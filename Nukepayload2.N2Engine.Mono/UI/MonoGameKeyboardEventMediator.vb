@@ -1,5 +1,6 @@
 ﻿Imports Microsoft.Xna.Framework.Input
 Imports Nukepayload2.N2Engine.Input
+Imports Nukepayload2.N2Engine.UI
 Imports Nukepayload2.N2Engine.UI.Elements
 
 Public Class MonoGameKeyboardEventMediator
@@ -21,7 +22,7 @@ Public Class MonoGameKeyboardEventMediator
     ''' <summary>
     ''' 查询当前全部可能的按键的状态
     ''' </summary>
-    Public Function GetKeyStates() As PhysicalKeyStatus() Implements IKeyboardEventMediator.GetKeyStates
+    Public Function GetKeyStates() As IReadOnlyList(Of PhysicalKeyStatus) Implements IKeyboardEventMediator.GetKeyStates
         Return _keyStates
     End Function
     ''' <summary>

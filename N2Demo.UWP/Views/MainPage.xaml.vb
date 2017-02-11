@@ -17,12 +17,6 @@ Public NotInheritable Class MainPage
         sparksRenderer = New GameCanvasRenderer(sparks, animContent)
     End Sub
 
-    Private Sub MainPage_Tapped(sender As Object, e As TappedRoutedEventArgs) Handles Me.Tapped
-        If sparksRenderer IsNot Nothing Then
-            sparks.OnTappedAsync(e.GetPosition(Me).ToVector2 * animContent.DpiScale)
-        End If
-    End Sub
-
     Private Sub MainPage_Unloaded(sender As Object, e As RoutedEventArgs) Handles Me.Unloaded
         sparksRenderer?.Dispose()
         animContent.RemoveFromVisualTree()

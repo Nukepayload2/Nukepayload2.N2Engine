@@ -22,6 +22,8 @@ Public Class SparksView
     Dim scrollViewer As New GameVisualizingScrollViewer
     Dim tblTheElder As New TextBlock
     Dim tblKeyDownCount As New TextBlock
+    Dim tblLastMouseAction As New TextBlock
+    Dim tblLastTouchAction As New TextBlock
 
 #End Region
 
@@ -74,6 +76,8 @@ Public Class SparksView
         ' 指定字体
         tblTheElder.Font = fontMgr.SegoeUI14Black
         tblKeyDownCount.Font = fontMgr.SegoeUI14Black
+        tblLastMouseAction.Font = fontMgr.SegoeUI14Black
+        tblLastTouchAction.Font = fontMgr.SegoeUI14Black
         ' 绑定画布的数据
         IsFrozen.Bind(Function() isPaused)
         Location.Bind(New Vector2)
@@ -101,7 +105,13 @@ Public Class SparksView
                 Bind(Function(r) r.Location, Vector2.Zero)).
             AddChild(tblKeyDownCount.
                 Bind(Function(r) r.Text, Function() "现在按下的键数量：" + sparksData.PressedKeyCount.ToString).
-                Bind(Function(r) r.Location, New Vector2(10.0F, 80.0F)))
+                Bind(Function(r) r.Location, New Vector2(0.0F, 50.0F))).
+            AddChild(tblLastMouseAction.
+                Bind(Function(r) r.Text, Function() "上一次鼠标状态：" + sparksData.LastMouseState).
+                Bind(Function(r) r.Location, New Vector2(0.0F, 70.0F))).
+            AddChild(tblLastTouchAction.
+                Bind(Function(r) r.Text, Function() "上一次触摸状态：" + sparksData.LastTouchState).
+                Bind(Function(r) r.Location, New Vector2(0.0F, 90.0F)))
         )
     End Sub
 
@@ -131,9 +141,9 @@ Public Class SparksView
     End Function
 
     ''' <summary>
-    ''' 平台特定实现点击此视图时，调用此方法。将由 TappedTrigger 代替。
+    ''' 点击视图的处理。
     ''' </summary>
-    Public Async Sub OnTappedAsync(pos As Vector2)
+    Private Async Sub OnTappedAsync(pos As Vector2)
         sparksData.SparkSys.Location = pos
         sparksData.ShakingViewer.Shake(50.0F, 0)
         If isSoundLoaded Then
@@ -165,5 +175,35 @@ Public Class SparksView
 
     Private Sub SparksView_KeyUp(sender As GameVisual, e As GameKeyboardEventArgs) Handles Me.KeyUp
         sparksData.PressedKeyCount -= 1
+    End Sub
+
+    Private Sub SparksView_MouseButtonDown(sender As GameVisual, e As GameMouseEventArgs) Handles Me.MouseButtonDown
+        sparksData.LastMouseState = $"在 {e.Position} 按下 {e.MouseButtons} 按钮，热键是 {e.KeyModifiers} 。"
+    End Sub
+
+    Private Sub SparksView_MouseButtonUp(sender As GameVisual, e As GameMouseEventArgs) Handles Me.MouseButtonUp
+        sparksData.LastMouseState = $"在 {e.Position} 松开 {e.MouseButtons} 按钮，热键是 {e.KeyModifiers} 。"
+        OnTappedAsync(e.Position)
+    End Sub
+
+    Private Sub SparksView_MouseMove(sender As GameVisual, e As GameMouseEventArgs) Handles Me.MouseMove
+        sparksData.LastMouseState = $"移动到 {e.Position} ，热键是 {e.KeyModifiers} 。"
+    End Sub
+
+    Private Sub SparksView_MouseWheelChanged(sender As GameVisual, e As GameMouseEventArgs) Handles Me.MouseWheelChanged
+        sparksData.LastMouseState = $"在 {e.Position} 滚动滚轮 {e.WheelDelta}，热键是 {e.KeyModifiers}。"
+    End Sub
+
+    Private Sub SparksView_TouchDown(sender As GameVisual, e As GameTouchEventArgs) Handles Me.TouchDown
+        sparksData.LastTouchState = $"在 {e.Position} 按下触摸屏，触摸点的ID是 {e.PointerId}。"
+    End Sub
+
+    Private Sub SparksView_TouchMove(sender As GameVisual, e As GameTouchEventArgs) Handles Me.TouchMove
+        sparksData.LastTouchState = $"在 {e.Position} 滑动触摸屏，上一个点是 {e.LastPosition}，触摸点的ID是 {e.PointerId}。"
+    End Sub
+
+    Private Sub SparksView_TouchUp(sender As GameVisual, e As GameTouchEventArgs) Handles Me.TouchUp
+        sparksData.LastTouchState = $"在 {e.Position} 松开触摸屏，触摸点的ID是 {e.PointerId}。"
+        OnTappedAsync(e.Position)
     End Sub
 End Class

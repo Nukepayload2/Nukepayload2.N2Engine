@@ -40,8 +40,7 @@ namespace N2Demo.Android
             sparks = new SparksView();
             await sparks.LoadSceneAsync();
             sparksRenderer = new GameCanvasRenderer(sparks, gameHandler);
-
-            gameHandler.Updating += GameHandler_Updating;
+            
             gameHandler.Run();
         }
 
@@ -53,23 +52,10 @@ namespace N2Demo.Android
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            gameHandler.Updating -= GameHandler_Updating;
             gameHandler.Exit();
             gameHandler.Dispose();
         }
 
-        private void GameHandler_Updating(Microsoft.Xna.Framework.Game sender, MonogameUpdateEventArgs args)
-        {
-            var touchState = TouchPanel.GetState();
-            foreach (var touchPoint in touchState)
-            {
-                if (touchPoint.State == TouchLocationState.Pressed)
-                {
-                    sparks.OnTappedAsync(new System.Numerics.Vector2(touchPoint.Position.X, touchPoint.Position.Y));
-                    break;
-                }
-            }
-        }
     }
 }
 

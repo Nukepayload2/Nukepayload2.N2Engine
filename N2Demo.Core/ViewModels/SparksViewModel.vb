@@ -25,4 +25,11 @@ Public Class SparksViewModel
 
     <JsonIgnore>
     Public Property PressedKeyCount As Integer
+
+    <JsonIgnore>
+    Public Property LastMouseState As String = "无"
+
+    <JsonIgnore>
+    Public Property LastTouchState As String = "无"
+
 End Class

@@ -54,8 +54,12 @@ Friend Class MusicPlayerImpl
 
     Shared ReadOnly _10ms As TimeSpan = TimeSpan.FromMilliseconds(10)
     Private Sub StateTracker_Tick(sender As Object, e As Object) Handles StateTracker.Tick
-        If Playback.MusicFileInput.Duration - Playback.MusicFileInput.Position < _10ms Then
+        Try
+            If Playback.MusicFileInput.Duration - Playback.MusicFileInput.Position < _10ms Then
+                RaiseEvent SingleSongComplete(Me, EventArgs.Empty)
+            End If
+        Catch ex As ObjectDisposedException
             RaiseEvent SingleSongComplete(Me, EventArgs.Empty)
-        End If
+        End Try
     End Sub
 End Class

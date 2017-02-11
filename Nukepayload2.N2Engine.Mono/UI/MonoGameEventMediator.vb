@@ -8,7 +8,8 @@ Public Class MonoGameEventMediator
         Me.AttachedView = attachedView
         Dim keyboardMediator As New MonoGameKeyboardEventMediator(attachedView)
         Dim mouseMediator As New MonoGameMouseEventMediator(keyboardMediator)
-        Mediators.AddRange({keyboardMediator, mouseMediator})
+        Dim touchMediator As New MonoGameTouchEventMediator(attachedView)
+        Mediators.AddRange({keyboardMediator, mouseMediator, touchMediator})
     End Sub
 
     Public Property AttachedView As GameCanvas Implements IEventMediator.AttachedView
