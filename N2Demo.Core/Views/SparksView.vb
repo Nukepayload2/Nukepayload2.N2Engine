@@ -6,7 +6,7 @@ Imports Nukepayload2.N2Engine.Resources
 Imports Nukepayload2.N2Engine.UI
 Imports Nukepayload2.N2Engine.UI.Controls
 Imports Nukepayload2.N2Engine.UI.Elements
-Imports Nukepayload2.N2Engine.UI.Views
+Imports Nukepayload2.N2Engine.UI.ParticleSystemViews
 
 ''' <summary>
 ''' 一个释放随机颜色火花的视图
@@ -19,7 +19,7 @@ Public Class SparksView
     Dim greenRect As New RectangleElement
     Dim sparks As New SparkParticleSystemView
     Dim charaSheet As New SpriteElement
-    Dim scrollViewer As New GameVisualizingScrollViewer
+    Dim scrollViewer As New GameVirtualizingScrollViewer
     Dim tblTheElder As New TextBlock
     Dim tblKeyDownCount As New TextBlock
     Dim tblLastMouseAction As New TextBlock
@@ -169,40 +169,40 @@ Public Class SparksView
         MusicPlayer.Play()
     End Sub
 
-    Private Sub SparksView_KeyDown(sender As GameVisual, e As GameKeyboardEventArgs) Handles Me.KeyDown
+    Private Sub SparksView_KeyDown(sender As GameVisual, e As GameKeyboardRoutedEventArgs) Handles Me.KeyDown
         sparksData.PressedKeyCount += 1
     End Sub
 
-    Private Sub SparksView_KeyUp(sender As GameVisual, e As GameKeyboardEventArgs) Handles Me.KeyUp
+    Private Sub SparksView_KeyUp(sender As GameVisual, e As GameKeyboardRoutedEventArgs) Handles Me.KeyUp
         sparksData.PressedKeyCount -= 1
     End Sub
 
-    Private Sub SparksView_MouseButtonDown(sender As GameVisual, e As GameMouseEventArgs) Handles Me.MouseButtonDown
+    Private Sub SparksView_MouseButtonDown(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseButtonDown
         sparksData.LastMouseState = $"在 {e.Position} 按下 {e.MouseButtons} 按钮，热键是 {e.KeyModifiers} 。"
     End Sub
 
-    Private Sub SparksView_MouseButtonUp(sender As GameVisual, e As GameMouseEventArgs) Handles Me.MouseButtonUp
+    Private Sub SparksView_MouseButtonUp(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseButtonUp
         sparksData.LastMouseState = $"在 {e.Position} 松开 {e.MouseButtons} 按钮，热键是 {e.KeyModifiers} 。"
         OnTappedAsync(e.Position)
     End Sub
 
-    Private Sub SparksView_MouseMove(sender As GameVisual, e As GameMouseEventArgs) Handles Me.MouseMove
+    Private Sub SparksView_MouseMove(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseMove
         sparksData.LastMouseState = $"移动到 {e.Position} ，热键是 {e.KeyModifiers} 。"
     End Sub
 
-    Private Sub SparksView_MouseWheelChanged(sender As GameVisual, e As GameMouseEventArgs) Handles Me.MouseWheelChanged
+    Private Sub SparksView_MouseWheelChanged(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseWheelChanged
         sparksData.LastMouseState = $"在 {e.Position} 滚动滚轮 {e.WheelDelta}，热键是 {e.KeyModifiers}。"
     End Sub
 
-    Private Sub SparksView_TouchDown(sender As GameVisual, e As GameTouchEventArgs) Handles Me.TouchDown
+    Private Sub SparksView_TouchDown(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchDown
         sparksData.LastTouchState = $"在 {e.Position} 按下触摸屏，触摸点的ID是 {e.PointerId}。"
     End Sub
 
-    Private Sub SparksView_TouchMove(sender As GameVisual, e As GameTouchEventArgs) Handles Me.TouchMove
+    Private Sub SparksView_TouchMove(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchMove
         sparksData.LastTouchState = $"在 {e.Position} 滑动触摸屏，上一个点是 {e.LastPosition}，触摸点的ID是 {e.PointerId}。"
     End Sub
 
-    Private Sub SparksView_TouchUp(sender As GameVisual, e As GameTouchEventArgs) Handles Me.TouchUp
+    Private Sub SparksView_TouchUp(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchUp
         sparksData.LastTouchState = $"在 {e.Position} 松开触摸屏，触摸点的ID是 {e.PointerId}。"
         OnTappedAsync(e.Position)
     End Sub

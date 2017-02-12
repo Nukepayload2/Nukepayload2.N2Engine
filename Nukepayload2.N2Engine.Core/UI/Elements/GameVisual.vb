@@ -38,17 +38,17 @@ Namespace UI.Elements
         ''' </summary>
         Public ReadOnly Property Size As New PropertyBinder(Of Vector2)
         ''' <summary>
-        ''' (未实施) 不透明度。范围是0到1。
+        ''' (未实施) 不透明度。范围是0到1。默认是 1。
         ''' </summary>
-        Public ReadOnly Property Opacity As New PropertyBinder(Of Single)
+        Public ReadOnly Property Opacity As New PropertyBinder(Of Single)(1.0F)
         ''' <summary>
-        ''' (未实施) Z序越高越靠外，反之靠里
+        ''' (未实施) Z序越高越靠外，反之靠里。默认是 0。
         ''' </summary>
-        Public ReadOnly Property ZIndex As New PropertyBinder(Of Integer)
+        Public ReadOnly Property ZIndex As New PropertyBinder(Of Integer)(0)
         ''' <summary>
-        ''' (未实施) 是否在碰撞检测中可见
+        ''' (未实施) 是否在碰撞检测中可见。默认是可见的。
         ''' </summary>
-        Public ReadOnly Property IsHitTestVisible As New PropertyBinder(Of Boolean)
+        Public ReadOnly Property IsHitTestVisible As New PropertyBinder(Of Boolean)(True)
         ''' <summary>
         ''' 是否可见
         ''' </summary>
@@ -136,98 +136,98 @@ Namespace UI.Elements
         ''' <summary>
         ''' 当键盘有键按下时引发的事件。
         ''' </summary>
-        Public Event KeyDown As GameObjectEventHandler(Of GameVisual, GameKeyboardEventArgs)
+        Public Event KeyDown As GameObjectEventHandler(Of GameVisual, GameKeyboardRoutedEventArgs)
         ''' <summary>
         ''' 当键盘上的按键曾经按下，但刚刚松开时引发的事件。
         ''' </summary>
-        Public Event KeyUp As GameObjectEventHandler(Of GameVisual, GameKeyboardEventArgs)
+        Public Event KeyUp As GameObjectEventHandler(Of GameVisual, GameKeyboardRoutedEventArgs)
 
         ' 鼠标
         ''' <summary>
         ''' 鼠标有某个按键按下
         ''' </summary>
-        Public Event MouseButtonDown As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+        Public Event MouseButtonDown As GameObjectEventHandler(Of GameVisual, GameMouseRoutedEventArgs)
         ''' <summary>
         ''' 鼠标有某个按键松开
         ''' </summary>
-        Public Event MouseButtonUp As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+        Public Event MouseButtonUp As GameObjectEventHandler(Of GameVisual, GameMouseRoutedEventArgs)
         ''' <summary>
         ''' 鼠标滚轮滚动
         ''' </summary>
-        Public Event MouseWheelChanged As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+        Public Event MouseWheelChanged As GameObjectEventHandler(Of GameVisual, GameMouseRoutedEventArgs)
         ''' <summary>
         ''' 鼠标滑动
         ''' </summary>
-        Public Event MouseMove As GameObjectEventHandler(Of GameVisual, GameMouseEventArgs)
+        Public Event MouseMove As GameObjectEventHandler(Of GameVisual, GameMouseRoutedEventArgs)
 
         ' 触摸屏
         ''' <summary>
         ''' 触摸屏按下
         ''' </summary>
-        Public Event TouchDown As GameObjectEventHandler(Of GameVisual, GameTouchEventArgs)
+        Public Event TouchDown As GameObjectEventHandler(Of GameVisual, GameTouchRoutedEventArgs)
         ''' <summary>
         ''' 触摸屏松开
         ''' </summary>
-        Public Event TouchUp As GameObjectEventHandler(Of GameVisual, GameTouchEventArgs)
+        Public Event TouchUp As GameObjectEventHandler(Of GameVisual, GameTouchRoutedEventArgs)
         ''' <summary>
         ''' 触摸屏滑动
         ''' </summary>
-        Public Event TouchMove As GameObjectEventHandler(Of GameVisual, GameTouchEventArgs)
+        Public Event TouchMove As GameObjectEventHandler(Of GameVisual, GameTouchRoutedEventArgs)
 #End Region
 
 #Region "引发事件"
         ''' <summary>
         ''' 引发键盘按键按下事件。
         ''' </summary>
-        Public Sub RaiseKeyDown(e As GameKeyboardEventArgs)
+        Public Sub RaiseKeyDown(e As GameKeyboardRoutedEventArgs)
             RaiseEvent KeyDown(Me, e)
         End Sub
         ''' <summary>
         ''' 引发键盘按键松开事件。
         ''' </summary>
-        Public Sub RaiseKeyUp(e As GameKeyboardEventArgs)
+        Public Sub RaiseKeyUp(e As GameKeyboardRoutedEventArgs)
             RaiseEvent KeyUp(Me, e)
         End Sub
         ''' <summary>
         ''' 引发鼠标按键按下事件
         ''' </summary>
-        Public Sub RaiseMouseButtonDown(e As GameMouseEventArgs)
+        Public Sub RaiseMouseButtonDown(e As GameMouseRoutedEventArgs)
             RaiseEvent MouseButtonDown(Me, e)
         End Sub
         ''' <summary>
         ''' 引发鼠标松开按键事件。
         ''' </summary>
-        Public Sub RaiseMouseButtonUp(e As GameMouseEventArgs)
+        Public Sub RaiseMouseButtonUp(e As GameMouseRoutedEventArgs)
             RaiseEvent MouseButtonUp(Me, e)
         End Sub
         ''' <summary>
         ''' 引发鼠标滚轮变化事件。
         ''' </summary>
-        Public Sub RaiseMouseWheelChanged(e As GameMouseEventArgs)
+        Public Sub RaiseMouseWheelChanged(e As GameMouseRoutedEventArgs)
             RaiseEvent MouseWheelChanged(Me, e)
         End Sub
         ''' <summary>
         ''' 引发鼠标滑动事件。
         ''' </summary>
-        Public Sub RaiseMouseMove(e As GameMouseEventArgs)
+        Public Sub RaiseMouseMove(e As GameMouseRoutedEventArgs)
             RaiseEvent MouseMove(Me, e)
         End Sub
         ''' <summary>
         ''' 引发触屏按下事件
         ''' </summary>
-        Public Sub RaiseTouchDown(e As GameTouchEventArgs)
+        Public Sub RaiseTouchDown(e As GameTouchRoutedEventArgs)
             RaiseEvent TouchDown(Me, e)
         End Sub
         ''' <summary>
         ''' 引发触屏松开事件。
         ''' </summary>
-        Public Sub RaiseTouchUp(e As GameTouchEventArgs)
+        Public Sub RaiseTouchUp(e As GameTouchRoutedEventArgs)
             RaiseEvent TouchUp(Me, e)
         End Sub
         ''' <summary>
         ''' 引发触摸屏上滑动事件。
         ''' </summary>
-        Public Sub RaiseTouchMove(e As GameTouchEventArgs)
+        Public Sub RaiseTouchMove(e As GameTouchRoutedEventArgs)
             RaiseEvent TouchMove(Me, e)
         End Sub
 #End Region

@@ -4,7 +4,7 @@ Namespace UI.Elements
     ''' <summary>
     ''' 包含上一条鼠标事件消息返回的参数。
     ''' </summary>
-    Public Class GameMouseEventArgs
+    Public Class GameMouseRoutedEventArgs
         Inherits GameRoutedEventArgs
 
         ''' <summary>

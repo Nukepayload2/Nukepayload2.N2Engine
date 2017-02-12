@@ -16,5 +16,9 @@ Namespace UI.Elements
         Protected Overrides Sub CreateRenderer()
 
         End Sub
+        ''' <summary>
+        ''' 在画布大小变更时引发此事件
+        ''' </summary>
+        Public Event SizeChanged As GameObjectEventHandler(Of GameCanvas, EventArgs)
     End Class
 End Namespace

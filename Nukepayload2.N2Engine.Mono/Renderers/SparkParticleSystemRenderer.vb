@@ -1,5 +1,5 @@
 ﻿Imports Microsoft.Xna.Framework
-Imports Nukepayload2.N2Engine.UI.Views
+Imports Nukepayload2.N2Engine.UI.ParticleSystemViews
 
 Friend Class SparkParticleSystemRenderer
 

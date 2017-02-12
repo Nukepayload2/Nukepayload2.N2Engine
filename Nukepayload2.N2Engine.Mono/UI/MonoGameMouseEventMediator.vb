@@ -35,7 +35,7 @@ Public Class MonoGameMouseEventMediator
         If _cursorX <> mouseState.X OrElse _cursorY <> mouseState.Y Then
             _cursorX = mouseState.X
             _cursorY = mouseState.Y
-            AttachedView.RaiseMouseMove(New GameMouseEventArgs(keyModifiers, New System.Numerics.Vector2(_cursorX, _cursorY)))
+            AttachedView.RaiseMouseMove(New GameMouseRoutedEventArgs(keyModifiers, New System.Numerics.Vector2(_cursorX, _cursorY)))
         End If
         ' 鼠标点击
         Dim curKeyStat(5) As ButtonState
@@ -48,7 +48,7 @@ Public Class MonoGameMouseEventMediator
             Dim curStat = curKeyStat(i)
             If _mouseKeyStatus(i) <> curStat Then
                 _mouseKeyStatus(i) = curStat
-                Dim args As New GameMouseEventArgs(keyModifiers, New System.Numerics.Vector2(_cursorX, _cursorY), CType(i, Input.MouseKeys))
+                Dim args As New GameMouseRoutedEventArgs(keyModifiers, New System.Numerics.Vector2(_cursorX, _cursorY), CType(i, Input.MouseKeys))
                 If curStat = ButtonState.Pressed Then
                     AttachedView.RaiseMouseButtonDown(args)
                 Else
@@ -58,7 +58,7 @@ Public Class MonoGameMouseEventMediator
         Next
         ' 鼠标滚轮滚动
         If _WheelValue <> mouseState.ScrollWheelValue Then
-            AttachedView.RaiseMouseWheelChanged(New GameMouseEventArgs(keyModifiers, New System.Numerics.Vector2(_cursorX, _cursorY), mouseState.ScrollWheelValue - _WheelValue))
+            AttachedView.RaiseMouseWheelChanged(New GameMouseRoutedEventArgs(keyModifiers, New System.Numerics.Vector2(_cursorX, _cursorY), mouseState.ScrollWheelValue - _WheelValue))
             _WheelValue = mouseState.ScrollWheelValue
         End If
     End Sub

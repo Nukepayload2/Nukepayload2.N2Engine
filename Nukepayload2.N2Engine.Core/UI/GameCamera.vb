@@ -2,7 +2,7 @@
 
 Namespace UI
     ''' <summary>
-    ''' 用于便捷地切换 <see cref="GameVisualizingScrollViewer"/> 的视图状态 
+    ''' 用于便捷地切换 <see cref="GameVirtualizingScrollViewer"/> 的视图状态 
     ''' </summary>
     Public Class GameCamera
         Inherits GameObject

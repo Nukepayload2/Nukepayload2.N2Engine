@@ -4,7 +4,7 @@ Namespace UI.Elements
     ''' <summary>
     ''' 为键盘事件提供数据
     ''' </summary>
-    Public Class GameKeyboardEventArgs
+    Public Class GameKeyboardRoutedEventArgs
         Inherits GameRoutedEventArgs
 
         Sub New(keyCode As Key, keyStatus As PhysicalKeyStatus)

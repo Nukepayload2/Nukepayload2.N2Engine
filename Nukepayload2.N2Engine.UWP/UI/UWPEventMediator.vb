@@ -15,8 +15,8 @@ Public Class UWPEventMediator
     End Sub
 
     <MethodImpl(MethodImplOptions.AggressiveInlining)>
-    Private Shared Function MakeGameKeyEventArgs(args As KeyEventArgs) As GameKeyboardEventArgs
-        Return New GameKeyboardEventArgs(CType(args.VirtualKey, Input.Key), args.KeyStatus.AsN2KeyStatus)
+    Private Shared Function MakeGameKeyEventArgs(args As KeyEventArgs) As GameKeyboardRoutedEventArgs
+        Return New GameKeyboardRoutedEventArgs(CType(args.VirtualKey, Input.Key), args.KeyStatus.AsN2KeyStatus)
     End Function
 
     Private Sub GameWindow_KeyUp(sender As CoreWindow, args As KeyEventArgs) Handles GameWindow.KeyUp
@@ -29,7 +29,7 @@ Public Class UWPEventMediator
         HandlePointerButtonEvent(args, AddressOf AttachedView.RaiseTouchDown)
     End Sub
 
-    Private Sub HandlePointerButtonEvent(args As PointerEventArgs, raise As Action(Of GameTouchEventArgs))
+    Private Sub HandlePointerButtonEvent(args As PointerEventArgs, raise As Action(Of GameTouchRoutedEventArgs))
         Dim currentPoint = args.CurrentPoint
         Dim pos = currentPoint.Position
         Select Case currentPoint.PointerDevice.PointerDeviceType
@@ -45,7 +45,7 @@ Public Class UWPEventMediator
                     Dim curStat = curKeyStat(i)
                     If _mouseKeyStatus(i) <> curStat Then
                         _mouseKeyStatus(i) = curStat
-                        Dim e As New GameMouseEventArgs(CType(args.KeyModifiers, Input.VirtualKeyModifiers), New System.Numerics.Vector2(CSng(pos.X), CSng(pos.Y)), CType(i, Input.MouseKeys))
+                        Dim e As New GameMouseRoutedEventArgs(CType(args.KeyModifiers, Input.VirtualKeyModifiers), New System.Numerics.Vector2(CSng(pos.X), CSng(pos.Y)), CType(i, Input.MouseKeys))
                         If curStat Then
                             AttachedView.RaiseMouseButtonDown(e)
                         Else
@@ -54,7 +54,7 @@ Public Class UWPEventMediator
                     End If
                 Next
             Case Else
-                raise(New GameTouchEventArgs(New System.Numerics.Vector2(CSng(pos.X), CSng(pos.Y)), currentPoint.PointerId, currentPoint.Properties.Pressure))
+                raise(New GameTouchRoutedEventArgs(New System.Numerics.Vector2(CSng(pos.X), CSng(pos.Y)), currentPoint.PointerId, currentPoint.Properties.Pressure))
         End Select
     End Sub
 
@@ -65,7 +65,7 @@ Public Class UWPEventMediator
     Private Sub GameWindow_PointerWheelChanged(sender As CoreWindow, args As PointerEventArgs) Handles GameWindow.PointerWheelChanged
         Dim currentPoint = args.CurrentPoint
         Dim pos = currentPoint.Position
-        Dim e As New GameMouseEventArgs(CType(args.KeyModifiers, Input.VirtualKeyModifiers), New System.Numerics.Vector2(CSng(pos.X), CSng(pos.Y)), currentPoint.Properties.MouseWheelDelta)
+        Dim e As New GameMouseRoutedEventArgs(CType(args.KeyModifiers, Input.VirtualKeyModifiers), New System.Numerics.Vector2(CSng(pos.X), CSng(pos.Y)), currentPoint.Properties.MouseWheelDelta)
         AttachedView.RaiseMouseWheelChanged(e)
     End Sub
 
@@ -74,7 +74,7 @@ Public Class UWPEventMediator
         Dim pos = currentPoint.Position
         Select Case currentPoint.PointerDevice.PointerDeviceType
             Case Windows.Devices.Input.PointerDeviceType.Mouse
-                AttachedView.RaiseMouseMove(New GameMouseEventArgs(CType(args.KeyModifiers, Input.VirtualKeyModifiers), New System.Numerics.Vector2(CSng(pos.X), CSng(pos.Y))))
+                AttachedView.RaiseMouseMove(New GameMouseRoutedEventArgs(CType(args.KeyModifiers, Input.VirtualKeyModifiers), New System.Numerics.Vector2(CSng(pos.X), CSng(pos.Y))))
             Case Else
                 Dim lastPoints = From p In args.GetIntermediatePoints
                                  Where p.PointerId = currentPoint.PointerId
@@ -90,7 +90,7 @@ Public Class UWPEventMediator
                         End If
                     Next
                     Dim lastPoint = pts(index).Position
-                    AttachedView.RaiseTouchMove(New GameTouchEventArgs(
+                    AttachedView.RaiseTouchMove(New GameTouchRoutedEventArgs(
                                                 New System.Numerics.Vector2(CSng(pos.X), CSng(pos.Y)),
                                                 New System.Numerics.Vector2(CSng(lastPoint.X), CSng(lastPoint.Y)),
                                                 currentPoint.PointerId, currentPoint.Properties.Pressure))

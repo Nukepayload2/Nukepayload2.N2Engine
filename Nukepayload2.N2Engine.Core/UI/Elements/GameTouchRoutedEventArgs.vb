@@ -2,7 +2,7 @@
     ''' <summary>
     ''' 包含上一条触摸事件消息返回的参数。
     ''' </summary>
-    Public Class GameTouchEventArgs
+    Public Class GameTouchRoutedEventArgs
         Inherits GameRoutedEventArgs
         ''' <summary>
         ''' 初始化触摸按下事件的数据

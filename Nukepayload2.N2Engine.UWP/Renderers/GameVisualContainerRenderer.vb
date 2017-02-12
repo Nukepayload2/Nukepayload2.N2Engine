@@ -32,6 +32,9 @@ Public MustInherit Class GameVisualContainerRenderer
         Using ds = RenderTarget.CreateDrawingSession
             ds.Clear(Colors.Transparent)
             For Each child In children
+                If ShouldVirtualize(child) Then
+                    Continue For
+                End If
                 Dim cont = TryCast(child, GameVisualContainer)
                 If cont IsNot Nothing Then
                     containers.Add(cont)
@@ -49,16 +52,37 @@ Public MustInherit Class GameVisualContainerRenderer
     End Sub
 
     ''' <summary>
-    ''' 向上一级父级 <see cref="RenderTarget"/> 绘制当前缓存的 <see cref="RenderTarget"/> 。
+    ''' 判断指定的可见对象是否超出了应该绘制的范围。超出范围的对象在拥有虚拟化功能的容器中不会被绘制。
     ''' </summary>
+    ''' <param name="visual">要判断的可见对象。</param>
+    ''' <returns>如果返回假，则不会虚拟化这个子可见对象。</returns>
+    Protected Overridable Function ShouldVirtualize(visual As GameVisual) As Boolean
+        Return False
+    End Function
+
+    ''' <summary>
+    ''' 向父级 <see cref="RenderTarget"/> 绘制当前缓存的 <see cref="RenderTarget"/> 。如果没有上一级，则向 <paramref name="backBuffer"/> 绘制。
+    ''' </summary>
+    ''' <param name="backBuffer">整个游戏画布的后缓冲区</param>
     Protected Overridable Sub CommitRenderTargetToParent(backBuffer As CanvasDrawingSession)
         Dim parent = View.Parent
         Dim parentRenderer = parent.Renderer
         Dim parentRT = DirectCast(parentRenderer, GameVisualContainerRenderer).RenderTarget
         Using ds = parentRT.CreateDrawingSession
             Dim loc = View.Location.Value
-            ds.DrawImage(ApplyEffect(RenderTarget), loc.X, loc.Y)
+            Dim effectedImage = ApplyEffect(RenderTarget)
+            DrawOnParent(ds, loc, effectedImage)
         End Using
+    End Sub
+
+    ''' <summary>
+    ''' 将当前缓存的已经被特效处理的图像绘制到上级图像缓冲区。
+    ''' </summary>
+    ''' <param name="ds">上级图像缓冲区绘图的会话</param>
+    ''' <param name="loc">原本要绘制到的位置</param>
+    ''' <param name="effectedImage">经过特效处理的缓存的图像</param>
+    Protected Overridable Sub DrawOnParent(ds As CanvasDrawingSession, loc As System.Numerics.Vector2, effectedImage As ICanvasImage)
+        ds.DrawImage(effectedImage, loc.X, loc.Y)
     End Sub
 
     ''' <summary>

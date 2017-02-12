@@ -2,7 +2,7 @@
 Imports Nukepayload2.N2Engine.ParticleSystem
 Imports Nukepayload2.N2Engine.UI.Elements
 
-Namespace UI.Views
+Namespace UI.ParticleSystemViews
 
     Public MustInherit Class ParticleSystemView(Of T As IParticleSystem)
         Inherits GameElement

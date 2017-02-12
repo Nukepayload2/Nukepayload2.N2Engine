@@ -1,7 +1,7 @@
 ﻿Imports System.Numerics
 Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
-Imports Nukepayload2.N2Engine.UI.Views
+Imports Nukepayload2.N2Engine.UI.ParticleSystemViews
 Imports Nukepayload2.N2Engine.UWP.Marshal
 
 Friend Class SparkParticleSystemRenderer

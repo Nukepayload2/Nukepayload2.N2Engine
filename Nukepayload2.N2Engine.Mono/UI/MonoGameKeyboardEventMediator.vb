@@ -57,7 +57,7 @@ Public Class MonoGameKeyboardEventMediator
                     stat.RepeatCount = 1
                     stat.WasKeyDown = False
                     stat.IsKeyReleased = False
-                    AttachedView.RaiseKeyDown(New GameKeyboardEventArgs(k, stat))
+                    AttachedView.RaiseKeyDown(New GameKeyboardRoutedEventArgs(k, stat))
                 Else
                     ' 按下 -> 按下
                     stat.WasKeyDown = True
@@ -73,7 +73,7 @@ Public Class MonoGameKeyboardEventMediator
                     ' 按下 -> 松开
                     stat.WasKeyDown = True
                     stat.IsKeyReleased = True
-                    AttachedView.RaiseKeyUp(New GameKeyboardEventArgs(k, stat))
+                    AttachedView.RaiseKeyUp(New GameKeyboardRoutedEventArgs(k, stat))
                 Else
                     ' (松开 -> 松开) -> 松开
                 End If

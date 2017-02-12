@@ -1,5 +1,5 @@
 ﻿Imports Nukepayload2.N2Engine.Platform
-Imports Nukepayload2.N2Engine.UI.Views
+Imports Nukepayload2.N2Engine.UI.ParticleSystemViews
 ''' <summary>
 ''' 火花粒子系统的渲染器
 ''' </summary>

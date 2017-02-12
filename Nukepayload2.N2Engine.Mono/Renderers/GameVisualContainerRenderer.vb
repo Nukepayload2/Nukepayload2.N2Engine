@@ -44,6 +44,9 @@ Public MustInherit Class GameVisualContainerRenderer
         args.DrawingContext = dc
         dc.Begin()
         For Each child In children
+            If ShouldVirtualize(child) Then
+                Continue For
+            End If
             Dim cont = TryCast(child, GameVisualContainer)
             If cont IsNot Nothing Then
                 containers.Add(cont)
@@ -61,17 +64,36 @@ Public MustInherit Class GameVisualContainerRenderer
         CommitRenderTargetToParent(device, args.SpriteBatch)
     End Sub
 
+    ''' <summary>
+    ''' 判断指定的可见对象是否超出了应该绘制的范围。超出范围的对象在拥有虚拟化功能的容器中不会被绘制。
+    ''' </summary>
+    ''' <param name="visual">要判断的可见对象。</param>
+    ''' <returns>如果返回假，则不会虚拟化这个子可见对象。</returns>
+    Protected Overridable Function ShouldVirtualize(visual As GameVisual) As Boolean
+        Return False
+    End Function
+
     Protected Overridable Sub CommitRenderTargetToParent(device As GraphicsDevice, dc As SpriteBatch)
         Dim parent = View.Parent
         Dim parentRenderer = parent.Renderer
         Dim parentRT = DirectCast(parentRenderer, GameVisualContainerRenderer).RenderTarget
-        'Debug.WriteLine($"设置绘制目标为：{parentRenderer.GetType.Name} 的缓存纹理。")
         device.SetRenderTarget(parentRT)
         dc.Begin()
         Dim loc = View.Location.Value
-        'Debug.WriteLine($"提交绘制结果: {parentRenderer.GetType.Name} <--- {Me.GetType.Name}")
-        dc.Draw(ApplyEffect(RenderTarget), New Rectangle(loc.X, loc.Y, parentRT.Width, parentRT.Height), Color.White)
+        Dim drawSize As New Rectangle(loc.X, loc.Y, RenderTarget.Width, RenderTarget.Height)
+        Dim effectedImage = ApplyEffect(RenderTarget)
+        DrawOnParent(dc, drawSize, effectedImage)
         dc.End()
+    End Sub
+
+    ''' <summary>
+    ''' 将当前缓存的已经被特效处理的图像绘制到上级图像缓冲区。
+    ''' </summary>
+    ''' <param name="dc">上级图像缓冲区绘图的会话</param>
+    ''' <param name="drawSize">绘制的大小</param>
+    ''' <param name="effectedImage">经过特效处理的缓存的图像</param>
+    Private Sub DrawOnParent(dc As SpriteBatch, drawSize As Rectangle, effectedImage As Texture2D)
+        dc.Draw(effectedImage, drawSize, Color.White)
     End Sub
 
     ''' <summary>

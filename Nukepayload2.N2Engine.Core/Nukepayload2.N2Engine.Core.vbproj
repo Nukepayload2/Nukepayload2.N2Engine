@@ -107,7 +107,10 @@
     <Compile Include="Input\PhysicalKeyStatus.vb" />
     <Compile Include="Input\VirtualKeyModifiers.vb" />
     <Compile Include="Input\PointerDeviceType.vb" />
-    <Compile Include="UI\Elements\GameTouchEventArgs.vb" />
+    <Compile Include="UI\Elements\GameKeyboardRoutedEventArgs.vb" />
+    <Compile Include="UI\Elements\GameMouseRoutedEventArgs.vb" />
+    <Compile Include="UI\Elements\GameTouchRoutedEventArgs.vb" />
+    <Compile Include="UI\Elements\GameVirtualizingScrollViewer.vb" />
     <Compile Include="UI\Elements\TappedEventArgs.vb" />
     <Compile Include="Math\Combination.vb" />
     <Compile Include="Media\MediaPlayerFactory.vb" />
@@ -116,10 +119,8 @@
     <Compile Include="Triggers\TimerTrigger.vb" />
     <Compile Include="UI\Effects\GaussianBlurEffect.vb" />
     <Compile Include="UI\Effects\IGameEffectSource.vb" />
-    <Compile Include="UI\Elements\GameMouseEventArgs.vb" />
     <Compile Include="UI\Elements\GameRoutedEventArgs.vb" />
     <Compile Include="UI\GameObjectStateTransition.vb" />
-    <Compile Include="UI\Elements\GameKeyboardEventArgs.vb" />
     <Compile Include="Input\Key.vb" />
     <Compile Include="UI\IKeyboardEventMediator.vb" />
     <Compile Include="UI\IEventMediator.vb" />
@@ -129,7 +130,7 @@
     <Compile Include="UI\Text\FontStyle.vb" />
     <Compile Include="UI\Text\FontWeight.vb" />
     <Compile Include="UI\Text\GameFont.vb" />
-    <Compile Include="UI\Controls\TextBlock.vb" />
+    <Compile Include="UI\Elements\Controls\TextBlock.vb" />
     <Compile Include="UI\Elements\DrawingVisual.vb" />
     <Compile Include="UI\Elements\GameCompositeModes.vb" />
     <Compile Include="Threading\GameDispatcher.vb" />
@@ -172,7 +173,7 @@
     <Compile Include="UI\CompositeTransform.vb" />
     <Compile Include="UI\Elements\ControlLayer.vb" />
     <Compile Include="UI\Elements\EntityLayer.vb" />
-    <Compile Include="UI\Controls\GameControl.vb" />
+    <Compile Include="UI\Elements\Controls\GameControl.vb" />
     <Compile Include="UI\Elements\PanelLayer.vb" />
     <Compile Include="UI\IGameAction.vb" />
     <Compile Include="UI\Matrix3x2Transform.vb" />
@@ -184,7 +185,6 @@
     <Compile Include="UI\Elements\GameLayer.vb" />
     <Compile Include="UI\Elements\GameScene.vb" />
     <Compile Include="UI\Elements\GameVisualContainer.vb" />
-    <Compile Include="UI\Elements\VisualizingScrollViewer.vb" />
     <Compile Include="UI\Renderers\RendererBase.vb" />
     <Compile Include="Resources\GameResourceModelBase.vb" />
     <Compile Include="Resources\ResourceId.vb" />
@@ -212,8 +212,8 @@
     <Compile Include="Platform\PlatformImplAttribute.vb" />
     <Compile Include="UI\RendererRegistrationRequestedEventArgs.vb" />
     <Compile Include="ParticleSystem\SparkParticleSystem.vb" />
-    <Compile Include="UI\Views\ParticleSystemView.vb" />
-    <Compile Include="UI\Views\SparkParticleSystemView.vb" />
+    <Compile Include="UI\Elements\ParticleSystemViews\ParticleSystemView.vb" />
+    <Compile Include="UI\Elements\ParticleSystemViews\SparkParticleSystemView.vb" />
     <Compile Include="Triggers\GameDataTrigger.vb" />
     <Compile Include="Triggers\GameEventTrigger.vb" />
     <Compile Include="Triggers\GameTriggerBase.vb" />
