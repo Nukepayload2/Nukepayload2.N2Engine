@@ -1,4 +1,5 @@
-﻿Imports Microsoft.Xna.Framework.Graphics
+﻿Imports Microsoft.Xna.Framework
+Imports Microsoft.Xna.Framework.Graphics
 Imports Nukepayload2.N2Engine.UI.Elements
 
 Friend Class GameVirtualizingScrollViewerRenderer
@@ -11,7 +12,7 @@ Friend Class GameVirtualizingScrollViewerRenderer
         Return MyBase.ShouldVirtualize(visual)
     End Function
 
-    Protected Overrides Function ApplyEffect(source As RenderTarget2D) As Texture2D
-        Return MyBase.ApplyEffect(source)
-    End Function
+    Protected Overrides Sub DrawOnParent(dc As SpriteBatch, drawSize As Rectangle, effectedImage As Texture2D)
+        MyBase.DrawOnParent(dc, drawSize, effectedImage)
+    End Sub
 End Class

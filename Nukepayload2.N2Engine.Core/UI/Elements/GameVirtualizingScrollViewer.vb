@@ -7,15 +7,15 @@ Namespace UI.Elements
     Public Class GameVirtualizingScrollViewer
         Inherits GameVisualContainer
         ''' <summary>
-        ''' 内部元素的位置偏移。默认是 &lt;0, 0&gt;。
+        ''' 内部元素的位置偏移。如果不绑定值则不偏移对待。
         ''' </summary>
-        Public ReadOnly Property Offset As New PropertyBinder(Of Vector2)(New Vector2)
+        Public ReadOnly Property Offset As New PropertyBinder(Of Vector2)
         ''' <summary>
-        ''' 缩放比例。默认是 1。
+        ''' 缩放比例。如果不绑定值则按 1 对待。
         ''' </summary>
-        Public ReadOnly Property Zoom As New PropertyBinder(Of Single)(1)
+        Public ReadOnly Property Zoom As New PropertyBinder(Of Single)
         ''' <summary>
-        ''' 透视变换。默认是空，也就是不进行透视变换。
+        ''' 透视变换。如果不绑定值则不进行透视变换。
         ''' </summary>
         Public ReadOnly Property Perspective As New PropertyBinder(Of Matrix4x4)
         ''' <summary>

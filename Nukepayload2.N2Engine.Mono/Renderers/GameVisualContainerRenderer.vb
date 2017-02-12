@@ -92,7 +92,7 @@ Public MustInherit Class GameVisualContainerRenderer
     ''' <param name="dc">上级图像缓冲区绘图的会话</param>
     ''' <param name="drawSize">绘制的大小</param>
     ''' <param name="effectedImage">经过特效处理的缓存的图像</param>
-    Private Sub DrawOnParent(dc As SpriteBatch, drawSize As Rectangle, effectedImage As Texture2D)
+    Protected Overridable Sub DrawOnParent(dc As SpriteBatch, drawSize As Rectangle, effectedImage As Texture2D)
         dc.Draw(effectedImage, drawSize, Color.White)
     End Sub
 
