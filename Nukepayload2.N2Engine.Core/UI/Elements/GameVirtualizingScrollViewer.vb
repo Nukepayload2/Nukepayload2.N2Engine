@@ -15,10 +15,6 @@ Namespace UI.Elements
         ''' </summary>
         Public ReadOnly Property Zoom As New PropertyBinder(Of Single)
         ''' <summary>
-        ''' 透视变换。如果不绑定值则不进行透视变换。
-        ''' </summary>
-        Public ReadOnly Property Perspective As New PropertyBinder(Of Matrix4x4)
-        ''' <summary>
         ''' 被通知正在卷动时引发此事件。
         ''' </summary>
         Public Event Scrolling As GameObjectEventHandler(Of GameVirtualizingScrollViewer, EventArgs)

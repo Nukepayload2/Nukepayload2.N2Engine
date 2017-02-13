@@ -9,10 +9,29 @@ Friend Class GameVirtualizingScrollViewerRenderer
     ''' <param name="visual"></param>
     ''' <returns>是否应该虚拟化</returns>
     Protected Overrides Function ShouldVirtualize(visual As GameVisual) As Boolean
-        Return MyBase.ShouldVirtualize(visual)
+        Dim loc = visual.Location.Value
+        Dim size = visual.Size.Value
+        Dim renderBound As New Rectangle(0, 0, RenderTarget.Width, RenderTarget.Height)
+        Dim visualBound As New Rectangle(loc.X, loc.Y, size.X, size.Y)
+        visual.IsVirtualizing = renderBound.Intersects(visualBound)
+        Return visual.IsVirtualizing
     End Function
 
     Protected Overrides Sub DrawOnParent(dc As SpriteBatch, drawSize As Rectangle, effectedImage As Texture2D)
+        Dim view = DirectCast(Me.View, GameVirtualizingScrollViewer)
+        If view.Offset.CanRead Then
+            Dim ofs = view.Offset.Value
+            drawSize.X += ofs.X
+            drawSize.Y += ofs.Y
+        End If
+        If view.Zoom.CanRead Then
+            Dim zoom = view.Zoom.Value
+            If Math.Abs(zoom - 1.0F) > 0.1 Then
+                dc.Draw(effectedImage, destinationRectangle:=New Rectangle(drawSize.X, drawSize.Y, RenderTarget.Width * zoom, RenderTarget.Height * zoom),
+                       sourceRectangle:=New Rectangle(0, 0, RenderTarget.Width, RenderTarget.Height))
+                Return
+            End If
+        End If
         MyBase.DrawOnParent(dc, drawSize, effectedImage)
     End Sub
 End Class
