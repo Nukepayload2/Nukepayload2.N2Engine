@@ -10,10 +10,14 @@ Friend Class GameVirtualizingScrollViewerRenderer
     ''' <returns>是否应该虚拟化</returns>
     Protected Overrides Function ShouldVirtualize(visual As GameVisual) As Boolean
         Dim loc = visual.Location.Value
+        If Not visual.Size.CanRead Then
+            ' 不确定大小
+            Return False
+        End If
         Dim size = visual.Size.Value
         Dim renderBound As New Rectangle(0, 0, RenderTarget.Width, RenderTarget.Height)
         Dim visualBound As New Rectangle(loc.X, loc.Y, size.X, size.Y)
-        visual.IsVirtualizing = renderBound.Intersects(visualBound)
+        visual.IsVirtualizing = Not renderBound.Contains(visualBound)
         Return visual.IsVirtualizing
     End Function
 

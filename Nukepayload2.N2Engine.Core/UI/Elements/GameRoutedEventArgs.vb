@@ -19,7 +19,7 @@
         End Sub
 
         ''' <summary>
-        ''' 引发这个事件的源头。对于有模板的对象（例如 <see cref="GameScene"/>），通常源头会与模板相关。路由的起点此属性返回空。
+        ''' (未实施) 引发这个事件的源头。对于有模板的对象（例如 <see cref="GameScene"/>），通常源头会与模板相关。路由的起点此属性返回空。
         ''' </summary>
         ''' <returns>引发事件的游戏对象</returns>
         Public ReadOnly Property OriginalSource As GameObject

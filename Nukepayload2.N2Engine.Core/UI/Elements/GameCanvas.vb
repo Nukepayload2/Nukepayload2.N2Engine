@@ -17,6 +17,14 @@ Namespace UI.Elements
 
         End Sub
         ''' <summary>
+        ''' 事件路由的方向
+        ''' </summary>
+        Public Property EventRouteDirection As GameEventRouteDirections
+        ''' <summary>
+        ''' 事件路由的模式
+        ''' </summary>
+        Public Property EventRouteMode As GameEventRouteModes
+        ''' <summary>
         ''' 在画布大小变更时引发此事件
         ''' </summary>
         Public Event SizeChanged As GameObjectEventHandler(Of GameCanvas, EventArgs)

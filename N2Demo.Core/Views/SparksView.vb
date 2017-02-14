@@ -20,10 +20,10 @@ Public Class SparksView
     Dim sparks As New SparkParticleSystemView
     Dim charaSheet As New SpriteElement
     Dim scrollViewer As New GameVirtualizingScrollViewer
-    Dim tblTheElder As New TextBlock
-    Dim tblKeyDownCount As New TextBlock
-    Dim tblLastMouseAction As New TextBlock
-    Dim tblLastTouchAction As New TextBlock
+    Dim tblTheElder As New GameTextBlock
+    Dim tblKeyDownCount As New GameTextBlock
+    Dim tblLastMouseAction As New GameTextBlock
+    Dim tblLastTouchAction As New GameTextBlock
 
 #End Region
 
@@ -113,6 +113,9 @@ Public Class SparksView
                 Bind(Function(r) r.Text, Function() "上一次触摸状态：" + sparksData.LastTouchState).
                 Bind(Function(r) r.Location, New Vector2(0.0F, 90.0F)))
         )
+        ' 放置触发器
+        Dim verticalShakeTrigger As New VerticalShakeTrigger
+        verticalShakeTrigger.Attach(Me)
     End Sub
 
     Private Async Function LoadSaveFileAsync() As Task

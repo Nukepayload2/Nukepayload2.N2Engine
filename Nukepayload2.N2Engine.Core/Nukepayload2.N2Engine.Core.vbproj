@@ -107,6 +107,9 @@
     <Compile Include="Input\PhysicalKeyStatus.vb" />
     <Compile Include="Input\VirtualKeyModifiers.vb" />
     <Compile Include="Input\PointerDeviceType.vb" />
+    <Compile Include="UI\Elements\Controls\GameTextBlock.vb" />
+    <Compile Include="UI\Elements\GameEventRouteDirections.vb" />
+    <Compile Include="UI\Elements\GameEventRouteModes.vb" />
     <Compile Include="UI\Elements\GameKeyboardRoutedEventArgs.vb" />
     <Compile Include="UI\Elements\GameMouseRoutedEventArgs.vb" />
     <Compile Include="UI\Elements\GameTouchRoutedEventArgs.vb" />
@@ -130,7 +133,6 @@
     <Compile Include="UI\Text\FontStyle.vb" />
     <Compile Include="UI\Text\FontWeight.vb" />
     <Compile Include="UI\Text\GameFont.vb" />
-    <Compile Include="UI\Elements\Controls\TextBlock.vb" />
     <Compile Include="UI\Elements\DrawingVisual.vb" />
     <Compile Include="UI\Elements\GameCompositeModes.vb" />
     <Compile Include="Threading\GameDispatcher.vb" />
@@ -216,7 +218,6 @@
     <Compile Include="UI\Elements\ParticleSystemViews\SparkParticleSystemView.vb" />
     <Compile Include="Triggers\GameDataTrigger.vb" />
     <Compile Include="Triggers\GameEventTrigger.vb" />
-    <Compile Include="Triggers\GameTriggerBase.vb" />
     <Compile Include="Triggers\IGameTrigger.vb" />
   </ItemGroup>
   <ItemGroup>

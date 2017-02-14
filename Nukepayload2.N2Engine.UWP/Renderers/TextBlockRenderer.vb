@@ -7,7 +7,7 @@ Imports Windows.UI.Text
 Friend Class TextBlockRenderer
 
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
-        Dim view = DirectCast(Me.View, UI.Controls.TextBlock)
+        Dim view = DirectCast(Me.View, UI.Controls.GameTextBlock)
         Dim txt = view.Text
         If txt.CanRead Then
             Dim fnt = view.Font

@@ -16,7 +16,7 @@ Namespace UI
         ''' </summary>
         Public Property Triggers As IGameTrigger
         ''' <summary>
-        ''' 当任意一个 Trigger 被满足时，执行动作。
+        ''' 执行无条件的动作。
         ''' </summary>
         Public Property Actions As IGameAction
 

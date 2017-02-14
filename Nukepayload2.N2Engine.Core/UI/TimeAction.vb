@@ -8,8 +8,15 @@
         ''' </summary>
         Public Property BeginTime As TimeSpan Implements ITimeAction.BeginTime
         ''' <summary>
+        ''' 开始后的动作
+        ''' </summary>
+        Public MustOverride Sub Action() Implements ITimeAction.Action
+        ''' <summary>
         ''' 开始此动作
         ''' </summary>
-        Public MustOverride Sub Begin() Implements ITimeAction.Begin
+        Public Async Sub BeginAsync() Implements ITimeAction.BeginAsync
+            Await Task.Delay(BeginTime)
+            Action()
+        End Sub
     End Class
 End Namespace

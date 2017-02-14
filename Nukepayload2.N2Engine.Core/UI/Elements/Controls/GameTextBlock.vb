@@ -5,7 +5,7 @@ Namespace UI.Controls
     ''' <summary>
     ''' 文本块控件。用于显示文字。
     ''' </summary>
-    Public Class TextBlock
+    Public Class GameTextBlock
         Inherits GameControl
         ''' <summary>
         ''' 要显示的文字

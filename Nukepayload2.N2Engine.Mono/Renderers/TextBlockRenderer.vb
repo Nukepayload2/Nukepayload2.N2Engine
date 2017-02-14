@@ -4,7 +4,7 @@ Imports Nukepayload2.N2Engine.UI.Controls
 Friend Class TextBlockRenderer
 
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
-        Dim view = DirectCast(Me.View, TextBlock)
+        Dim view = DirectCast(Me.View, GameTextBlock)
         Dim txt = view.Text
         Dim dc = args.DrawingContext
         If txt.CanRead Then

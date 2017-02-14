@@ -11,11 +11,14 @@ Friend Class GameVirtualizingScrollViewerRenderer
     Protected Overrides Function ShouldVirtualize(visual As GameVisual) As Boolean
         Dim rtSize = RenderTarget.Size
         Dim loc = visual.Location.Value
+        If Not visual.Size.CanRead Then
+            Return False
+        End If
         Dim size = visual.Size.Value
         Dim renderBound As New Rect(0, 0, rtSize.Width, rtSize.Height)
         Dim visualBound As New Rect(loc.X, loc.Y, size.X, size.Y)
         renderBound.Intersect(visualBound)
-        visual.IsVirtualizing = renderBound.Width < 0.1 OrElse renderBound.Height < 0.1
+        visual.IsVirtualizing = renderBound.Width <= 0.3 OrElse renderBound.Height <= 0.3
         Return visual.IsVirtualizing
     End Function
 

@@ -12,7 +12,7 @@ Friend Class GameSpriteElementRenderer
         MyBase.OnCreateResources(sender, args)
         Dim view = DirectCast(Me.View, SpriteElement)
         Dim bmp = DirectCast(view.Sprite.Value, PlatformBitmapResource)
-        If view.DefferedLoadLevel.Value <= 0 Then
+        If Not view.DefferedLoadLevel.CanRead OrElse view.DefferedLoadLevel.Value <= 0 Then
             args.TrackAsyncAction(bmp.LoadAsync(sender).AsAsyncAction)
             drawOperation = AddressOf DrawImage
         Else
