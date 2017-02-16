@@ -60,7 +60,9 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2401E3DB-43A4-4EF8-ACFE-B806D19E9FB7}"
 	ProjectSection(SolutionItems) = preProject
 		N2Demo.License.txt = N2Demo.License.txt
+		Nukepayload2.Collections.License.txt = Nukepayload2.Collections.License.txt
 		Nukepayload2.N2Engine.License.txt = Nukepayload2.N2Engine.License.txt
+		Nukepayload2.UI.License.txt = Nukepayload2.UI.License.txt
 		RaisingStudio.Xna.Graphics.License.txt = RaisingStudio.Xna.Graphics.License.txt
 		RaisingStudio.Xna.Graphics.Summary.txt = RaisingStudio.Xna.Graphics.Summary.txt
 		README.md = README.md

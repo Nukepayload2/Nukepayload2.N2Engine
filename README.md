@@ -21,6 +21,8 @@
 
 ## 协议说明
 * 此解决方案中所有 Nukepayload2.N2Engine 开头的项目使用 GPLv3 协议
+* 此解决方案中所有 Nukepayload2.UI 开头的项目使用 LGPLv3 协议
+* 此解决方案中所有 Nukepayload2.Collections 开头的项目使用 LGPLv3 协议
 * 此解决方案中所有 N2Demo 开头的项目使用 LGPLv3 协议
 * FarseerPhysics 项目使用 Ms-PL 1.1 协议
 * RaisingStudio.Xna.Graphics 使用 LGPL 协议
