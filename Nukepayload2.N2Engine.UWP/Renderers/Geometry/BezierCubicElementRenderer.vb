@@ -1,5 +1,6 @@
 ﻿Imports Microsoft.Graphics.Canvas.Geometry
 Imports Microsoft.Graphics.Canvas.UI.Xaml
+Imports Nukepayload2.N2Engine.Numerics
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports Nukepayload2.N2Engine.UWP.Marshal
 
@@ -11,10 +12,19 @@ Friend Class BezierCubicElementRenderer
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, BezierCubicElement)
         Dim pb As New CanvasPathBuilder(sender)
-        pb.BeginFigure(View.StartPoint.Value)
-        pb.AddCubicBezier(View.ControlPoint1.Value, View.ControlPoint2.Value, View.EndPoint.Value)
+
+        If view.Transform IsNot Nothing Then
+            Dim matrix = view.Transform.GetTransformMatrix
+            pb.BeginFigure(view.StartPoint.Value.ApplyTransform(matrix))
+            pb.AddCubicBezier(view.ControlPoint1.Value.ApplyTransform(matrix),
+                              view.ControlPoint2.Value.ApplyTransform(matrix),
+                              view.EndPoint.Value.ApplyTransform(matrix))
+        Else
+            pb.BeginFigure(view.StartPoint.Value)
+            pb.AddCubicBezier(view.ControlPoint1.Value, view.ControlPoint2.Value, view.EndPoint.Value)
+        End If
         pb.EndFigure(CanvasFigureLoop.Open)
-        args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), View.Location.Value, View.Stroke.Value.AsWindowsColor)
+        args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
     End Sub
 
 End Class

@@ -1,4 +1,7 @@
-﻿Imports Microsoft.Graphics.Canvas.Brushes
+﻿Imports System.Numerics
+Imports Microsoft.Graphics.Canvas
+Imports Microsoft.Graphics.Canvas.Brushes
+Imports Microsoft.Graphics.Canvas.Effects
 Imports Microsoft.Graphics.Canvas.Text
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UWP.Marshal
@@ -19,8 +22,20 @@ Friend Class TextBlockRenderer
                     .FontStyle = CType(CInt(fnt.FontStyle), FontStyle)
                 }
                 SetFormat(fnt, format)
-                args.DrawingSession.DrawText(txt.Value, view.Location.Value,
-                     New CanvasSolidColorBrush(args.DrawingSession, fnt.Color.AsWindowsColor), format)
+                If view.Transform IsNot Nothing Then
+                    Dim loc = view.Location.Value
+                    Using cl = New CanvasCommandList(args.DrawingSession)
+                        Using ds = cl.CreateDrawingSession
+                            ds.DrawText(txt.Value, New Vector2, New CanvasSolidColorBrush(args.DrawingSession, fnt.Color.AsWindowsColor), format)
+                        End Using
+                        Using transformEffect As New Transform2DEffect With {.Source = cl, .TransformMatrix = view.Transform.GetTransformMatrix}
+                            args.DrawingSession.DrawImage(transformEffect, New Vector2(loc.X, loc.Y))
+                        End Using
+                    End Using
+                Else
+                    args.DrawingSession.DrawText(txt.Value, view.Location.Value,
+                         New CanvasSolidColorBrush(args.DrawingSession, fnt.Color.AsWindowsColor), format)
+                End If
             End If
         End If
     End Sub

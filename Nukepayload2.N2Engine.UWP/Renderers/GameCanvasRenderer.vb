@@ -62,7 +62,8 @@ Public Class GameCanvasRenderer
 
     Protected Overrides Sub CommitRenderTargetToParent(backBuffer As CanvasDrawingSession)
         Dim loc = View.Location.Value
-        backBuffer.DrawImage(RenderTarget, loc.X, loc.Y)
+        Dim rtSize = RenderTarget.Size
+        DrawImageWithTransform2D(loc, rtSize.Width, rtSize.Height, backBuffer, RenderTarget)
     End Sub
 
     ''' <summary>

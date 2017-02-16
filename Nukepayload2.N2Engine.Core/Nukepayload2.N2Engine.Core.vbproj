@@ -200,7 +200,7 @@
     <Compile Include="Utilities\GameVisualInitializers.vb" />
     <Compile Include="Utilities\StaticCast.vb" />
     <Compile Include="Utilities\TreeHelper.vb" />
-    <Compile Include="Utilities\Vector2Extensions.vb" />
+    <Compile Include="Math\Vector2Extensions.vb" />
     <Compile Include="Behaviors\BehaviorBase.vb" />
     <Compile Include="Behaviors\ApplyForceBehavior.vb" />
     <Compile Include="Behaviors\ShakeBehavior.vb" />

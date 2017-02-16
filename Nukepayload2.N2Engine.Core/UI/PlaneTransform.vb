@@ -5,7 +5,9 @@ Namespace UI
     ''' 表示一个平面变换
     ''' </summary>
     Public MustInherit Class PlaneTransform
+        ''' <summary>
+        ''' 3x2 变换矩阵.
+        ''' </summary>
         Public MustOverride Function GetTransformMatrix() As Matrix3x2
-        Public ReadOnly Property Origin As New PropertyBinder(Of Vector2)
     End Class
 End Namespace

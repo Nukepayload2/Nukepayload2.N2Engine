@@ -42,6 +42,17 @@ Namespace Numerics
             R.Y = y1
             Return R
         End Function
+        ''' <summary>
+        ''' 进行 3x2 矩阵变换, 返回变换后的点。
+        ''' </summary>
+        ''' <param name="this">要变换的点</param>
+        ''' <param name="matrix">二维变换矩阵</param>
+        <Extension>
+        Public Function ApplyTransform(this As Vector2, matrix As Matrix3x2) As Vector2
+            this.X = this.X * matrix.M11 + this.Y * matrix.M21 + matrix.M31
+            this.Y = this.X * matrix.M12 + this.Y * matrix.M22 + matrix.M32
+            Return this
+        End Function
     End Module
 
 End Namespace

@@ -1,5 +1,5 @@
-﻿Imports Microsoft.Graphics.Canvas.UI
-Imports Microsoft.Graphics.Canvas.UI.Xaml
+﻿Imports Microsoft.Graphics.Canvas.UI.Xaml
+Imports Nukepayload2.N2Engine.Numerics
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports Nukepayload2.N2Engine.UWP.Marshal
 
@@ -10,7 +10,14 @@ Friend Class LineElementRenderer
 
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, LineElement)
-        Dim loc = View.Location.Value
-        args.DrawingSession.DrawLine(View.StartPoint.Value + loc, View.EndPoint.Value + loc, View.Stroke.Value.AsWindowsColor)
+        Dim loc = view.Location.Value
+        Dim start = view.StartPoint.Value + loc
+        Dim [end] = view.EndPoint.Value + loc
+        If view.Transform IsNot Nothing Then
+            Dim matrix = view.Transform.GetTransformMatrix
+            start = start.ApplyTransform(matrix)
+            [end] = [end].ApplyTransform(matrix)
+        End If
+        args.DrawingSession.DrawLine(start, [end], view.Stroke.Value.AsWindowsColor)
     End Sub
 End Class

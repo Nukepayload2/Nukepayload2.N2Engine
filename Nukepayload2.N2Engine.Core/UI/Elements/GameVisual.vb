@@ -58,7 +58,7 @@ Namespace UI.Elements
         ''' </summary>
         Public ReadOnly Property Effect As GameEffect
         ''' <summary>
-        ''' (未实施) 二维变换
+        ''' (Win2D) 二维变换。如果仅需要改变位置，使用 <see cref="Location"/> 可以获得更好的性能。
         ''' </summary>
         Public ReadOnly Property Transform As PlaneTransform
         ''' <summary>

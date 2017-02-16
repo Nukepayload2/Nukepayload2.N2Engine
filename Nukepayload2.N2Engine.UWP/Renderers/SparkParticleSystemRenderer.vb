@@ -1,4 +1,6 @@
 ﻿Imports System.Numerics
+Imports Microsoft.Graphics.Canvas
+Imports Microsoft.Graphics.Canvas.Effects
 Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UI.ParticleSystemViews
@@ -16,11 +18,22 @@ Friend Class SparkParticleSystemRenderer
     End Sub
 
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
-        Dim ds = args.DrawingSession
+        Dim drawingSession = args.DrawingSession
         Dim SparkSys = DirectCast(View, SparkParticleSystemView).Data.Value
-        For Each part In SparkSys.Particles
-            ds.FillRectangle(New Rect(part.Location.ToPoint, New Size(part.SparkSize, part.SparkSize)), part.SparkColor.AsWindowsColor)
-        Next
+        Using cl = New CanvasCommandList(drawingSession)
+            Using ds = cl.CreateDrawingSession
+                For Each part In SparkSys.Particles
+                    ds.FillRectangle(New Rect(part.Location.ToPoint, New Size(part.SparkSize, part.SparkSize)), part.SparkColor.AsWindowsColor)
+                Next
+            End Using
+            If View.Transform Is Nothing Then
+                drawingSession.DrawImage(cl)
+            Else
+                Using transformEffect As New Transform2DEffect With {.Source = cl, .TransformMatrix = View.Transform.GetTransformMatrix}
+                    drawingSession.DrawImage(transformEffect)
+                End Using
+            End If
+        End Using
     End Sub
 
     Public Overrides Sub DisposeResources()

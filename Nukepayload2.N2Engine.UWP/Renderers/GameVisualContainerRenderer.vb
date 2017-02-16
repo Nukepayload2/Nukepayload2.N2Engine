@@ -1,4 +1,6 @@
-﻿Imports Microsoft.Graphics.Canvas
+﻿Imports System.Numerics
+Imports Microsoft.Graphics.Canvas
+Imports Microsoft.Graphics.Canvas.Effects
 Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UI.Elements
@@ -71,7 +73,14 @@ Public MustInherit Class GameVisualContainerRenderer
         Using ds = parentRT.CreateDrawingSession
             Dim loc = View.Location.Value
             Dim effectedImage = ApplyEffect(RenderTarget)
-            DrawOnParent(ds, loc, effectedImage)
+            Dim rtSize = RenderTarget.Size
+            If View.Transform Is Nothing Then
+                DrawOnParent(ds, loc, effectedImage)
+            Else
+                Using transformEffect As New Transform2DEffect With {.Source = effectedImage, .TransformMatrix = View.Transform.GetTransformMatrix}
+                    DrawOnParent(ds, loc, transformEffect)
+                End Using
+            End If
         End Using
     End Sub
 
