@@ -13,16 +13,7 @@ Friend Class EllipseElementRenderer
         Dim loc = view.Location.Value
         Dim hsize = view.Size.Value / 2
         Dim center = loc - hsize
-        If view.Transform IsNot Nothing Then
-            Dim matrix = view.Transform.GetTransformMatrix
-            ' TODO: 非位图的矩阵变换
-            DrawWithTransform2D(args.DrawingSession,
-                     Sub(ds)
-                         DrawGeometry(ds, view, hsize, center)
-                     End Sub)
-        Else
-            DrawGeometry(args.DrawingSession, view, hsize, center)
-        End If
+        DrawGeometry(args.DrawingSession, view, hsize, center)
     End Sub
 
     Private Shared Sub DrawGeometry(ds As CanvasDrawingSession, view As EllipseElement, hsize As System.Numerics.Vector2, center As System.Numerics.Vector2)

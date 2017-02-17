@@ -1,4 +1,5 @@
-﻿Imports Microsoft.Graphics.Canvas
+﻿Imports System.Numerics
+Imports Microsoft.Graphics.Canvas
 Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UI.Elements
@@ -40,6 +41,11 @@ Public MustInherit Class GameVisualContainerRenderer
                     containers.Add(cont)
                 Else
                     ' 绘制子元素
+                    If child.Transform IsNot Nothing Then
+                        ds.Transform = child.Transform.GetTransformMatrix
+                    Else
+                        ds.Transform = Matrix3x2.Identity
+                    End If
                     DirectCast(child.Renderer, UWPRenderer).OnDraw(sender, New CanvasAnimatedDrawEventArgs(ds, args.Timing))
                 End If
             Next

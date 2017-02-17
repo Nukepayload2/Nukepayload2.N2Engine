@@ -19,15 +19,8 @@ Friend Class TextBlockRenderer
                     .FontStyle = CType(fnt.FontStyle, FontStyle)
                 }
                 SetFormat(fnt, format)
-                If view.Transform IsNot Nothing Then
-                    Dim loc = view.Location.Value
-                    DrawWithTransform2D(args.DrawingSession,
-                                        Sub(ds) ds.DrawText(txt.Value, view.Location.Value,
-                                                            New CanvasSolidColorBrush(args.DrawingSession, fnt.Color.AsWindowsColor), format))
-                Else
-                    args.DrawingSession.DrawText(txt.Value, view.Location.Value,
+                args.DrawingSession.DrawText(txt.Value, view.Location.Value,
                          New CanvasSolidColorBrush(args.DrawingSession, fnt.Color.AsWindowsColor), format)
-                End If
             End If
         End If
     End Sub

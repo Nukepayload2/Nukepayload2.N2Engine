@@ -42,20 +42,29 @@ Public MustInherit Class GameVisualContainerRenderer
         ' 初始化 DC
         Static dc As New DrawingContext(args.SpriteBatch, RenderTarget)
         args.DrawingContext = dc
-        dc.Begin()
-        For Each child In children
-            If ShouldVirtualize(child) Then
-                Continue For
-            End If
-            Dim cont = TryCast(child, GameVisualContainer)
-            If cont IsNot Nothing Then
-                containers.Add(cont)
+        Dim groupedChildren = From ch In children Group By ch.Transform Into Group
+        For Each k In groupedChildren
+            dc.Begin()
+            If k.Transform Is Nothing Then
+                dc.Transform = Nothing
             Else
-                ' 绘制子元素
-                DirectCast(child.Renderer, MonoGameRenderer).OnDraw(sender, args)
+                Dim mat = k.Transform.GetTransformMatrix
+                dc.Transform = New Transform2D(mat)
             End If
+            For Each child In children
+                If ShouldVirtualize(child) Then
+                    Continue For
+                End If
+                Dim cont = TryCast(child, GameVisualContainer)
+                If cont IsNot Nothing Then
+                    containers.Add(cont)
+                Else
+                    ' 绘制子元素
+                    DirectCast(child.Renderer, MonoGameRenderer).OnDraw(sender, args)
+                End If
+            Next
+            dc.End()
         Next
-        dc.End()
         args.DrawingContext = Nothing
         For Each cont In containers
             ' 绘制容器类型
@@ -78,7 +87,17 @@ Public MustInherit Class GameVisualContainerRenderer
         Dim parentRenderer = parent.Renderer
         Dim parentRT = DirectCast(parentRenderer, GameVisualContainerRenderer).RenderTarget
         device.SetRenderTarget(parentRT)
-        dc.Begin()
+        If View.Transform Is Nothing Then
+            dc.Begin()
+        Else
+            With View.Transform.GetTransformMatrix
+                dc.Begin(SpriteSortMode.Deferred, Nothing, Nothing, Nothing, Nothing, Nothing,
+                         New Matrix(.M11, .M12, 0F, 0F,
+                                    .M21, .M22, 0F, 0F,
+                                    0F, 0F, 1.0F, 0F,
+                                    .M31, .M32, 0F, 1.0F))
+            End With
+        End If
         Dim loc = View.Location.Value
         Dim drawSize As New Rectangle(loc.X, loc.Y, RenderTarget.Width, RenderTarget.Height)
         Dim effectedImage = ApplyEffect(RenderTarget)

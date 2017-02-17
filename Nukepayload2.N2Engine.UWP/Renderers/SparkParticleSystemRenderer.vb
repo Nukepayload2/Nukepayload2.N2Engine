@@ -20,22 +20,17 @@ Friend Class SparkParticleSystemRenderer
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim drawingSession = args.DrawingSession
         Dim SparkSys = DirectCast(View, SparkParticleSystemView).Data.Value
+        ' 同时绘制多组对象时需要注意：
+        ' 如果要绘制的对象没有共用的形状，
+        ' 则必须先绘制到 CanvasCommandList 上面，然后绘制到 args.DrawingSession。
+        ' 否则会遇到平面变换 Bug。
         Using cl = New CanvasCommandList(drawingSession)
             Using ds = cl.CreateDrawingSession
                 For Each part In SparkSys.Particles
                     ds.FillRectangle(New Rect(part.Location.ToPoint, New Size(part.SparkSize, part.SparkSize)), part.SparkColor.AsWindowsColor)
                 Next
             End Using
-            If View.Transform Is Nothing Then
-                drawingSession.DrawImage(cl)
-            Else
-                Using cl2 = New CanvasCommandList(drawingSession)
-                    Using ds2 = cl2.CreateDrawingSession
-                        ds2.Transform = View.Transform.GetTransformMatrix
-                    End Using
-                    drawingSession.DrawImage(cl2)
-                End Using
-            End If
+            drawingSession.DrawImage(cl)
         End Using
     End Sub
 

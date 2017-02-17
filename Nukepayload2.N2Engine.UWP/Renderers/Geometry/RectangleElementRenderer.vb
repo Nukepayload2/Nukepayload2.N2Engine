@@ -9,19 +9,12 @@ Friend Class RectangleElementRenderer
     Sub New(view As RectangleElement)
         MyBase.New(view)
     End Sub
+
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, RectangleElement)
         Dim loc = view.Location.Value
         Dim size = view.Size.Value
-        If view.Transform IsNot Nothing Then
-            Dim matrix = view.Transform.GetTransformMatrix
-            DrawWithTransform2D(args.DrawingSession,
-                                Sub(ds)
-                                    DrawGeometry(ds, view, loc, size)
-                                End Sub)
-        Else
-            DrawGeometry(args.DrawingSession, view, loc, size)
-        End If
+        DrawGeometry(args.DrawingSession, view, loc, size)
     End Sub
 
     Private Shared Sub DrawGeometry(ds As Microsoft.Graphics.Canvas.CanvasDrawingSession, view As RectangleElement, loc As Vector2, size As Vector2)

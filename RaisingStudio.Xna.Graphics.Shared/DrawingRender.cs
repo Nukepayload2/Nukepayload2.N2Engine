@@ -100,10 +100,7 @@ namespace RaisingStudio.Xna.Graphics
 
         public void DrawIndexedPrimitives<T>(PrimitiveType primitiveType, T[] vertexData, int vertexOffset, int numVertices, ushort[] indexData, int indexOffset, int primitiveCount) where T : struct, IVertexType
         {
-            if (this.BeforeRender != null)
-            {
-                this.BeforeRender(this, EventArgs.Empty);
-            }
+            this.BeforeRender?.Invoke(this, EventArgs.Empty);
 
             var renderTagets = GraphicsDevice.GetRenderTargets();
             GraphicsDevice.SetRenderTarget(this.RenderTarget);
@@ -138,18 +135,14 @@ namespace RaisingStudio.Xna.Graphics
             GraphicsDevice.Indices = null;
             GraphicsDevice.SetRenderTargets(renderTagets);
 
-            if (this.AfterRender != null)
-            {
-                this.AfterRender(this, EventArgs.Empty);
-            }
+            this.AfterRender?.Invoke(this, EventArgs.Empty);
         }
 
-        internal void Begin(SpriteBatch spriteBatch, SpriteSortMode spriteSortMode, BlendState blendState, SamplerState samplerState, DepthStencilState depthStencilState, RasterizerState rasterizerState, Effect effect, Matrix matrix, out RenderTargetBinding[] renderTagets)
+        internal void Begin(SpriteBatch spriteBatch, SpriteSortMode spriteSortMode, BlendState blendState, 
+            SamplerState samplerState, DepthStencilState depthStencilState, RasterizerState rasterizerState,
+            Effect effect, Matrix matrix, out RenderTargetBinding[] renderTagets)
         {
-            if (this.BeforeRender != null)
-            {
-                this.BeforeRender(this, EventArgs.Empty);
-            }
+            this.BeforeRender?.Invoke(this, EventArgs.Empty);
 
             renderTagets = GraphicsDevice.GetRenderTargets();
             GraphicsDevice.SetRenderTarget(this.RenderTarget);

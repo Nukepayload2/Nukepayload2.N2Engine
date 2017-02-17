@@ -16,11 +16,6 @@ Friend Class PolylineElementRenderer
             pb.AddLine(lines(i))
         Next
         pb.EndFigure(If(view.IsClosed.Value, CanvasFigureLoop.Closed, CanvasFigureLoop.Open))
-        If view.Transform IsNot Nothing Then
-            Dim matrix = view.Transform.GetTransformMatrix
-            DrawWithTransform2D(args.DrawingSession, Sub(ds) ds.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor))
-        Else
-            args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
-        End If
+        args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
     End Sub
 End Class

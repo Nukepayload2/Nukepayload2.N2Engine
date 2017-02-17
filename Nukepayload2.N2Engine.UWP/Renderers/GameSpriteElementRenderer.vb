@@ -39,11 +39,7 @@ Friend Class GameSpriteElementRenderer
         Dim size = view.Size.Value
         Dim drawingSession = args.DrawingSession
         Dim texture = bmp.Texture
-        If view.Transform IsNot Nothing Then
-            DrawImageWithTransform2D(loc, size.X, size.Y, drawingSession, texture)
-        Else
-            drawingSession.DrawImage(texture, New Rect(loc.X, loc.Y, size.X, size.Y))
-        End If
+        drawingSession.DrawImage(texture, New Rect(loc.X, loc.Y, size.X, size.Y))
     End Sub
 
     Sub DrawColor(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)

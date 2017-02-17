@@ -16,13 +16,22 @@ namespace RaisingStudio.Xna.Graphics
     {
         public float M11;
         public float M12;
-        public float TX;
+        public float M31;
         public float M21;
         public float M22;
-        public float TY;
+        public float M32;
 
         private static Transform2D _empty;
 
+        public Transform2D(System.Numerics.Matrix3x2 matrix)
+        {
+            M11 = matrix.M11;
+            M12 = matrix.M12;
+            M31 = matrix.M31;
+            M21 = matrix.M21;
+            M22 = matrix.M22;
+            M32 = matrix.M32;
+        }
 
         /// <summary>
         /// Gets a value indicating whether this transformation is empty.
@@ -32,7 +41,7 @@ namespace RaisingStudio.Xna.Graphics
         {
             get
             {
-                return M11 == 1 && M22 == 1 && TX == 0 && TY == 0 && M12 == 0 && M21 == 0;
+                return M11 == 1 && M22 == 1 && M31 == 0 && M32 == 0 && M12 == 0 && M21 == 0;
             }
         }
 
@@ -69,8 +78,8 @@ namespace RaisingStudio.Xna.Graphics
             result.M21 = t1.M11 * t2.M21 + t1.M21 * t2.M22;
             result.M22 = t1.M12 * t2.M21 + t1.M22 * t2.M22;
 
-            result.TX = t1.TX * t2.M11 + t1.TY * t2.M12 + t2.TX;
-            result.TY = t1.TX * t2.M21 + t1.TY * t2.M22 + t2.TY;
+            result.M31 = t1.M31 * t2.M11 + t1.M32 * t2.M12 + t2.M31;
+            result.M32 = t1.M31 * t2.M21 + t1.M32 * t2.M22 + t2.M32;
         }
 
         /// <summary>
@@ -82,8 +91,8 @@ namespace RaisingStudio.Xna.Graphics
         public static void Multiply(ref Transform2D transform, ref Vector2 vector, out Vector2 result)
         {
             result = new Vector2(
-                transform.M11 * vector.X + transform.M12 * vector.Y + transform.TX,
-                transform.M21 * vector.X + transform.M22 * vector.Y + transform.TY
+                transform.M11 * vector.X + transform.M12 * vector.Y + transform.M31,
+                transform.M21 * vector.X + transform.M22 * vector.Y + transform.M32
             );
         }
 
@@ -95,7 +104,7 @@ namespace RaisingStudio.Xna.Graphics
         /// <param name="result">The result vector.</param>
         public static void ReverseMultiply(ref Transform2D transform, ref Vector2 vector, out Vector2 result)
         {
-            float cx = vector.X - transform.TX, cy = vector.Y - transform.TY;
+            float cx = vector.X - transform.M31, cy = vector.Y - transform.M32;
             float div = 1 / (transform.M12 * transform.M21 - transform.M22 * transform.M11);
 
             result = new Vector2(
@@ -116,8 +125,8 @@ namespace RaisingStudio.Xna.Graphics
             result.M12 = t1.M12 + t2.M12;
             result.M21 = t1.M21 + t2.M21;
             result.M22 = t1.M22 + t2.M22;
-            result.TX = t1.TX + t2.TX;
-            result.TY = t1.TY + t2.TY;
+            result.M31 = t1.M31 + t2.M31;
+            result.M32 = t1.M32 + t2.M32;
         }
 
         /// <summary>
@@ -132,8 +141,8 @@ namespace RaisingStudio.Xna.Graphics
             result.M12 = t1.M12 - t2.M12;
             result.M21 = t1.M21 - t2.M21;
             result.M22 = t1.M22 - t2.M22;
-            result.TX = t1.TX - t2.TX;
-            result.TY = t1.TY - t2.TY;
+            result.M31 = t1.M31 - t2.M31;
+            result.M32 = t1.M32 - t2.M32;
         }
 
         /// <summary>
@@ -150,8 +159,8 @@ namespace RaisingStudio.Xna.Graphics
             result.M21 = t.M11;
             result.M22 = t.M12;
 
-            result.TX = t.M11 * offset.X + t.M21 * offset.Y + t.TX;
-            result.TY = t.M12 * offset.X + t.M22 * offset.Y + t.TY;
+            result.M31 = t.M11 * offset.X + t.M21 * offset.Y + t.M31;
+            result.M32 = t.M12 * offset.X + t.M22 * offset.Y + t.M32;
         }
 
         /// <summary>
@@ -316,7 +325,7 @@ namespace RaisingStudio.Xna.Graphics
             Transform2D temp;
             temp.M11 = temp.M22 = 1.0f;
             temp.M12 = temp.M21 = 0.0f;
-            temp.TX = temp.TY = 0.0f;
+            temp.M31 = temp.M32 = 0.0f;
             return temp;
         }
 
@@ -331,8 +340,8 @@ namespace RaisingStudio.Xna.Graphics
             Transform2D temp;
             temp.M11 = temp.M22 = 1.0f;
             temp.M12 = temp.M21 = 0.0f;
-            temp.TX = offsetX;
-            temp.TY = offsetY;
+            temp.M31 = offsetX;
+            temp.M32 = offsetY;
             return temp;
         }
 
@@ -346,8 +355,8 @@ namespace RaisingStudio.Xna.Graphics
             Transform2D temp;
             temp.M11 = temp.M22 = 1.0f;
             temp.M12 = temp.M21 = 0.0f;
-            temp.TX = translation.X;
-            temp.TY = translation.Y;
+            temp.M31 = translation.X;
+            temp.M32 = translation.Y;
             return temp;
         }
 
@@ -424,7 +433,7 @@ namespace RaisingStudio.Xna.Graphics
         {
             result.M11 = result.M22 = 1.0f;
             result.M12 = result.M21 = 0.0f;
-            result.TX = result.TY = 0.0f;
+            result.M31 = result.M32 = 0.0f;
         }
 
         /// <summary>
@@ -435,8 +444,8 @@ namespace RaisingStudio.Xna.Graphics
         {
             result.M11 = result.M22 = 1.0f;
             result.M12 = result.M21 = 0.0f;
-            result.TX = translation.X;
-            result.TY = translation.Y;
+            result.M31 = translation.X;
+            result.M32 = translation.Y;
         }
 
         /// <summary>
@@ -450,7 +459,7 @@ namespace RaisingStudio.Xna.Graphics
             result.M21 = (float)Math.Sin(angleRad);
             result.M12 = -result.M21;
             result.M22 = result.M11;
-            result.TX = result.TY = 0.0f;
+            result.M31 = result.M32 = 0.0f;
         }
 
         /// <summary>
@@ -466,8 +475,8 @@ namespace RaisingStudio.Xna.Graphics
             result.M12 = -result.M21;
             result.M22 = result.M11;
 
-            result.TX = result.M11 * (-origin.X) + result.M21 * origin.Y + origin.X;
-            result.TY = result.M12 * origin.X + result.M22 * (-origin.Y) + origin.Y;
+            result.M31 = result.M11 * (-origin.X) + result.M21 * origin.Y + origin.X;
+            result.M32 = result.M12 * origin.X + result.M22 * (-origin.Y) + origin.Y;
         }
 
         /// <summary>
@@ -482,7 +491,7 @@ namespace RaisingStudio.Xna.Graphics
             result.M12 = 0.0f;
             result.M21 = 0.0f;
 
-            result.TX = result.TY = 0.0f;
+            result.M31 = result.M32 = 0.0f;
         }
 
         /// <summary>
@@ -498,8 +507,8 @@ namespace RaisingStudio.Xna.Graphics
             result.M22 = scaleFactor.Y;
             result.M21 = 0.0f;
 
-            result.TX = result.M11 * (-origin.X) + result.M21 * origin.Y + origin.X;
-            result.TY = result.M12 * origin.X + result.M22 * (-origin.Y) + origin.Y;
+            result.M31 = result.M11 * (-origin.X) + result.M21 * origin.Y + origin.X;
+            result.M32 = result.M12 * origin.X + result.M22 * (-origin.Y) + origin.Y;
         }
 
         #endregion
@@ -519,10 +528,10 @@ namespace RaisingStudio.Xna.Graphics
             return
                 M11 == other.M11 &&
                 M12 == other.M12 &&
-                TX == other.TX &&
+                M31 == other.M31 &&
                 M21 == other.M21 &&
                 M22 == other.M22 &&
-                TY == other.TY;
+                M32 == other.M32;
         }
 
         #endregion
@@ -535,7 +544,7 @@ namespace RaisingStudio.Xna.Graphics
         /// </returns>
         public override string ToString()
         {
-            return string.Format("{{M11={0}, M12={1}, M21={2}, M22={3}; TX={4}, TY={5}}}", M11, M12, M21, M22, TX, TY);
+            return string.Format("{{M11={0}, M12={1}, M21={2}, M22={3}; TX={4}, TY={5}}}", M11, M12, M21, M22, M31, M32);
         }
 
         /// <summary>
@@ -558,7 +567,7 @@ namespace RaisingStudio.Xna.Graphics
         /// </returns>
         public override int GetHashCode()
         {
-            return (int)(M11 + M12 + M21 + M22 + TX + TY);
+            return (int)(M11 + M12 + M21 + M22 + M31 + M32);
         }
     }
 }

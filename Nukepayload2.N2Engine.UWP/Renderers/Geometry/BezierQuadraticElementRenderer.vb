@@ -14,14 +14,6 @@ Friend Class BezierQuadraticElementRenderer
         pb.BeginFigure(view.StartPoint.Value)
         pb.AddQuadraticBezier(view.ControlPoint.Value, view.EndPoint.Value)
         pb.EndFigure(CanvasFigureLoop.Open)
-        If view.Transform IsNot Nothing Then
-            Dim matrix = view.Transform.GetTransformMatrix
-            DrawWithTransform2D(args.DrawingSession,
-                                Sub(ds)
-                                    ds.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
-                                End Sub)
-        Else
-            args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
-        End If
+        args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
     End Sub
 End Class

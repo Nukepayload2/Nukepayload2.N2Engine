@@ -43,7 +43,17 @@ Public Class GameCanvasRenderer
     Protected Overrides Sub CommitRenderTargetToParent(device As GraphicsDevice, dc As SpriteBatch)
         device.SetRenderTarget(Nothing)
         device.Clear(Color.White)
-        dc.Begin()
+        If View.Transform Is Nothing Then
+            dc.Begin()
+        Else
+            With View.Transform.GetTransformMatrix
+                dc.Begin(SpriteSortMode.Deferred, Nothing, Nothing, Nothing, Nothing, Nothing,
+                         New Matrix(.M11, .M12, 0F, 0F,
+                                    .M21, .M22, 0F, 0F,
+                                    0F, 0F, 1.0F, 0F,
+                                    .M31, .M32, 0F, 1.0F))
+            End With
+        End If
         Dim loc = View.Location.Value
         dc.Draw(RenderTarget, New Rectangle(loc.X, loc.Y, RenderTarget.Width, RenderTarget.Height), Color.White)
         dc.End()

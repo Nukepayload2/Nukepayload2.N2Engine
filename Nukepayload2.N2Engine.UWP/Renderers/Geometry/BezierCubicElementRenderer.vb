@@ -15,13 +15,6 @@ Friend Class BezierCubicElementRenderer
         pb.BeginFigure(view.StartPoint.Value)
         pb.AddCubicBezier(view.ControlPoint1.Value, view.ControlPoint2.Value, view.EndPoint.Value)
         pb.EndFigure(CanvasFigureLoop.Open)
-        If view.Transform IsNot Nothing Then
-            Dim matrix = view.Transform.GetTransformMatrix
-            DrawWithTransform2D(args.DrawingSession,
-                                Sub(ds)
-                                    ds.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
-                                End Sub)
-        End If
         args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
     End Sub
 

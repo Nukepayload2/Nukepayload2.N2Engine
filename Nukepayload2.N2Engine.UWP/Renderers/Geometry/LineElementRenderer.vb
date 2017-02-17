@@ -12,12 +12,6 @@ Friend Class LineElementRenderer
         Dim loc = view.Location.Value
         Dim start = view.StartPoint.Value + loc
         Dim [end] = view.EndPoint.Value + loc
-        If view.Transform IsNot Nothing Then
-            Dim matrix = view.Transform.GetTransformMatrix
-            DrawWithTransform2D(args.DrawingSession,
-                                Sub(ds) ds.DrawLine(start, [end], view.Stroke.Value.AsWindowsColor))
-        Else
-            args.DrawingSession.DrawLine(start, [end], view.Stroke.Value.AsWindowsColor)
-        End If
+        args.DrawingSession.DrawLine(start, [end], view.Stroke.Value.AsWindowsColor)
     End Sub
 End Class

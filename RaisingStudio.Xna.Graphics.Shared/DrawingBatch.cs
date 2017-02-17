@@ -250,15 +250,15 @@ namespace RaisingStudio.Xna.Graphics
                 StartDrawing(VertexFragment.Line, out vertices, out indices, out baseIndex);
                 //---------------------------------------------------
                 vertices[0].Position = new Vector3(
-                    _transform.M11 * start.X + _transform.M12 * start.Y + _transform.TX - 0.5f,
-                    _transform.M21 * start.X + _transform.M22 * start.Y + _transform.TY,
+                    _transform.M11 * start.X + _transform.M12 * start.Y + _transform.M31 - 0.5f,
+                    _transform.M21 * start.X + _transform.M22 * start.Y + _transform.M32,
                     _Z
                 );
                 vertices[0].Color = color;
                 //---------------------------------------------------
                 vertices[1].Position = new Vector3(
-                    _transform.M11 * end.X + _transform.M12 * end.Y + _transform.TX - 0.5f,
-                    _transform.M21 * end.X + _transform.M22 * end.Y + _transform.TY,
+                    _transform.M11 * end.X + _transform.M12 * end.Y + _transform.M31 - 0.5f,
+                    _transform.M21 * end.X + _transform.M22 * end.Y + _transform.M32,
                     _Z
                 );
                 vertices[1].Color = color;
@@ -317,29 +317,29 @@ namespace RaisingStudio.Xna.Graphics
                 StartDrawing(VertexFragment.Rectangle, out vertices, out indices, out baseIndex);
                 //---------------------------------------------------
                 vertices[0].Position = new Vector3(
-                    _transform.M11 * x + _transform.M12 * y + _transform.TX - 0.5f,
-                    _transform.M21 * x + _transform.M22 * y + _transform.TY - 0.5f,
+                    _transform.M11 * x + _transform.M12 * y + _transform.M31 - 0.5f,
+                    _transform.M21 * x + _transform.M22 * y + _transform.M32 - 0.5f,
                     _Z
                 );
                 vertices[0].Color = color;
                 //---------------------------------------------------
                 vertices[1].Position = new Vector3(
-                    _transform.M11 * right + _transform.M12 * y + _transform.TX,
-                    _transform.M21 * right + _transform.M22 * y + _transform.TY,
+                    _transform.M11 * right + _transform.M12 * y + _transform.M31,
+                    _transform.M21 * right + _transform.M22 * y + _transform.M32,
                     _Z
                 );
                 vertices[1].Color = color;
                 //---------------------------------------------------
                 vertices[2].Position = new Vector3(
-                    _transform.M11 * right + _transform.M12 * bottom + _transform.TX,
-                    _transform.M21 * right + _transform.M22 * bottom + _transform.TY,
+                    _transform.M11 * right + _transform.M12 * bottom + _transform.M31,
+                    _transform.M21 * right + _transform.M22 * bottom + _transform.M32,
                     _Z
                 );
                 vertices[2].Color = color;
                 //---------------------------------------------------
                 vertices[3].Position = new Vector3(
-                    _transform.M11 * x + _transform.M12 * bottom + _transform.TX,
-                    _transform.M21 * x + _transform.M22 * bottom + _transform.TY,
+                    _transform.M11 * x + _transform.M12 * bottom + _transform.M31,
+                    _transform.M21 * x + _transform.M22 * bottom + _transform.M32,
                     _Z
                 );
                 vertices[3].Color = color;
@@ -395,23 +395,23 @@ namespace RaisingStudio.Xna.Graphics
                 StartDrawing(VertexFragment.Triangle, out vertices, out indices, out baseIndex);
                 //---------------------------------------------------
                 vertices[0].Position = new Vector3(
-                _transform.M11 * vertex1.X + _transform.M12 * vertex1.Y + _transform.TX - 0.5f,
-                _transform.M21 * vertex1.X + _transform.M22 * vertex1.Y + _transform.TY - 0.5f,
+                _transform.M11 * vertex1.X + _transform.M12 * vertex1.Y + _transform.M31 - 0.5f,
+                _transform.M21 * vertex1.X + _transform.M22 * vertex1.Y + _transform.M32 - 0.5f,
                 _Z
                 );
                 vertices[0].Color = color;
                 //---------------------------------------------------
                 vertices[1].Position = new Vector3(
-                _transform.M11 * vertex2.X + _transform.M12 * vertex2.Y + _transform.TX - 0.5f,
-                _transform.M21 * vertex2.X + _transform.M22 * vertex2.Y + _transform.TY - 0.5f,
+                _transform.M11 * vertex2.X + _transform.M12 * vertex2.Y + _transform.M31 - 0.5f,
+                _transform.M21 * vertex2.X + _transform.M22 * vertex2.Y + _transform.M32 - 0.5f,
                 _Z
                 );
                 vertices[1].Color = color;
                 //---------------------------------------------------
 
                 vertices[2].Position = new Vector3(
-                _transform.M11 * vertex3.X + _transform.M12 * vertex3.Y + _transform.TX - 0.5f,
-                _transform.M21 * vertex3.X + _transform.M22 * vertex3.Y + _transform.TY - 0.5f,
+                _transform.M11 * vertex3.X + _transform.M12 * vertex3.Y + _transform.M31 - 0.5f,
+                _transform.M21 * vertex3.X + _transform.M22 * vertex3.Y + _transform.M32 - 0.5f,
                 _Z
                 );
                 vertices[2].Color = color;
@@ -546,8 +546,8 @@ namespace RaisingStudio.Xna.Graphics
                             //---------------------------------------------------
                             Vector2 vector = points[n + start];
                             vertices->Position = new Vector3(
-                            _transform.M11 * vector.X + _transform.M12 * vector.Y + _transform.TX - 0.5f, //fix line alignment issue
-                            _transform.M21 * vector.X + _transform.M22 * vector.Y + _transform.TY - 0.5f, //fix line alignment issue
+                            _transform.M11 * vector.X + _transform.M12 * vector.Y + _transform.M31 - 0.5f, //fix line alignment issue
+                            _transform.M21 * vector.X + _transform.M22 * vector.Y + _transform.M32 - 0.5f, //fix line alignment issue
                             _Z
                             );
                             vertices->Color = color;
@@ -757,22 +757,22 @@ namespace RaisingStudio.Xna.Graphics
                 StartDrawing(VertexFragment.FilledTriangle, out vertices, out textures, out indices, out baseIndex);
                 //---------------------------------------------------
                 vertices[0].Position = new Vector3(
-                _transform.M11 * vertex1.X + _transform.M12 * vertex1.Y + _transform.TX,
-                _transform.M21 * vertex1.X + _transform.M22 * vertex1.Y + _transform.TY,
+                _transform.M11 * vertex1.X + _transform.M12 * vertex1.Y + _transform.M31,
+                _transform.M21 * vertex1.X + _transform.M22 * vertex1.Y + _transform.M32,
                 _Z
                 );
                 vertices[0].Color = color;
                 //---------------------------------------------------
                 vertices[1].Position = new Vector3(
-                _transform.M11 * vertex2.X + _transform.M12 * vertex2.Y + _transform.TX,
-                _transform.M21 * vertex2.X + _transform.M22 * vertex2.Y + _transform.TY,
+                _transform.M11 * vertex2.X + _transform.M12 * vertex2.Y + _transform.M31,
+                _transform.M21 * vertex2.X + _transform.M22 * vertex2.Y + _transform.M32,
                 _Z
                 );
                 vertices[1].Color = color;
                 //---------------------------------------------------
                 vertices[2].Position = new Vector3(
-                _transform.M11 * vertex3.X + _transform.M12 * vertex3.Y + _transform.TX,
-                _transform.M21 * vertex3.X + _transform.M22 * vertex3.Y + _transform.TY,
+                _transform.M11 * vertex3.X + _transform.M12 * vertex3.Y + _transform.M31,
+                _transform.M21 * vertex3.X + _transform.M22 * vertex3.Y + _transform.M32,
                 _Z
                 );
                 vertices[2].Color = color;
@@ -923,14 +923,14 @@ namespace RaisingStudio.Xna.Graphics
         private static unsafe void Transform2Vertices(ref Transform2D t, VertexPositionColor* v)
         {
             v[0].Position = new Vector3(
-                t.M11 * v[0].Position.X + t.M12 * v[0].Position.Y + t.TX,
-                t.M21 * v[0].Position.X + t.M22 * v[0].Position.Y + t.TY,
+                t.M11 * v[0].Position.X + t.M12 * v[0].Position.Y + t.M31,
+                t.M21 * v[0].Position.X + t.M22 * v[0].Position.Y + t.M32,
                 0
             );
 
             v[1].Position = new Vector3(
-                t.M11 * v[1].Position.X + t.M12 * v[1].Position.Y + t.TX,
-                t.M21 * v[1].Position.X + t.M22 * v[1].Position.Y + t.TY,
+                t.M11 * v[1].Position.X + t.M12 * v[1].Position.Y + t.M31,
+                t.M21 * v[1].Position.X + t.M22 * v[1].Position.Y + t.M32,
                 0
             );
         }
@@ -944,26 +944,26 @@ namespace RaisingStudio.Xna.Graphics
         {
             //+3% of performance
             v[0].Position = new Vector3(
-                t.M11 * v[0].Position.X + t.M12 * v[0].Position.Y + t.TX,
-                t.M21 * v[0].Position.X + t.M22 * v[0].Position.Y + t.TY,
+                t.M11 * v[0].Position.X + t.M12 * v[0].Position.Y + t.M31,
+                t.M21 * v[0].Position.X + t.M22 * v[0].Position.Y + t.M32,
                 0
             );
 
             v[1].Position = new Vector3(
-                t.M11 * v[1].Position.X + t.M12 * v[1].Position.Y + t.TX,
-                t.M21 * v[1].Position.X + t.M22 * v[1].Position.Y + t.TY,
+                t.M11 * v[1].Position.X + t.M12 * v[1].Position.Y + t.M31,
+                t.M21 * v[1].Position.X + t.M22 * v[1].Position.Y + t.M32,
                 0
             );
 
             v[2].Position = new Vector3(
-                t.M11 * v[2].Position.X + t.M12 * v[2].Position.Y + t.TX,
-                t.M21 * v[2].Position.X + t.M22 * v[2].Position.Y + t.TY,
+                t.M11 * v[2].Position.X + t.M12 * v[2].Position.Y + t.M31,
+                t.M21 * v[2].Position.X + t.M22 * v[2].Position.Y + t.M32,
                 0
             );
 
             v[3].Position = new Vector3(
-                t.M11 * v[3].Position.X + t.M12 * v[3].Position.Y + t.TX,
-                t.M21 * v[3].Position.X + t.M22 * v[3].Position.Y + t.TY,
+                t.M11 * v[3].Position.X + t.M12 * v[3].Position.Y + t.M31,
+                t.M21 * v[3].Position.X + t.M22 * v[3].Position.Y + t.M32,
                 0
             );
         }
@@ -979,8 +979,8 @@ namespace RaisingStudio.Xna.Graphics
             for (int n = 0; n < count; ++n)
             {
                 v[0].Position = new Vector3(
-                    t.M11 * v->Position.X + t.M12 * v->Position.Y + t.TX,
-                    t.M21 * v->Position.X + t.M22 * v->Position.Y + t.TY,
+                    t.M11 * v->Position.X + t.M12 * v->Position.Y + t.M31,
+                    t.M21 * v->Position.X + t.M22 * v->Position.Y + t.M32,
                     0
                 );
                 v++;
@@ -999,8 +999,8 @@ namespace RaisingStudio.Xna.Graphics
             for (int n = 0; n < count; ++n)
             {
                 v[0].Position = new Vector3(
-                    t.M11 * v->Position.X + t.M12 * v->Position.Y + t.TX + offset.X,
-                    t.M21 * v->Position.X + t.M22 * v->Position.Y + t.TY + offset.Y,
+                    t.M11 * v->Position.X + t.M12 * v->Position.Y + t.M31 + offset.X,
+                    t.M21 * v->Position.X + t.M22 * v->Position.Y + t.M32 + offset.Y,
                     0
                 );
                 v++;

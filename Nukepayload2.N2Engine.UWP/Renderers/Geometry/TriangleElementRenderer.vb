@@ -17,15 +17,7 @@ Friend Class TriangleElementRenderer
         pb.AddLine(view.Point3.Value)
         pb.EndFigure(CanvasFigureLoop.Closed)
         Dim loc = view.Location.Value
-        If view.Transform IsNot Nothing Then
-            Dim matrix = view.Transform.GetTransformMatrix
-            DrawWithTransform2D(args.DrawingSession,
-                                Sub(ds)
-                                    DrawGeometry(ds, view, pb, loc)
-                                End Sub)
-        Else
-            DrawGeometry(args.DrawingSession, view, pb, loc)
-        End If
+        DrawGeometry(args.DrawingSession, view, pb, loc)
     End Sub
 
     Private Shared Sub DrawGeometry(ds As Microsoft.Graphics.Canvas.CanvasDrawingSession, view As TriangleElement, pb As CanvasPathBuilder, loc As System.Numerics.Vector2)

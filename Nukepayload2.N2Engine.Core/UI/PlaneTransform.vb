@@ -6,7 +6,7 @@ Namespace UI
     ''' </summary>
     Public MustInherit Class PlaneTransform
         ''' <summary>
-        ''' 3x2 变换矩阵.
+        ''' 获取表示平面变换的 3x2 矩阵.
         ''' </summary>
         Public MustOverride Function GetTransformMatrix() As Matrix3x2
     End Class
