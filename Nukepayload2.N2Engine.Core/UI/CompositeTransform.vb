@@ -34,7 +34,7 @@ Namespace UI
             If Translate.CanRead Then
                 mat *= Matrix3x2.CreateTranslation(Translate.Value)
             End If
-            If Origin.CanRead Then
+            If Not Origin.CanRead Then
                 If Rotate.CanRead Then
                     mat *= Matrix3x2.CreateRotation(Rotate.Value)
                 End If

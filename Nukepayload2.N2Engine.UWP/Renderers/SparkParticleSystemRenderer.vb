@@ -29,8 +29,11 @@ Friend Class SparkParticleSystemRenderer
             If View.Transform Is Nothing Then
                 drawingSession.DrawImage(cl)
             Else
-                Using transformEffect As New Transform2DEffect With {.Source = cl, .TransformMatrix = View.Transform.GetTransformMatrix}
-                    drawingSession.DrawImage(transformEffect)
+                Using cl2 = New CanvasCommandList(drawingSession)
+                    Using ds2 = cl2.CreateDrawingSession
+                        ds2.Transform = View.Transform.GetTransformMatrix
+                    End Using
+                    drawingSession.DrawImage(cl2)
                 End Using
             End If
         End Using

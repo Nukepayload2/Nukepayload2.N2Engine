@@ -16,23 +16,21 @@ Friend Class EllipseElementRenderer
         If view.Transform IsNot Nothing Then
             Dim matrix = view.Transform.GetTransformMatrix
             ' TODO: 非位图的矩阵变换
-            DrawWithTransform2D(loc,
-                Sub(ds)
-                    If view.Fill.CanRead Then
-                        ds.FillEllipse(center, hsize.X, hsize.Y, view.Fill.Value.AsWindowsColor)
-                    End If
-                    If view.Stroke.CanRead Then
-                        ds.DrawEllipse(center, hsize.X, hsize.Y, view.Stroke.Value.AsWindowsColor)
-                    End If
-                End Sub, args.DrawingSession)
+            DrawWithTransform2D(args.DrawingSession,
+                     Sub(ds)
+                         DrawGeometry(ds, view, hsize, center)
+                     End Sub)
         Else
-            If view.Fill.CanRead Then
-                args.DrawingSession.FillEllipse(center, hsize.X, hsize.Y, view.Fill.Value.AsWindowsColor)
-            End If
-            If view.Stroke.CanRead Then
-                args.DrawingSession.DrawEllipse(center, hsize.X, hsize.Y, view.Stroke.Value.AsWindowsColor)
-            End If
+            DrawGeometry(args.DrawingSession, view, hsize, center)
         End If
+    End Sub
 
+    Private Shared Sub DrawGeometry(ds As CanvasDrawingSession, view As EllipseElement, hsize As System.Numerics.Vector2, center As System.Numerics.Vector2)
+        If view.Fill.CanRead Then
+            ds.FillEllipse(center, hsize.X, hsize.Y, view.Fill.Value.AsWindowsColor)
+        End If
+        If view.Stroke.CanRead Then
+            ds.DrawEllipse(center, hsize.X, hsize.Y, view.Stroke.Value.AsWindowsColor)
+        End If
     End Sub
 End Class

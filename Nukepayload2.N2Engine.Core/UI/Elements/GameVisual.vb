@@ -60,7 +60,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' (Win2D) 二维变换。如果仅需要改变位置，使用 <see cref="Location"/> 可以获得更好的性能。
         ''' </summary>
-        Public ReadOnly Property Transform As PlaneTransform
+        Public Property Transform As PlaneTransform
         ''' <summary>
         ''' 如果这个对象被冻结，则不会主动进行更新。
         ''' </summary>

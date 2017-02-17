@@ -12,20 +12,20 @@ Friend Class BezierCurveCustomElementRenderer
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, BezierCurveCustomElement)
         Dim pb As New CanvasPathBuilder(sender)
+        pb.BeginFigure(view.StartPoint.Value)
+        For t = 0F To 0.99F Step 0.01F
+            pb.AddLine(view.GetVertex(t))
+        Next
+        pb.EndFigure(CanvasFigureLoop.Open)
         If view.Transform IsNot Nothing Then
             Dim matrix = view.Transform.GetTransformMatrix
-            pb.BeginFigure(view.StartPoint.Value.ApplyTransform(matrix))
-            For t = 0F To 0.99F Step 0.01F
-                pb.AddLine(view.GetVertex(t).ApplyTransform(matrix))
-            Next
+            DrawWithTransform2D(args.DrawingSession,
+                                Sub(ds)
+                                    ds.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
+                                End Sub)
         Else
-            pb.BeginFigure(view.StartPoint.Value)
-            For t = 0F To 0.99F Step 0.01F
-                pb.AddLine(view.GetVertex(t))
-            Next
+            args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
         End If
-        pb.EndFigure(CanvasFigureLoop.Open)
-        args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
     End Sub
 
 End Class

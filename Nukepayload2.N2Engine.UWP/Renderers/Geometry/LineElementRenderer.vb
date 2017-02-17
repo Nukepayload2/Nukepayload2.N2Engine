@@ -1,5 +1,4 @@
 ﻿Imports Microsoft.Graphics.Canvas.UI.Xaml
-Imports Nukepayload2.N2Engine.Numerics
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports Nukepayload2.N2Engine.UWP.Marshal
 
@@ -15,9 +14,10 @@ Friend Class LineElementRenderer
         Dim [end] = view.EndPoint.Value + loc
         If view.Transform IsNot Nothing Then
             Dim matrix = view.Transform.GetTransformMatrix
-            start = start.ApplyTransform(matrix)
-            [end] = [end].ApplyTransform(matrix)
+            DrawWithTransform2D(args.DrawingSession,
+                                Sub(ds) ds.DrawLine(start, [end], view.Stroke.Value.AsWindowsColor))
+        Else
+            args.DrawingSession.DrawLine(start, [end], view.Stroke.Value.AsWindowsColor)
         End If
-        args.DrawingSession.DrawLine(start, [end], view.Stroke.Value.AsWindowsColor)
     End Sub
 End Class

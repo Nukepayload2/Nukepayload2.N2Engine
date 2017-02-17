@@ -47,26 +47,18 @@ Public MustInherit Class UWPRenderer
 
     End Sub
 
-    Protected Sub DrawWithTransform2D(loc As Vector2, drawOnOriginalPoint As Action(Of CanvasDrawingSession), drawingSession As CanvasDrawingSession)
+    Protected Sub DrawWithTransform2D(drawingSession As CanvasDrawingSession, draw As Action(Of CanvasDrawingSession))
         Using cl = New CanvasCommandList(drawingSession)
             Using ds = cl.CreateDrawingSession
-                drawOnOriginalPoint(ds)
+                Dim transformMatrix = View.Transform.GetTransformMatrix
+                ds.Transform = transformMatrix
+                draw(ds)
             End Using
-            Dim transformMatrix = View.Transform.GetTransformMatrix
-            Using transformEffect As New Transform2DEffect With {.Source = cl, .TransformMatrix = transformMatrix}
-                drawingSession.DrawImage(transformEffect, loc)
-            End Using
+            drawingSession.DrawImage(cl)
         End Using
     End Sub
 
     Protected Sub DrawImageWithTransform2D(loc As Vector2, width As Double, height As Double, drawingSession As CanvasDrawingSession, texture As CanvasBitmap)
-        Using cl = New CanvasCommandList(drawingSession)
-            Using ds = cl.CreateDrawingSession
-                ds.DrawImage(texture, New Rect(0, 0, width, height))
-            End Using
-            Using transformEffect As New Transform2DEffect With {.Source = cl, .TransformMatrix = View.Transform.GetTransformMatrix}
-                drawingSession.DrawImage(transformEffect, loc)
-            End Using
-        End Using
+        DrawWithTransform2D(drawingSession, Sub(ds) ds.DrawImage(texture, New Rect(loc.X, loc.Y, width, height)))
     End Sub
 End Class

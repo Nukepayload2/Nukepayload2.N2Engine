@@ -1,7 +1,4 @@
-﻿Imports System.Numerics
-Imports Microsoft.Graphics.Canvas
-Imports Microsoft.Graphics.Canvas.Brushes
-Imports Microsoft.Graphics.Canvas.Effects
+﻿Imports Microsoft.Graphics.Canvas.Brushes
 Imports Microsoft.Graphics.Canvas.Text
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UWP.Marshal
@@ -18,20 +15,15 @@ Friend Class TextBlockRenderer
                 Dim format As New CanvasTextFormat With {
                     .FontFamily = fnt.FontFamily,
                     .FontSize = fnt.FontSize,
-                    .FontStretch = CType(CInt(fnt.FontStretch), FontStretch),
-                    .FontStyle = CType(CInt(fnt.FontStyle), FontStyle)
+                    .FontStretch = CType(fnt.FontStretch, FontStretch),
+                    .FontStyle = CType(fnt.FontStyle, FontStyle)
                 }
                 SetFormat(fnt, format)
                 If view.Transform IsNot Nothing Then
                     Dim loc = view.Location.Value
-                    Using cl = New CanvasCommandList(args.DrawingSession)
-                        Using ds = cl.CreateDrawingSession
-                            ds.DrawText(txt.Value, New Vector2, New CanvasSolidColorBrush(args.DrawingSession, fnt.Color.AsWindowsColor), format)
-                        End Using
-                        Using transformEffect As New Transform2DEffect With {.Source = cl, .TransformMatrix = view.Transform.GetTransformMatrix}
-                            args.DrawingSession.DrawImage(transformEffect, New Vector2(loc.X, loc.Y))
-                        End Using
-                    End Using
+                    DrawWithTransform2D(args.DrawingSession,
+                                        Sub(ds) ds.DrawText(txt.Value, view.Location.Value,
+                                                            New CanvasSolidColorBrush(args.DrawingSession, fnt.Color.AsWindowsColor), format))
                 Else
                     args.DrawingSession.DrawText(txt.Value, view.Location.Value,
                          New CanvasSolidColorBrush(args.DrawingSession, fnt.Color.AsWindowsColor), format)

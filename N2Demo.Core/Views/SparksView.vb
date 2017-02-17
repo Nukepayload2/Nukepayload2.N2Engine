@@ -72,12 +72,22 @@ Public Class SparksView
         Await LoadSaveFileAsync()
     End Function
 
+    ' TODO: 用设计器生成这个方法，而不是只让用户手动打代码。
     Private Sub BuildVisualTree()
         ' 指定字体
         tblTheElder.Font = fontMgr.SegoeUI14Black
         tblKeyDownCount.Font = fontMgr.SegoeUI14Black
         tblLastMouseAction.Font = fontMgr.SegoeUI14Black
         tblLastTouchAction.Font = fontMgr.SegoeUI14Black
+        ' 设置特效
+        Dim rectTransform As New CompositeTransform
+        With rectTransform
+            .Rotate.Bind(Function() sparksData.GreenRectangle.Rotate)
+            .Skew.Bind(Function() sparksData.GreenRectangle.Skew)
+            .Scale.Bind(Function() sparksData.GreenRectangle.Scale)
+            .Origin.Bind(Function() sparksData.GreenRectangle.Position + sparksData.GreenRectangle.RelativeOrigin * sparksData.GreenRectangle.Size)
+        End With
+        greenRect.Transform = rectTransform
         ' 绑定画布的数据
         IsFrozen.Bind(Function() isPaused)
         Location.Bind(New Vector2)
@@ -116,6 +126,8 @@ Public Class SparksView
         ' 放置触发器
         Dim verticalShakeTrigger As New VerticalShakeTrigger
         verticalShakeTrigger.Attach(Me)
+        Dim rotateRectangleTrigger As New RotateRectangleTrigger
+        rotateRectangleTrigger.Attach(Me)
     End Sub
 
     Private Async Function LoadSaveFileAsync() As Task

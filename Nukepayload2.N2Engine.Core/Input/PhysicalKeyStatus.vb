@@ -16,7 +16,7 @@
         ''' </summary>
         Public IsExtendedKey As Boolean
         ''' <summary>
-        ''' 菜单键是否处于按下状态。
+        ''' 菜单键(Alt)是否处于按下状态。
         ''' </summary>
         Public IsMenuKeyDown As Boolean
         ''' <summary>

@@ -1,6 +1,5 @@
 ﻿Imports Microsoft.Graphics.Canvas.Geometry
 Imports Microsoft.Graphics.Canvas.UI.Xaml
-Imports Nukepayload2.N2Engine.Numerics
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports Nukepayload2.N2Engine.UWP.Marshal
 
@@ -12,15 +11,17 @@ Friend Class BezierQuadraticElementRenderer
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, BezierQuadraticElement)
         Dim pb As New CanvasPathBuilder(sender)
+        pb.BeginFigure(view.StartPoint.Value)
+        pb.AddQuadraticBezier(view.ControlPoint.Value, view.EndPoint.Value)
+        pb.EndFigure(CanvasFigureLoop.Open)
         If view.Transform IsNot Nothing Then
             Dim matrix = view.Transform.GetTransformMatrix
-            pb.BeginFigure(view.StartPoint.Value.ApplyTransform(matrix))
-            pb.AddQuadraticBezier(view.ControlPoint.Value.ApplyTransform(matrix), view.EndPoint.Value.ApplyTransform(matrix))
+            DrawWithTransform2D(args.DrawingSession,
+                                Sub(ds)
+                                    ds.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
+                                End Sub)
         Else
-            pb.BeginFigure(view.StartPoint.Value)
-            pb.AddQuadraticBezier(view.ControlPoint.Value, view.EndPoint.Value)
+            args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
         End If
-        pb.EndFigure(CanvasFigureLoop.Open)
-        args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
     End Sub
 End Class

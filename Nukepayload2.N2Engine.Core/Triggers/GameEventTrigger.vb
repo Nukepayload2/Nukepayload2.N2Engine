@@ -5,7 +5,7 @@ Imports Nukepayload2.N2Engine.UI.Elements
 
 Namespace Triggers
     ''' <summary>
-    ''' 事件触发器的基类
+    ''' 事件触发器的基类。对于比较复杂的视图，可以用事件触发器将事件处理程序从视图中提取到另一个类。
     ''' </summary>
     Public MustInherit Class GameEventTrigger(Of TSender As GameObject, TEventArgs As EventArgs)
         Implements IGameTrigger

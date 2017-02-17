@@ -12,18 +12,16 @@ Friend Class BezierCubicElementRenderer
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, BezierCubicElement)
         Dim pb As New CanvasPathBuilder(sender)
-
+        pb.BeginFigure(view.StartPoint.Value)
+        pb.AddCubicBezier(view.ControlPoint1.Value, view.ControlPoint2.Value, view.EndPoint.Value)
+        pb.EndFigure(CanvasFigureLoop.Open)
         If view.Transform IsNot Nothing Then
             Dim matrix = view.Transform.GetTransformMatrix
-            pb.BeginFigure(view.StartPoint.Value.ApplyTransform(matrix))
-            pb.AddCubicBezier(view.ControlPoint1.Value.ApplyTransform(matrix),
-                              view.ControlPoint2.Value.ApplyTransform(matrix),
-                              view.EndPoint.Value.ApplyTransform(matrix))
-        Else
-            pb.BeginFigure(view.StartPoint.Value)
-            pb.AddCubicBezier(view.ControlPoint1.Value, view.ControlPoint2.Value, view.EndPoint.Value)
+            DrawWithTransform2D(args.DrawingSession,
+                                Sub(ds)
+                                    ds.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
+                                End Sub)
         End If
-        pb.EndFigure(CanvasFigureLoop.Open)
         args.DrawingSession.DrawGeometry(CanvasGeometry.CreatePath(pb), view.Location.Value, view.Stroke.Value.AsWindowsColor)
     End Sub
 
