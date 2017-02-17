@@ -24,8 +24,8 @@
 * 此解决方案中所有 Nukepayload2.UI 开头的项目使用 LGPLv3 协议
 * 此解决方案中所有 Nukepayload2.Collections 开头的项目使用 LGPLv3 协议
 * 此解决方案中所有 N2Demo 开头的项目使用 LGPLv3 协议
-* FarseerPhysics 项目使用 Ms-PL 1.1 协议
-* RaisingStudio.Xna.Graphics 使用 LGPL 协议
+* (外部项目 http://farseerphysics.codeplex.com/) FarseerPhysics 使用 Ms-PL 1.1 协议
+* (外部项目 http://xnagraphics.codeplex.com/) RaisingStudio.Xna.Graphics 使用 LGPL 协议
 
 ## 附加许可条款
 * 在 2018年7月10日 之前，此游戏引擎不得被用于制作商业游戏。
@@ -37,5 +37,5 @@
 * 使用 Win2D 显示 2D 图形
 * 处理鼠标和触摸输入
 * 可移植的物体对象树
-* 绘制几何图形 (使用 zhongzf 在LGPL下开源的类库 RaisingStudio.Xna.Graphics, 别名 xnagraphics。代码地址： http://xnagraphics.codeplex.com/ )
+* 绘制几何图形 (使用 zhongzf 在LGPL下开源的类库 RaisingStudio.Xna.Graphics, 别名 xnagraphics。)
 * 播放音乐和音效
