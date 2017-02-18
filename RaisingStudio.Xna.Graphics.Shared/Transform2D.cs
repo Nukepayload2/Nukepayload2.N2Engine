@@ -16,20 +16,20 @@ namespace RaisingStudio.Xna.Graphics
     {
         public float M11;
         public float M12;
-        public float M31;
         public float M21;
         public float M22;
+        public float M31;
         public float M32;
 
-        private static Transform2D _empty;
+        private static Transform2D _identity;
 
         public Transform2D(System.Numerics.Matrix3x2 matrix)
         {
             M11 = matrix.M11;
             M12 = matrix.M12;
-            M31 = matrix.M31;
             M21 = matrix.M21;
             M22 = matrix.M22;
+            M31 = matrix.M31;
             M32 = matrix.M32;
         }
 
@@ -50,16 +50,16 @@ namespace RaisingStudio.Xna.Graphics
         /// </summary>
         static Transform2D()
         {
-            Transform2D.CreateEmpty(out _empty);
+            Transform2D.CreateIdentity(out _identity);
         }
 
         /// <summary>
         /// Gets the empty transformation.
         /// </summary>
         /// <value>The empty.</value>
-        public static Transform2D Empty
+        public static Transform2D Identity
         {
-            get { return _empty; }
+            get { return _identity; }
         }
 
         #region Operations
@@ -429,11 +429,10 @@ namespace RaisingStudio.Xna.Graphics
         /// Creates the empty transform (identity).
         /// </summary>
         /// <param name="result">The result transform.</param>
-        public static void CreateEmpty(out Transform2D result)
+        public static void CreateIdentity(out Transform2D result)
         {
             result.M11 = result.M22 = 1.0f;
-            result.M12 = result.M21 = 0.0f;
-            result.M31 = result.M32 = 0.0f;
+            result.M12 = result.M21 = result.M31 = result.M32 = 0.0f;
         }
 
         /// <summary>

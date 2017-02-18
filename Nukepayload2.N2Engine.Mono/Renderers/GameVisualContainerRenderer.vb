@@ -26,6 +26,8 @@ Public MustInherit Class GameVisualContainerRenderer
         RenderTarget = New RenderTarget2D(sender.GraphicsDevice, size.BackBufferWidth, size.BackBufferHeight, False, SurfaceFormat.Color, Nothing, 1, RenderTargetUsage.PreserveContents)
     End Sub
 
+    Dim _cachedRenderTargets As New List(Of Tuple(Of RenderTarget2D, DrawingContext))
+
     Friend Overrides Sub OnDraw(sender As Game, args As MonogameDrawEventArgs)
         ' 对象可见性支持
         If View.IsVisible.CanRead Then
@@ -39,19 +41,24 @@ Public MustInherit Class GameVisualContainerRenderer
         device.Clear(Color.Transparent)
         Dim children = DirectCast(View, GameVisualContainer).Children
         Dim containers As New List(Of GameVisualContainer)
-        ' 初始化 DC
-        Static dc As New DrawingContext(args.SpriteBatch, RenderTarget)
-        args.DrawingContext = dc
-        Dim groupedChildren = From ch In children Group By ch.Transform Into Group
-        For Each k In groupedChildren
+        Dim groupedChildren = Aggregate ch In children Group By ch.Transform Into Group Into ToArray
+        Dim size = device.PresentationParameters
+        Dim outterDc = args.SpriteBatch
+        Do While groupedChildren.Length > _cachedRenderTargets.Count
+            Dim trt As New RenderTarget2D(sender.GraphicsDevice, size.BackBufferWidth, size.BackBufferHeight, False, SurfaceFormat.Color, Nothing, 1, RenderTargetUsage.PreserveContents)
+            Dim tdc As New DrawingContext(args.SpriteBatch, trt)
+            _cachedRenderTargets.Add(New Tuple(Of RenderTarget2D, DrawingContext)(trt, tdc))
+        Loop
+        For i = 0 To groupedChildren.Length - 1
+            Dim k = groupedChildren(i)
+            Dim cachedGroup = _cachedRenderTargets(i)
+            Dim tempRt = cachedGroup.Item1
+            Dim dc = cachedGroup.Item2
+            device.SetRenderTarget(tempRt)
+            device.Clear(Color.Transparent)
             dc.Begin()
-            If k.Transform Is Nothing Then
-                dc.Transform = Nothing
-            Else
-                Dim mat = k.Transform.GetTransformMatrix
-                dc.Transform = New Transform2D(mat)
-            End If
-            For Each child In children
+            args.DrawingContext = dc
+            For Each child In k.Group
                 If ShouldVirtualize(child) Then
                     Continue For
                 End If
@@ -64,6 +71,21 @@ Public MustInherit Class GameVisualContainerRenderer
                 End If
             Next
             dc.End()
+            dc = Nothing
+            ' 向外部 DC 绘制
+            device.SetRenderTarget(RenderTarget)
+            If k.Transform Is Nothing Then
+                outterDc.Begin()
+            Else
+                Dim mat = k.Transform.GetTransformMatrix
+                outterDc.Begin(SpriteSortMode.Deferred, Nothing, Nothing, Nothing, Nothing, Nothing,
+                           New Matrix(mat.M11, mat.M12, 0F, 0F,
+                                      mat.M21, mat.M22, 0F, 0F,
+                                      0F, 0F, 1.0F, 0F,
+                                      mat.M31, mat.M32, 0F, 1.0F))
+            End If
+            outterDc.Draw(tempRt, New Vector2, Color.White)
+            outterDc.End()
         Next
         args.DrawingContext = Nothing
         For Each cont In containers
@@ -124,5 +146,10 @@ Public MustInherit Class GameVisualContainerRenderer
 
     Public Overrides Sub DisposeResources()
         RenderTarget?.Dispose()
+        For Each ele In _cachedRenderTargets
+            ele.Item1.Dispose()
+            ' TODO: 释放 Item2 所占的内存
+        Next
+        _cachedRenderTargets.Clear()
     End Sub
 End Class

@@ -307,8 +307,8 @@ namespace RaisingStudio.Xna.Graphics
             float y = location.Y;
             float width = size.X;
             float height = size.Y;
-            float right = x + width - 0.5f;
-            float bottom = y + height - 0.5f;
+            float right = x + width - 0.05f;
+            float bottom = y + height - 0.05f;
             unsafe
             {
                 VertexPositionColor* vertices;
@@ -317,8 +317,8 @@ namespace RaisingStudio.Xna.Graphics
                 StartDrawing(VertexFragment.Rectangle, out vertices, out indices, out baseIndex);
                 //---------------------------------------------------
                 vertices[0].Position = new Vector3(
-                    _transform.M11 * x + _transform.M12 * y + _transform.M31 - 0.5f,
-                    _transform.M21 * x + _transform.M22 * y + _transform.M32 - 0.5f,
+                    _transform.M11 * x + _transform.M12 * y + _transform.M31 - 0.05f,
+                    _transform.M21 * x + _transform.M22 * y + _transform.M32 - 0.05f,
                     _Z
                 );
                 vertices[0].Color = color;
@@ -1013,7 +1013,7 @@ namespace RaisingStudio.Xna.Graphics
         private const int TRANSFORM_STACK_MAX_SIZE = 64;
 
         ///<summary>Current canvas transformation</summary>
-        private Transform2D _transform = Transform2D.Empty;
+        private Transform2D _transform = Transform2D.Identity;
         ///<summary>Canvas transformation stack</summary>
         private Transform2D[] _transformStack = new Transform2D[TRANSFORM_STACK_MAX_SIZE];
         ///<summary>Size of transformation stack</summary>
@@ -1036,7 +1036,7 @@ namespace RaisingStudio.Xna.Graphics
         /// </summary>
         public void ResetTransform()
         {
-            _transform = Transform2D.Empty;
+            _transform = Transform2D.Identity;
         }
 
         /// <summary>
