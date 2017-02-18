@@ -12,5 +12,6 @@
         Inherits IGameAction
         Property BeginTime As TimeSpan
         Sub Action()
+        Sub Cancel()
     End Interface
 End Namespace

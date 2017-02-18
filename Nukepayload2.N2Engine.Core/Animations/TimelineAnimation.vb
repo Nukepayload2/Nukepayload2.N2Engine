@@ -4,6 +4,11 @@ Namespace Animations
 
     Public MustInherit Class TimelineAnimation
         Inherits TimeAction
+
+        Sub New(beginTime As TimeSpan)
+            MyBase.New(beginTime)
+        End Sub
+
         ''' <summary>
         ''' 持续的时间
         ''' </summary>

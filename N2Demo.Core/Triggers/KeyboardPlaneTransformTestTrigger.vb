@@ -2,8 +2,10 @@
 Imports Nukepayload2.N2Engine.Input
 Imports Nukepayload2.N2Engine.Triggers
 Imports Nukepayload2.N2Engine.UI.Elements
-
-Public Class RotateRectangleTrigger
+''' <summary>
+''' 在键盘按下时，让绿色矩形进行平面变换。
+''' </summary>
+Public Class KeyboardPlaneTransformTestTrigger
     Inherits GameEventTrigger(Of GameVisual, GameKeyboardRoutedEventArgs)
 
     Sub New()
@@ -20,8 +22,6 @@ Public Class RotateRectangleTrigger
         If Target Is Nothing Then
             Target = sender
         End If
-        Dim vm = SparksViewModel.Current
-        Dim shakeValue As Single = 0.0F
         Select Case e.KeyCode
             Case Key.Q
                 rotate += 0.01F
@@ -44,7 +44,6 @@ Public Class RotateRectangleTrigger
             Case Key.Number8, Key.NumberPad8
                 scale += New Vector2(0F, -0.01F)
         End Select
-        vm.ShakingViewer.ShakeY = shakeValue
     End Sub
 
     ' TODO: 使用动画代替订阅 Updating 事件的实现。

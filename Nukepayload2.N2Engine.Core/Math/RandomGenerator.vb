@@ -31,9 +31,7 @@ Namespace N2Math
         ''' 0到1之间
         ''' </summary>
         Public Shared Function RandomSingle() As Single
-            Dim buf(3) As Byte
-            rand.NextBytes(buf)
-            Return BitConverter.ToSingle(buf, 0) / Single.MaxValue
+            Return CSng(rand.Next) / 16777216.0!
         End Function
         ''' <summary>
         ''' 0到1之间

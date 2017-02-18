@@ -100,7 +100,6 @@
     <Compile Include="Animations\Trailer.vb" />
     <Compile Include="Animations\TransitionAnimation.vb" />
     <Compile Include="Behaviors\IGameBehavior.vb" />
-    <Compile Include="Behaviors\LoadExtensionBehavior.vb" />
     <Compile Include="Information\GameInformation.vb" />
     <Compile Include="Input\ButtonState.vb" />
     <Compile Include="Input\MouseKeys.vb" />
@@ -201,8 +200,6 @@
     <Compile Include="Utilities\StaticCast.vb" />
     <Compile Include="Utilities\TreeHelper.vb" />
     <Compile Include="Math\Vector2Extensions.vb" />
-    <Compile Include="Behaviors\BehaviorBase.vb" />
-    <Compile Include="Behaviors\ApplyForceBehavior.vb" />
     <Compile Include="Behaviors\ShakeBehavior.vb" />
     <Compile Include="UI\Elements\GameCanvas.vb" />
     <Compile Include="UI\Effects\GameEffect.vb" />

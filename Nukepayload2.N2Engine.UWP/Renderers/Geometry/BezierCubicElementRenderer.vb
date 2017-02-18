@@ -1,6 +1,6 @@
 ﻿Imports Microsoft.Graphics.Canvas.Geometry
 Imports Microsoft.Graphics.Canvas.UI.Xaml
-Imports Nukepayload2.N2Engine.Numerics
+Imports Nukepayload2.N2Engine.N2Math
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports Nukepayload2.N2Engine.UWP.Marshal
 

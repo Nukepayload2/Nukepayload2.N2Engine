@@ -122,7 +122,7 @@ Namespace UI.Elements
         Inherits FilledGeometryElement
     End Class
     ''' <summary>
-    ''' 代表拥有边线的实心椭圆
+    ''' 代表拥有边线的实心三角形
     ''' </summary>
     Public Class TriangleElement
         Inherits FilledGeometryElement

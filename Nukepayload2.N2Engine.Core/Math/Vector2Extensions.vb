@@ -1,6 +1,6 @@
 ﻿Option Strict Off
 
-Namespace Numerics
+Namespace N2Math
     Public Module Vector2Extensions
         <Extension>
         Public Sub LimitMag(ByRef this As Vector2, lUponNum As Single)

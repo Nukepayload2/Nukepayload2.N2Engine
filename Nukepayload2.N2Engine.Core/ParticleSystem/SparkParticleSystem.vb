@@ -1,6 +1,6 @@
 ﻿Option Strict Off
 Imports Nukepayload2.N2Engine.Foundation
-Imports Nukepayload2.N2Engine.Numerics
+Imports Nukepayload2.N2Engine.N2Math
 
 Namespace ParticleSystem
     ''' <summary>

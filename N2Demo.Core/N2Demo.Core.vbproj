@@ -126,7 +126,7 @@
     <Compile Include="Save\SampleSaveFileManager.vb" />
     <Compile Include="Save\SampleSavePollution.vb" />
     <Compile Include="Models\ShakingViewer.vb" />
-    <Compile Include="Triggers\RotateRectangleTrigger.vb" />
+    <Compile Include="Triggers\KeyboardPlaneTransformTestTrigger.vb" />
     <Compile Include="ViewModels\SingleInstance.vb" />
     <Compile Include="Views\SparksView.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />

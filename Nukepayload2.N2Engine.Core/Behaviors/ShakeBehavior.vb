@@ -1,16 +1,43 @@
-﻿Imports Nukepayload2.N2Engine.Foundation
-Imports Nukepayload2.N2Engine.N2Math
-Imports Nukepayload2.N2Engine.UI.Elements
+﻿Imports Nukepayload2.N2Engine.UI.Elements
 
 Namespace Behaviors
+    ''' <summary>
+    ''' 导致被附加的元素持续发抖。
+    ''' </summary>
     Public Class ShakeBehavior
-        Inherits BehaviorBase(Of GameEntity)
+        Implements IGameBehavior
 
-        Public ReadOnly Property ShakeRate As New PropertyBinder(Of Vector2)
+        Dim _needRecover As Boolean
 
-        Protected Overrides Sub OnAttached(visual As GameEntity)
-            Dim body = visual.Body.Value
-            AddHandler visual.Updating, Sub() body.ApplyLinearImpulse(ShakeRate.Value * RandomGenerator.RandomSingle)
+        WithEvents Target As GameVisual
+
+        Sub New(offset As Vector2)
+            Me.Offset = offset
+        End Sub
+
+        Public ReadOnly Property Offset As Vector2
+
+        Public Sub Attach(visual As GameVisual) Implements IGameBehavior.Attach
+            Target = visual
+            visual.AddBehavior(Me)
+        End Sub
+
+        Public Sub Remove(visual As GameVisual) Implements IGameBehavior.Remove
+            If _needRecover Then
+                Update()
+            End If
+            Target = Nothing
+            visual.RemoveBehavior(Me)
+        End Sub
+
+        Private Sub Target_Updating(sender As GameVisual, e As EventArgs) Handles Target.Updating
+            Update()
+        End Sub
+
+        Private Sub Update()
+            _Offset *= -1
+            _needRecover = Not _needRecover
+            Target.Location.Value += _Offset
         End Sub
     End Class
 End Namespace

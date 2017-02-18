@@ -1,5 +1,6 @@
 ﻿Imports System.Numerics
 Imports System.Reflection
+Imports Nukepayload2.N2Engine.Behaviors
 Imports Nukepayload2.N2Engine.Information
 Imports Nukepayload2.N2Engine.Media
 Imports Nukepayload2.N2Engine.Resources
@@ -100,7 +101,7 @@ Public Class SparksView
             Bind(Function(m) m.ZIndex, 0).
             AddChild(redEllipse.
                 Bind(Function(r) r.Fill, Function() sparksData.RedCircle.Color).
-                Bind(Function(r) r.Location, Function() sparksData.RedCircle.Position).
+                Bind(Function(r) r.Location, Function() sparksData.RedCircle.Position, Sub(p) sparksData.RedCircle.Position = p).
                 Bind(Function(r) r.Size, Function() sparksData.RedCircle.Size)).
             AddChild(greenRect.
                 Bind(Function(r) r.Stroke, Function() sparksData.GreenRectangle.Color).
@@ -126,8 +127,11 @@ Public Class SparksView
         ' 放置触发器
         Dim verticalShakeTrigger As New VerticalShakeTrigger
         verticalShakeTrigger.Attach(Me)
-        Dim rotateRectangleTrigger As New RotateRectangleTrigger
+        Dim rotateRectangleTrigger As New KeyboardPlaneTransformTestTrigger
         rotateRectangleTrigger.Attach(Me)
+        ' 增加行为
+        Dim shake As New ShakeBehavior(New Vector2(10, -5))
+        shake.Attach(redEllipse)
     End Sub
 
     Private Async Function LoadSaveFileAsync() As Task

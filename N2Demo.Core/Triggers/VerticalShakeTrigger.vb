@@ -1,7 +1,9 @@
 ﻿Imports Nukepayload2.N2Engine.Input
 Imports Nukepayload2.N2Engine.Triggers
 Imports Nukepayload2.N2Engine.UI.Elements
-
+''' <summary>
+''' 在按下按键时让 ShakingViewer 抖动。
+''' </summary>
 Public Class VerticalShakeTrigger
     Inherits GameEventTrigger(Of GameVisual, GameKeyboardRoutedEventArgs)
 
