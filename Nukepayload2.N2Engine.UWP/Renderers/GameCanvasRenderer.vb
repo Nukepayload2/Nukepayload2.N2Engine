@@ -34,9 +34,9 @@ Public Class GameCanvasRenderer
         _Win2DCanvas = Nothing
     End Sub
 
-    Private Sub DoCanvasOperation(act As Action(Of UWPRenderer))
-        For Each vie In View.HierarchyWalk(Function(node) TryCast(node, GameVisualContainer)?.Children)
-            act(DirectCast(vie.Renderer, UWPRenderer))
+    Private Sub DoCanvasOperation(act As Action(Of Win2DRenderer))
+        For Each vie In View.HierarchyWalk(Function(node) node.GetSubNodes)
+            act(DirectCast(vie.Renderer, Win2DRenderer))
         Next
     End Sub
 

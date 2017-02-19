@@ -21,7 +21,7 @@ Public Class GameCanvasRenderer
     End Sub
 
     Private Sub DoCanvasOperation(act As Action(Of MonoGameRenderer))
-        For Each vie In View.HierarchyWalk(Function(node) TryCast(node, GameVisualContainer)?.Children)
+        For Each vie In View.HierarchyWalk(Function(node) node.GetSubNodes)
             act(DirectCast(vie.Renderer, MonoGameRenderer))
         Next
     End Sub

@@ -15,6 +15,11 @@ Namespace UI.Elements
                 Return _Children
             End Get
         End Property
+
+        Public Overrides Function GetSubNodes() As IEnumerable(Of GameVisual)
+            Return Children
+        End Function
+
         Sub New()
             GameVisualTreeHelper.AddChildrenChangedHandler(Me)
             GameVisualTreeHelper.AutoHandleParent(Me)

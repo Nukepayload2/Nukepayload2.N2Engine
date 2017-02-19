@@ -28,6 +28,7 @@ Namespace UI
         Protected Overridable Sub CreateResources()
 
         End Sub
+
         Sub New()
             CreateResources()
         End Sub

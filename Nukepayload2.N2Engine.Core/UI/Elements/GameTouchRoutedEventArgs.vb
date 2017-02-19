@@ -4,6 +4,9 @@
     ''' </summary>
     Public Class GameTouchRoutedEventArgs
         Inherits GameRoutedEventArgs
+
+        Public Const InvalidTouchId = 0UI
+
         ''' <summary>
         ''' 初始化触摸按下事件的数据
         ''' </summary>

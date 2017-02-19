@@ -1,14 +1,13 @@
 ﻿Imports System.Numerics
 Imports Microsoft.Graphics.Canvas
-Imports Microsoft.Graphics.Canvas.Effects
 Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.Renderers
 Imports Nukepayload2.N2Engine.UI.Elements
 ''' <summary>
-''' UWP的渲染器的基类。
+''' Win2D 渲染器的基类。
 ''' </summary>
-Public MustInherit Class UWPRenderer
+Public MustInherit Class Win2DRenderer
     Inherits RendererBase
 
     Sub New(view As GameVisual)

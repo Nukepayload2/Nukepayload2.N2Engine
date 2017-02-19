@@ -6,7 +6,7 @@ Imports Nukepayload2.N2Engine.UI.Elements
 Imports Windows.UI
 
 Public MustInherit Class GameVisualContainerRenderer
-    Inherits UWPRenderer
+    Inherits Win2DRenderer
     Sub New(container As GameVisualContainer)
         MyBase.New(container)
     End Sub
@@ -46,7 +46,7 @@ Public MustInherit Class GameVisualContainerRenderer
                     Else
                         ds.Transform = Matrix3x2.Identity
                     End If
-                    DirectCast(child.Renderer, UWPRenderer).OnDraw(sender, New CanvasAnimatedDrawEventArgs(ds, args.Timing))
+                    DirectCast(child.Renderer, Win2DRenderer).OnDraw(sender, New CanvasAnimatedDrawEventArgs(ds, args.Timing))
                 End If
             Next
         End Using

@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonogameUpdateEventArgs.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\MonoImplRegistration.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\TypedEventHandler.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameContentControlRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameVirtualizingScrollViewerRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameVisualContainerRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />

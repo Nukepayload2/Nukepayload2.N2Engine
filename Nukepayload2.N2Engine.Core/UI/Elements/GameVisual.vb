@@ -134,6 +134,12 @@ Namespace UI.Elements
         End Sub
 
         Public MustOverride Function GetChildEffectSources() As IEnumerable(Of IGameEffectSource) Implements IGameEffectSource.GetChildEffectSources
+        ''' <summary>
+        ''' 派生类继承时，重写此方法可以返回当前可见对象的子节点。包括子可见对象和使用模板创建的子可见对象。
+        ''' </summary>
+        Public Overridable Function GetSubNodes() As IEnumerable(Of GameVisual)
+            Return Nothing
+        End Function
 
 #Region "基本交互事件"
         ' 键盘
