@@ -12,6 +12,7 @@ Namespace UI.Controls
 
         Sub New(content As TContent)
             Me.Content = content
+            content.Parent = Me
         End Sub
 
         Protected Overrides Sub CreateRenderer()

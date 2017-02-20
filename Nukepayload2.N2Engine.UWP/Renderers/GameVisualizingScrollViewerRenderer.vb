@@ -14,7 +14,7 @@ Friend Class GameVirtualizingScrollViewerRenderer
         If Not visual.Size.CanRead Then
             Return False
         End If
-        Dim size = visual.Size.Value
+        Dim size = visual.Size.Value * 2
         Dim renderBound As New Rect(0, 0, rtSize.Width, rtSize.Height)
         Dim visualBound As New Rect(loc.X, loc.Y, size.X, size.Y)
         renderBound.Intersect(visualBound)

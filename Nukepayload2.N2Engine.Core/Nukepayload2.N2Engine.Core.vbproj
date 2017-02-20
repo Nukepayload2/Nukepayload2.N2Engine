@@ -108,6 +108,9 @@
     <Compile Include="Input\PhysicalKeyStatus.vb" />
     <Compile Include="Input\VirtualKeyModifiers.vb" />
     <Compile Include="Input\PointerDeviceType.vb" />
+    <Compile Include="UI\Elements\Controls\GameButton.vb" />
+    <Compile Include="UI\Elements\Controls\GameButtonContent.vb" />
+    <Compile Include="UI\Elements\Controls\GameButtonContentTemplate.vb" />
     <Compile Include="UI\Elements\Controls\GameContentControl.vb" />
     <Compile Include="UI\Elements\Controls\GameTemplatedContent.vb" />
     <Compile Include="UI\Elements\Controls\GameTextBlock.vb" />
@@ -115,6 +118,7 @@
     <Compile Include="UI\Elements\Controls\IGameContentControl.vb" />
     <Compile Include="UI\Elements\Controls\IGameContentControlRenderer.vb" />
     <Compile Include="UI\Elements\Controls\IGameTemplatedContentRenderer.vb" />
+    <Compile Include="UI\Elements\Controls\IVirtualJoystickContent.vb" />
     <Compile Include="UI\Elements\Controls\VirtualJoystick.vb" />
     <Compile Include="UI\Elements\Controls\VirtualJoystickContent.vb" />
     <Compile Include="UI\Elements\Controls\VirtualJoystickContentTemplate.vb" />
@@ -137,6 +141,7 @@
     <Compile Include="UI\Elements\GameRoutedEventArgs.vb" />
     <Compile Include="UI\GameObjectStateTransition.vb" />
     <Compile Include="Input\Key.vb" />
+    <Compile Include="UI\GameVisualTreeHelper.vb" />
     <Compile Include="UI\IKeyboardEventMediator.vb" />
     <Compile Include="UI\IEventMediator.vb" />
     <Compile Include="UI\IMouseEventMediator.vb" />

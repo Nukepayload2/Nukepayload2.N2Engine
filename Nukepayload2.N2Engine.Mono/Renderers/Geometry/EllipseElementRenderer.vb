@@ -10,7 +10,7 @@ Friend Class EllipseElementRenderer
         Dim view = DirectCast(Me.View, EllipseElement)
         Dim size = view.Size.Value
         Dim loc = View.Location.Value
-        Dim rect = New Rectangle(loc.X, loc.Y, size.X, size.Y)
+        Dim rect = New Rectangle(loc.X - size.X / 2, loc.Y - size.Y / 2, size.X, size.Y)
         With args.DrawingContext
             Dim fill = view.Fill
             If fill.CanRead Then .DrawFilledEllipse(rect, fill.Value.AsXnaColor)

@@ -29,6 +29,7 @@ Public Class SparksView
     Dim tblLastTouchAction As New GameTextBlock
     ' 控件
     WithEvents Joystick As New VirtualJoystick(Function(vec) vec.X < 300.0F)
+    WithEvents BtnClickMe As New GameButton
 #End Region
 
 #Region "外部资源"
@@ -83,6 +84,7 @@ Public Class SparksView
         tblKeyDownCount.Font = fontMgr.SegoeUI14Black
         tblLastMouseAction.Font = fontMgr.SegoeUI14Black
         tblLastTouchAction.Font = fontMgr.SegoeUI14Black
+        BtnClickMe.Font = fontMgr.SegoeUI14Black
         ' 设置特效
         Dim rectTransform As New CompositeTransform
         With rectTransform
@@ -134,6 +136,16 @@ Public Class SparksView
             Bind(Function(r) r.StrokeSize, New Vector2(72.0F)).
             Bind(Function(r) r.Location, New Vector2)
         )
+        AddChild(BtnClickMe.
+            Bind(Function(r) r.Background, Function() If(BtnClickMe.IsPointerOver,
+                sparksData.ButtonStatus.PointerOverBackground, sparksData.ButtonStatus.Background)).
+            Bind(Function(r) r.BorderColor, Function() If(BtnClickMe.IsPressed,
+                sparksData.ButtonStatus.PressedBorderColor, sparksData.ButtonStatus.BorderColor)).
+            Bind(Function(r) r.TextOffset, Function() sparksData.ButtonStatus.TextOffset).
+            Bind(Function(r) r.Size, Function() sparksData.ButtonStatus.Size).
+            Bind(Function(r) r.Text, Function() sparksData.ButtonStatus.Text).
+            Bind(Function(r) r.Location, Function() sparksData.ButtonStatus.Position)
+        )
         ' 放置触发器
         Dim verticalShakeTrigger As New VerticalShakeTrigger
         verticalShakeTrigger.Attach(Me)
@@ -141,7 +153,7 @@ Public Class SparksView
         rotateRectangleTrigger.Attach(Me)
         ' 增加行为
         Dim joystickControl As New VirtualJoystickMoveBehavior(Joystick) With {
-            .MaxSpeed = 1.0F
+            .MaxSpeed = 5.0F, .SpeedMultiple = 0.1F
         }
         joystickControl.Attach(redEllipse)
     End Sub
@@ -236,5 +248,9 @@ Public Class SparksView
     Private Sub SparksView_TouchUp(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchUp
         sparksData.LastTouchState = $"在 {e.Position} 松开触摸屏，触摸点的ID是 {e.PointerId}。"
         OnTappedAsync(e.Position)
+    End Sub
+
+    Private Sub BtnClickMe_Click(sender As GameButton, e As EventArgs) Handles BtnClickMe.Click
+        sparksData.ButtonStatus.ClickCount += 1
     End Sub
 End Class

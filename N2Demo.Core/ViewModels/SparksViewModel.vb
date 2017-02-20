@@ -34,4 +34,6 @@ Public Class SparksViewModel
     <JsonIgnore>
     Public Property LastTouchState As String = "无"
 
+    Public Property ButtonStatus As New ButtonStatus
+
 End Class

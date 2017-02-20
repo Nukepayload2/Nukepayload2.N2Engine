@@ -11,31 +11,33 @@ Namespace Behaviors
 
         WithEvents Joystick As VirtualJoystick
 
-        Dim _target As GameVisual
+        WithEvents Target As GameVisual
 
         Public Property MaxSpeed As Single
+
+        Public Property SpeedMultiple As Single = 1.0F
 
         Sub New(joystick As VirtualJoystick)
             Me.Joystick = joystick
         End Sub
 
         Public Overrides Sub Attach(visual As GameVisual)
-            If _target IsNot Nothing Then
-                Remove(_target)
+            If Target IsNot Nothing Then
+                Remove(Target)
             End If
-            _target = visual
+            Target = visual
             MyBase.Attach(visual)
         End Sub
 
         Public Overrides Sub Remove(visual As GameVisual)
-            _target = Nothing
+            Target = Nothing
             MyBase.Remove(visual)
         End Sub
 
-        Private Sub Joystick_VirtualJoystickDragMoved(sender As VirtualJoystick, e As VirtualJoystickDragEventArgs) Handles Joystick.VirtualJoystickDragMoved
-            Dim direction = e.EndPoint - e.StartPoint
+        Private Sub Joystick_VirtualJoystickDragMoved(sender As VirtualJoystick, e As VirtualJoystickDragEventArgs) Handles Joystick.VirtualJoystickDragging
+            Dim direction = (e.EndPoint - e.StartPoint) * SpeedMultiple
             direction.LimitMag(MaxSpeed)
-            _target.Location.Value += direction
+            Target.Location.Value += direction
         End Sub
     End Class
 

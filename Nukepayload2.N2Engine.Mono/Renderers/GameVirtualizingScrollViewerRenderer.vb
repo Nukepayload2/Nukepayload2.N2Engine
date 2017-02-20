@@ -14,7 +14,7 @@ Friend Class GameVirtualizingScrollViewerRenderer
             ' 不确定大小
             Return False
         End If
-        Dim size = visual.Size.Value
+        Dim size = visual.Size.Value * 2
         Dim renderBound As New Rectangle(0, 0, RenderTarget.Width, RenderTarget.Height)
         Dim visualBound As New Rectangle(loc.X, loc.Y, size.X, size.Y)
         visual.IsVirtualizing = Not renderBound.Contains(visualBound)

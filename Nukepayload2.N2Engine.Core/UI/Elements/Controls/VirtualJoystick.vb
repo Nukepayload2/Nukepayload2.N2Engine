@@ -65,7 +65,7 @@ Namespace UI.Controls
         ''' <summary>
         ''' 指示虚拟摇杆拖动。
         ''' </summary>
-        Public Event VirtualJoystickDragMoved As GameObjectEventHandler(Of VirtualJoystick, VirtualJoystickDragEventArgs)
+        Public Event VirtualJoystickDragging As GameObjectEventHandler(Of VirtualJoystick, VirtualJoystickDragEventArgs)
         ''' <summary>
         ''' 虚拟摇杆松开。
         ''' </summary>
@@ -75,11 +75,14 @@ Namespace UI.Controls
 
         Sub New(isTouchPointInVirtualJoystickRange As Func(Of Vector2, Boolean))
             MyBase.New((New VirtualJoystickContentTemplate).CreateContent())
+            Initialize(isTouchPointInVirtualJoystickRange)
+        End Sub
+
+        Private Sub Initialize(isTouchPointInVirtualJoystickRange As Func(Of Vector2, Boolean))
             With Content
                 .StartPoint.Bind(Function() _startPoint)
                 .EndPoint.Bind(Function() _endPoint)
                 .IsVisible.Bind(Function() State = VirtualJoystickState.Drag)
-                .Parent = Me
             End With
             Me.IsTouchPointInVirtualJoystickRange = isTouchPointInVirtualJoystickRange
         End Sub
@@ -99,7 +102,6 @@ Namespace UI.Controls
         Private Sub VirtualJoystick_TouchMove(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchMove
             If _startTouchId = e.PointerId Then
                 _endPoint = e.Position
-                RaiseEvent VirtualJoystickDragMoved(Me, New VirtualJoystickDragEventArgs(_startPoint, _endPoint))
             End If
         End Sub
 
@@ -109,6 +111,12 @@ Namespace UI.Controls
                 _State = VirtualJoystickState.Idle
                 _startTouchId = GameTouchRoutedEventArgs.InvalidTouchId
                 RaiseEvent VirtualJoystickReleased(Me, New VirtualJoystickDragEventArgs(_startPoint, _endPoint))
+            End If
+        End Sub
+
+        Private Sub VirtualJoystick_Updating(sender As GameVisual, e As EventArgs) Handles Me.Updating
+            If _startTouchId <> GameTouchRoutedEventArgs.InvalidTouchId Then
+                RaiseEvent VirtualJoystickDragging(Me, New VirtualJoystickDragEventArgs(_startPoint, _endPoint))
             End If
         End Sub
     End Class

@@ -12,7 +12,7 @@ Friend Class EllipseElementRenderer
         Dim view = DirectCast(Me.View, EllipseElement)
         Dim loc = view.Location.Value
         Dim hsize = view.Size.Value / 2
-        Dim center = loc - hsize
+        Dim center = loc
         DrawGeometry(args.DrawingSession, view, hsize, center)
     End Sub
 
