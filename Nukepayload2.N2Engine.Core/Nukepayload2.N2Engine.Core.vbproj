@@ -99,7 +99,9 @@
     <Compile Include="Animations\TimelineAnimation.vb" />
     <Compile Include="Animations\Trailer.vb" />
     <Compile Include="Animations\TransitionAnimation.vb" />
+    <Compile Include="Behaviors\GameBehavior.vb" />
     <Compile Include="Behaviors\IGameBehavior.vb" />
+    <Compile Include="Behaviors\VirtualJoystickMoveBehavior.vb" />
     <Compile Include="Information\GameInformation.vb" />
     <Compile Include="Input\ButtonState.vb" />
     <Compile Include="Input\MouseKeys.vb" />
@@ -107,14 +109,16 @@
     <Compile Include="Input\VirtualKeyModifiers.vb" />
     <Compile Include="Input\PointerDeviceType.vb" />
     <Compile Include="UI\Elements\Controls\GameContentControl.vb" />
+    <Compile Include="UI\Elements\Controls\GameTemplatedContent.vb" />
     <Compile Include="UI\Elements\Controls\GameTextBlock.vb" />
+    <Compile Include="UI\Elements\Controls\IControlTemplate.vb" />
     <Compile Include="UI\Elements\Controls\IGameContentControl.vb" />
     <Compile Include="UI\Elements\Controls\IGameContentControlRenderer.vb" />
+    <Compile Include="UI\Elements\Controls\IGameTemplatedContentRenderer.vb" />
     <Compile Include="UI\Elements\Controls\VirtualJoystick.vb" />
+    <Compile Include="UI\Elements\Controls\VirtualJoystickContent.vb" />
     <Compile Include="UI\Elements\Controls\VirtualJoystickContentTemplate.vb" />
-    <Compile Include="UI\Elements\Controls\VirtualJoystickDragMovedEventArgs.vb" />
-    <Compile Include="UI\Elements\Controls\VirtualJoystickDragStartingEventArgs.vb" />
-    <Compile Include="UI\Elements\Controls\VirtualJoystickReleasedEventArgs.vb" />
+    <Compile Include="UI\Elements\Controls\VirtualJoystickDragEventArgs.vb" />
     <Compile Include="UI\Elements\Controls\VirtualJoystickState.vb" />
     <Compile Include="UI\Elements\GameEventRouteDirections.vb" />
     <Compile Include="UI\Elements\GameEventRouteModes.vb" />
@@ -181,7 +185,6 @@
     <Compile Include="Platform\Platforms.vb" />
     <Compile Include="Platform\PlatformImplRegistration.vb" />
     <Compile Include="UI\CompositeTransform.vb" />
-    <Compile Include="UI\Elements\ControlLayer.vb" />
     <Compile Include="UI\Elements\EntityLayer.vb" />
     <Compile Include="UI\Elements\Controls\GameControl.vb" />
     <Compile Include="UI\Elements\PanelLayer.vb" />

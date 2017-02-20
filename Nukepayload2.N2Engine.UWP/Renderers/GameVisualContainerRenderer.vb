@@ -71,18 +71,33 @@ Public MustInherit Class GameVisualContainerRenderer
     ''' </summary>
     ''' <param name="backBuffer">整个游戏画布的后缓冲区</param>
     Protected Overridable Sub CommitRenderTargetToParent(backBuffer As CanvasDrawingSession)
-        Dim parent = View.Parent
+        Dim view = Me.View
+        Dim parent = view.Parent
         Dim parentRenderer = parent.Renderer
+        ' 模板化支持
+        Do Until TypeOf parentRenderer Is GameVisualContainerRenderer
+            view = parentRenderer.View.Parent
+            parentRenderer = view.Renderer
+        Loop
+
         Dim parentRT = DirectCast(parentRenderer, GameVisualContainerRenderer).RenderTarget
-        Using ds = parentRT.CreateDrawingSession
-            Dim loc = View.Location.Value
-            Dim effectedImage = ApplyEffect(RenderTarget)
-            Dim rtSize = RenderTarget.Size
-            If View.Transform IsNot Nothing Then
-                ds.Transform = View.Transform.GetTransformMatrix
+        Dim loc = view.Location.Value
+        Dim effectedImage = ApplyEffect(RenderTarget)
+        Dim rtSize = RenderTarget.Size
+
+        If TypeOf view Is GameCanvas Then
+            If Me.View.Transform IsNot Nothing Then
+                backBuffer.Transform = Me.View.Transform.GetTransformMatrix
             End If
-            DrawOnParent(ds, loc, effectedImage)
-        End Using
+            DrawOnParent(backBuffer, loc, effectedImage)
+        Else
+            Using ds = parentRT.CreateDrawingSession
+                If view.Transform IsNot Nothing Then
+                    ds.Transform = view.Transform.GetTransformMatrix
+                End If
+                DrawOnParent(ds, loc, effectedImage)
+            End Using
+        End If
     End Sub
 
     ''' <summary>

@@ -13,6 +13,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Media\MusicPlayerImpl.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Media\SoundVoicePlayerImpl.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameContentControlRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameTemplatedContentRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameVisualContainerRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameCanvasRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameElementRenderer.vb" />

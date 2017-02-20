@@ -16,7 +16,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 父级的容器（如果存在）。
         ''' </summary>
-        Public Property Parent As GameVisualContainer
+        Public Property Parent As GameVisual
         ''' <summary>
         ''' 与这个可见对象关联的渲染器
         ''' </summary>

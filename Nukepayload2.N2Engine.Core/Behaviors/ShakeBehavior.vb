@@ -5,7 +5,7 @@ Namespace Behaviors
     ''' 导致被附加的元素持续发抖。
     ''' </summary>
     Public Class ShakeBehavior
-        Implements IGameBehavior
+        Inherits GameBehavior
 
         Dim _needRecover As Boolean
 
@@ -17,17 +17,17 @@ Namespace Behaviors
 
         Public ReadOnly Property Offset As Vector2
 
-        Public Sub Attach(visual As GameVisual) Implements IGameBehavior.Attach
+        Public Overrides Sub Attach(visual As GameVisual)
             Target = visual
-            visual.AddBehavior(Me)
+            MyBase.Attach(visual)
         End Sub
 
-        Public Sub Remove(visual As GameVisual) Implements IGameBehavior.Remove
+        Public Overrides Sub Remove(visual As GameVisual)
             If _needRecover Then
                 Update()
             End If
             Target = Nothing
-            visual.RemoveBehavior(Me)
+            MyBase.Remove(visual)
         End Sub
 
         Private Sub Target_Updating(sender As GameVisual, e As EventArgs) Handles Target.Updating

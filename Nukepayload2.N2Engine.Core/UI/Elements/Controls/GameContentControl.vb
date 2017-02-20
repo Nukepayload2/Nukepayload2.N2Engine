@@ -1,8 +1,9 @@
-﻿Imports Nukepayload2.N2Engine.UI.Elements
+﻿Imports Nukepayload2.N2Engine.Renderers
+Imports Nukepayload2.N2Engine.UI.Elements
 
 Namespace UI.Controls
     ''' <summary>
-    ''' 游戏中的内容控件。渲染任务会传递给内容。
+    ''' 游戏中的内容控件。渲染任务会传递给内容。默认情况下，此类型的渲染器是 <see cref="IGameContentControlRenderer"/>。
     ''' </summary>
     ''' <typeparam name="TContent">内容的类型</typeparam>
     Public MustInherit Class GameContentControl(Of TContent As GameVisual)
@@ -14,7 +15,7 @@ Namespace UI.Controls
         End Sub
 
         Protected Overrides Sub CreateRenderer()
-            Platform.PlatformActivator.CreateBaseInstance(Of IGameContentControlRenderer)(Me)
+            Renderer = Platform.PlatformActivator.CreateBaseInstance(Of IGameContentControlRenderer, RendererBase)(Me)
         End Sub
         ''' <summary>
         ''' 此控件实际显示出的内容。

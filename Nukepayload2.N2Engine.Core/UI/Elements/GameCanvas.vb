@@ -43,7 +43,7 @@ Namespace UI.Elements
         ''' <param name="raise">引发事件</param>
         Protected Overridable Sub RouteEvents(Of TEventArgs As GameRoutedEventArgs)(originalEvent As TEventArgs, raise As Action(Of GameVisual, TEventArgs))
             originalEvent.OriginalSource = Me
-            Dim subTreeNodes = DirectCast(Me, GameVisual).HierarchyWalk(Function(node) node.GetSubNodes)
+            Dim subTreeNodes = DirectCast(Me, GameVisual).HierarchyWalk(Function(node) node.GetSubNodes).Skip(1)
             Select Case EventRouteMode
                 Case GameEventRouteModes.Disabled
                 Case GameEventRouteModes.HandledEventsToo

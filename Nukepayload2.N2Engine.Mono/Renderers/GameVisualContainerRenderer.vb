@@ -105,14 +105,24 @@ Public MustInherit Class GameVisualContainerRenderer
     End Function
 
     Protected Overridable Sub CommitRenderTargetToParent(device As GraphicsDevice, dc As SpriteBatch)
-        Dim parent = View.Parent
+        Dim view = Me.View
+        Dim parent = view.Parent
         Dim parentRenderer = parent.Renderer
-        Dim parentRT = DirectCast(parentRenderer, GameVisualContainerRenderer).RenderTarget
+        Dim parentRT As RenderTarget2D
+
+        ' 模板化支持
+        Do Until TypeOf parentRenderer Is GameVisualContainerRenderer
+            view = parentRenderer.View.Parent
+            parentRenderer = view.Renderer
+        Loop
+
+        parentRT = DirectCast(parentRenderer, GameVisualContainerRenderer).RenderTarget
+
         device.SetRenderTarget(parentRT)
-        If View.Transform Is Nothing Then
+        If view.Transform Is Nothing Then
             dc.Begin()
         Else
-            With View.Transform.GetTransformMatrix
+            With view.Transform.GetTransformMatrix
                 dc.Begin(SpriteSortMode.Deferred, Nothing, Nothing, Nothing, Nothing, Nothing,
                          New Matrix(.M11, .M12, 0F, 0F,
                                     .M21, .M22, 0F, 0F,
@@ -120,7 +130,7 @@ Public MustInherit Class GameVisualContainerRenderer
                                     .M31, .M32, 0F, 1.0F))
             End With
         End If
-        Dim loc = View.Location.Value
+        Dim loc = view.Location.Value
         Dim drawSize As New Rectangle(loc.X, loc.Y, RenderTarget.Width, RenderTarget.Height)
         Dim effectedImage = ApplyEffect(RenderTarget)
         DrawOnParent(dc, drawSize, effectedImage)

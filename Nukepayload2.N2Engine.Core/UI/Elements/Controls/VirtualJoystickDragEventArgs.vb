@@ -1,8 +1,8 @@
 ﻿Namespace UI.Controls
     ''' <summary>
-    ''' 虚拟摇杆拖动事件的数据
+    ''' 虚拟摇杆拖动整个过程的事件的数据
     ''' </summary>
-    Public Class VirtualJoystickDragMovedEventArgs
+    Public Class VirtualJoystickDragEventArgs
         Inherits EventArgs
 
         Sub New(startPoint As Vector2, endPoint As Vector2)

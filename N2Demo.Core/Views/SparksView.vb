@@ -1,6 +1,7 @@
 ﻿Imports System.Numerics
 Imports System.Reflection
 Imports Nukepayload2.N2Engine.Behaviors
+Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Information
 Imports Nukepayload2.N2Engine.Media
 Imports Nukepayload2.N2Engine.Resources
@@ -16,6 +17,7 @@ Public Class SparksView
     Inherits GameCanvas
 
 #Region "可见元素"
+    ' 普通元素
     Dim redEllipse As New EllipseElement
     Dim greenRect As New RectangleElement
     Dim sparks As New SparkParticleSystemView
@@ -25,7 +27,8 @@ Public Class SparksView
     Dim tblKeyDownCount As New GameTextBlock
     Dim tblLastMouseAction As New GameTextBlock
     Dim tblLastTouchAction As New GameTextBlock
-
+    ' 控件
+    WithEvents Joystick As New VirtualJoystick(Function(vec) vec.X < 300.0F)
 #End Region
 
 #Region "外部资源"
@@ -124,14 +127,23 @@ Public Class SparksView
                 Bind(Function(r) r.Text, Function() "上一次触摸状态：" + sparksData.LastTouchState).
                 Bind(Function(r) r.Location, New Vector2(0.0F, 90.0F)))
         )
+        AddChild(Joystick.
+            Bind(Function(r) r.Fill, New Color(&H7FFF3F3F)).
+            Bind(Function(r) r.Stroke, New Color(&H9F000000)).
+            Bind(Function(r) r.FillSize, New Vector2(64.0F)).
+            Bind(Function(r) r.StrokeSize, New Vector2(72.0F)).
+            Bind(Function(r) r.Location, New Vector2)
+        )
         ' 放置触发器
         Dim verticalShakeTrigger As New VerticalShakeTrigger
         verticalShakeTrigger.Attach(Me)
         Dim rotateRectangleTrigger As New KeyboardPlaneTransformTestTrigger
         rotateRectangleTrigger.Attach(Me)
         ' 增加行为
-        Dim shake As New ShakeBehavior(New Vector2(10, -5))
-        shake.Attach(redEllipse)
+        Dim joystickControl As New VirtualJoystickMoveBehavior(Joystick) With {
+            .MaxSpeed = 1.0F
+        }
+        joystickControl.Attach(redEllipse)
     End Sub
 
     Private Async Function LoadSaveFileAsync() As Task

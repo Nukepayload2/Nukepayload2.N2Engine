@@ -4,6 +4,7 @@ Imports Nukepayload2.N2Engine.UI.Controls
 <PlatformImpl(GetType(IGameContentControlRenderer))>
 Partial Friend Class GameContentControlRenderer
     Inherits GameElementRenderer
+    Implements IGameContentControlRenderer
 
     Sub New(visual As GameControl)
         MyBase.New(visual)
