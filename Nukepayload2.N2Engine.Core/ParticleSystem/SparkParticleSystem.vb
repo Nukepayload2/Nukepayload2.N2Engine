@@ -21,16 +21,14 @@ Namespace ParticleSystem
         End Sub
         Public Property ParticleLife As Integer
 
-        Protected Shared Rnd As New Random
-        Protected Shared Directions() As Vector2 = {New Vector2(0, 1), New Vector2(0, -1), New Vector2(-1, 0), New Vector2(1, 0), New Vector2(0.7, 0.7), New Vector2(0.7, -0.7), New Vector2(-0.7, 0.7), New Vector2(-0.7, -0.7)}
-
         Protected Overrides Function CreateParticle() As SparkParticle
             Dim colData(2) As Byte
+            Dim Rnd = RandomGenerator.Rand
             Rnd.NextBytes(colData)
-            Dim s As New SparkParticle(Directions(Rnd.Next(8)).RotateNew(Rnd.Next(60)) * Rnd.NextDouble, ParticleLife, Location, New Vector2) With
+            Dim s As New SparkParticle(RandomGenerator.RandomVector2, ParticleLife, Location, New Vector2) With
             {
-                .Age = Rnd.NextDouble * 80,
-                .SparkSize = 1 + Rnd.NextDouble * 3,
+                .Age = RandomGenerator.RandomSingle * 80,
+                .SparkSize = 1 + RandomGenerator.RandomSingle * 3,
                 .SparkColor = Color.FromArgb(255, colData(0), colData(1), colData(2))
             }
             Return s
