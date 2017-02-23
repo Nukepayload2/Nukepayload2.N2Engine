@@ -1,6 +1,6 @@
 ﻿Imports Nukepayload2.N2Engine.Foundation
 
-Namespace ParticleSystem
+Namespace ParticleSystems
     Public Class SparkParticle
         Inherits Particle
         Public Sub New(acceleration As Vector2, lifeTime As Integer, location As Vector2, velocity As Vector2)

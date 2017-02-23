@@ -1,6 +1,6 @@
 ﻿Imports Newtonsoft.Json
 
-Namespace ParticleSystem
+Namespace ParticleSystems
     ''' <summary>
     ''' 持续释放和销毁的粒子系统
     ''' </summary>
@@ -47,7 +47,7 @@ Namespace ParticleSystem
             End If
             Dim deq = 0
             For Each par In Particles
-                par.Update()
+                UpdateParticle(par)
                 If par.Age >= par.LifeTime Then
                     deq += 1
                 End If
@@ -58,6 +58,7 @@ Namespace ParticleSystem
                 Next
             End SyncLock
         End Sub
+
         Protected Overridable Sub OnParticleRemoved(particle As TParticle)
 
         End Sub

@@ -1,4 +1,4 @@
-﻿Namespace ParticleSystem
+﻿Namespace ParticleSystems
 
     ''' <summary>
     ''' 基本的粒子

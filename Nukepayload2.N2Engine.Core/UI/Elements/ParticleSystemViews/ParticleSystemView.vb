@@ -1,5 +1,5 @@
 ﻿Imports Nukepayload2.N2Engine.Foundation
-Imports Nukepayload2.N2Engine.ParticleSystem
+Imports Nukepayload2.N2Engine.ParticleSystems
 Imports Nukepayload2.N2Engine.UI.Elements
 
 Namespace UI.ParticleSystemViews

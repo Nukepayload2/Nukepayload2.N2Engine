@@ -50,6 +50,7 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework and Windows SDK is automatically included -->
+    <None Include="packages.config" />
     <None Include="ReadMe.md" />
     <None Include="编译常量说明.md" />
   </ItemGroup>
@@ -91,6 +92,13 @@
     <Compile Include="PropertyDataChangedEventArgs.vb" />
     <Compile Include="SimpleCommand.vb" />
     <Compile Include="SingleInstance.vb" />
+    <Compile Include="RectangleBounds.vb" />
+    <Compile Include="SizeInInteger.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.Numerics.Vectors, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

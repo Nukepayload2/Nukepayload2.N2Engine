@@ -1,4 +1,4 @@
-﻿Namespace ParticleSystem
+﻿Namespace ParticleSystems
     Public Interface IParticleSystem
         ''' <summary>
         ''' 每次释放多少个粒子
@@ -16,5 +16,6 @@
     Public Interface IParticleSystem(Of TParticle As IParticle)
         Inherits IParticleSystem
 
+        Sub UpdateParticle(particle As TParticle)
     End Interface
 End Namespace

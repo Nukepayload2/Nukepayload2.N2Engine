@@ -2,9 +2,9 @@
 
 Namespace Animations
     ''' <summary>
-    ''' 表示在一段时间内保持同一帧图像
+    ''' 表示共用一张图像的多个帧。
     ''' </summary>
-    Public Class BitmapFrame
+    Public Class BitmapFrames
         Implements IEnumerable(Of BitmapResource)
 
         ''' <param name="bitmap">显示的位图</param>
@@ -20,11 +20,11 @@ Namespace Animations
         ''' <summary>
         ''' 显示的位图
         ''' </summary>
-        Public Property Bitmap As BitmapResource
+        Public ReadOnly Property Bitmap As BitmapResource
         ''' <summary>
         ''' 此图像需要重复多少次
         ''' </summary>
-        Public Property Length As Integer
+        Public ReadOnly Property Length As Integer
 
         Public Function GetEnumerator() As IEnumerator(Of BitmapResource) Implements IEnumerable(Of BitmapResource).GetEnumerator
             Return New BitmapEnumerator(Me)
@@ -34,13 +34,13 @@ Namespace Animations
             Return GetEnumerator()
         End Function
 
-        Private Class BitmapEnumerator
+        Public Class BitmapEnumerator
             Implements IEnumerator(Of BitmapResource)
 
-            Dim resource As BitmapFrame
+            Dim resource As BitmapFrames
             Dim index As Integer = -1
 
-            Sub New(resource As BitmapFrame)
+            Sub New(resource As BitmapFrames)
                 Me.resource = resource
             End Sub
 
@@ -65,7 +65,7 @@ Namespace Animations
 
             Public Function MoveNext() As Boolean Implements IEnumerator.MoveNext
                 index += 1
-                Return index <= resource.Length
+                Return index < resource.Length
             End Function
 
 #Region "IDisposable Support"

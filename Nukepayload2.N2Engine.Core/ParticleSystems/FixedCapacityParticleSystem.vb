@@ -1,4 +1,4 @@
-﻿Namespace ParticleSystem
+﻿Namespace ParticleSystems
     ''' <summary>
     ''' 固定数量粒子的粒子系统。在开始的时候释放粒子。对于老的粒子实行回收和重生。
     ''' </summary>
@@ -35,7 +35,7 @@
         Public Overrides Sub Update()
             If SpawnDuration >= 0 Then
                 For Each par In Particles
-                    par.Update()
+                    UpdateParticle(par)
                     If par.Age >= par.LifeTime Then
                         RecycleParticle(par)
                     End If
@@ -46,7 +46,7 @@
             End If
         End Sub
         ''' <summary>
-        ''' 回收一个粒子，导致它的状态回归到初始。如果不重写此方法，只会导致需要回收的粒子的<see cref="IParticle.Age"/>归零。 
+        ''' 回收一个粒子，导致它的状态回归到初始。默认导致需要回收的粒子的<see cref="IParticle.Age"/>归零。 
         ''' </summary>
         ''' <param name="particle">需要回收的粒子</param>
         Protected Overridable Sub RecycleParticle(particle As TParticle)

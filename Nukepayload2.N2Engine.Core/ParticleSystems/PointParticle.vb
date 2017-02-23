@@ -1,4 +1,4 @@
-﻿Namespace ParticleSystem
+﻿Namespace ParticleSystems
     ''' <summary>
     ''' 小到用一个点就能描述的粒子
     ''' </summary>

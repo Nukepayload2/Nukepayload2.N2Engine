@@ -2,7 +2,7 @@
 Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.N2Math
 
-Namespace ParticleSystem
+Namespace ParticleSystems
     ''' <summary>
     ''' 火花粒子系统
     ''' </summary>

@@ -4,15 +4,15 @@
     ''' </summary>
     Public Class AnimatioLoopInformation
         ''' <summary>
-        ''' 一共最多播放多少遍
+        ''' 一共最多播放多少遍。如果是 -1 则无限循环。
         ''' </summary>
         Public Property LoopCount% = -1
         ''' <summary>
-        ''' 在<see cref="BitmapAnimation.Frames"/>的起始下标, 从0开始
+        ''' 在<see cref="BitmapDiscreteAnimation.Frames"/>的起始下标, 从0开始
         ''' </summary>
         Public Property LoopStart%
         ''' <summary>
-        ''' 在<see cref="BitmapAnimation.Frames"/>的终止下标, 最大不要超过上界，否则会发生<see cref="IndexOutOfRangeException"/>或者<see cref="NullReferenceException"/>。
+        ''' 在<see cref="BitmapDiscreteAnimation.Frames"/>的终止下标, 最大不要超过上界，否则会发生<see cref="IndexOutOfRangeException"/>或者<see cref="NullReferenceException"/>。
         ''' </summary>
         Public Property LoopEnd%
         ''' <summary>

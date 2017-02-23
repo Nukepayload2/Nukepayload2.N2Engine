@@ -1,7 +1,7 @@
 ﻿Imports Newtonsoft.Json
 Imports Nukepayload2.N2Engine.UI.Elements
 
-Namespace ParticleSystem
+Namespace ParticleSystems
     ''' <summary>
     ''' 固定数量粒子的粒子系统。在开始的时候释放粒子。对于老的粒子实行回收和重生。
     ''' </summary>
@@ -38,5 +38,13 @@ Namespace ParticleSystem
         ''' 更新粒子系统
         ''' </summary>
         Public MustOverride Sub Update() Implements IParticleSystem(Of TParticle).Update
+        ''' <summary>
+        ''' 更新粒子
+        ''' </summary>
+        ''' <param name="particle">要更新的粒子</param>
+        Public Overridable Sub UpdateParticle(particle As TParticle) Implements IParticleSystem(Of TParticle).UpdateParticle
+            particle.Update()
+        End Sub
+
     End Class
 End Namespace

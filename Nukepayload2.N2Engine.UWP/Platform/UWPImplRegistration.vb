@@ -15,6 +15,8 @@ Public Class UWPImplRegistration
             If Not regSuccess Then
                 Throw New InvalidOperationException("检测到不完整的UWP实现重复注册。这通常说明存在失败的平台实现注册。")
             End If
+            Information.Environment.Platform = Platforms.UniversalWindows
+            Information.Environment.Renderer = Platform.Renderers.Win2D
         End Using
     End Sub
 End Class

@@ -6,7 +6,7 @@
         ''' <summary>
         ''' 尾焰动画
         ''' </summary>
-        Public Property TrailerAnimation As BitmapAnimation
+        Public Property TrailerAnimation As BitmapDiscreteAnimation
         ''' <summary>
         ''' 每多少帧产生一个尾焰动画
         ''' </summary>

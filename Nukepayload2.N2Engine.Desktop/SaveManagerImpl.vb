@@ -9,12 +9,12 @@ Namespace Global.Nukepayload2.N2Engine.Storage
                     folder = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData)
                     folder = AddFolder(folder, VendorName)
                     folder = AddFolder(folder, "N2Engine")
-                    folder = AddFolder(folder, Information.GameInformation.SharedLogicAssembly.FullName)
+                    folder = AddFolder(folder, Information.Environment.SharedLogicAssembly.FullName)
                 Case SaveLocations.Roaming
                     folder = Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData)
                     folder = AddFolder(folder, VendorName)
                     folder = AddFolder(folder, "N2Engine")
-                    folder = AddFolder(folder, Information.GameInformation.SharedLogicAssembly.FullName)
+                    folder = AddFolder(folder, Information.Environment.SharedLogicAssembly.FullName)
                 Case Else
                     folder = Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments)
                     folder = AddFolder(folder, VendorName)

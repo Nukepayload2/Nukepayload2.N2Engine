@@ -58,7 +58,7 @@ Public Class SparksView
 
     Sub New()
         ' 准备存档
-        GameInformation.SharedLogicAssembly = [GetType].GetTypeInfo.Assembly
+        Environment.SharedLogicAssembly = [GetType].GetTypeInfo.Assembly
         savMgr = New SampleSaveFileManager
         ' 准备资源路由
         ApplyRoute()

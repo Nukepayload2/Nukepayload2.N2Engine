@@ -1,7 +1,7 @@
 ﻿Imports System.Numerics
 Imports Newtonsoft.Json
 Imports Nukepayload2.N2Engine.Foundation
-Imports Nukepayload2.N2Engine.ParticleSystem
+Imports Nukepayload2.N2Engine.ParticleSystems
 
 Public Class SparksViewModel
     Inherits SingleInstance(Of SparksViewModel)

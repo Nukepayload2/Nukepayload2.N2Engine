@@ -1,7 +1,4 @@
-﻿Imports System.Numerics
-Imports Microsoft.Graphics.Canvas
-Imports Microsoft.Graphics.Canvas.Effects
-Imports Microsoft.Graphics.Canvas.UI
+﻿Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
 Imports Nukepayload2.N2Engine.UI.Elements
 Imports Nukepayload2.N2Engine.UWP.Marshal

@@ -22,6 +22,8 @@ Public Class MonoImplRegistration
             If extraRegister IsNot Nothing AndAlso Not reg.RegsterImplAssembly(extraRegister) Then
                 Throw New InvalidOperationException("额外的注册内容无法注册。")
             End If
+            Information.Environment.Platform = MonoAPIContract.Platform
+            Information.Environment.Renderer = MonoAPIContract.Renderer
         End Using
     End Sub
 End Class

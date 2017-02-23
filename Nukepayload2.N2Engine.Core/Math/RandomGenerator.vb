@@ -40,11 +40,28 @@ Namespace N2Math
         Public Shared Function RandomSingle2() As Single
             Return CSng(Rand.Next) * 9.313226E-10F - 1.0F
         End Function
-
+        ''' <summary>
+        ''' 生成 -1,-1 到 1,1 之间的随机向量
+        ''' </summary>
+        ''' <returns></returns>
         Public Shared Function RandomVector2() As Vector2
             Return New Vector2(RandomSingle2, RandomSingle2)
         End Function
 
+        ''' <summary>
+        ''' 生成 0,0 到 1,1 之间的随机向量
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Function RandomVector2Positive() As Vector2
+            Return New Vector2(RandomSingle, RandomSingle)
+        End Function
+        ''' <summary>
+        ''' 生成 0,0 到 1,1 之间的随机向量
+        ''' </summary>
+        ''' <returns></returns>
+        Public Shared Function RandomVector2Positive(scaleX As Integer, scaleY As Integer) As Vector2
+            Return New Vector2(RandomSingle() * scaleX, RandomSingle() * scaleY)
+        End Function
         ''' <summary>
         ''' 0到1之间
         ''' </summary>

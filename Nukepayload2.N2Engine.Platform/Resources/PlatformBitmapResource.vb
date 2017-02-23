@@ -14,6 +14,10 @@ Partial Friend Class PlatformBitmapResource
 
     End Sub
 
+    Protected Overrides Function ClonePreserveTexture() As BitmapResource
+        Return New PlatformBitmapResource(UriPath) With {.Texture = Texture}
+    End Function
+
 #Region "IDisposable Support"
     Private disposedValue As Boolean
     Protected Overridable Sub Dispose(disposing As Boolean)
