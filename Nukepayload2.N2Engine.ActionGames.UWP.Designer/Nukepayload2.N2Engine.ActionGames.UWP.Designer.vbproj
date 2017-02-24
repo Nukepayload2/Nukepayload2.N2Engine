@@ -1,10 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{ced14f5b-2d3c-4a6a-b830-d40644744dd9}</ProjectGuid>
+    <ProjectGuid>{CED14F5B-2D3C-4A6A-B830-D40644744DD9}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Nukepayload2.N2Engine.ActionGames.UWP.Designer</RootNamespace>
     <AssemblyName>Nukepayload2.N2Engine.ActionGames.UWP.Designer</AssemblyName>
@@ -123,7 +123,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class1.vb" />
-    <Compile Include="My Project\AssemblyInfo.vb"/>
+    <Compile Include="My Project\AssemblyInfo.vb" />
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.ActionGames.UWP.Designer.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -138,7 +138,7 @@
     <Import Include="System.Linq" />
     <Import Include="System.Runtime.CompilerServices" />
     <Import Include="System.Threading.Tasks" />
-    <Import Include="System.Runtime.InteropServices.WindowsRuntime"/>
+    <Import Include="System.Runtime.InteropServices.WindowsRuntime" />
     <Import Include="System.Windows.Input" />
     <Import Include="System.Xml.Linq" />
     <Import Include="Windows.ApplicationModel" />
@@ -155,6 +155,11 @@
     <Import Include="Windows.UI.Xaml.Media" />
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
     <Import Include="Windows.UI.Xaml.Navigation" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nukepayload2.N2Engine.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
@@ -179,4 +184,4 @@
   <Target Name="AfterBuild">
   </Target>
   -->
- </Project>
+</Project>

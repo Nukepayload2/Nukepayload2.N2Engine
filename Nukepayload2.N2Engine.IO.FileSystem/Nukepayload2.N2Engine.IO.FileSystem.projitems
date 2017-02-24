@@ -13,4 +13,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)File.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)XamarinApiContract.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Nukepayload2.N2Engine.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

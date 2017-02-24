@@ -139,6 +139,11 @@
       <Name>Nukepayload2.N2Engine</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Nukepayload2.N2Engine.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

@@ -31,4 +31,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Transform2D.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)VertexFragment.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)RaisingStudio.Xna.Graphics.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

@@ -26,4 +26,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformFontLoader.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\SaveManagerImpl.vb" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Nukepayload2.N2Engine.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

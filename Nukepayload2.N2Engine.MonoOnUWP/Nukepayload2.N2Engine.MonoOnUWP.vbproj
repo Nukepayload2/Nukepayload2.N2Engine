@@ -172,6 +172,11 @@
       <Name>RaisingStudio.Xna.Graphics.UWP</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Nukepayload2.N2Engine.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems" Label="Shared" />

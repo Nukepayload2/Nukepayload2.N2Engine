@@ -21,4 +21,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Storage\SaveFolder.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Storage\SaveManagerImpl.vb" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Nukepayload2.N2Engine.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>

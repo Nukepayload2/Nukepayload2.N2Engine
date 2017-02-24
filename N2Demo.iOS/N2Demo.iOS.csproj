@@ -147,5 +147,10 @@
       <Name>Nukepayload2.N2Engine.iOS</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="N2Demo.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
 </Project>

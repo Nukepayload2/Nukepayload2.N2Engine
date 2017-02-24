@@ -122,6 +122,11 @@
     <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Nukepayload2.N2Engine.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.Xamarin\Nukepayload2.N2Engine.Xamarin.projitems" Label="Shared" />

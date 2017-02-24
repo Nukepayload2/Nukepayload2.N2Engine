@@ -203,6 +203,11 @@
   <ItemGroup>
     <Folder Include="Storage\" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Nukepayload2.N2Engine.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems" Label="Shared" />
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

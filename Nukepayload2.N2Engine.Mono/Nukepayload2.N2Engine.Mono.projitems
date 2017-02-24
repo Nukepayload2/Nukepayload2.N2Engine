@@ -45,4 +45,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameMouseEventMediator.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameTouchEventMediator.vb" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="$(MSBuildThisFileDirectory)Nukepayload2.N2Engine.License.txt">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
 </Project>
