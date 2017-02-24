@@ -45,6 +45,9 @@ Namespace ParticleSystems
         Public Overridable Sub UpdateParticle(particle As TParticle) Implements IParticleSystem(Of TParticle).UpdateParticle
             particle.Update()
         End Sub
-
+        ''' <summary>
+        ''' 枚举粒子系统包含的粒子
+        ''' </summary>
+        Public MustOverride Function GetParticles() As IEnumerable(Of TParticle) Implements IParticleSystem(Of TParticle).GetParticles
     End Class
 End Namespace

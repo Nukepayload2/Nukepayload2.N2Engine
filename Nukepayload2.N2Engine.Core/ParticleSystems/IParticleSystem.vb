@@ -17,5 +17,6 @@
         Inherits IParticleSystem
 
         Sub UpdateParticle(particle As TParticle)
+        Function GetParticles() As IEnumerable(Of TParticle)
     End Interface
 End Namespace

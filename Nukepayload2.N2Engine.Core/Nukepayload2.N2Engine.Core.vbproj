@@ -108,6 +108,7 @@
     <Compile Include="Input\PhysicalKeyStatus.vb" />
     <Compile Include="Input\VirtualKeyModifiers.vb" />
     <Compile Include="Input\PointerDeviceType.vb" />
+    <Compile Include="ParticleSystems\ICommonSpriteParticleSystem.vb" />
     <Compile Include="ParticleSystems\RailgunParticleSystem.vb" />
     <Compile Include="ParticleSystems\SmokeParticleSystem.vb" />
     <Compile Include="ParticleSystems\SpriteParticle.vb" />
@@ -122,8 +123,8 @@
     <Compile Include="UI\Elements\Controls\GameTextBlock.vb" />
     <Compile Include="UI\Elements\Controls\IControlTemplate.vb" />
     <Compile Include="UI\Elements\Controls\IGameContentControl.vb" />
-    <Compile Include="UI\Elements\Controls\IGameContentControlRenderer.vb" />
-    <Compile Include="UI\Elements\Controls\IGameTemplatedContentRenderer.vb" />
+    <Compile Include="Renderers\IGameContentControlRenderer.vb" />
+    <Compile Include="Renderers\IGameTemplatedContentRenderer.vb" />
     <Compile Include="UI\Elements\Controls\IVirtualJoystickContent.vb" />
     <Compile Include="UI\Elements\Controls\VirtualJoystick.vb" />
     <Compile Include="UI\Elements\Controls\VirtualJoystickContent.vb" />
@@ -136,6 +137,9 @@
     <Compile Include="UI\Elements\GameMouseRoutedEventArgs.vb" />
     <Compile Include="UI\Elements\GameTouchRoutedEventArgs.vb" />
     <Compile Include="UI\Elements\GameVirtualizingScrollViewer.vb" />
+    <Compile Include="UI\Elements\ParticleSystemViews\RailgunParticleSystemView.vb" />
+    <Compile Include="UI\Elements\ParticleSystemViews\SmokeParticleSystemView.vb" />
+    <Compile Include="UI\Elements\ParticleSystemViews\SwarmParticleSystemView.vb" />
     <Compile Include="UI\Elements\TappedEventArgs.vb" />
     <Compile Include="Math\Combination.vb" />
     <Compile Include="Media\MediaPlayerFactory.vb" />

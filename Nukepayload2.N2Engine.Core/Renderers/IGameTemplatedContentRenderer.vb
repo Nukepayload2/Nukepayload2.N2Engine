@@ -1,4 +1,4 @@
-﻿Namespace UI.Controls
+﻿Namespace Renderers
 
     Public Interface IGameTemplatedContentRenderer
 

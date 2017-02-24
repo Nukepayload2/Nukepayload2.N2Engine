@@ -1,5 +1,4 @@
-﻿Imports Microsoft.Xna.Framework
-Imports Nukepayload2.N2Engine.Platform
+﻿Imports Nukepayload2.N2Engine.Platform
 ''' <summary>
 ''' 文字渲染器
 ''' </summary>

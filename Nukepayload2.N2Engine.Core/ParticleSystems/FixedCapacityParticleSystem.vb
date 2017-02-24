@@ -5,6 +5,7 @@
     ''' <typeparam name="TParticle"></typeparam>
     Public MustInherit Class FixedCapacityParticleSystem(Of TParticle As IParticle)
         Inherits ParticleSystemBase(Of TParticle)
+
         ''' <summary>
         ''' 给定粒子的数量，创建固定数量粒子的粒子系统。
         ''' </summary>
@@ -19,7 +20,13 @@
                 Particles(i) = CreateParticle()
             Next
         End Sub
+
         Public Property Particles As TParticle()
+
+        Public Overrides Function GetParticles() As IEnumerable(Of TParticle)
+            Return Particles
+        End Function
+
         ''' <summary>
         ''' 一次释放粒子的数量
         ''' </summary>

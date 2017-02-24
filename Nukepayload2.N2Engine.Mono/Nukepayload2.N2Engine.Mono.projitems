@@ -36,6 +36,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\RectangleElementRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\Geometry\TriangleElementRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\MonoGameRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\SmokeParticleSystemRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\SwarmParticleSystemRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\RailgunParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\TextBlockRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
@@ -44,6 +47,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameKeyboardEventMediator.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameMouseEventMediator.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameTouchEventMediator.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\SpriteParticleSystemHelper.vb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="$(MSBuildThisFileDirectory)Nukepayload2.N2Engine.License.txt">

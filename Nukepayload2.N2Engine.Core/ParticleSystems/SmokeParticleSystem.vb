@@ -4,6 +4,7 @@ Namespace ParticleSystems
 
     Public Class SmokeParticleSystem
         Inherits DynamicParticleSystem(Of SpriteParticle)
+        Implements ICommonSpriteParticleSystem
 
         Public Sub New(spawnCount As Integer, spawnDuration As Integer, spawnInterval As Integer,
                        direction As Vector2, wind As Vector2, particleLife As Integer, imageList As BitmapDiscreteAnimation)
@@ -29,7 +30,7 @@ Namespace ParticleSystems
         ''' <summary>
         ''' 位图动画
         ''' </summary>
-        Public Property ImageList As BitmapDiscreteAnimation
+        Public Property ImageList As BitmapDiscreteAnimation Implements ICommonSpriteParticleSystem.ImageList
 
         Protected Overrides Function CreateParticle() As SpriteParticle
             Return New SpriteParticle(Wind, ParticleLife, Location, Direction, ImageList)

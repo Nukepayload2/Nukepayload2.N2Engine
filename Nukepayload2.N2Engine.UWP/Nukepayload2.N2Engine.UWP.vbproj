@@ -148,6 +148,9 @@
     <Compile Include="Renderers\Geometry\PolylineElementRenderer.vb" />
     <Compile Include="Renderers\Geometry\RectangleElementRenderer.vb" />
     <Compile Include="Renderers\Geometry\TriangleElementRenderer.vb" />
+    <Compile Include="Renderers\SmokeParticleSystemRenderer.vb" />
+    <Compile Include="Renderers\SwarmParticleSystemRenderer.vb" />
+    <Compile Include="Renderers\RailgunParticleSystemRenderer.vb" />
     <Compile Include="Renderers\SparkParticleSystemRenderer.vb" />
     <Compile Include="Platform\UWPImplRegistration.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -158,6 +161,7 @@
     <Compile Include="UI\UWPEventMediator.vb" />
     <Compile Include="Utilities\CanvasGeometryExtension.vb" />
     <Compile Include="Utilities\LightClipCalculator.vb" />
+    <Compile Include="Utilities\SpriteParticleSystemHelper.vb" />
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.UWP.rd.xml" />
   </ItemGroup>
   <ItemGroup>

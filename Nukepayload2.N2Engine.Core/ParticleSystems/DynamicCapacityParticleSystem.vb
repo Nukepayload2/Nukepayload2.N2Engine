@@ -59,6 +59,10 @@ Namespace ParticleSystems
             End SyncLock
         End Sub
 
+        Public Overrides Function GetParticles() As IEnumerable(Of TParticle)
+            Return Particles
+        End Function
+
         Protected Overridable Sub OnParticleRemoved(particle As TParticle)
 
         End Sub

@@ -1,4 +1,6 @@
-﻿Imports Nukepayload2.N2Engine.Animations
+﻿Imports Newtonsoft.Json
+Imports Nukepayload2.N2Engine.Animations
+Imports Nukepayload2.N2Engine.Resources
 
 Namespace ParticleSystems
 
@@ -11,7 +13,22 @@ Namespace ParticleSystems
         ''' <summary>
         ''' 已经解析过的位图动画
         ''' </summary>
+        <JsonIgnore>
         Public Property ImageList As BitmapDiscreteAnimation
+
+        Dim _ImageEnumStatus As IEnumerator(Of BitmapResource)
+        ''' <summary>
+        ''' 动画的播放进度
+        ''' </summary>
+        <JsonIgnore>
+        Public ReadOnly Property ImageEnumStatus As IEnumerator(Of BitmapResource)
+            Get
+                If _ImageEnumStatus Is Nothing Then
+                    _ImageEnumStatus = ImageList.GetEnumerator
+                End If
+                Return _ImageEnumStatus
+            End Get
+        End Property
         ''' <summary>
         ''' 这个粒子的透明度
         ''' </summary>

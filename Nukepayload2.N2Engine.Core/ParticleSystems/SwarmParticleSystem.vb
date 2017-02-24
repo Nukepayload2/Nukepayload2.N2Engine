@@ -6,6 +6,7 @@ Namespace ParticleSystems
 
     Public Class SwarmParticleSystem
         Inherits FixedCapacityParticleSystem(Of SpriteParticle)
+        Implements ICommonSpriteParticleSystem
 
         Public Sub New(count As Integer, duration As Integer,
                        twinkleStep As Single, imageList As BitmapDiscreteAnimation, bounds As SizeInInteger)
@@ -22,7 +23,7 @@ Namespace ParticleSystems
         ''' <summary>
         ''' 位图动画
         ''' </summary>
-        Public Property ImageList As BitmapDiscreteAnimation
+        Public Property ImageList As BitmapDiscreteAnimation Implements ICommonSpriteParticleSystem.ImageList
         ''' <summary>
         ''' 边界
         ''' </summary>
