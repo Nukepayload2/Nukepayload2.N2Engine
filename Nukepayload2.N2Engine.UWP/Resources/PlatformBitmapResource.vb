@@ -3,7 +3,7 @@ Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Resources
 
 Friend Class PlatformBitmapResource
-    Public Property Texture As CanvasBitmap
+    Public Overridable Property Texture As CanvasBitmap
 
     Public Async Function LoadAsync(device As ICanvasResourceCreator) As Task
         Dim resmgr = ResourceLoader.GetForCurrentView()

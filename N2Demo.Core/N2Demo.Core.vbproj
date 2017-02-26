@@ -129,7 +129,7 @@
     <Compile Include="Triggers\KeyboardPlaneTransformTestTrigger.vb" />
     <Compile Include="Models\ButtonStatus.vb" />
     <Compile Include="ViewModels\SingleInstance.vb" />
-    <Compile Include="Views\SparksView.vb" />
+    <Compile Include="Views\MainCanvas.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="ViewModels\SparksViewModel.vb" />
     <Compile Include="Triggers\VerticalShakeTrigger.vb" />
@@ -158,6 +158,9 @@
     <None Include="N2Demo.License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\Flame3.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

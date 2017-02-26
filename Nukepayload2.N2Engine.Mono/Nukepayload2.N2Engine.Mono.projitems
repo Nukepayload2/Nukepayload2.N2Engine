@@ -42,6 +42,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\TextBlockRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResourceSegment.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformFontLoader.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameEventMediator.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)UI\MonoGameKeyboardEventMediator.vb" />

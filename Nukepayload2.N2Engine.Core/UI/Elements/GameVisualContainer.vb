@@ -21,8 +21,8 @@ Namespace UI.Elements
         End Function
 
         Sub New()
-            GameVisualTreeHelper.AddChildrenChangedHandler(Me)
-            GameVisualTreeHelper.AutoHandleParent(Me)
+            GameVisualTreeHelper.RemoveChildrenWhenChildRequested(Me)
+            GameVisualTreeHelper.ModifyParentOnChildrenChanged(Me)
         End Sub
         ''' <summary>
         ''' 订阅子元素变更的通知

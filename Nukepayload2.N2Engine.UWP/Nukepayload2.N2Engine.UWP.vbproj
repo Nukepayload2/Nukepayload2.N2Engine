@@ -157,6 +157,7 @@
     <Compile Include="Renderers\TextBlockRenderer.vb" />
     <Compile Include="Renderers\Win2DRenderer.vb" />
     <Compile Include="Resources\PlatformBitmapResource.vb" />
+    <Compile Include="Resources\PlatformBitmapResourceSegment.vb" />
     <Compile Include="Resources\PlatformFontManager.vb" />
     <Compile Include="UI\UWPEventMediator.vb" />
     <Compile Include="Utilities\CanvasGeometryExtension.vb" />

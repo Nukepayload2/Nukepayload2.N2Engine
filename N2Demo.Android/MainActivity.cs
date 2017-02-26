@@ -19,7 +19,7 @@ namespace N2Demo.Android
     public class MainActivity : Microsoft.Xna.Framework.AndroidGameActivity
     {
         MonoGameHandler gameHandler;
-        SparksView sparks;
+        MainCanvas sparks;
         GameCanvasRenderer sparksRenderer;
 
         protected override async void OnCreate(Bundle bundle)
@@ -37,7 +37,7 @@ namespace N2Demo.Android
             SetContentView(gameHandler.OpenGLView);
 
             // 载入游戏画布
-            sparks = new SparksView();
+            sparks = new MainCanvas();
             await sparks.LoadSceneAsync();
             sparksRenderer = new GameCanvasRenderer(sparks, gameHandler);
             

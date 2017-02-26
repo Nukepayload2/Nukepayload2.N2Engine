@@ -1,10 +1,10 @@
 ﻿Namespace UI.Elements
     ''' <summary>
-    ''' (未实施) 表示输入事件路由的方向
+    ''' 表示输入事件路由的方向
     ''' </summary>
     Public Enum GameEventRouteDirections
         ''' <summary>
-        ''' (未实施) 从 <see cref="GameCanvas"/> 路由到元素。
+        ''' 从 <see cref="GameCanvas"/> 路由到元素。
         ''' </summary>
         TopDown
         ''' <summary>

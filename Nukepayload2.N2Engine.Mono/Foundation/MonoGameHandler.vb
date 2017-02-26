@@ -1,6 +1,7 @@
 ﻿Imports Microsoft.Xna.Framework
 Imports Microsoft.Xna.Framework.Graphics
 Imports Microsoft.Xna.Framework.Input
+Imports Nukepayload2.N2Engine.Information
 Imports RaisingStudio.Xna.Graphics
 
 #If ANDROID_APP Then
@@ -43,6 +44,8 @@ Public Class MonoGameHandler
                         graphics.PreferredBackBufferHeight = GameForm.Height
                         graphics.PreferredBackBufferWidth = GameForm.Width
                         graphics.ApplyChanges()
+                        Dim viewport = GraphicsDevice.Viewport
+                        BackBufferInformation.SetSize(New Foundation.SizeInInteger(viewport.Width, viewport.Height))
                         Debug.WriteLine($"分辨率重置： {GameForm.Height} x {GameForm.Width}")
                     End Sub
                 GameForm.Width += 1
@@ -72,8 +75,11 @@ Public Class MonoGameHandler
     ''' </summary>
     Protected Overrides Sub Initialize()
         ' TODO: 初始化游戏逻辑
-        RaiseEvent GameLoopStarting(Me, Nothing)
         GraphicsDeviceManagerExtension.SharedDevice = GraphicsDevice
+        BackBufferInformation.SetDpi(96)
+        Dim viewport = GraphicsDevice.Viewport
+        BackBufferInformation.SetSize(New Foundation.SizeInInteger(viewport.Width, viewport.Height))
+        RaiseEvent GameLoopStarting(Me, Nothing)
 
         MyBase.Initialize()
     End Sub

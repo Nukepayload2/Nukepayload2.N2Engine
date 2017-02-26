@@ -3,7 +3,7 @@
 Namespace N2Math
     Public Module Vector2Extensions
         <Extension>
-        Public Sub LimitMag(ByRef this As Vector2, lUponNum As Single)
+        Public Sub LimitLength(ByRef this As Vector2, lUponNum As Single)
             Dim tempMag As Single = this.Length
             If tempMag > lUponNum Then
                 this = New Vector2(this.X * (lUponNum / tempMag), this.Y * (lUponNum / tempMag))

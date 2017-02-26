@@ -11,7 +11,7 @@ Imports Nukepayload2.N2Engine.MonoOnUWP
 Public NotInheritable Class MainPage
     Inherits Page
 
-    Dim sparks As New SparksView
+    Dim sparks As New MainCanvas
     Dim sparksRenderer As GameCanvasRenderer
     WithEvents game As MonoGameHandler
 

@@ -26,10 +26,20 @@ Friend Class SpriteParticleSystemHelper
         ' 否则会遇到平面变换 Bug。
         Using cl = New CanvasCommandList(drawingSession)
             Using ds = cl.CreateDrawingSession
+                ' TODO: SpriteBatch 不支持透明度。当支持的时候改写成 SpriteBatch。
                 For Each part In partSys.GetParticles
                     If part.ImageEnumStatus.MoveNext Then
-                        Dim currentFrame = CType(part.ImageEnumStatus.Current, PlatformBitmapResource).Texture
-                        ds.DrawImage(currentFrame, part.Location, currentFrame.Bounds, part.Opacity)
+                        Dim bmp = CType(part.ImageEnumStatus.Current, PlatformBitmapResource)
+                        Dim texture = bmp.Texture
+                        If bmp.Bounds.HasValue Then
+                            Dim sourceRect = bmp.Bounds.Value
+                            drawingSession.DrawImage(texture, part.Location,
+                                                     New Rect(sourceRect.Offset.X, sourceRect.Offset.Y,
+                                                              sourceRect.Size.X, sourceRect.Size.Y), part.Opacity)
+                        Else
+                            drawingSession.DrawImage(texture, part.Location,
+                                                     New Rect(New Point, texture.Size), part.Opacity)
+                        End If
                     End If
                 Next
             End Using

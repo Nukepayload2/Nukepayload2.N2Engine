@@ -51,7 +51,7 @@ Namespace Battle
         Public Overrides ReadOnly Property ExtendedDescription As String = "CampCampUse所有CommonCard，通常UnableTo再SkirmishUse。"
         Public Overrides ReadOnly Property DefaultCampColorArgb As Integer
             Get
-                Return ColorValues.Gray
+                Return Colors.Gray
             End Get
         End Property
     End Class

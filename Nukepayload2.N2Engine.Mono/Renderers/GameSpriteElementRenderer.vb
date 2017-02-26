@@ -12,12 +12,16 @@ Friend Class GameSpriteElementRenderer
         MyBase.OnCreateResources(sender, args)
         Dim view = DirectCast(Me.View, SpriteElement)
         Dim bmp = DirectCast(view.Sprite.Value, PlatformBitmapResource)
-        If Not view.DefferedLoadLevel.CanRead OrElse view.DefferedLoadLevel.Value <= 0 Then
-            bmp.Load()
+        If bmp.IsLoaded Then
             drawOperation = AddressOf DrawImage
         Else
-            drawOperation = AddressOf DrawColor
-            Task.Run(AddressOf bmp.Load).ContinueWith(Sub(th) drawOperation = AddressOf DrawImage)
+            If Not view.DefferedLoadLevel.CanRead OrElse view.DefferedLoadLevel.Value <= 0 Then
+                bmp.Load()
+                drawOperation = AddressOf DrawImage
+            Else
+                drawOperation = AddressOf DrawColor
+                Task.Run(AddressOf bmp.Load).ContinueWith(Sub(th) drawOperation = AddressOf DrawImage)
+            End If
         End If
         AddHandler view.Sprite.DataChanged,
             Sub(snd, e)
@@ -30,7 +34,13 @@ Friend Class GameSpriteElementRenderer
         Dim bmp = DirectCast(view.Sprite.Value, PlatformBitmapResource)
         Dim loc = view.Location.Value
         Dim size = view.Size.Value
-        args.DrawingContext.DrawTexture(bmp.Texture, New Rectangle(loc.X, loc.Y, size.X, size.Y), Color.White)
+        If bmp.Bounds.HasValue Then
+            Dim sourceRect = bmp.Bounds.Value
+            args.DrawingContext.DrawTexture(bmp.Texture, New Rectangle(loc.X, loc.Y, size.X, size.Y),
+                                            New Rectangle(sourceRect.Offset.X, sourceRect.Offset.Y, sourceRect.Size.X, sourceRect.Size.Y), Color.White)
+        Else
+            args.DrawingContext.DrawTexture(bmp.Texture, New Rectangle(loc.X, loc.Y, size.X, size.Y), Color.White)
+        End If
     End Sub
     Sub DrawColor(sender As Game, args As MonogameDrawEventArgs)
         Dim view = DirectCast(Me.View, SpriteElement)

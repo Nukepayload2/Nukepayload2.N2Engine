@@ -21,8 +21,15 @@ Friend Class SpriteParticleSystemHelper
         Dim partSys = view.Data.Value
         For Each part In partSys.GetParticles
             If part.ImageEnumStatus.MoveNext Then
-                Dim currentFrame = CType(part.ImageEnumStatus.Current, PlatformBitmapResource).Texture
-                drawingSession.DrawTexture(currentFrame, part.Location.AsXnaVector2, Color.White * part.Opacity)
+                Dim bmp = CType(part.ImageEnumStatus.Current, PlatformBitmapResource)
+                Dim loc = part.Location.AsXnaVector2
+                If bmp.Bounds.HasValue Then
+                    Dim sourceRect = bmp.Bounds.Value
+                    drawingSession.DrawTexture(bmp.Texture, loc,
+                        New Rectangle(sourceRect.Offset.X, sourceRect.Offset.Y, sourceRect.Size.X, sourceRect.Size.Y), Color.White * part.Opacity)
+                Else
+                    drawingSession.DrawTexture(bmp.Texture, loc, Color.White * part.Opacity)
+                End If
             End If
         Next
     End Sub

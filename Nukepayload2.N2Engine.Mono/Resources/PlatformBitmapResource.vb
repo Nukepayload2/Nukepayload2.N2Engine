@@ -3,7 +3,7 @@ Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Resources
 
 Friend Class PlatformBitmapResource
-    Public Property Texture As Texture2D
+    Public Overridable Property Texture As Texture2D
 
     Public Sub Load()
         Dim resmgr = ResourceLoader.GetForCurrentView()

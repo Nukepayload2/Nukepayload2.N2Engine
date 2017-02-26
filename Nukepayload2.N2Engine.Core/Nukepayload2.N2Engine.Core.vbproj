@@ -102,6 +102,7 @@
     <Compile Include="Behaviors\GameBehavior.vb" />
     <Compile Include="Behaviors\IGameBehavior.vb" />
     <Compile Include="Behaviors\VirtualJoystickMoveBehavior.vb" />
+    <Compile Include="Information\BackBufferInformation.vb" />
     <Compile Include="Information\GameInformation.vb" />
     <Compile Include="Input\ButtonState.vb" />
     <Compile Include="Input\MouseKeys.vb" />
@@ -114,6 +115,7 @@
     <Compile Include="ParticleSystems\SpriteParticle.vb" />
     <Compile Include="ParticleSystems\SwarmParticleSystem.vb" />
     <Compile Include="Platform\InternalsVisibilitySettings.vb" />
+    <Compile Include="Platform\RegistrationIgnoreAttribute.vb" />
     <Compile Include="Platform\Renderers.vb" />
     <Compile Include="UI\Elements\Controls\GameButton.vb" />
     <Compile Include="UI\Elements\Controls\GameButtonContent.vb" />
@@ -163,7 +165,6 @@
     <Compile Include="UI\Elements\DrawingVisual.vb" />
     <Compile Include="UI\Elements\GameCompositeModes.vb" />
     <Compile Include="Threading\GameDispatcher.vb" />
-    <Compile Include="UI\Elements\GameVisualTreeHelper.vb" />
     <Compile Include="UI\Elements\GeometryElement.vb" />
     <Compile Include="UI\GameObjectState.vb" />
     <Compile Include="UI\GameVisualStateManager.vb" />

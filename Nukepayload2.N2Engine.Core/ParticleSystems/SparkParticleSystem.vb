@@ -1,4 +1,5 @@
 ﻿Option Strict Off
+Imports Newtonsoft.Json
 Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.N2Math
 
@@ -19,17 +20,24 @@ Namespace ParticleSystems
                 Particles.Enqueue(p)
             Next
         End Sub
+
         Public Property ParticleLife As Integer
 
+        <JsonIgnore>
+        Public Property GenerateColor As Func(Of Color) =
+            Function()
+                Dim colData(2) As Byte
+                Dim Rnd = RandomGenerator.Rand
+                Rnd.NextBytes(colData)
+                Return Color.FromArgb(255, colData(0), colData(1), colData(2))
+            End Function
+
         Protected Overrides Function CreateParticle() As SparkParticle
-            Dim colData(2) As Byte
-            Dim Rnd = RandomGenerator.Rand
-            Rnd.NextBytes(colData)
             Dim s As New SparkParticle(RandomGenerator.RandomVector2, ParticleLife, Location, New Vector2) With
             {
                 .Age = RandomGenerator.RandomSingle * 80,
                 .SparkSize = 1 + RandomGenerator.RandomSingle * 3,
-                .SparkColor = Color.FromArgb(255, colData(0), colData(1), colData(2))
+                .SparkColor = GenerateColor.Invoke
             }
             Return s
         End Function

@@ -1,6 +1,7 @@
 ﻿Imports Microsoft.Graphics.Canvas
 Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
+Imports Nukepayload2.N2Engine.Information
 Imports Nukepayload2.N2Engine.Linq
 Imports Nukepayload2.N2Engine.UI.Elements
 
@@ -25,6 +26,15 @@ Public Class GameCanvasRenderer
         _eventMediator = New UWPEventMediator(view)
     End Sub
 
+    Shared WithEvents DisplayInfo As DisplayInformation
+
+    Public Shared Sub SynchronizeBackBufferInformation(host As CanvasAnimatedControl)
+        DisplayInfo = DisplayInformation.GetForCurrentView
+        BackBufferInformation.SetDpi(DisplayInfo.LogicalDpi)
+        Dim size = host.RenderSize
+        BackBufferInformation.SetSize(New Foundation.SizeInInteger(CInt(size.Width), CInt(size.Height)))
+    End Sub
+
     ''' <summary>
     ''' 释放画布渲染器级别的资源
     ''' </summary>
@@ -32,6 +42,7 @@ Public Class GameCanvasRenderer
         MyBase.DisposeResources()
         DirectCast(View, GameCanvas).Children.Clear()
         _Win2DCanvas = Nothing
+        DisplayInfo = Nothing
     End Sub
 
     Private Sub DoCanvasOperation(act As Action(Of Win2DRenderer))
@@ -91,5 +102,14 @@ Public Class GameCanvasRenderer
                               End If
                               renderer.OnUpdate(sender, args)
                           End Sub)
+    End Sub
+
+    Private Sub Win2DCanvas_SizeChanged(sender As Object, e As SizeChangedEventArgs) Handles Win2DCanvas.SizeChanged
+        Dim size = Win2DCanvas.RenderSize
+        BackBufferInformation.SetSize(New Foundation.SizeInInteger(CInt(size.Width), CInt(size.Height)))
+    End Sub
+
+    Private Shared Sub DisplayInfo_DpiChanged(sender As DisplayInformation, args As Object) Handles DisplayInfo.DpiChanged
+        BackBufferInformation.SetDpi(sender.LogicalDpi)
     End Sub
 End Class

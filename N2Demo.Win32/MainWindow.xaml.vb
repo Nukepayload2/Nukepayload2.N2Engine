@@ -15,7 +15,7 @@ Class MainWindow
                                                                             End Sub) With {
                                                                                 .IsMouseVisible = True
                                                                             }
-        sparks = New SparksView
+        sparks = New MainCanvas
         Await sparks.LoadSceneAsync
         sparksRenderer = New GameCanvasRenderer(sparks, gameHandler)
         gameHandler.Run()
@@ -27,7 +27,7 @@ Class MainWindow
         End
     End Sub
 
-    Dim sparks As SparksView
+    Dim sparks As MainCanvas
     Dim sparksRenderer As GameCanvasRenderer
 
     Private Sub BtnQuickSave_Click(sender As Object, e As RoutedEventArgs)

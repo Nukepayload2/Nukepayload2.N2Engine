@@ -84,7 +84,7 @@
   <ItemGroup>
     <Compile Include="Color.vb" />
     <Compile Include="ColorEx.vb" />
-    <Compile Include="ColorValues.vb" />
+    <Compile Include="Colors.vb" />
     <Compile Include="IGameCommand.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="N2PortableApiContract.vb" />

@@ -12,7 +12,7 @@ namespace N2Demo.iOS
     class Program : UIApplicationDelegate
     {
         static MonoGameHandler gameHandler;
-        static SparksView sparks;
+        static MainCanvas sparks;
         static GameCanvasRenderer sparksRenderer;
         /// <summary>
         /// The main entry point for the application.
@@ -30,7 +30,7 @@ namespace N2Demo.iOS
                 MonoImplRegistration.Register(typeof(XamarinApiContract).Assembly);
                 gameHandler = new MonoGameHandler();
 
-                sparks = new SparksView();
+                sparks = new MainCanvas();
                 await sparks.LoadSceneAsync();
                 sparksRenderer = new GameCanvasRenderer(sparks, gameHandler);
                 gameHandler.Run();

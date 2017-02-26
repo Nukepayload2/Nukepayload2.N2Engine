@@ -55,6 +55,8 @@ Namespace Platform
             Dim canReg = Not Registered.ContainsKey(declType)
             If canReg Then
                 Registered.Add(declType, implType)
+            Else
+                Debug.WriteLine($"检测到注册重复。PCL 类型 {declType.FullName}, 实现类型 {implType.FullName}。")
             End If
             Return canReg
         End Function
@@ -73,7 +75,7 @@ Namespace Platform
             Return Aggregate tp In pImplAsm.DefinedTypes
                Where tp.IsClass AndAlso tp.IsNotPublic
                Let attr = tp.GetCustomAttributes(Of PlatformImplAttribute).FirstOrDefault
-               Where attr IsNot Nothing
+               Where attr IsNot Nothing AndAlso Not tp.GetCustomAttributes(Of RegistrationIgnoreAttribute).Any
                Select success = RegisterImplType(attr.DeclType, tp.AsType)
                Into All(success)
         End Function

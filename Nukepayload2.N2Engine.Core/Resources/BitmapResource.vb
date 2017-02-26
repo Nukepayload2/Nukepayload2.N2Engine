@@ -45,9 +45,22 @@ Namespace Resources
             End If
             Return nBmp
         End Function
-
         ''' <summary>
-        ''' 按照给定的尺寸分割贴图。不足一个小贴图的部分舍弃。顺序: 代码的阅读顺序。
+        ''' 在图片加载之前按照给定的尺寸分割贴图。不足一个小贴图的部分舍弃。顺序: 代码的阅读顺序。
+        ''' </summary>
+        ''' <param name="pixelX">分割后的宽度</param>
+        ''' <param name="pixelY">分割后的高度</param>
+        ''' <returns></returns>
+        Public Iterator Function Split(pixelX As Integer, pixelY As Integer, xCount As Integer, yCount As Integer) As IEnumerable(Of BitmapResource)
+            Dim spriteSize As New Vector2(pixelX, pixelY)
+            For i = 0 To yCount - 1
+                For j = 0 To xCount - 1
+                    Yield SubBitmap(New RectangleBounds(New Vector2(j * pixelX, i * pixelY), spriteSize))
+                Next
+            Next
+        End Function
+        ''' <summary>
+        ''' 在图片加载之后按照给定的尺寸分割贴图。不足一个小贴图的部分舍弃。顺序: 代码的阅读顺序。
         ''' </summary>
         ''' <param name="pixelX">分割后的宽度</param>
         ''' <param name="pixelY">分割后的高度</param>

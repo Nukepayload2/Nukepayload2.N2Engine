@@ -11,33 +11,38 @@ Namespace Behaviors
 
         WithEvents Joystick As VirtualJoystick
 
-        WithEvents Target As GameVisual
-
-        Public Property MaxSpeed As Single
-
-        Public Property SpeedMultiple As Single = 1.0F
+        Dim _target As GameVisual
+        ''' <summary>
+        ''' 最大速度。默认是 5。
+        ''' </summary>
+        Public Property MaxSpeed As Single = 5.0F
+        ''' <summary>
+        ''' 移动一个像素增加多少速度。默认是 0.1。
+        ''' </summary>
+        ''' <returns></returns>
+        Public Property SpeedMultiple As Single = 0.1F
 
         Sub New(joystick As VirtualJoystick)
             Me.Joystick = joystick
         End Sub
 
         Public Overrides Sub Attach(visual As GameVisual)
-            If Target IsNot Nothing Then
-                Remove(Target)
+            If _target IsNot Nothing Then
+                Remove(_target)
             End If
-            Target = visual
+            _target = visual
             MyBase.Attach(visual)
         End Sub
 
         Public Overrides Sub Remove(visual As GameVisual)
-            Target = Nothing
+            _target = Nothing
             MyBase.Remove(visual)
         End Sub
 
-        Private Sub Joystick_VirtualJoystickDragMoved(sender As VirtualJoystick, e As VirtualJoystickDragEventArgs) Handles Joystick.VirtualJoystickDragging
+        Private Sub Joystick_VirtualJoystickDragging(sender As VirtualJoystick, e As VirtualJoystickDragEventArgs) Handles Joystick.VirtualJoystickDragging
             Dim direction = (e.EndPoint - e.StartPoint) * SpeedMultiple
-            direction.LimitMag(MaxSpeed)
-            Target.Location.Value += direction
+            direction.LimitLength(MaxSpeed)
+            _target.Location.Value += direction
         End Sub
     End Class
 

@@ -7,7 +7,7 @@ Imports Gtk
 Public Module Program
     WithEvents gameHandler As MonoGameHandler
 
-    Dim sparks As SparksView
+    Dim sparks As MainCanvas
     Dim sparksRenderer As GameCanvasRenderer
 
     Sub Main(args$())
@@ -20,7 +20,7 @@ Public Module Program
         gameHandler = New MonoGameHandler With {
             .IsMouseVisible = True
         }
-        sparks = New SparksView
+        sparks = New MainCanvas
         Await sparks.LoadSceneAsync
         sparksRenderer = New GameCanvasRenderer(sparks, gameHandler)
 

@@ -79,6 +79,7 @@ Namespace UI.Controls
 
         Private Sub GameButton_MouseButtonDown(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseButtonDown
             If HitTest(e.Position) Then
+                e.Handled = True
                 _IsPressed = True
                 _IsPointerOver = True
             End If
@@ -86,6 +87,7 @@ Namespace UI.Controls
 
         Private Sub GameButton_MouseButtonUp(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseButtonUp
             If IsPressed AndAlso HitTest(e.Position) Then
+                e.Handled = True
                 RaiseEvent Click(Me, EventArgs.Empty)
             End If
             _IsPressed = False
@@ -95,6 +97,7 @@ Namespace UI.Controls
 
         Private Sub GameButton_TouchDown(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchDown
             If _lastTouchPoint = GameTouchRoutedEventArgs.InvalidTouchId AndAlso HitTest(e.Position) Then
+                e.Handled = True
                 _lastTouchPoint = e.PointerId
                 _IsPointerOver = True
                 _IsPressed = True
@@ -105,6 +108,7 @@ Namespace UI.Controls
             If _lastTouchPoint = e.PointerId Then
                 _lastTouchPoint = GameTouchRoutedEventArgs.InvalidTouchId
                 If HitTest(e.Position) Then
+                    e.Handled = True
                     RaiseEvent Click(Me, EventArgs.Empty)
                 End If
                 _IsPointerOver = False
@@ -118,6 +122,9 @@ Namespace UI.Controls
 
         Private Sub GameButton_MouseMove(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseMove
             _IsPointerOver = HitTest(e.Position)
+            If _IsPointerOver Then
+                e.Handled = True
+            End If
         End Sub
     End Class
 

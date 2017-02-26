@@ -1,20 +1,29 @@
 ﻿Imports System.Numerics
 Imports Newtonsoft.Json
 Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.N2Engine.N2Math
 Imports Nukepayload2.N2Engine.ParticleSystems
 
 Public Class SparksViewModel
     Inherits SingleInstance(Of SparksViewModel)
 
-    Public Property SparkSys As New SparkParticleSystem(1000, Integer.MaxValue, 30, 150) With {.Location = New Vector2(150, 150)}
+    <JsonIgnore>
+    Dim _predefinedColor As Color() = {Colors.Orange, Colors.Gold, Colors.Yellow}
+
+    Public Property SparkSys As New SparkParticleSystem(1000, Integer.MaxValue, 30, 150) With {
+        .Location = New Vector2(150, 150), .GenerateColor = Function() _predefinedColor(RandomGenerator.Rand.Next(0, 3))
+    }
+
+    'Public Property GhostFlameSys As New SwarmParticleSystem(50, Integer.MaxValue, 0.05,)
+
     Public Property RedCircle As New ColorizedBound With {
         .Position = New Vector2(130, 200),
-        .Color = New Color(ColorValues.Red),
+        .Color = Colors.Red,
         .Size = New Vector2(100, 100)
     }
     Public Property GreenRectangle As New ColorizedBound With {
         .Position = New Vector2(330, 200),
-        .Color = New Color(ColorValues.Green),
+        .Color = Colors.Green,
         .Size = New Vector2(233, 100)
     }
 

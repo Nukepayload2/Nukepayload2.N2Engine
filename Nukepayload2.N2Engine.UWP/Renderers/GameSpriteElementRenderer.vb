@@ -36,7 +36,14 @@ Friend Class GameSpriteElementRenderer
         Dim size = view.Size.Value
         Dim drawingSession = args.DrawingSession
         Dim texture = bmp.Texture
-        drawingSession.DrawImage(texture, New Rect(loc.X, loc.Y, size.X, size.Y))
+        If bmp.Bounds.HasValue Then
+            Dim sourceRect = bmp.Bounds.Value
+            drawingSession.DrawImage(texture, New Rect(loc.X, loc.Y, size.X, size.Y),
+                                     New Rect(sourceRect.Offset.X, sourceRect.Offset.Y,
+                                              sourceRect.Size.X, sourceRect.Size.Y))
+        Else
+            drawingSession.DrawImage(texture, New Rect(loc.X, loc.Y, size.X, size.Y))
+        End If
     End Sub
 
     Sub DrawColor(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)

@@ -1,5 +1,6 @@
 ﻿Imports System.Numerics
 Imports System.Reflection
+Imports Nukepayload2.N2Engine.Animations
 Imports Nukepayload2.N2Engine.Behaviors
 Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Information
@@ -13,7 +14,7 @@ Imports Nukepayload2.N2Engine.UI.ParticleSystemViews
 ''' <summary>
 ''' 一个释放随机颜色火花的视图
 ''' </summary>
-Public Class SparksView
+Public Class MainCanvas
     Inherits GameCanvas
 
 #Region "可见元素"
@@ -34,8 +35,15 @@ Public Class SparksView
 
 #Region "外部资源"
     Dim characterSheetSprite As BitmapResource
+    Dim flameSprite As BitmapResource
     Dim primaryBgm As New Uri("n2-res:///ProgramDirectory/Audios/Musics/Theme1.wma")
     Dim clockSound As New Uri("n2-res:///ProgramDirectory/Audios/Sounds/Explosion4.wma")
+
+#End Region
+
+#Region "动画"
+    Dim characterSheetCheckAnimation As BitmapDiscreteAnimation
+    Dim characterSheetCheckAnimationState As IEnumerator(Of BitmapResource)
 
 #End Region
 
@@ -48,7 +56,7 @@ Public Class SparksView
 #End Region
 
     ' 数据
-    Dim sparksData As New SparksViewModel
+    Dim viewModel As New SparksViewModel
     ' 存档管理器
     Dim savMgr As SampleSaveFileManager
     ' 游戏控制。这些数据不会被保存。
@@ -66,7 +74,14 @@ Public Class SparksView
 
     Public Async Function LoadSceneAsync() As Task
         ' 图像资源同步准备
-        characterSheetSprite = BitmapResource.Create(sparksData.CharacterSheet.Source)
+        characterSheetSprite = BitmapResource.Create(viewModel.CharacterSheet.Source)
+        Dim spriteSize = viewModel.CharacterSheet.SpriteSize
+        Dim gridSize = viewModel.CharacterSheet.GridSize
+        characterSheetCheckAnimation = New BitmapDiscreteAnimation(
+            characterSheetSprite.Split(spriteSize.Width \ gridSize.Width,
+                                       spriteSize.Height \ gridSize.Height,
+                                       gridSize.Width, gridSize.Height))
+        characterSheetCheckAnimationState = characterSheetCheckAnimation.GetEnumerator
         ' 字体
         Await fontMgr.LoadAsync
         ' 可见对象树
@@ -88,10 +103,10 @@ Public Class SparksView
         ' 设置特效
         Dim rectTransform As New CompositeTransform
         With rectTransform
-            .Rotate.Bind(Function() sparksData.GreenRectangle.Rotate)
-            .Skew.Bind(Function() sparksData.GreenRectangle.Skew)
-            .Scale.Bind(Function() sparksData.GreenRectangle.Scale)
-            .Origin.Bind(Function() sparksData.GreenRectangle.Position + sparksData.GreenRectangle.RelativeOrigin * sparksData.GreenRectangle.Size)
+            .Rotate.Bind(Function() viewModel.GreenRectangle.Rotate)
+            .Skew.Bind(Function() viewModel.GreenRectangle.Skew)
+            .Scale.Bind(Function() viewModel.GreenRectangle.Scale)
+            .Origin.Bind(Function() viewModel.GreenRectangle.Position + viewModel.GreenRectangle.RelativeOrigin * viewModel.GreenRectangle.Size)
         End With
         greenRect.Transform = rectTransform
         ' 绑定画布的数据
@@ -99,34 +114,40 @@ Public Class SparksView
         Location.Bind(New Vector2)
         ZIndex.Bind(0)
         ' 添加子元素
-        AddChild(sparks.Bind(Function(s) s.Data, Function() sparksData.SparkSys))
+        AddChild(sparks.Bind(Function(s) s.Data, Function() viewModel.SparkSys))
         AddChild(scrollViewer.
-            OnUpdate(sparksData.ShakingViewer.UpdateAction).
-            Bind(Function(m) m.Location, Function() sparksData.ShakingViewer.Offset).
+            OnUpdate(viewModel.ShakingViewer.UpdateAction).
+            Bind(Function(m) m.Location, Function() viewModel.ShakingViewer.Offset).
             Bind(Function(m) m.ZIndex, 0).
             AddChild(redEllipse.
-                Bind(Function(r) r.Fill, Function() sparksData.RedCircle.Color).
-                Bind(Function(r) r.Location, Function() sparksData.RedCircle.Position, Sub(p) sparksData.RedCircle.Position = p).
-                Bind(Function(r) r.Size, Function() sparksData.RedCircle.Size)).
+                Bind(Function(r) r.Fill, Function() viewModel.RedCircle.Color).
+                Bind(Function(r) r.Location, Function() viewModel.RedCircle.Position, Sub(p) viewModel.RedCircle.Position = p).
+                Bind(Function(r) r.Size, Function() viewModel.RedCircle.Size)).
             AddChild(greenRect.
-                Bind(Function(r) r.Stroke, Function() sparksData.GreenRectangle.Color).
-                Bind(Function(r) r.Location, Function() sparksData.GreenRectangle.Position).
-                Bind(Function(r) r.Size, Function() sparksData.GreenRectangle.Size)).
+                Bind(Function(r) r.Stroke, Function() viewModel.GreenRectangle.Color).
+                Bind(Function(r) r.Location, Function() viewModel.GreenRectangle.Position).
+                Bind(Function(r) r.Size, Function() viewModel.GreenRectangle.Size)).
             AddChild(charaSheet.
-                Bind(Function(r) r.Sprite, Function() characterSheetSprite).
-                Bind(Function(r) r.Location, Function() sparksData.CharacterSheet.Location).
-                Bind(Function(r) r.Size, Function() sparksData.CharacterSheet.Size)).
+                Bind(Function(r) r.Sprite, Function()
+                                               If Not characterSheetCheckAnimationState.MoveNext Then
+                                                   characterSheetCheckAnimationState.Reset()
+                                                   characterSheetCheckAnimationState.MoveNext()
+                                               End If
+                                               Return characterSheetCheckAnimationState.Current
+                                           End Function).
+                Bind(Function(r) r.Location, Function() viewModel.CharacterSheet.Location).
+                Bind(Function(r) r.Size, Function() viewModel.CharacterSheet.Size)).
             AddChild(tblTheElder.
-                Bind(Function(r) r.Text, Function() sparksData.ElderText).
+                Bind(Function(r) r.Text, Function() viewModel.ElderText).
                 Bind(Function(r) r.Location, Vector2.Zero)).
             AddChild(tblKeyDownCount.
-                Bind(Function(r) r.Text, Function() "现在按下的键数量：" + sparksData.PressedKeyCount.ToString).
+                Bind(Function(r) r.Text, Function() "现在按下的键数量：" + viewModel.PressedKeyCount.ToString).
                 Bind(Function(r) r.Location, New Vector2(0.0F, 50.0F))).
             AddChild(tblLastMouseAction.
-                Bind(Function(r) r.Text, Function() "上一次鼠标状态：" + sparksData.LastMouseState).
+                Bind(Function(r) r.Text, Function() "上一次鼠标状态：" + viewModel.LastMouseState).
                 Bind(Function(r) r.Location, New Vector2(0.0F, 70.0F))).
             AddChild(tblLastTouchAction.
-                Bind(Function(r) r.Text, Function() "上一次触摸状态：" + sparksData.LastTouchState).
+                Bind(Function(r) r.Text, Function() "上一次触摸状态：" + viewModel.LastTouchState).
                 Bind(Function(r) r.Location, New Vector2(0.0F, 90.0F)))
         )
         AddChild(Joystick.
@@ -138,13 +159,13 @@ Public Class SparksView
         )
         AddChild(BtnClickMe.
             Bind(Function(r) r.Background, Function() If(BtnClickMe.IsPointerOver,
-                sparksData.ButtonStatus.PointerOverBackground, sparksData.ButtonStatus.Background)).
+                viewModel.ButtonStatus.PointerOverBackground, viewModel.ButtonStatus.Background)).
             Bind(Function(r) r.BorderColor, Function() If(BtnClickMe.IsPressed,
-                sparksData.ButtonStatus.PressedBorderColor, sparksData.ButtonStatus.BorderColor)).
-            Bind(Function(r) r.TextOffset, Function() sparksData.ButtonStatus.TextOffset).
-            Bind(Function(r) r.Size, Function() sparksData.ButtonStatus.Size).
-            Bind(Function(r) r.Text, Function() sparksData.ButtonStatus.Text).
-            Bind(Function(r) r.Location, Function() sparksData.ButtonStatus.Position)
+                viewModel.ButtonStatus.PressedBorderColor, viewModel.ButtonStatus.BorderColor)).
+            Bind(Function(r) r.TextOffset, Function() viewModel.ButtonStatus.TextOffset).
+            Bind(Function(r) r.Size, Function() viewModel.ButtonStatus.Size).
+            Bind(Function(r) r.Text, Function() viewModel.ButtonStatus.Text).
+            Bind(Function(r) r.Location, Function() viewModel.ButtonStatus.Position)
         )
         ' 放置触发器
         Dim verticalShakeTrigger As New VerticalShakeTrigger
@@ -162,11 +183,11 @@ Public Class SparksView
         Dim sav = Await savMgr.LoadMasterSaveFileAsync
         ' 同步数据
         If sav IsNot Nothing Then
-            sparksData = sav.SaveData.LastState
-            scrollViewer.OnUpdate(sparksData.ShakingViewer.UpdateAction)
+            viewModel = sav.SaveData.LastState
+            scrollViewer.OnUpdate(viewModel.ShakingViewer.UpdateAction)
         Else
             savMgr.MasterSaveFile.SaveData = New SampleMasterData With {
-                .LastState = sparksData
+                .LastState = viewModel
             }
         End If
     End Function
@@ -187,8 +208,8 @@ Public Class SparksView
     ''' 点击视图的处理。
     ''' </summary>
     Private Async Sub OnTappedAsync(pos As Vector2)
-        sparksData.SparkSys.Location = pos
-        sparksData.ShakingViewer.Shake(50.0F, 0)
+        viewModel.SparkSys.Location = pos
+        viewModel.ShakingViewer.Shake(50.0F, 0)
         If isSoundLoaded Then
             If Not soundPlaying Then
                 soundPlaying = True
@@ -213,44 +234,44 @@ Public Class SparksView
     End Sub
 
     Private Sub SparksView_KeyDown(sender As GameVisual, e As GameKeyboardRoutedEventArgs) Handles Me.KeyDown
-        sparksData.PressedKeyCount += 1
+        viewModel.PressedKeyCount += 1
     End Sub
 
     Private Sub SparksView_KeyUp(sender As GameVisual, e As GameKeyboardRoutedEventArgs) Handles Me.KeyUp
-        sparksData.PressedKeyCount -= 1
+        viewModel.PressedKeyCount -= 1
     End Sub
 
     Private Sub SparksView_MouseButtonDown(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseButtonDown
-        sparksData.LastMouseState = $"在 {e.Position} 按下 {e.MouseButtons} 按钮，热键是 {e.KeyModifiers} 。"
+        viewModel.LastMouseState = $"在 {e.Position} 按下 {e.MouseButtons} 按钮，热键是 {e.KeyModifiers} 。"
     End Sub
 
     Private Sub SparksView_MouseButtonUp(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseButtonUp
-        sparksData.LastMouseState = $"在 {e.Position} 松开 {e.MouseButtons} 按钮，热键是 {e.KeyModifiers} 。"
+        viewModel.LastMouseState = $"在 {e.Position} 松开 {e.MouseButtons} 按钮，热键是 {e.KeyModifiers} 。"
         OnTappedAsync(e.Position)
     End Sub
 
     Private Sub SparksView_MouseMove(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseMove
-        sparksData.LastMouseState = $"移动到 {e.Position} ，热键是 {e.KeyModifiers} 。"
+        viewModel.LastMouseState = $"移动到 {e.Position} ，热键是 {e.KeyModifiers} 。"
     End Sub
 
     Private Sub SparksView_MouseWheelChanged(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseWheelChanged
-        sparksData.LastMouseState = $"在 {e.Position} 滚动滚轮 {e.WheelDelta}，热键是 {e.KeyModifiers}。"
+        viewModel.LastMouseState = $"在 {e.Position} 滚动滚轮 {e.WheelDelta}，热键是 {e.KeyModifiers}。"
     End Sub
 
     Private Sub SparksView_TouchDown(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchDown
-        sparksData.LastTouchState = $"在 {e.Position} 按下触摸屏，触摸点的ID是 {e.PointerId}。"
+        viewModel.LastTouchState = $"在 {e.Position} 按下触摸屏，触摸点的ID是 {e.PointerId}。"
     End Sub
 
     Private Sub SparksView_TouchMove(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchMove
-        sparksData.LastTouchState = $"在 {e.Position} 滑动触摸屏，上一个点是 {e.LastPosition}，触摸点的ID是 {e.PointerId}。"
+        viewModel.LastTouchState = $"在 {e.Position} 滑动触摸屏，上一个点是 {e.LastPosition}，触摸点的ID是 {e.PointerId}。"
     End Sub
 
     Private Sub SparksView_TouchUp(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchUp
-        sparksData.LastTouchState = $"在 {e.Position} 松开触摸屏，触摸点的ID是 {e.PointerId}。"
+        viewModel.LastTouchState = $"在 {e.Position} 松开触摸屏，触摸点的ID是 {e.PointerId}。"
         OnTappedAsync(e.Position)
     End Sub
 
     Private Sub BtnClickMe_Click(sender As GameButton, e As EventArgs) Handles BtnClickMe.Click
-        sparksData.ButtonStatus.ClickCount += 1
+        viewModel.ButtonStatus.ClickCount += 1
     End Sub
 End Class

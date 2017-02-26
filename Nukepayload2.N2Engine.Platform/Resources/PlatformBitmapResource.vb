@@ -15,7 +15,7 @@ Partial Friend Class PlatformBitmapResource
     End Sub
 
     Protected Overrides Function ClonePreserveTexture() As BitmapResource
-        Return New PlatformBitmapResource(UriPath) With {.Texture = Texture}
+        Return New PlatformBitmapResourceSegment(Me)
     End Function
 
 #Region "IDisposable Support"
