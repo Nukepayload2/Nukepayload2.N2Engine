@@ -12,7 +12,7 @@ Class MainWindow
         gameHandler = New MonoGameHandler(Sub(ctl) winformHost.Child = ctl, Sub()
                                                                                 Focus()
                                                                                 Width += 1
-                                                                            End Sub) With {
+                                                                            End Sub, New Nukepayload2.N2Engine.Foundation.SizeInInteger(CInt(ActualWidth), CInt(ActualHeight))) With {
                                                                                 .IsMouseVisible = True
                                                                             }
         sparks = New MainCanvas

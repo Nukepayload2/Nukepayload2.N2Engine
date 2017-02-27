@@ -1,6 +1,7 @@
 ﻿Imports Microsoft.Xna.Framework
 Imports Microsoft.Xna.Framework.Graphics
 Imports Microsoft.Xna.Framework.Input
+Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Information
 Imports RaisingStudio.Xna.Graphics
 
@@ -28,10 +29,11 @@ Public Class MonoGameHandler
     ''' <summary>
     ''' 对于 WPF 应用程序，使用这个构造函数可以轻松地让 WindowsFormsHost 承载游戏窗口。
     ''' </summary>
-    ''' <param name="setChild">将 WindowsFormsHost 的 Child 属性设置为参数中的 Coltrol</param>
+    ''' <param name="setChild">将 WindowsFormsHost 的 Child 属性设置为参数中的 Control</param>
     ''' <param name="focusResizeWpfWindow">调用 WPF 窗口的 Focus 方法, 并且 WPF 窗口的宽度 +1。</param>
-    Sub New(setChild As Action(Of Windows.Forms.Control), focusResizeWpfWindow As Action)
+    Sub New(setChild As Action(Of Windows.Forms.Control), focusResizeWpfWindow As Action, windowSize As SizeInInteger)
         MyClass.New
+        BackBufferInformation.SetSize(windowSize)
         AddHandler graphics.PreparingDeviceSettings,
             Sub(sender, e)
                 _GameForm = Windows.Forms.Control.FromHandle(e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle)
@@ -39,14 +41,14 @@ Public Class MonoGameHandler
                 GameForm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
                 setChild(GameForm)
                 focusResizeWpfWindow()
+                BackBufferInformation.SetSize(New Foundation.SizeInInteger(GameForm.Width, GameForm.Height))
                 AddHandler GameForm.SizeChanged,
                     Sub()
                         graphics.PreferredBackBufferHeight = GameForm.Height
                         graphics.PreferredBackBufferWidth = GameForm.Width
                         graphics.ApplyChanges()
-                        Dim viewport = GraphicsDevice.Viewport
-                        BackBufferInformation.SetSize(New Foundation.SizeInInteger(viewport.Width, viewport.Height))
-                        Debug.WriteLine($"分辨率重置： {GameForm.Height} x {GameForm.Width}")
+                        BackBufferInformation.SetSize(New Foundation.SizeInInteger(GameForm.Width, GameForm.Height))
+                        Debug.WriteLine($"分辨率重置： {GameForm.Width} x {GameForm.Height}")
                     End Sub
                 GameForm.Width += 1
             End Sub

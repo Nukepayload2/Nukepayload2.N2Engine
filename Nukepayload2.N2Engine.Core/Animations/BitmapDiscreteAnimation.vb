@@ -40,7 +40,7 @@ Namespace Animations
         ''' <summary>
         ''' 当视图报告此动画播放完毕时切换到这些动画继续播放。这会影响到枚举图像的行为。
         ''' </summary>
-        Public ReadOnly Property NextAnimation As BitmapDiscreteAnimation
+        Public Property NextAnimation As BitmapDiscreteAnimation
 
         Public Function GetEnumerator() As IEnumerator(Of BitmapResource) Implements IEnumerable(Of BitmapResource).GetEnumerator
             Return New BitmapEnumerator(Me)
@@ -88,7 +88,7 @@ Namespace Animations
                     If curAnim.NextAnimation IsNot Nothing Then
                         curAnim = curAnim.NextAnimation
                         index = -1
-                        Return MoveNext
+                        Return MoveNext()
                     Else
                         Return False
                     End If

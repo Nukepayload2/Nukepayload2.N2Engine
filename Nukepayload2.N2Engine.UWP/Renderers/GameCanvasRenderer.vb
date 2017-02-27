@@ -62,7 +62,17 @@ Public Class GameCanvasRenderer
     ''' 创建画布渲染器级别的资源
     ''' </summary>
     Private Sub Game_CreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs) Handles Win2DCanvas.CreateResources
-        DoCanvasOperation(Sub(renderer) renderer.OnCreateResources(sender, args))
+        Dim asyncLoadTasks As New List(Of Task)
+        DoCanvasOperation(Sub(renderer)
+                              renderer.OnCreateResources(sender, args)
+                              Dim createAsync = renderer.CreateResourceAsync(sender, args)
+                              If createAsync IsNot Nothing Then
+                                  asyncLoadTasks.Add(createAsync)
+                              End If
+                          End Sub)
+        If asyncLoadTasks.Any Then
+            args.TrackAsyncAction(Task.WhenAll(asyncLoadTasks).AsAsyncAction)
+        End If
     End Sub
     ''' <summary>
     ''' 绘制水印

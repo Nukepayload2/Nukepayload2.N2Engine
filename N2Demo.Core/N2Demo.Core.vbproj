@@ -113,6 +113,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CharacterSheet.vb" />
+    <Compile Include="Models\GhostFlameSpriteSheet.vb" />
+    <Compile Include="Models\ISpriteSheet.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

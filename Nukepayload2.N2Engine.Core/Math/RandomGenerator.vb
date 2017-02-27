@@ -56,7 +56,7 @@ Namespace N2Math
             Return New Vector2(RandomSingle, RandomSingle)
         End Function
         ''' <summary>
-        ''' 生成 0,0 到 1,1 之间的随机向量
+        ''' 生成 0,0 到 scaleX,scaleY 之间的随机向量
         ''' </summary>
         ''' <returns></returns>
         Public Shared Function RandomVector2Positive(scaleX As Integer, scaleY As Integer) As Vector2

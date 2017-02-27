@@ -20,6 +20,12 @@ Public MustInherit Class Win2DRenderer
 
     End Sub
     ''' <summary>
+    ''' 派生类继承时，异步加载资源。
+    ''' </summary>
+    Friend Overridable Async Function CreateResourceAsync(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs) As Task
+
+    End Function
+    ''' <summary>
     ''' 派生类继承时，定义手动引发 Draw 事件的行为 
     ''' </summary>
     Friend MustOverride Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)

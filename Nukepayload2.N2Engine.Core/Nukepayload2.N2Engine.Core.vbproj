@@ -92,7 +92,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AI\AILevel.vb" />
-    <Compile Include="Animations\BitmapAnimation.vb" />
+    <Compile Include="Animations\BitmapDiscreteAnimation.vb" />
     <Compile Include="Animations\BitmapFrame.vb" />
     <Compile Include="Animations\DynamicBitmapAnimation.vb" />
     <Compile Include="Animations\LoopInformation.vb" />

@@ -16,6 +16,11 @@
                 Throw New ArgumentOutOfRangeException(NameOf(count))
             End If
             ReDim Particles(count - 1)
+        End Sub
+        ''' <summary>
+        ''' 立即释放固定数量的粒子
+        ''' </summary>
+        Protected Sub CreateParticles()
             For i = 0 To Particles.Length - 1
                 Particles(i) = CreateParticle()
             Next

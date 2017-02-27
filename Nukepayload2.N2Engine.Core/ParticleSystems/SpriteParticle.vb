@@ -8,6 +8,9 @@ Namespace ParticleSystems
         Inherits Particle
         Sub New(acceleration As Vector2, lifeTime As Integer, location As Vector2, velocity As Vector2, imagelist As BitmapDiscreteAnimation)
             MyBase.New(acceleration, lifeTime, location, velocity)
+            If imagelist Is Nothing Then
+                Throw New ArgumentNullException(NameOf(imagelist))
+            End If
             Me.ImageList = imagelist
         End Sub
         ''' <summary>

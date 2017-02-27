@@ -5,6 +5,7 @@ Imports Nukepayload2.N2Engine.Behaviors
 Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Information
 Imports Nukepayload2.N2Engine.Media
+Imports Nukepayload2.N2Engine.ParticleSystems
 Imports Nukepayload2.N2Engine.Resources
 Imports Nukepayload2.N2Engine.UI
 Imports Nukepayload2.N2Engine.UI.Controls
@@ -28,6 +29,7 @@ Public Class MainCanvas
     Dim tblKeyDownCount As New GameTextBlock
     Dim tblLastMouseAction As New GameTextBlock
     Dim tblLastTouchAction As New GameTextBlock
+    Dim swarmSysView As New SwarmParticleSystemView With {.Name = "喵喵喵？"}
     ' 控件
     WithEvents Joystick As New VirtualJoystick(Function(vec) vec.X < 300.0F)
     WithEvents BtnClickMe As New GameButton
@@ -73,14 +75,19 @@ Public Class MainCanvas
     End Sub
 
     Public Async Function LoadSceneAsync() As Task
+        ' 读档
+        Await LoadSaveFileAsync()
         ' 图像资源同步准备
+        ' 乱飞的火焰粒子系统
+        Dim ghostFlameSheet = viewModel.GhostFlameSheet
+        flameSprite = BitmapResource.Create(ghostFlameSheet.Source)
+        Dim flameAnim = MakeAnimation(viewModel.GhostFlameSheet, flameSprite, Function(res) res.Skip(6).Take(3))
+        flameAnim.NextAnimation = flameAnim
+        viewModel.GhostFlameSys = New SwarmParticleSystem(20, Integer.MaxValue, 0.004, flameAnim, BackBufferInformation.Size)
+        ' 人物贴图表
         characterSheetSprite = BitmapResource.Create(viewModel.CharacterSheet.Source)
-        Dim spriteSize = viewModel.CharacterSheet.SpriteSize
-        Dim gridSize = viewModel.CharacterSheet.GridSize
-        characterSheetCheckAnimation = New BitmapDiscreteAnimation(
-            characterSheetSprite.Split(spriteSize.Width \ gridSize.Width,
-                                       spriteSize.Height \ gridSize.Height,
-                                       gridSize.Width, gridSize.Height))
+        characterSheetCheckAnimation = MakeAnimation(viewModel.CharacterSheet, characterSheetSprite, Function(a) a)
+        characterSheetCheckAnimation.NextAnimation = characterSheetCheckAnimation ' TODO: 实现循环信息之后用循环信息实现循环播放。
         characterSheetCheckAnimationState = characterSheetCheckAnimation.GetEnumerator
         ' 字体
         Await fontMgr.LoadAsync
@@ -88,8 +95,16 @@ Public Class MainCanvas
         BuildVisualTree()
         ' 加载声音系统
         Await LoadSoundAsync()
-        ' 读档
-        Await LoadSaveFileAsync()
+    End Function
+
+    Private Function MakeAnimation(spriteSheet As ISpriteSheet, bmp As BitmapResource,
+             filter As Func(Of IEnumerable(Of BitmapResource), IEnumerable(Of BitmapResource))) As BitmapDiscreteAnimation
+        Dim spriteSize = spriteSheet.SpriteSize
+        Dim gridSize = spriteSheet.GridSize
+        Return New BitmapDiscreteAnimation(filter(
+                   bmp.Split(spriteSize.Width \ gridSize.Width,
+                   spriteSize.Height \ gridSize.Height,
+                   gridSize.Width, gridSize.Height)))
     End Function
 
     ' TODO: 用设计器生成这个方法，而不是只让用户手动打代码。
@@ -140,6 +155,9 @@ Public Class MainCanvas
             AddChild(tblTheElder.
                 Bind(Function(r) r.Text, Function() viewModel.ElderText).
                 Bind(Function(r) r.Location, Vector2.Zero)).
+            AddChild(swarmSysView.
+                Bind(Function(r) r.Data, Function() viewModel.GhostFlameSys).
+                Bind(Function(r) r.Location, New Vector2)).
             AddChild(tblKeyDownCount.
                 Bind(Function(r) r.Text, Function() "现在按下的键数量：" + viewModel.PressedKeyCount.ToString).
                 Bind(Function(r) r.Location, New Vector2(0.0F, 50.0F))).
@@ -184,7 +202,6 @@ Public Class MainCanvas
         ' 同步数据
         If sav IsNot Nothing Then
             viewModel = sav.SaveData.LastState
-            scrollViewer.OnUpdate(viewModel.ShakingViewer.UpdateAction)
         Else
             savMgr.MasterSaveFile.SaveData = New SampleMasterData With {
                 .LastState = viewModel

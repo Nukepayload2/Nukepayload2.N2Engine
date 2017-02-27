@@ -14,20 +14,24 @@ Friend Class GameSpriteElementRenderer
     Friend Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
         MyBase.OnCreateResources(sender, args)
         Dim view = DirectCast(Me.View, SpriteElement)
-        Dim bmp = DirectCast(view.Sprite.Value, PlatformBitmapResource)
-        If Not view.DefferedLoadLevel.CanRead OrElse view.DefferedLoadLevel.Value <= 0 Then
-            args.TrackAsyncAction(bmp.LoadAsync(sender).AsAsyncAction)
-            drawOperation = AddressOf DrawImage
-        Else
-            drawOperation = AddressOf DrawColor
-            bmp.LoadAsync(sender).ContinueWith(Sub(th) drawOperation = AddressOf DrawImage)
-        End If
         AddHandler view.Sprite.DataChanged,
             Sub(snd, e)
                 drawOperation = AddressOf DrawColor
                 DirectCast(view.Sprite.Value, PlatformBitmapResource).LoadAsync(sender).ContinueWith(Sub(th) drawOperation = AddressOf DrawImage)
             End Sub
     End Sub
+
+    Friend Overrides Async Function CreateResourceAsync(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs) As Task
+        Dim view = DirectCast(Me.View, SpriteElement)
+        Dim bmp = DirectCast(view.Sprite.Value, PlatformBitmapResource)
+        If Not view.DefferedLoadLevel.CanRead OrElse view.DefferedLoadLevel.Value <= 0 Then
+            Await bmp.LoadAsync(sender).AsAsyncAction
+            drawOperation = AddressOf DrawImage
+        Else
+            drawOperation = AddressOf DrawColor
+            Dim load = bmp.LoadAsync(sender).ContinueWith(Sub(th) drawOperation = AddressOf DrawImage)
+        End If
+    End Function
 
     Sub DrawImage(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim view = DirectCast(Me.View, SpriteElement)

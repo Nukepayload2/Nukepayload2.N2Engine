@@ -9,10 +9,10 @@ Friend Class SwarmParticleSystemRenderer
         MyBase.New(view)
     End Sub
 
-    Friend Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
+    Friend Overrides Async Function CreateResourceAsync(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs) As Task
         Dim view = DirectCast(MyBase.View, SwarmParticleSystemView)
-        SpriteParticleSystemHelper.Load(Of SpriteParticle, SwarmParticleSystem)(sender, args, view)
-    End Sub
+        Await SpriteParticleSystemHelper.LoadAsync(Of SpriteParticle, SwarmParticleSystem)(sender, args, view)
+    End Function
 
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         Dim drawingSession = args.DrawingSession

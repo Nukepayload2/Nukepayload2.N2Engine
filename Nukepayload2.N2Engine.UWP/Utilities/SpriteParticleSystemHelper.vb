@@ -6,17 +6,15 @@ Imports Nukepayload2.N2Engine.UI.ParticleSystemViews
 
 Friend Class SpriteParticleSystemHelper
 
-    Friend Shared Sub Load(Of TParticle As SpriteParticle, TParticleSystem As {ICommonSpriteParticleSystem, ParticleSystemBase(Of TParticle)})(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs, view As ParticleSystemView(Of TParticleSystem))
+    Friend Shared Async Function LoadAsync(Of TParticle As SpriteParticle, TParticleSystem As {ICommonSpriteParticleSystem, ParticleSystemBase(Of TParticle)})(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs, view As ParticleSystemView(Of TParticleSystem)) As Task
         Dim partSys = view.Data.Value
         partSys.RemoveFromGameCanvasCallback = AddressOf view.RemoveFromGameCanvas
-        args.TrackAsyncAction((Async Function()
-                                   For Each img As PlatformBitmapResource In partSys.ImageList
-                                       If Not img.IsLoaded Then
-                                           Await img.LoadAsync(sender)
-                                       End If
-                                   Next
-                               End Function)().AsAsyncAction)
-    End Sub
+        For Each img As PlatformBitmapResource In partSys.ImageList.Frames
+            If Not img.IsLoaded Then
+                Await img.LoadAsync(sender)
+            End If
+        Next
+    End Function
 
     Friend Shared Sub Draw(Of TParticle As SpriteParticle, TParticleSystem As {ICommonSpriteParticleSystem, ParticleSystemBase(Of TParticle)})(drawingSession As CanvasDrawingSession, view As ParticleSystemView(Of TParticleSystem))
         Dim partSys = view.Data.Value

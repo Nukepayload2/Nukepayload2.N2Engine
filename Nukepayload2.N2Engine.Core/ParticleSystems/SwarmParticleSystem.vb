@@ -14,6 +14,7 @@ Namespace ParticleSystems
             Me.TwinkleStep = twinkleStep
             Me.ImageList = imageList
             Me.Bounds = bounds
+            CreateParticles()
         End Sub
 
         ''' <summary>
@@ -31,14 +32,13 @@ Namespace ParticleSystems
         ''' <summary>
         ''' 虫子的最大速度
         ''' </summary>
-        Public Property MaxSpeed As Single = RandomGenerator.RandomSingle
+        Public Property MaxSpeed As Single = 5.0F
 
         Public Overrides Sub UpdateParticle(particle As SpriteParticle)
             Dim rndVel = RandomGenerator.RandomVector2
             With particle
-                .Opacity -= TwinkleStep
                 Dim ub! = CSng(Math.Max(0, 1 - .Age / .LifeTime))
-                If .Opacity < 0 OrElse .Opacity > ub Then
+                If .Opacity <= 0 OrElse .Opacity > ub Then
                     .OpacityStep = - .OpacityStep
                     If .Opacity < 0 Then
                         .Opacity = 0
@@ -65,13 +65,14 @@ Namespace ParticleSystems
                 End If
                 .Location = New Vector2(lx, ly)
                 .Velocity = New Vector2(vx, vy).WithLength(MaxSpeed)
+                .Update()
             End With
         End Sub
 
         Protected Overrides Function CreateParticle() As SpriteParticle
             Return New SpriteParticle(New Vector2, Integer.MaxValue,
                                       RandomGenerator.RandomVector2Positive(Bounds.Width, Bounds.Height),
-                                      New Vector2(RandomGenerator.RandomSingle - 0.5F, RandomGenerator.RandomSingle - 0.5F).WithLength(0.5F), ImageList)
+                                      New Vector2(RandomGenerator.RandomSingle - 0.5F, RandomGenerator.RandomSingle - 0.5F).WithLength(0.5F), ImageList) With {.OpacityStep = TwinkleStep, .Opacity = RandomGenerator.RandomSingle}
         End Function
     End Class
 

@@ -14,7 +14,10 @@ Public Class SparksViewModel
         .Location = New Vector2(150, 150), .GenerateColor = Function() _predefinedColor(RandomGenerator.Rand.Next(0, 3))
     }
 
-    'Public Property GhostFlameSys As New SwarmParticleSystem(50, Integer.MaxValue, 0.05,)
+    <JsonIgnore>
+    Public Property GhostFlameSys As SwarmParticleSystem
+
+    Public ReadOnly Property GhostFlameSheet As New GhostFlameSpriteSheet
 
     Public Property RedCircle As New ColorizedBound With {
         .Position = New Vector2(130, 200),

@@ -9,7 +9,7 @@ Friend Class SpriteParticleSystemHelper
                           sender As Game, args As MonogameCreateResourcesEventArgs, view As ParticleSystemView(Of TParticleSystem))
         Dim partSys = view.Data.Value
         partSys.RemoveFromGameCanvasCallback = AddressOf view.RemoveFromGameCanvas
-        For Each img As PlatformBitmapResource In partSys.ImageList
+        For Each img As PlatformBitmapResource In partSys.ImageList.Frames
             If Not img.IsLoaded Then
                 img.Load()
             End If
@@ -30,6 +30,8 @@ Friend Class SpriteParticleSystemHelper
                 Else
                     drawingSession.DrawTexture(bmp.Texture, loc, Color.White * part.Opacity)
                 End If
+            Else
+                Stop
             End If
         Next
     End Sub
