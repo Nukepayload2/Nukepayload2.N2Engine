@@ -2,7 +2,7 @@
     ''' <summary>
     ''' 实现一个类型时, 声明与之对应的平台无关类型。用这个标记的类如果会被平台无关类型自动创建，则需要使用 Friend 修饰符 (Visual Basic) 或 internal 修饰符 (Visual C#)。
     ''' </summary>
-    <AttributeUsage(AttributeTargets.Class)>
+    <AttributeUsage(AttributeTargets.Class, Inherited:=False)>
     Public Class PlatformImplAttribute
         Inherits Attribute
         Sub New(declType As Type)

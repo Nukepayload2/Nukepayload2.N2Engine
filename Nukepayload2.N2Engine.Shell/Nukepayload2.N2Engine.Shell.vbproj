@@ -1,49 +1,24 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E1BCB30B-991C-4368-89FB-71C407D1010F}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <RootNamespace>Nukepayload2.N2Engine.UWP.Designer</RootNamespace>
-    <AssemblyName>Nukepayload2.N2Engine.UWP.Designer</AssemblyName>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{6EEF663D-7607-4051-BD59-6B0EEA43FB83}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <RootNamespace>Nukepayload2.N2Engine.Shell</RootNamespace>
+    <AssemblyName>Nukepayload2.N2Engine.Shell</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
     <TargetPlatformVersion>10.0.14393.0</TargetPlatformVersion>
-    <TargetPlatformMinVersion>10.0.14393.0</TargetPlatformMinVersion>
+    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
     <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <DefineDebug>true</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <NoConfig>true</NoConfig>
-    <OutputPath>bin\Debug</OutputPath>
-    <DocumentationFile>Nukepayload2.N2Engine.UWP.Designer.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <DefineConstants>NETFX_CORE,WINDOWS_UWP</DefineConstants>
-    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
-  </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
-    <DebugType>pdbonly</DebugType>
-    <DefineDebug>false</DefineDebug>
-    <DefineTrace>true</DefineTrace>
-    <NoStdLib>true</NoStdLib>
-    <NoConfig>true</NoConfig>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release</OutputPath>
-    <DocumentationFile>Nukepayload2.N2Engine.UWP.Designer.xml</DocumentationFile>
-    <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
-    <DefineConstants>NETFX_CORE,WINDOWS_UWP</DefineConstants>
-    <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <WindowsXamlEnableOverview>true</WindowsXamlEnableOverview>
+    <PackageCertificateKeyFile>Nukepayload2.N2Engine.Shell_TemporaryKey.pfx</PackageCertificateKeyFile>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
-    <PlatformTarget>x86</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
@@ -52,11 +27,11 @@
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <DocumentationFile>Nukepayload2.N2Engine.UWP.Designer.xml</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>Nukepayload2.N2Engine.Shell.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
-    <PlatformTarget>x86</PlatformTarget>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x86\Release\</OutputPath>
     <DefineConstants>NETFX_CORE,WINDOWS_UWP</DefineConstants>
@@ -64,11 +39,12 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x86</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <DocumentationFile>Nukepayload2.N2Engine.UWP.Designer.xml</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>Nukepayload2.N2Engine.Shell.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
-    <PlatformTarget>ARM</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
@@ -77,11 +53,11 @@
     <DebugType>full</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <DocumentationFile>Nukepayload2.N2Engine.UWP.Designer.xml</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>Nukepayload2.N2Engine.Shell.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
-    <PlatformTarget>ARM</PlatformTarget>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\ARM\Release\</OutputPath>
     <DefineConstants>NETFX_CORE,WINDOWS_UWP</DefineConstants>
@@ -89,11 +65,12 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>ARM</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <DocumentationFile>Nukepayload2.N2Engine.UWP.Designer.xml</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>Nukepayload2.N2Engine.Shell.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
-    <PlatformTarget>x64</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
@@ -102,11 +79,11 @@
     <DebugType>full</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <DocumentationFile>Nukepayload2.N2Engine.UWP.Designer.xml</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>Nukepayload2.N2Engine.Shell.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
-    <PlatformTarget>x64</PlatformTarget>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\x64\Release\</OutputPath>
     <DefineConstants>NETFX_CORE,WINDOWS_UWP</DefineConstants>
@@ -114,20 +91,49 @@
     <DebugType>pdbonly</DebugType>
     <PlatformTarget>x64</PlatformTarget>
     <UseVSHostingProcess>false</UseVSHostingProcess>
-    <DocumentationFile>Nukepayload2.N2Engine.UWP.Designer.xml</DocumentationFile>
+    <Prefer32Bit>true</Prefer32Bit>
+    <DocumentationFile>Nukepayload2.N2Engine.Shell.xml</DocumentationFile>
     <NoWarn>41999,42016,42017,42018,42019,42020,42021,42022,42032,42036,42314</NoWarn>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Converters\PropertyBinderUnderlyingTypeNameConverter.vb" />
-    <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="Views\PropertyBinderEditor.xaml.vb">
-      <DependentUpon>PropertyBinderEditor.xaml</DependentUpon>
+    <Compile Include="App.xaml.vb">
+      <DependentUpon>App.xaml</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.UWP.Designer.rd.xml" />
+    <Compile Include="Views\MainPage.xaml.vb">
+      <DependentUpon>MainPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="My Project\AssemblyInfo.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+    <None Include="Nukepayload2.N2Engine.Shell_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="My Project\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\StoreLogo.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Page Include="Views\MainPage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -140,8 +146,8 @@
     <Import Include="System.IO" />
     <Import Include="System.Linq" />
     <Import Include="System.Runtime.CompilerServices" />
-    <Import Include="System.Threading.Tasks" />
     <Import Include="System.Runtime.InteropServices.WindowsRuntime" />
+    <Import Include="System.Threading.Tasks" />
     <Import Include="System.Windows.Input" />
     <Import Include="System.Xml.Linq" />
     <Import Include="Windows.ApplicationModel" />
@@ -160,10 +166,10 @@
     <Import Include="Windows.UI.Xaml.Navigation" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Nukepayload2.CodeAnalysis\Nukepayload2.CodeAnalysis.vbproj">
-      <Project>{11D14CB7-C9FE-4044-ABA0-9BE40EFBC301}</Project>
-      <Name>Nukepayload2.CodeAnalysis</Name>
-    </ProjectReference>
+    <Folder Include="Models\" />
+    <Folder Include="ViewModels\" />
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Nukepayload2.UI.UWP\Nukepayload2.UI.UWP.vbproj">
       <Project>{faee72f7-b4e0-48e6-8270-193738fb3bc2}</Project>
       <Name>Nukepayload2.UI.UWP</Name>
@@ -176,21 +182,14 @@
       <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
       <Name>Nukepayload2.N2Engine.Core</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.UWP.Designer\Nukepayload2.N2Engine.UWP.Designer.vbproj">
+      <Project>{e1bcb30b-991c-4368-89fb-71c407d1010f}</Project>
+      <Name>Nukepayload2.N2Engine.UWP.Designer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
       <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
       <Name>Nukepayload2.N2Engine</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Nukepayload2.N2Engine.License.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Views\PropertyBinderEditor.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>
