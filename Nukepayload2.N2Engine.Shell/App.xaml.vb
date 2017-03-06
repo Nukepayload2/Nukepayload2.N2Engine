@@ -1,4 +1,8 @@
-﻿''' <summary>
+﻿Imports Nukepayload2.N2Engine.Shell.Models
+Imports Nukepayload2.N2Engine.Shell.Utilities
+Imports Nukepayload2.N2Engine.Shell.Views
+Imports Windows.Storage
+''' <summary>
 ''' 提供特定于应用程序的行为，以补充默认的应用程序类。
 ''' </summary>
 NotInheritable Class App
@@ -62,6 +66,25 @@ NotInheritable Class App
         Dim deferral As SuspendingDeferral = e.SuspendingOperation.GetDeferral()
         ' TODO: 保存应用程序状态并停止任何后台活动
         deferral.Complete()
+    End Sub
+
+    Public Async Function LaunchFromFileAsync(srcFile As StorageFile) As Task
+        Dim rootFrame As Frame = TryCast(Window.Current.Content, Frame)
+        If rootFrame Is Nothing Then
+            rootFrame = New Frame()
+            AddHandler rootFrame.NavigationFailed, AddressOf OnNavigationFailed
+            Window.Current.Content = rootFrame
+        End If
+        Dim FileName = srcFile.Name.ToLower
+        If FileName.EndsWith(N2EngineProject.FileExtension) Then
+            N2EngineProject.ActiveProject = Await N2EngineProjectIO.OpenAsync(srcFile)
+            rootFrame.Navigate(GetType(DesignerPage))
+            Window.Current.Activate()
+        End If
+    End Function
+
+    Protected Overrides Async Sub OnFileActivated(args As FileActivatedEventArgs)
+        Await LaunchFromFileAsync(args.Files.First())
     End Sub
 
 End Class

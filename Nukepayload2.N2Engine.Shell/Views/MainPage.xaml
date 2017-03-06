@@ -1,13 +1,86 @@
 ﻿<Page
-    x:Class="Nukepayload2.N2Engine.Shell.MainPage"
+    x:Class="Nukepayload2.N2Engine.Shell.Views.MainPage"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:Nukepayload2.N2Engine.Shell"
+    xmlns:models="using:Nukepayload2.N2Engine.Shell.Models"
+    xmlns:st="using:Windows.Storage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d">
 
-    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-
+    <Grid x:Name="LayoutRoot" DataContext="{StaticResource WelcomeViewModel}" Background="White">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="2*"/>
+        </Grid.ColumnDefinitions>
+        <TextBlock FontSize="36" Foreground="Black" VerticalAlignment="Center">N2引擎</TextBlock>
+        <Button HorizontalAlignment="Right" Click="BtnAbout_Click">?</Button>
+        <TextBlock FontSize="32" Grid.Column="1" Foreground="Black" VerticalAlignment="Center">新建</TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <StackPanel x:Name="StkHoriScreen" Visibility="Collapsed" Margin="4,16" HorizontalAlignment="Right" VerticalAlignment="Top" Orientation="Horizontal">
+                <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE814;" />
+                <TextBlock>横屏以显示更多选项</TextBlock>
+            </StackPanel>
+            <ListView x:Name="RecentListView" Margin="4" ItemsSource="{Binding RecentAccessTable}">
+                <ListView.Header>
+                    <TextBlock FontSize="28" FontWeight="Bold" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" Text="最近"/>
+                </ListView.Header>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="st:StorageFile">
+                        <TextBlock>
+                            <Run Text="{x:Bind Name}" FontWeight="Bold" FontSize="16"></Run><LineBreak/>
+                            <Run Text="{x:Bind Path}" ></Run>
+                        </TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <ProgressRing x:Name="LoadProgress" Width="48" Height="48" IsActive="True"></ProgressRing>
+            <Grid Grid.Row="1" RequestedTheme="Dark">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <Button Margin="4" Background="{ThemeResource SystemControlBackgroundAccentBrush}" Padding="0,16" HorizontalAlignment="Stretch" Command="{Binding OpenCommand}">打开文档</Button>
+                <Button Margin="4" x:Name="BtnClose" VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Grid.Column="1" Background="DarkRed">退出</Button>
+            </Grid>
+        </Grid>
+        <Grid Grid.Column="1" Grid.Row="1">
+            <ListView ItemsSource="{Binding ProjectTemplates}" IsItemClickEnabled="True">
+                <ListView.Header>
+                    <TextBlock FontSize="28" Margin="0,2" FontWeight="Bold" Foreground="{ThemeResource SystemControlBackgroundAccentBrush}" Text="项目模板"/>
+                </ListView.Header>
+                <ListView.ItemContainerStyle>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        <Setter Property="Padding" Value="0"/>
+                    </Style>
+                </ListView.ItemContainerStyle>
+                <ListView.ItemTemplate>
+                    <DataTemplate x:DataType="models:ProjectTemplate">
+                        <Button Background="transparent" Padding="9" Command="{x:Bind PrepareCommand}" HorizontalAlignment="Stretch" HorizontalContentAlignment="Left">
+                            <Grid Height="140">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="140"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+                                <Image Source="{x:Bind Icon}"/>
+                                <StackPanel Grid.Column="1">
+                                    <TextBlock FontWeight="Bold" FontSize="22" Text="{x:Bind Name}"/>
+                                    <TextBlock TextWrapping="Wrap" Text="{x:Bind Description}"></TextBlock>
+                                </StackPanel>
+                            </Grid>
+                        </Button>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
     </Grid>
 </Page>
