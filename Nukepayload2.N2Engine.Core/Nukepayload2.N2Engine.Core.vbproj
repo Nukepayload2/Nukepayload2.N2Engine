@@ -102,8 +102,10 @@
     <Compile Include="Behaviors\GameBehavior.vb" />
     <Compile Include="Behaviors\IGameBehavior.vb" />
     <Compile Include="Behaviors\VirtualJoystickMoveBehavior.vb" />
+    <Compile Include="Designer\IN2EngineBindingExpression.vb" />
+    <Compile Include="Designer\N2EngineBindingExpression.vb" />
     <Compile Include="Information\BackBufferInformation.vb" />
-    <Compile Include="Information\GameInformation.vb" />
+    <Compile Include="Information\GameEnvironment.vb" />
     <Compile Include="Input\ButtonState.vb" />
     <Compile Include="Input\MouseKeys.vb" />
     <Compile Include="Input\PhysicalKeyStatus.vb" />
@@ -139,6 +141,7 @@
     <Compile Include="UI\Elements\GameMouseRoutedEventArgs.vb" />
     <Compile Include="UI\Elements\GameTouchRoutedEventArgs.vb" />
     <Compile Include="UI\Elements\GameVirtualizingScrollViewer.vb" />
+    <Compile Include="Models\ISpriteSheet.vb" />
     <Compile Include="UI\Elements\ParticleSystemViews\RailgunParticleSystemView.vb" />
     <Compile Include="UI\Elements\ParticleSystemViews\SmokeParticleSystemView.vb" />
     <Compile Include="UI\Elements\ParticleSystemViews\SwarmParticleSystemView.vb" />
@@ -220,7 +223,9 @@
     <Compile Include="Storage\IDirectory.vb" />
     <Compile Include="Storage\IFile.vb" />
     <Compile Include="Storage\SaveLocations.vb" />
+    <Compile Include="UI\Text\GameFontFactory.vb" />
     <Compile Include="UI\TimeAction.vb" />
+    <Compile Include="Utilities\AnimationsHelper.vb" />
     <Compile Include="Utilities\AsyncHelper.vb" />
     <Compile Include="Math\FastFactorial.vb" />
     <Compile Include="Utilities\GameVisualInitializers.vb" />

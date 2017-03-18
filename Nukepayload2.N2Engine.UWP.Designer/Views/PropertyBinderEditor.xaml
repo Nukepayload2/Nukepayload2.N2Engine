@@ -25,7 +25,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <TextBlock Foreground="Blue">Function<Run Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}">()</Run></TextBlock>
-                            <TextBox Margin="30,0,0,0" AcceptsReturn="True" Grid.Row="1" MinWidth="200" MinHeight="50">
+                            <TextBox Margin="30,0,0,0" AcceptsReturn="True" Text="{Binding GetCode,Mode=TwoWay}" Grid.Row="1" MinWidth="200" MinHeight="50">
 
                             </TextBox>
                             <TextBlock Grid.Row="2" Foreground="Blue">End Function</TextBlock>
@@ -43,7 +43,7 @@
                                 <RowDefinition Height="Auto"/>
                             </Grid.RowDefinitions>
                             <TextBlock Foreground="Blue">Sub<Run Foreground="{ThemeResource SystemControlForegroundBaseHighBrush}">(value)</Run></TextBlock>
-                            <TextBox Margin="30,0,0,0" AcceptsReturn="True" Grid.Row="1" MinWidth="200" MinHeight="50">
+                            <TextBox Margin="30,0,0,0" Text="{Binding SetCode,Mode=TwoWay}" AcceptsReturn="True" Grid.Row="1" MinWidth="200" MinHeight="50">
 
                             </TextBox>
                             <TextBlock Grid.Row="2" Foreground="Blue">End Sub</TextBlock>

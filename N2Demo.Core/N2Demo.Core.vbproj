@@ -113,8 +113,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Models\CharacterSheet.vb" />
-    <Compile Include="Models\GhostFlameSpriteSheet.vb" />
-    <Compile Include="Models\ISpriteSheet.vb" />
+    <Compile Include="Models\JumpStateMachine.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -128,13 +127,12 @@
     <Compile Include="Save\SampleSaveFileManager.vb" />
     <Compile Include="Save\SampleSavePollution.vb" />
     <Compile Include="Models\ShakingViewer.vb" />
-    <Compile Include="Triggers\KeyboardPlaneTransformTestTrigger.vb" />
     <Compile Include="Models\ButtonStatus.vb" />
     <Compile Include="ViewModels\SingleInstance.vb" />
     <Compile Include="Views\MainCanvas.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="ViewModels\SparksViewModel.vb" />
-    <Compile Include="Triggers\VerticalShakeTrigger.vb" />
+    <Compile Include="Views\MainCanvas.Designer.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\CharacterSheet.png" />
@@ -163,6 +161,9 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\Flame3.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Triggers\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

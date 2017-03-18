@@ -57,5 +57,21 @@ Namespace UI.Text
         ''' (仅 Mono Game) 贴图字体数据。
         ''' </summary>
         Public Property SpriteData As N2SpriteFont
+        ''' <summary>
+        ''' 还原成字体工厂，以便创建相似的字体。
+        ''' </summary>
+        Public Function Uncraft() As GameFontFactory
+            Return New GameFontFactory With {
+                .Color = Color,
+                .FontFamily = FontFamily,
+                .FontSize = FontSize,
+                .FontStretch = FontStretch,
+                .FontStyle = FontStyle,
+                .FontWeight = FontWeight,
+                .IsColorFontEnabled = IsColorFontEnabled,
+                .Name = Name,
+                .SpriteFontResourceId = SpriteFontResourceId.ToString
+            }
+        End Function
     End Class
 End Namespace

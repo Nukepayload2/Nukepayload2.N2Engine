@@ -1,6 +1,7 @@
 ﻿Imports System.Numerics
 Imports Newtonsoft.Json
 Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.N2Engine.Models
 
 <JsonObject(MemberSerialization.OptIn)>
 Public Class CharacterSheet

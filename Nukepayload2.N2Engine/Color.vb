@@ -1,6 +1,8 @@
-﻿Namespace Foundation
+﻿Imports System.Reflection
+
+Namespace Foundation
     ''' <summary>
-    ''' 代表未预乘的A8R8G8B8颜色。可以利用指针强制转换成 Windows.UI.Color。
+    ''' 代表未预乘的A8R8G8B8颜色。可以静态强制转换成 Windows.UI.Color。
     ''' </summary>
     <TypeForwardedFrom("Nukepayload2.N2Engine.Core, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null")>
     Public Structure Color
@@ -71,6 +73,54 @@
         ''' </summary>
         Public Overrides Function ToString() As String
             Return "#" + GetHashCode.ToString("X")
+        End Function
+
+        ''' <summary>
+        ''' 将字符串转换为颜色。支持的格式：#RRGGBB, #AARRGGBB, <see cref="Colors"/> 中的颜色。
+        ''' </summary>
+        Public Shared Function TryParse(color As String, ByRef result As Color) As Boolean
+            If color.StartsWith("#") Then
+                Select Case color.Length
+                    Case 7
+                        Dim col As New Color
+                        If Byte.TryParse(color.Substring(1, 2), Globalization.NumberStyles.HexNumber, Nothing, col.R) AndAlso
+                           Byte.TryParse(color.Substring(3, 2), Globalization.NumberStyles.HexNumber, Nothing, col.G) AndAlso
+                           Byte.TryParse(color.Substring(5, 2), Globalization.NumberStyles.HexNumber, Nothing, col.B) Then
+                            col.A = 255
+                            result = col
+                            Return True
+                        End If
+                    Case 9
+                        Dim col As New Color
+                        If Byte.TryParse(color.Substring(1, 2), Globalization.NumberStyles.HexNumber, Nothing, col.A) AndAlso
+                           Byte.TryParse(color.Substring(3, 2), Globalization.NumberStyles.HexNumber, Nothing, col.R) AndAlso
+                           Byte.TryParse(color.Substring(5, 2), Globalization.NumberStyles.HexNumber, Nothing, col.G) AndAlso
+                           Byte.TryParse(color.Substring(7, 2), Globalization.NumberStyles.HexNumber, Nothing, col.B) Then
+                            result = col
+                            Return True
+                        End If
+                End Select
+            End If
+            Dim colorsType = GetType(Colors).GetRuntimeProperties
+            Dim namedColor = From c In colorsType
+                             Let g = c.GetMethod
+                             Where c.Name.ToLower = color.ToLower AndAlso g.IsPublic AndAlso g.IsStatic
+                             Select DirectCast(g.Invoke(Nothing, Nothing), Color)
+            If namedColor.Any Then
+                result = namedColor.First
+                Return True
+            End If
+            Return False
+        End Function
+        ''' <summary>
+        ''' 将字符串转换为颜色。支持的格式：#RRGGBB, #AARRGGBB, <see cref="Colors"/> 中的颜色。
+        ''' </summary>
+        Public Shared Function Parse(color As String) As Color
+            Dim col As New Color
+            If TryParse(color, col) Then
+                Return col
+            End If
+            Throw New FormatException
         End Function
     End Structure
 End Namespace

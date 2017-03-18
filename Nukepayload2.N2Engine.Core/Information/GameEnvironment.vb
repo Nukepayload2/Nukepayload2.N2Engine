@@ -5,7 +5,7 @@ Namespace Information
     ''' <summary>
     ''' 关于游戏的信息
     ''' </summary>
-    Public Class Environment
+    Public Class GameEnvironment
         ''' <summary>
         ''' 共享的游戏逻辑所在的程序集
         ''' </summary>
