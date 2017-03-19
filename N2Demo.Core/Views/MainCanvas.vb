@@ -55,8 +55,7 @@ Public Class MainCanvas
         Location.Bind(New Vector2)
         ZIndex.Bind(0)
         AddChild(scrollViewer.
-            OnUpdate(viewModel.ShakingViewer.UpdateAction).
-            Bind(Function(m) m.Location, Function() viewModel.ShakingViewer.Offset).
+            Bind(Function(m) m.Location, Function() viewModel.ScrollingViewer.Offset).
             Bind(Function(m) m.ZIndex, 0).
             AddChild(character.
                 Bind(Function(r) r.Sprite, Function()
@@ -69,7 +68,7 @@ Public Class MainCanvas
                 Bind(Function(r) r.Location, Function() viewModel.CharacterSheet.Location).
                 Bind(Function(r) r.Size, Function() viewModel.CharacterSheet.Size)).
             AddChild(tblJumpLogicStatus.
-                Bind(Function(r) r.Text, Function() viewModel.ElderText).
+                Bind(Function(r) r.Text, Function() viewModel.JumpLogicStatusText).
                 Bind(Function(r) r.Location, Vector2.Zero))
         )
         AddChild(Joystick.

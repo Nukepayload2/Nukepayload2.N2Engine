@@ -114,19 +114,18 @@
   <ItemGroup>
     <Compile Include="Models\CharacterSheet.vb" />
     <Compile Include="Models\JumpStateMachine.vb" />
+    <Compile Include="Models\ScrollingViewer.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Models\ColorizedBound.vb" />
     <Compile Include="Resources\FontManager.vb" />
     <Compile Include="Resources\ResourceRouteConfig.vb" />
     <Compile Include="Save\SampleMasterData.vb" />
     <Compile Include="Save\SamplePartialData.vb" />
     <Compile Include="Save\SampleSaveFileManager.vb" />
     <Compile Include="Save\SampleSavePollution.vb" />
-    <Compile Include="Models\ShakingViewer.vb" />
     <Compile Include="Models\ButtonStatus.vb" />
     <Compile Include="ViewModels\SingleInstance.vb" />
     <Compile Include="Views\MainCanvas.vb" />

@@ -6,6 +6,8 @@ Imports Nukepayload2.N2Engine.UI.Elements
 Public Class MonoGameKeyboardEventMediator
     Implements IKeyboardEventMediator
 
+    ReadOnly _keyStates As PhysicalKeyStatus() = KeyboardStateManager.PrimaryKeyboard.WritableKeyState
+
     Sub New(attachedView As GameCanvas)
         Me.AttachedView = attachedView
         For i = 0 To 255
@@ -14,7 +16,6 @@ Public Class MonoGameKeyboardEventMediator
         _keys = Aggregate v As Integer In [Enum].GetValues(GetType(Keys)) Select v Into ToArray
     End Sub
 
-    Dim _keyStates(255) As PhysicalKeyStatus
     Dim _keys As Integer()
 
     Public Property AttachedView As GameCanvas Implements IKeyboardEventMediator.AttachedView

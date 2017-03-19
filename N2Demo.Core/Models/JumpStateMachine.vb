@@ -10,11 +10,11 @@ Public Structure JumpStateMachine(Of TCharacter)
     ''' <summary>
     ''' 表示现在跳跃按钮是否按下。与键盘或触摸输入同步。
     ''' </summary>
-    Dim IsJumpButtonPressing As Boolean
+    Dim WasJumpButtonDown As Boolean
     ''' <summary>
-    ''' 表示上次跳跃按钮是否按下。与键盘或触摸输入同步。
+    ''' 表示上次跳跃按钮是否由按下转为松开状态。与键盘或触摸输入同步。
     ''' </summary>
-    Dim WasJumpButtonPressed As Boolean
+    Dim IsJumpButtonReleased As Boolean
     ''' <summary>
     ''' 当前在进行第几次连续跳跃。未起跳时为 0 。
     ''' </summary>

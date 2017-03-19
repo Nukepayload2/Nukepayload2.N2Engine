@@ -107,6 +107,7 @@
     <Compile Include="Information\BackBufferInformation.vb" />
     <Compile Include="Information\GameEnvironment.vb" />
     <Compile Include="Input\ButtonState.vb" />
+    <Compile Include="Input\KeyboardStateManager.vb" />
     <Compile Include="Input\MouseKeys.vb" />
     <Compile Include="Input\PhysicalKeyStatus.vb" />
     <Compile Include="Input\VirtualKeyModifiers.vb" />

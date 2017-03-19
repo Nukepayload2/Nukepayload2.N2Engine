@@ -1,6 +1,6 @@
 ﻿Namespace Input
     ''' <summary>
-    ''' 物理按键状态。可以利用指针强制转换成 Windows.UI.Core.CorePhysicalKeyStatus。
+    ''' 物理按键状态。可以静态强制转换成 Windows.UI.Core.CorePhysicalKeyStatus。
     ''' </summary>
     Public Structure PhysicalKeyStatus
         ''' <summary>
