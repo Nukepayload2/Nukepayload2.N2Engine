@@ -1,6 +1,5 @@
 ﻿Imports Nukepayload2.N2Engine.Behaviors
 Imports Nukepayload2.N2Engine.Foundation
-Imports Nukepayload2.N2Engine.Input
 Imports Nukepayload2.N2Engine.Renderers
 Imports Nukepayload2.N2Engine.Triggers
 Imports Nukepayload2.N2Engine.UI.Effects
@@ -58,17 +57,26 @@ Namespace UI.Elements
         ''' </summary>
         Public ReadOnly Property Effect As GameEffect
         ''' <summary>
-        ''' (Win2D) 二维变换。如果仅需要改变位置，使用 <see cref="Location"/> 可以获得更好的性能。
+        ''' 二维变换。如果仅需要改变位置，使用 <see cref="Location"/> 可以获得更好的性能。
         ''' </summary>
         Public Property Transform As PlaneTransform
         ''' <summary>
         ''' 如果这个对象被冻结，则不会主动进行更新。
         ''' </summary>
         Public ReadOnly Property IsFrozen As New PropertyBinder(Of Boolean)
+
+        Dim _IsVirtualizing As Boolean
         ''' <summary>
         ''' 指示这个视图可见对象是否处于虚拟化状态。
         ''' </summary>
         Public Property IsVirtualizing As Boolean
+            Get
+                Return _IsVirtualizing
+            End Get
+            Friend Set(value As Boolean)
+                _IsVirtualizing = value
+            End Set
+        End Property
 
         Dim _Triggers As New List(Of IGameTrigger)
         ''' <summary>

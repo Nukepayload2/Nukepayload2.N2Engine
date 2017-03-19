@@ -8,13 +8,17 @@
 ''' <typeparam name="TCharacter">表示这个跳跃状态是给哪位角色准备的。可以为特定的角色设置不同的 Shared 字段 (在 Visual C# 为 static) 让不同的人物有不同的跳跃能力。</typeparam>
 Public Structure JumpStateMachine(Of TCharacter)
     ''' <summary>
-    ''' 表示现在跳跃按钮是否按下。与键盘或触摸输入同步。
+    ''' 表示上次跳跃按钮是否按下。与键盘或触摸输入同步。
     ''' </summary>
     Dim WasJumpButtonDown As Boolean
     ''' <summary>
     ''' 表示上次跳跃按钮是否由按下转为松开状态。与键盘或触摸输入同步。
     ''' </summary>
     Dim IsJumpButtonReleased As Boolean
+    ''' <summary>
+    ''' 表示现在有几个键盘按下了这个按钮。单键盘的情况下现在没按下是 0, 现在已经按下是 1。
+    ''' </summary>
+    Dim RepeatCount As Integer
     ''' <summary>
     ''' 当前在进行第几次连续跳跃。未起跳时为 0 。
     ''' </summary>
