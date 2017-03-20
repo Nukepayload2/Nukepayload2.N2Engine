@@ -21,7 +21,7 @@ Namespace UI
         End Function
 
         <Extension>
-        Public Function OnUpdate(Of TObject As GameVisual)(obj As TObject, update As Action) As TObject
+        Public Function OnUpdate(Of TObject As GameVisual)(obj As TObject, update As Action(Of UpdatingEventArgs)) As TObject
             obj.UpdateAction = update
             Return obj
         End Function

@@ -1,16 +1,18 @@
-﻿Imports Nukepayload2.N2Engine.Renderers
-Imports Nukepayload2.N2Engine.UI.Elements
+﻿Imports Nukepayload2.N2Engine.PhysicsIntegration
+Imports Nukepayload2.N2Engine.Renderers
+Imports Nukepayload2.N2Engine.UI.Controls
 
-Namespace UI.Controls
+Namespace UI.Elements
     ''' <summary>
-    ''' 游戏中的内容控件。渲染任务会传递给内容。默认情况下，此类型的渲染器是 <see cref="IGameContentControlRenderer"/>。
+    ''' 包含自定义内容的实体。使用与 GameContentControl 相同的渲染逻辑。
     ''' </summary>
-    ''' <typeparam name="TContent">内容的类型</typeparam>
-    Public MustInherit Class GameContentControl(Of TContent As GameTemplatedContent)
-        Inherits GameControl
+    ''' <typeparam name="TContent">要呈现的内容</typeparam>
+    Public Class GameContentEntity(Of TContent As GameVisual)
+        Inherits GameEntity
         Implements IGameContentControl
 
-        Sub New(content As TContent)
+        Sub New(content As TContent, collider As ICollider)
+            MyBase.New(collider)
             Me.Content = content
             content.Parent = Me
         End Sub

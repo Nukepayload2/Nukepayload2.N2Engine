@@ -136,6 +136,7 @@
     <Compile Include="UI\Elements\Controls\VirtualJoystickContentTemplate.vb" />
     <Compile Include="UI\Elements\Controls\VirtualJoystickDragEventArgs.vb" />
     <Compile Include="UI\Elements\Controls\VirtualJoystickState.vb" />
+    <Compile Include="UI\Elements\GameContentEntity.vb" />
     <Compile Include="UI\Elements\GameEventRouteDirections.vb" />
     <Compile Include="UI\Elements\GameEventRouteModes.vb" />
     <Compile Include="UI\Elements\GameKeyboardRoutedEventArgs.vb" />
@@ -155,6 +156,7 @@
     <Compile Include="UI\Effects\GaussianBlurEffect.vb" />
     <Compile Include="UI\Effects\IGameEffectSource.vb" />
     <Compile Include="UI\Elements\GameRoutedEventArgs.vb" />
+    <Compile Include="UI\Elements\UpdatingEventArgs.vb" />
     <Compile Include="UI\GameObjectStateTransition.vb" />
     <Compile Include="Input\Key.vb" />
     <Compile Include="UI\GameVisualTreeHelper.vb" />

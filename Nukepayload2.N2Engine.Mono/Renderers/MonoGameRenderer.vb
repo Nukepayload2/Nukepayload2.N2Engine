@@ -17,7 +17,8 @@ Public MustInherit Class MonoGameRenderer
 
     End Sub
     Friend Overridable Sub OnUpdate(sender As Game, args As MonogameUpdateEventArgs)
-        View.UpdateAction.Invoke()
+        Dim tim = args.Timing
+        View.UpdateAction.Invoke(New UpdatingEventArgs(tim.ElapsedGameTime, tim.TotalGameTime, tim.IsRunningSlowly))
     End Sub
     Friend Overridable Sub OnCreateResources(sender As Game, args As MonogameCreateResourcesEventArgs)
 

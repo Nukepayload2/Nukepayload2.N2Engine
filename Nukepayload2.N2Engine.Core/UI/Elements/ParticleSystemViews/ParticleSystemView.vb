@@ -9,14 +9,14 @@ Namespace UI.ParticleSystemViews
 
         Public ReadOnly Property Data As New PropertyBinder(Of T)
 
-        Public Overrides Property UpdateAction As Action
+        Public Overrides Property UpdateAction As Action(Of UpdatingEventArgs)
             Get
-                Return Sub()
-                           MyBase.UpdateAction.Invoke()
+                Return Sub(args)
+                           MyBase.UpdateAction.Invoke(args)
                            Data.Value.Update()
                        End Sub
             End Get
-            Set(value As Action)
+            Set(value As Action(Of UpdatingEventArgs))
                 MyBase.UpdateAction = value
             End Set
         End Property

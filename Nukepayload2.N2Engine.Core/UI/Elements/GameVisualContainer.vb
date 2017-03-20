@@ -6,7 +6,7 @@ Namespace UI.Elements
     Public Class GameVisualContainer
         Inherits GameVisual
 
-        Dim _Children As New ConcurrentObservableCollection(Of GameVisual)
+        Private _Children As New ConcurrentObservableCollection(Of GameVisual)
         ''' <summary>
         ''' 画板的子元素。添加或删除元素时会在此画板引发一个通知。
         ''' </summary>

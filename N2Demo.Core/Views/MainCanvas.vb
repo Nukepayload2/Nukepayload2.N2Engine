@@ -1,6 +1,7 @@
 ﻿Imports System.Numerics
 Imports Nukepayload2.N2Engine.Animations
 Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.N2Engine.PhysicsIntegration
 Imports Nukepayload2.N2Engine.Resources
 Imports Nukepayload2.N2Engine.UI
 Imports Nukepayload2.N2Engine.UI.Controls
@@ -17,6 +18,7 @@ Public Class MainCanvas
     ' 普通元素
     Dim ground As New RectangleElement
     Dim character As New SpriteElement
+    Dim chara As New PrimaryCharacter(character, New Rectangle(2, viewModel.CharacterSheet.Size))
     Dim scrollViewer As New GameVirtualizingScrollViewer
     Dim tblJumpLogicStatus As New GameTextBlock
     ' 控件

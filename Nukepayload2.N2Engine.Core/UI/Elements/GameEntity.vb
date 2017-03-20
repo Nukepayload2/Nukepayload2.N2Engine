@@ -18,9 +18,17 @@ Namespace UI.Elements
         ''' 创建 Body。在开始游戏前必须调用此方法，否则物理引擎将不能正常工作。
         ''' </summary>
         Public Sub CreateBody()
+            If Collider Is Nothing Then
+                Throw New InvalidOperationException("碰撞器为空的情况下不能创建 Body。")
+            End If
             Dim world = DirectCast(Parent， EntityLayer).World
             _Body = Collider.CreateBody(world)
         End Sub
+
+        Private Sub GameEntity_Updating(sender As GameVisual, e As EventArgs) Handles Me.Updating
+
+        End Sub
+
         ''' <summary>
         ''' 碰撞器信息。用于创建 Body。
         ''' </summary>

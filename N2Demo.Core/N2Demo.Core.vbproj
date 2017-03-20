@@ -132,6 +132,7 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="ViewModels\SparksViewModel.vb" />
     <Compile Include="Views\MainCanvas.Designer.vb" />
+    <Compile Include="Views\PrimaryCharacter.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\CharacterSheet.png" />

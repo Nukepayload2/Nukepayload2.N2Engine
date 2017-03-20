@@ -127,11 +127,11 @@ Namespace UI.Elements
         ''' 绑定更新的动作。默认值是引发 Updating 事件。
         ''' </summary>
         ''' <returns></returns>
-        Public Overridable Property UpdateAction As Action = Sub() RaiseEvent Updating(Me, EventArgs.Empty)
+        Public Overridable Property UpdateAction As Action(Of UpdatingEventArgs) = Sub(args) RaiseEvent Updating(Me, args)
         ''' <summary>
         ''' 需要更新的时候引发这个事件
         ''' </summary>
-        Public Event Updating As GameObjectEventHandler(Of GameVisual, EventArgs)
+        Public Event Updating As GameObjectEventHandler(Of GameVisual, UpdatingEventArgs)
 
         Sub New()
             CreateRenderer()

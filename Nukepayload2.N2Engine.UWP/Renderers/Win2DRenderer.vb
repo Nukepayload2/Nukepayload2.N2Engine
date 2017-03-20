@@ -45,7 +45,8 @@ Public MustInherit Class Win2DRenderer
     ''' 派生类继承时，定义手动引发 Update 事件的行为 
     ''' </summary>
     Friend Overridable Sub OnUpdate(sender As ICanvasAnimatedControl, args As CanvasAnimatedUpdateEventArgs)
-        View.UpdateAction.Invoke()
+        Dim tim = args.Timing
+        View.UpdateAction.Invoke(New UpdatingEventArgs(tim.ElapsedTime, tim.TotalTime, tim.IsRunningSlowly))
     End Sub
 
     Public Overrides Sub DisposeResources()
