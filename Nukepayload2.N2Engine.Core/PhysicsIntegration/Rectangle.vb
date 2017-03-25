@@ -1,5 +1,4 @@
-﻿
-Imports FarseerPhysics.Dynamics
+﻿Imports FarseerPhysics.Dynamics
 Imports FarseerPhysics.Factories
 
 Namespace PhysicsIntegration

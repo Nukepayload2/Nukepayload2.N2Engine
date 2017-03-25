@@ -23,6 +23,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\RailgunParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SmokeParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\SpriteEntityGridRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SwarmParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\TextBlockRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\PlatformBitmapResource.vb" />

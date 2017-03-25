@@ -101,6 +101,12 @@
             End Set
         End Property
         ''' <summary>
+        ''' 如果没有绑定数据，则返回空值（引用类型）或 默认值（值类型）。
+        ''' </summary>
+        Public Function GetValueOrDefault() As T
+            Return If(Getter Is Nothing， Nothing， Getter.Invoke)
+        End Function
+        ''' <summary>
         ''' 创建单向绑定
         ''' </summary>
         Public Sub Bind(getter As Func(Of T))

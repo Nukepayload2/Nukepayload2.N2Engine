@@ -1,10 +1,12 @@
-﻿Imports Nukepayload2.N2Engine.Foundation
+﻿Imports Nukepayload2.N2Engine.Designer
+Imports Nukepayload2.N2Engine.Foundation
 
 Namespace UI.Text
 
     Public Class GameFontFactory
+        Implements ISimpleFactory(Of GameFont)
 
-        Public Function Create() As GameFont
+        Public Function Create() As GameFont Implements ISimpleFactory(Of GameFont).Create
             Return New GameFont(Name, FontSize, FontFamily, FontStretch, FontWeight, FontStyle,
                                 IsColorFontEnabled, New Uri(SpriteFontResourceId), Color)
         End Function
