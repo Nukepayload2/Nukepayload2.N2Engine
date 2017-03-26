@@ -15,9 +15,12 @@ Friend Class GameVirtualizingScrollViewerRenderer
             Return False
         End If
         Dim size = visual.Size.Value * 2
+        If Math.Abs(size.LengthSquared) Then
+
+        End If
         Dim renderBound As New Rectangle(0, 0, RenderTarget.Width, RenderTarget.Height)
         Dim visualBound As New Rectangle(loc.X, loc.Y, size.X, size.Y)
-        visual.IsVirtualizing = Not renderBound.Contains(visualBound)
+        visual.IsVirtualizing = Not (renderBound.Contains(visualBound) OrElse renderBound.Intersects(visualBound))
         Return visual.IsVirtualizing
     End Function
 

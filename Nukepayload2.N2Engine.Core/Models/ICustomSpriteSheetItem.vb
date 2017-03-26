@@ -2,7 +2,7 @@
 
 Namespace Models
 
-    Public Interface ISpriteSheet
+    Public Interface ICustomSpriteSheetItem
         ReadOnly Property GridSize As SizeInInteger
         ReadOnly Property Size As Vector2
         ReadOnly Property Source As Uri

@@ -9,10 +9,11 @@ Namespace UI.Elements
     Public Class SpriteEntityGrid
         Inherits EntityLayer
 
-        Sub New(world As World, sprites As Uri(), tiles As ITile(,))
+        Sub New(world As World, sprites As Uri(), tiles As ITile(,), tileSize As Vector2)
             MyBase.New(world)
             Me.Sprites = sprites
             Me.Tiles = tiles
+            Me.TileSize = tileSize
             For Each tile In tiles
                 If tile IsNot Nothing Then
                     If tile.Collider IsNot Nothing Then

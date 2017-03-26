@@ -20,6 +20,8 @@ Public MustInherit Class GameVisualContainerRenderer
         RenderTarget = New CanvasRenderTarget(sender, sender.Size)
     End Sub
 
+    Dim _cachedRenderTargetDrawingSession As CanvasDrawingSession
+
     Friend Overrides Sub OnDraw(sender As ICanvasAnimatedControl, args As CanvasAnimatedDrawEventArgs)
         ' 对象可见性支持
         If View.IsVisible.CanRead Then
@@ -28,10 +30,12 @@ Public MustInherit Class GameVisualContainerRenderer
             End If
         End If
         ' 绘制
-        Dim children = DirectCast(View, GameVisualContainer).Children
+        Dim children = View.GetSubNodes
         Dim containers As New List(Of GameVisualContainer)
         Using ds = RenderTarget.CreateDrawingSession
+            _cachedRenderTargetDrawingSession = ds
             ds.Clear(Colors.Transparent)
+            OnBackgroundDraw(ds)
             For Each child In children
                 If ShouldVirtualize(child) Then
                     Continue For
@@ -49,6 +53,7 @@ Public MustInherit Class GameVisualContainerRenderer
                     DirectCast(child.Renderer, Win2DRenderer).OnDraw(sender, New CanvasAnimatedDrawEventArgs(ds, args.Timing))
                 End If
             Next
+            _cachedRenderTargetDrawingSession = Nothing
         End Using
         ' 下一层绘制
         For Each cont In containers
@@ -80,16 +85,24 @@ Public MustInherit Class GameVisualContainerRenderer
             parentRenderer = view.Renderer
         Loop
 
-        Dim parentRT = DirectCast(parentRenderer, GameVisualContainerRenderer).RenderTarget
+        Dim parentContainerRenderer = DirectCast(parentRenderer, GameVisualContainerRenderer)
+        Dim parentRT = parentContainerRenderer.RenderTarget
         Dim loc = view.Location.Value
+
         Dim effectedImage = ApplyEffect(RenderTarget)
         Dim rtSize = RenderTarget.Size
 
-        If TypeOf view Is GameCanvas Then
+        If TypeOf Me Is GameCanvasRenderer Then
             If Me.View.Transform IsNot Nothing Then
                 backBuffer.Transform = Me.View.Transform.GetTransformMatrix
             End If
             DrawOnParent(backBuffer, loc, effectedImage)
+        ElseIf parentContainerRenderer._cachedRenderTargetDrawingSession IsNot Nothing Then
+            Dim ds = parentContainerRenderer._cachedRenderTargetDrawingSession
+            If view.Transform IsNot Nothing Then
+                ds.Transform = view.Transform.GetTransformMatrix
+            End If
+            DrawOnParent(ds, loc, effectedImage)
         Else
             Using ds = parentRT.CreateDrawingSession
                 If view.Transform IsNot Nothing Then
@@ -98,6 +111,10 @@ Public MustInherit Class GameVisualContainerRenderer
                 DrawOnParent(ds, loc, effectedImage)
             End Using
         End If
+    End Sub
+
+    Protected Overridable Sub OnBackgroundDraw(ds As CanvasDrawingSession)
+
     End Sub
 
     ''' <summary>

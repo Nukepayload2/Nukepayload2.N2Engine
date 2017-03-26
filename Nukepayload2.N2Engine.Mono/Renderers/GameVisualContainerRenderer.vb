@@ -39,7 +39,7 @@ Public MustInherit Class GameVisualContainerRenderer
         Dim device = GraphicsDeviceManagerExtension.SharedDevice
         device.SetRenderTarget(RenderTarget)
         device.Clear(Color.Transparent)
-        Dim children = DirectCast(View, GameVisualContainer).Children
+        Dim children = View.GetSubNodes
         Dim containers As New List(Of GameVisualContainer)
         Dim groupedChildren = Aggregate ch In children Group By ch.Transform Into Group Into ToArray
         Dim size = device.PresentationParameters
@@ -95,6 +95,10 @@ Public MustInherit Class GameVisualContainerRenderer
         CommitRenderTargetToParent(device, args.SpriteBatch)
     End Sub
 
+    Protected Overridable Sub OnBackgroundDraw(sb As SpriteBatch)
+
+    End Sub
+
     ''' <summary>
     ''' 判断指定的可见对象是否超出了应该绘制的范围。超出范围的对象在拥有虚拟化功能的容器中不会被绘制。
     ''' </summary>
@@ -104,7 +108,7 @@ Public MustInherit Class GameVisualContainerRenderer
         Return False
     End Function
 
-    Protected Overridable Sub CommitRenderTargetToParent(device As GraphicsDevice, dc As SpriteBatch)
+    Protected Overridable Sub CommitRenderTargetToParent(device As GraphicsDevice, sb As SpriteBatch)
         Dim view = Me.View
         Dim parent = view.Parent
         Dim parentRenderer = parent.Renderer
@@ -120,10 +124,10 @@ Public MustInherit Class GameVisualContainerRenderer
 
         device.SetRenderTarget(parentRT)
         If view.Transform Is Nothing Then
-            dc.Begin()
+            sb.Begin()
         Else
             With view.Transform.GetTransformMatrix
-                dc.Begin(SpriteSortMode.Deferred, Nothing, Nothing, Nothing, Nothing, Nothing,
+                sb.Begin(SpriteSortMode.Deferred, Nothing, Nothing, Nothing, Nothing, Nothing,
                          New Matrix(.M11, .M12, 0F, 0F,
                                     .M21, .M22, 0F, 0F,
                                     0F, 0F, 1.0F, 0F,
@@ -132,9 +136,10 @@ Public MustInherit Class GameVisualContainerRenderer
         End If
         Dim loc = view.Location.Value
         Dim drawSize As New Rectangle(loc.X, loc.Y, RenderTarget.Width, RenderTarget.Height)
+        OnBackgroundDraw(sb)
         Dim effectedImage = ApplyEffect(RenderTarget)
-        DrawOnParent(dc, drawSize, effectedImage)
-        dc.End()
+        DrawOnParent(sb, drawSize, effectedImage)
+        sb.End()
     End Sub
 
     ''' <summary>

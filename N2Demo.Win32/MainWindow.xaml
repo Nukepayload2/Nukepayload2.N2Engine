@@ -10,7 +10,7 @@
         BorderThickness="2,1,2,2" BorderBrush="DodgerBlue"
         xmlns:winform="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms"
         mc:Ignorable="d"
-        Title="N2Demo.Win32" Height="480" Width="800">
+        Title="N2Demo.Win32" Height="640" Width="1024">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="32"/>

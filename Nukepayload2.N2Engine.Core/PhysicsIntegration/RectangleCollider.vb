@@ -3,7 +3,7 @@ Imports FarseerPhysics.Factories
 
 Namespace PhysicsIntegration
 
-    Public Class Rectangle
+    Public Class RectangleCollider
         Inherits SolidCollider
 
         Public Sub New(density As Single, size As Vector2)

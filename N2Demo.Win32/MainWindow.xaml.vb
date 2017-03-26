@@ -44,6 +44,7 @@ Class MainWindow
 
     Private Sub BtnClose_Click(sender As Object, e As RoutedEventArgs)
         Close()
+        End
     End Sub
 
     Private Sub Rectangle_PreviewMouseLeftButtonDown(sender As Object, e As MouseButtonEventArgs)

@@ -20,6 +20,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameSpriteElementRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GameVisualizingScrollViewerRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\GeometryElementRenderers.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\PanelLayerRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\RailgunParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SmokeParticleSystemRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\SparkParticleSystemRenderer.vb" />

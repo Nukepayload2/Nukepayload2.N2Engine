@@ -6,7 +6,7 @@ Namespace Utilities
 
     Public Module AnimationsHelper
 
-        Public Function MakeAnimation(spriteSheet As ISpriteSheet, bmp As BitmapResource,
+        Public Function MakeAnimation(spriteSheet As ICustomSpriteSheetItem, bmp As BitmapResource,
              filter As Func(Of IEnumerable(Of BitmapResource), IEnumerable(Of BitmapResource))) As BitmapDiscreteAnimation
             Dim spriteSize = spriteSheet.SpriteSize
             Dim gridSize = spriteSheet.GridSize

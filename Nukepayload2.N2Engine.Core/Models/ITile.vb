@@ -21,11 +21,11 @@ Namespace Models
         ''' </summary>
         Property Body As Body
         ''' <summary>
-        ''' 在贴图中的横轴索引（从 0 开始）
+        ''' 在贴图中的横向索引（从 0 开始）
         ''' </summary>
         Property X As Integer
         ''' <summary>
-        ''' 在贴图中的纵轴索引（从 0 开始）
+        ''' 在贴图中的纵向索引（从 0 开始）
         ''' </summary>
         Property Y As Integer
     End Interface

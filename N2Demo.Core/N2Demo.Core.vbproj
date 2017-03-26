@@ -75,6 +75,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework and Windows SDK is automatically included -->
+    <ProjectReference Include="..\FarseerPhysics.Portable\FarseerPhysics.Portable.csproj">
+      <Project>{816D2B8D-CC51-450B-A853-A6E22A9A27FA}</Project>
+      <Name>FarseerPhysics.Portable</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
       <Project>{A30BD00A-8BD6-4BD7-8C88-74992C489C25}</Project>
       <Name>Nukepayload2.N2Engine.Core</Name>
@@ -114,6 +118,7 @@
   <ItemGroup>
     <Compile Include="Models\CharacterSheet.vb" />
     <Compile Include="Models\JumpStateMachine.vb" />
+    <Compile Include="Models\MudTile.vb" />
     <Compile Include="Models\ScrollingViewer.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -133,6 +138,7 @@
     <Compile Include="ViewModels\SparksViewModel.vb" />
     <Compile Include="Views\MainCanvas.Designer.vb" />
     <Compile Include="Views\PrimaryCharacter.vb" />
+    <Compile Include="Views\StageOneGrid.vb" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Images\CharacterSheet.png" />
@@ -153,6 +159,9 @@
     <Reference Include="System.Numerics.Vectors, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
     </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="N2Demo.License.txt">
@@ -164,6 +173,9 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Triggers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Images\DemoTexture.png" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

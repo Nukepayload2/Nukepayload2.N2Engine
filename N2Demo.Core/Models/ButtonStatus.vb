@@ -16,7 +16,7 @@ Public Class ButtonStatus
 
     Sub New()
         Dim bbSize = BackBufferInformation.Size
-        Position = New Vector2(bbSize.Width - Size.X - _Margin.Z, bbSize.Height - Size.Y - _Margin.W)
+        Position = New Vector2(bbSize.Width - Size.X * 2 - _Margin.Z, bbSize.Height - Size.Y * 2 - _Margin.W)
     End Sub
 
 End Class
