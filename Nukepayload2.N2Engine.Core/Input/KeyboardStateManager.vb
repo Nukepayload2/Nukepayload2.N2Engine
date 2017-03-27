@@ -40,7 +40,7 @@
         ''' </summary>
         Public ReadOnly Property IsKeyDown(key As Key) As Boolean
             Get
-                Return _keyStates(key).WasKeyDown
+                Return Not _keyStates(key).IsKeyReleased AndAlso _keyStates(key).RepeatCount > 0
             End Get
         End Property
         ''' <summary>
@@ -49,8 +49,9 @@
         ''' <returns></returns>
         Public Iterator Function GetPressedKeys() As IEnumerable(Of Key)
             For i = 0 To 255
-                If _keyStates(i).WasKeyDown Then
-                    Yield CType(i, Key)
+                Dim k = CType(i, Key)
+                If IsKeyDown(k) Then
+                    Yield k
                 End If
             Next
         End Function

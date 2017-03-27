@@ -123,6 +123,7 @@
     <Compile Include="Platform\InternalsVisibilitySettings.vb" />
     <Compile Include="Platform\RegistrationIgnoreAttribute.vb" />
     <Compile Include="Platform\Renderers.vb" />
+    <Compile Include="UI\Elements\Controls\ClickModes.vb" />
     <Compile Include="UI\Elements\Controls\GameButton.vb" />
     <Compile Include="UI\Elements\Controls\GameButtonContent.vb" />
     <Compile Include="UI\Elements\Controls\GameButtonContentTemplate.vb" />
@@ -256,6 +257,7 @@
     <Compile Include="Utilities\AsyncHelper.vb" />
     <Compile Include="Math\FastFactorial.vb" />
     <Compile Include="Utilities\GameVisualInitializers.vb" />
+    <Compile Include="Utilities\PhysicsExtension.vb" />
     <Compile Include="Utilities\StaticCast.vb" />
     <Compile Include="Utilities\TreeHelper.vb" />
     <Compile Include="Math\Vector2Extensions.vb" />
@@ -305,8 +307,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System.Numerics.Vectors, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Numerics.Vectors.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>

@@ -1,6 +1,7 @@
 ﻿Imports FarseerPhysics.Dynamics
 Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Models
+Imports Nukepayload2.N2Engine.PhysicsIntegration
 
 Namespace UI.Elements
     ''' <summary>
@@ -14,13 +15,16 @@ Namespace UI.Elements
             Me.Sprites = sprites
             Me.Tiles = tiles
             Me.TileSize = tileSize
-            For Each tile In tiles
-                If tile IsNot Nothing Then
-                    If tile.Collider IsNot Nothing Then
-                        tile.Body = tile.Collider.CreateBody(world)
-                        tile.Body.SleepingAllowed = True
+            For i = 0 To tiles.GetLength(0) - 1
+                For j = 0 To tiles.GetLength(1) - 1
+                    Dim tile = tiles(i, j)
+                    If tile IsNot Nothing Then
+                        If tile.Collider IsNot Nothing Then
+                            tile.Body = tile.Collider.CreateBody(world)
+                            tile.Body.Position = New Vector2(j * tileSize.X, i * tileSize.Y).ToPhysicsUnit
+                        End If
                     End If
-                End If
+                Next
             Next
         End Sub
 

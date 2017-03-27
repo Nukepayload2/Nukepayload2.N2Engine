@@ -1,6 +1,8 @@
 ﻿Imports System.Numerics
+Imports FarseerPhysics.Dynamics
 Imports Nukepayload2.N2Engine.Animations
 Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.N2Engine.Input
 Imports Nukepayload2.N2Engine.PhysicsIntegration
 Imports Nukepayload2.N2Engine.Resources
 Imports Nukepayload2.N2Engine.UI
@@ -26,7 +28,7 @@ Public Class MainCanvas
     Dim stageGrid As New StageOneGrid
     ' 控件
     WithEvents Joystick As New VirtualJoystick(Function(vec) vec.X < 300.0F)
-    WithEvents BtnJump As New GameButton
+    WithEvents BtnJump As New GameButton With {.ClickMode = ClickModes.Press}
 #End Region
 
 #Region "外部资源"
@@ -49,13 +51,13 @@ Public Class MainCanvas
     Private Sub MainCanvas_LoadTextureResources() Handles Me.LoadTextureResources
         ' 人物贴图表
         characterSheetSprite = BitmapResource.Create(viewModel.CharacterSheet.Source)
-        flameGuyAnimation = MakeAnimation(viewModel.CharacterSheet, characterSheetSprite, Function(a) a)
+        flameGuyAnimation = MakeAnimation(viewModel.CharacterSheet, characterSheetSprite, Function(a) a.Take(3))
         flameGuyAnimation.NextAnimation = flameGuyAnimation ' TODO: 实现循环信息之后用循环信息实现循环播放。
         flameGuyAnimationState = flameGuyAnimation.GetEnumerator
     End Sub
 
     Private Sub VisualTreeDataBind()
-        chara = New PrimaryCharacter(character, New RectangleCollider(1, viewModel.CharacterSheet.Size))
+        chara = New PrimaryCharacter(character, New RectangleCollider(1, viewModel.CharacterSheet.Size.ToPhysicsUnit))
         character.Bind(Function(r) r.Sprite, Function()
                                                  If Not flameGuyAnimationState.MoveNext Then
                                                      flameGuyAnimationState.Reset()
@@ -63,7 +65,6 @@ Public Class MainCanvas
                                                  End If
                                                  Return flameGuyAnimationState.Current
                                              End Function).
-        Bind(Function(r) r.Location, Function() viewModel.CharacterSheet.Location).
         Bind(Function(r) r.Size, Function() viewModel.CharacterSheet.Size)
 
         IsFrozen.Bind(Function() isPaused)
@@ -102,6 +103,15 @@ Public Class MainCanvas
                 Bind(Function(r) r.Location, Function() viewModel.ButtonStatus.Position)
             )
         )
+        character.Location.Bind(Function()
+                                    Dim phyPos = chara.Body.Position.ToDisplayUnit
+                                    Dim chaSize = character.Size.Value
+                                    Return New Vector2(phyPos.X + chaSize.X / 2,
+                                                       phyPos.Y + chaSize.Y)
+                                End Function)
+        chara.Body.Position = viewModel.CharacterSheet.Location.ToPhysicsUnit
+        chara.Body.FixedRotation = True
+        chara.Body.BodyType = BodyType.Dynamic
     End Sub
 
     Private Sub SetFontsForControls() Handles Me.BindFonts
@@ -128,4 +138,9 @@ Public Class MainCanvas
         MusicPlayer.Play()
     End Sub
 
+    Private Sub MainCanvas_AttachBehaviors(sender As Object, e As EventArgs) Handles Me.AttachBehaviors
+        ' 平台跳跃控制
+        Dim jumpBehavior As New PlatformJumpingBehavior(BtnJump, Joystick)
+        jumpBehavior.Attach(chara)
+    End Sub
 End Class

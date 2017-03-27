@@ -440,9 +440,9 @@ namespace FarseerPhysics.Dynamics
         public ContactEdge ContactList { get; internal set; }
 
         /// <summary>
-        /// Get the world body origin position.
+        /// Get or set the world body origin position.
         /// </summary>
-        /// <returns>Return the world position of the body's origin.</returns>
+        /// <returns>The world position of the body's origin.</returns>
         public Vector2 Position
         {
             get { return _xf.p; }
@@ -450,7 +450,7 @@ namespace FarseerPhysics.Dynamics
             {
                 Debug.Assert(!float.IsNaN(value.X) && !float.IsNaN(value.Y));
 
-                SetTransform(ref value, Rotation);
+                SetTransformByRef(ref value, Rotation);
             }
         }
 
@@ -465,7 +465,7 @@ namespace FarseerPhysics.Dynamics
             {
                 Debug.Assert(!float.IsNaN(value));
 
-                SetTransform(ref _xf.p, value);
+                SetTransformByRef(ref _xf.p, value);
             }
         }
 
@@ -772,7 +772,7 @@ namespace FarseerPhysics.Dynamics
         /// </summary>
         /// <param name="position">The world position of the body's local origin.</param>
         /// <param name="rotation">The world rotation in radians.</param>
-        public void SetTransform(ref Vector2 position, float rotation)
+        public void SetTransformByRef(ref Vector2 position, float rotation)
         {
             SetTransformIgnoreContacts(ref position, rotation);
 
@@ -788,7 +788,7 @@ namespace FarseerPhysics.Dynamics
         /// <param name="rotation">The world rotation in radians.</param>
         public void SetTransform(Vector2 position, float rotation)
         {
-            SetTransform(ref position, rotation);
+            SetTransformByRef(ref position, rotation);
         }
 
         /// <summary>

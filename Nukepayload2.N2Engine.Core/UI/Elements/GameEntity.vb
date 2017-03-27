@@ -1,4 +1,5 @@
 ﻿
+Imports FarseerPhysics
 Imports FarseerPhysics.Dynamics
 Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.PhysicsIntegration
@@ -21,12 +22,11 @@ Namespace UI.Elements
             If Collider Is Nothing Then
                 Throw New InvalidOperationException("碰撞器为空的情况下不能创建 Body。")
             End If
+            If Parent Is Nothing Then
+                Throw New InvalidOperationException("物体必须先添加到实体层再创建物理属性。")
+            End If
             Dim world = DirectCast(Parent， EntityLayer).World
             _Body = Collider.CreateBody(world)
-        End Sub
-
-        Private Sub GameEntity_Updating(sender As GameVisual, e As EventArgs) Handles Me.Updating
-
         End Sub
 
         ''' <summary>
@@ -41,9 +41,14 @@ Namespace UI.Elements
         ''' 视图的位置。这通常是物体的左上角的坐标。此属性默认情况下绑定到 <see cref="Body"/> 上。 
         ''' </summary>
         Public Overrides ReadOnly Property Location As New PropertyBinder(Of Vector2)(
-            Function() Body.Position,
+            Function()
+                Dim v = Body.Position
+                Return New Vector2(ConvertUnits.ToDisplayUnits(v.X),
+                                   ConvertUnits.ToDisplayUnits(v.Y))
+            End Function,
             Sub(v)
-                Body.Position = v
+                Body.Position = New Vector2(ConvertUnits.ToSimUnits(v.X),
+                                            ConvertUnits.ToSimUnits(v.Y))
             End Sub)
 
     End Class

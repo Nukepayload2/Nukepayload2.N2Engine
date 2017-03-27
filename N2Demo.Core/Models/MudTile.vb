@@ -20,7 +20,7 @@ Public Class Tile
     Public Property Y As Integer Implements ITile.Y
 
     Sub New()
-        Collider = New RectangleCollider(2.5F, New Vector2(64.0F, 64.0F))
+        Collider = New RectangleCollider(2.5F, New Vector2(64.0F, 64.0F).ToPhysicsUnit)
     End Sub
 
     Sub New(x As Integer, y As Integer)

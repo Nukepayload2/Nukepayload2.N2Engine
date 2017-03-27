@@ -1,7 +1,7 @@
 ﻿{
   "dependencies": {
-    "Microsoft.NETCore.UniversalWindowsPlatform": "5.2.2",
-    "MonoGame.Framework.WindowsUniversal": "3.5.1.1679",
+    "Microsoft.NETCore.UniversalWindowsPlatform": "5.3.1",
+    "MonoGame.Framework.WindowsUniversal": "3.6.0.1625",
     "System.Numerics.Vectors": "4.3.0"
   },
   "frameworks": {

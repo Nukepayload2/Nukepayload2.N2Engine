@@ -34,8 +34,8 @@ Friend Class GameVirtualizingScrollViewerRenderer
         If view.Zoom.CanRead Then
             Dim zoom = view.Zoom.Value
             If Math.Abs(zoom - 1.0F) > 0.1 Then
-                dc.Draw(effectedImage, destinationRectangle:=New Rectangle(drawSize.X, drawSize.Y, RenderTarget.Width * zoom, RenderTarget.Height * zoom),
-                       sourceRectangle:=New Rectangle(0, 0, RenderTarget.Width, RenderTarget.Height))
+                dc.Draw(effectedImage, New Rectangle(drawSize.X, drawSize.Y, RenderTarget.Width * zoom, RenderTarget.Height * zoom),
+                        New Rectangle(0, 0, RenderTarget.Width, RenderTarget.Height), Color.White)
                 Return
             End If
         End If

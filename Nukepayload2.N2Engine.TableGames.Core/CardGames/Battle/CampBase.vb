@@ -25,7 +25,7 @@ Namespace Battle
         Public ReadOnly Property OwnedHandCard As IList(Of IHandCard) = _Cards Implements ICamp.OwnedHandCard
         Public MustOverride ReadOnly Property BriefDescription As String Implements ICamp.BriefDescription
         Public MustOverride ReadOnly Property ExtendedDescription As String Implements ICamp.ExtendedDescription
-        Public MustOverride ReadOnly Property DefaultCampColorArgb As Integer Implements ICamp.DefaultCampColorArgb
+        Public MustOverride ReadOnly Property DefaultCampColorArgb As Color Implements ICamp.DefaultCampColorArgb
         Public Overridable ReadOnly Property SkirmishAvailable As Boolean = True Implements ICamp.SkirmishAvailable
         Dim _Commanders As New List(Of IMilitaryOfficer)
         Public ReadOnly Property OwnedMilitaryOfficer As IList(Of IMilitaryOfficer) = _Commanders Implements ICamp.OwnedMilitaryOfficer
@@ -49,7 +49,7 @@ Namespace Battle
         Public Overrides ReadOnly Property DefaultAbility As IList(Of IMilitaryOfficerAbility) = {}
         Public Overrides ReadOnly Property BriefDescription As String = "CampCampUse所有CommonCard"
         Public Overrides ReadOnly Property ExtendedDescription As String = "CampCampUse所有CommonCard，通常UnableTo再SkirmishUse。"
-        Public Overrides ReadOnly Property DefaultCampColorArgb As Integer
+        Public Overrides ReadOnly Property DefaultCampColorArgb As Color
             Get
                 Return Colors.Gray
             End Get

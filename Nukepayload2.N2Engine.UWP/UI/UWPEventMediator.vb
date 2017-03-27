@@ -11,6 +11,7 @@ Public Class UWPEventMediator
     ReadOnly _keyboardState As Input.PhysicalKeyStatus() = Input.KeyboardStateManager.PrimaryKeyboard.WritableKeyState
 
     Private Sub GameWindow_KeyDown(sender As CoreWindow, args As KeyEventArgs) Handles GameWindow.KeyDown
+        Debug.WriteLine(args.VirtualKey.ToString & "Down")
         _keyboardState(args.VirtualKey) = args.KeyStatus.AsN2KeyStatus
         If Not args.KeyStatus.WasKeyDown Then
             AttachedView.RaiseKeyDown(MakeGameKeyEventArgs(args))
@@ -23,6 +24,7 @@ Public Class UWPEventMediator
     End Function
 
     Private Sub GameWindow_KeyUp(sender As CoreWindow, args As KeyEventArgs) Handles GameWindow.KeyUp
+        Debug.WriteLine(args.VirtualKey.ToString & "Up")
         _keyboardState(args.VirtualKey) = args.KeyStatus.AsN2KeyStatus
         AttachedView.RaiseKeyUp(MakeGameKeyEventArgs(args))
     End Sub

@@ -71,6 +71,10 @@ Namespace UI.Controls
         ''' 是否按下了按钮但是没松开
         ''' </summary>
         Public ReadOnly Property IsPressed As Boolean
+        ''' <summary>
+        ''' 在哪种情况下会引发点击事件
+        ''' </summary>
+        Public Property ClickMode As ClickModes
 
         ''' <summary>
         ''' 当按钮被点击时引发此事件。鼠标左键点击和触摸屏轻扫都可能引发此事件。
@@ -82,11 +86,15 @@ Namespace UI.Controls
                 e.Handled = True
                 _IsPressed = True
                 _IsPointerOver = True
+                If ClickMode = ClickModes.Press Then
+                    e.Handled = True
+                    RaiseEvent Click(Me, EventArgs.Empty)
+                End If
             End If
         End Sub
 
         Private Sub GameButton_MouseButtonUp(sender As GameVisual, e As GameMouseRoutedEventArgs) Handles Me.MouseButtonUp
-            If IsPressed AndAlso HitTest(e.Position) Then
+            If IsPressed AndAlso HitTest(e.Position) AndAlso ClickMode = ClickModes.Release Then
                 e.Handled = True
                 RaiseEvent Click(Me, EventArgs.Empty)
             End If

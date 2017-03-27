@@ -380,7 +380,7 @@ Namespace Battle
         ReadOnly Property DefaultAbility As IList(Of IMilitaryOfficerAbility)
         ReadOnly Property ThumbnailIcon As Uri
         ReadOnly Property LargeIcon As Uri
-        ReadOnly Property DefaultCampColorArgb As Integer
+        ReadOnly Property DefaultCampColorArgb As Color
     End Interface
     Public Interface IMarkManager
         ReadOnly Property RegisteredMarks As IList(Of Type)

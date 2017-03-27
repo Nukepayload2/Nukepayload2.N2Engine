@@ -44,13 +44,17 @@ Public Class MonoGameHandler
                 BackBufferInformation.SetSize(New Foundation.SizeInInteger(GameForm.Width, GameForm.Height))
                 AddHandler GameForm.SizeChanged,
                     Sub()
+                        If graphics.PreferredBackBufferHeight = GameForm.Height AndAlso
+                            graphics.PreferredBackBufferWidth = GameForm.Width Then
+                            Return
+                        End If
                         graphics.PreferredBackBufferHeight = GameForm.Height
                         graphics.PreferredBackBufferWidth = GameForm.Width
                         graphics.ApplyChanges()
                         BackBufferInformation.SetSize(New Foundation.SizeInInteger(GameForm.Width, GameForm.Height))
                         Debug.WriteLine($"分辨率重置： {GameForm.Width} x {GameForm.Height}")
                     End Sub
-                GameForm.Width += 1
+                GameForm.Width -= 1
             End Sub
     End Sub
 
