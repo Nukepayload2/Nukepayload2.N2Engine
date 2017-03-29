@@ -1,0 +1,2 @@
+MainPackage=G:\vs2015\Nukepayload2.N2Engine\N2Demo.UWP\bin\x64\Debug\N2Demo.UWP_1.0.0.0_x64_Debug.appx
+SymbolPackage=G:\vs2015\Nukepayload2.N2Engine\N2Demo.UWP\AppPackages\N2Demo.UWP_1.0.0.0_Debug_Test\N2Demo.UWP_1.0.0.0_x64_Debug.appxsym

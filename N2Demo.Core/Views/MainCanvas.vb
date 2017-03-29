@@ -1,8 +1,8 @@
 ﻿Imports System.Numerics
 Imports FarseerPhysics.Dynamics
+Imports Nukepayload2.N2Engine.ActionGames.Core
 Imports Nukepayload2.N2Engine.Animations
 Imports Nukepayload2.N2Engine.Foundation
-Imports Nukepayload2.N2Engine.Input
 Imports Nukepayload2.N2Engine.PhysicsIntegration
 Imports Nukepayload2.N2Engine.Resources
 Imports Nukepayload2.N2Engine.UI
@@ -25,7 +25,7 @@ Public Class MainCanvas
     Dim scrollViewer As New GameVirtualizingScrollViewer
     Dim controlPanel As New PanelLayer
     Dim tblJumpLogicStatus As New GameTextBlock
-    Dim stageGrid As New StageOneGrid
+    Dim stageGrid As StageOneGrid
     ' 控件
     WithEvents Joystick As New VirtualJoystick(Function(vec) vec.X < 300.0F)
     WithEvents BtnJump As New GameButton With {.ClickMode = ClickModes.Press}
@@ -57,6 +57,7 @@ Public Class MainCanvas
     End Sub
 
     Private Sub VisualTreeDataBind()
+        stageGrid = New StageOneGrid
         chara = New PrimaryCharacter(character, New RectangleCollider(1, viewModel.CharacterSheet.Size.ToPhysicsUnit))
         character.Bind(Function(r) r.Sprite, Function()
                                                  If Not flameGuyAnimationState.MoveNext Then
@@ -66,16 +67,16 @@ Public Class MainCanvas
                                                  Return flameGuyAnimationState.Current
                                              End Function).
         Bind(Function(r) r.Size, Function() viewModel.CharacterSheet.Size)
-
         IsFrozen.Bind(Function() isPaused)
         Location.Bind(New Vector2)
         ZIndex.Bind(0)
         AddChild(scrollViewer.
             Bind(Function(m) m.Location, Function() viewModel.ScrollingViewer.Offset).
             Bind(Function(m) m.ZIndex, 0).
+            Bind(Function(r) r.Size, viewModel.ScrollingViewer.BufferSize).
             AddChild(stageGrid.LayoutRoot.
                 Bind(Function(r) r.Location, New Vector2).
-                Bind(Function(r) r.Size, New Vector2(512, 512)).
+                Bind(Function(r) r.Size, viewModel.ScrollingViewer.BufferSize).
                 AddChild(chara)
             ).
             AddChild(tblJumpLogicStatus.
@@ -100,7 +101,7 @@ Public Class MainCanvas
                 Bind(Function(r) r.TextOffset, Function() viewModel.ButtonStatus.TextOffset).
                 Bind(Function(r) r.Size, Function() viewModel.ButtonStatus.Size).
                 Bind(Function(r) r.Text, Function() viewModel.ButtonStatus.Text).
-                Bind(Function(r) r.Location, Function() viewModel.ButtonStatus.Position)
+                Bind(Function(r) r.Location, Function() viewModel.ButtonStatus.Position.Value)
             )
         )
         character.Location.Bind(Function()
@@ -142,5 +143,7 @@ Public Class MainCanvas
         ' 平台跳跃控制
         Dim jumpBehavior As New PlatformJumpingBehavior(BtnJump, Joystick)
         jumpBehavior.Attach(chara)
+        Dim cameraLook As New CameraLookAtBehavior(scrollViewer)
+        cameraLook.Attach(chara)
     End Sub
 End Class

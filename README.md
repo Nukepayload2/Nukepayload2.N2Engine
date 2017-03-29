@@ -3,9 +3,9 @@
 用于支持 __任意__ 能够生成 __可移植类库 或 .NET Standard 类库__ 的 __.NET 语言__ 制作基于 Win2D 和 MonoGame 两种图形框架的跨平台游戏。
 
 ## 支持编程语言的优先级
-* Microsoft Visual Basic, 版本 >= 14.0
-* Microsoft Visual C#, 版本 >= 6.0
-* (未完善) Microsoft Visual F#, 版本 >= 4.0
+* Microsoft Visual Basic, 版本 >= 15.0
+* Microsoft Visual C#, 版本 >= 7.0
+* (未完善) Microsoft Visual F#, 版本 >= 4.1
 * (未完善) 其它语言
 
 ## 支持的平台

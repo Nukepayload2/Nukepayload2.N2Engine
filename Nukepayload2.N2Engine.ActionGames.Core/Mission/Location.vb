@@ -5,11 +5,11 @@ Public Structure Location
     ''' <summary>
     ''' x坐标
     ''' </summary>
-    Property x As Integer
+    Property X As Integer
     ''' <summary>
     ''' y坐标
     ''' </summary>
-    Property y As Integer
+    Property Y As Integer
     ''' <summary>
     ''' 方向
     ''' </summary>

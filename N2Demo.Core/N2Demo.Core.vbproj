@@ -79,6 +79,10 @@
       <Project>{816D2B8D-CC51-450B-A853-A6E22A9A27FA}</Project>
       <Name>FarseerPhysics.Portable</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.ActionGames.Core\Nukepayload2.N2Engine.ActionGames.Core.vbproj">
+      <Project>{8d7a38e5-c530-4650-b3ad-cb020b624360}</Project>
+      <Name>Nukepayload2.N2Engine.ActionGames.Core</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
       <Project>{A30BD00A-8BD6-4BD7-8C88-74992C489C25}</Project>
       <Name>Nukepayload2.N2Engine.Core</Name>
@@ -116,11 +120,10 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Behaviors\PlatformJumpingBehavior.vb" />
     <Compile Include="Models\CharacterSheet.vb" />
     <Compile Include="Models\JumpStateMachine.vb" />
-    <Compile Include="Models\MudTile.vb" />
     <Compile Include="Models\ScrollingViewer.vb" />
+    <Compile Include="Models\Tile.vb" />
     <Compile Include="My Project\Resources.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -134,6 +137,7 @@
     <Compile Include="Save\SampleSavePollution.vb" />
     <Compile Include="Models\ButtonStatus.vb" />
     <Compile Include="ViewModels\SingleInstance.vb" />
+    <Compile Include="ViewModels\StageOneViewModel.vb" />
     <Compile Include="Views\MainCanvas.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="ViewModels\SparksViewModel.vb" />

@@ -1,4 +1,5 @@
-﻿Imports System.Runtime.InteropServices
+﻿Imports System.Numerics
+Imports System.Runtime.InteropServices
 
 Namespace Foundation
     ''' <summary>
@@ -36,6 +37,10 @@ Namespace Foundation
             UnsignedWidth = width
             UnsignedHeight = height
         End Sub
+
+        Public Function ToVector2() As Vector2
+            Return New Vector2(Width, Height)
+        End Function
     End Structure
 
 End Namespace

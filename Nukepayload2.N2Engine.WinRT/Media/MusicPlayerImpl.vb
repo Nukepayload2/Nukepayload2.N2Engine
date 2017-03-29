@@ -59,7 +59,6 @@ Friend Class MusicPlayerImpl
                 RaiseEvent SingleSongComplete(Me, EventArgs.Empty)
             End If
         Catch ex As ObjectDisposedException
-            RaiseEvent SingleSongComplete(Me, EventArgs.Empty)
         End Try
     End Sub
 End Class

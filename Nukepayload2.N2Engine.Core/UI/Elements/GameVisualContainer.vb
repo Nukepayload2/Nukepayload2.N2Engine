@@ -16,6 +16,21 @@ Namespace UI.Elements
             End Get
         End Property
 
+        ''' <summary>
+        ''' 获取渲染时的大小
+        ''' </summary>
+        Public ReadOnly Property RenderSize As Vector2
+            Get
+                Dim size As Vector2
+                If Me.Size.CanRead Then
+                    size = Me.Size.Value
+                Else
+                    size = Information.BackBufferInformation.Size.ToVector2
+                End If
+                Return size
+            End Get
+        End Property
+
         Public Overrides Function GetSubNodes() As IEnumerable(Of GameVisual)
             Return Children
         End Function

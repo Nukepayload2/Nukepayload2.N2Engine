@@ -1,4 +1,5 @@
 ﻿Imports Nukepayload2.N2Engine.Foundation
+Imports Nukepayload2.N2Engine.N2Math
 
 Namespace UI.Elements
     ''' <summary>
@@ -24,6 +25,35 @@ Namespace UI.Elements
         Public Sub RaiseScrolling(e As EventArgs)
             RaiseEvent Scrolling(Me, e)
         End Sub
+        ''' <summary>
+        ''' 获取内容被显示出来的矩形。
+        ''' </summary>
+        Public Function GetSourceRectangle(ByRef destTopLeft As Vector2, ByRef destSize As Vector2) As (srcTopLeft As Vector2, srcSize As Vector2)
+            Dim srcTransform = Matrix3x2.Identity
+            Dim srcTopLeft = Offset.Value
+            Dim size = Vector2.Min(RenderSize, destSize)
+            If Zoom.CanRead Then
+                srcTransform *= Matrix3x2.CreateScale(1 / Me.Zoom.Value, size / 2)
+            End If
+            Dim srcSize = (size + srcTopLeft).ApplyTransform(srcTransform) - srcTopLeft.ApplyTransform(srcTransform)
+            If srcTopLeft.X < 0 Then
+                destTopLeft.X -= srcTopLeft.X
+                srcTopLeft.X = 0
+            End If
+            If srcTopLeft.Y < 0 Then
+                destTopLeft.Y -= srcTopLeft.Y
+                srcTopLeft.Y = 0
+            End If
+            If srcTopLeft.X + srcSize.X > destTopLeft.X + destSize.X Then
+                destSize.X -= srcTopLeft.X
+                srcSize.X -= srcTopLeft.X
+            End If
+            If srcTopLeft.Y + srcSize.Y > destTopLeft.Y + destSize.Y Then
+                destSize.Y -= srcTopLeft.Y
+                srcSize.Y -= srcTopLeft.Y
+            End If
+            Return (srcTopLeft, srcSize)
+        End Function
     End Class
 
 End Namespace

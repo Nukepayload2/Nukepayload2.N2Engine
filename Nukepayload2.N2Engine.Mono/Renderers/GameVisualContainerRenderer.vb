@@ -21,9 +21,10 @@ Public MustInherit Class GameVisualContainerRenderer
 
     Private Sub CreateRenderTarget(sender As Game)
         Dim device = GraphicsDeviceManagerExtension.SharedDevice
-        Dim size = device.PresentationParameters
+        Dim view = DirectCast(Me.View, GameVisualContainer)
+        Dim renderSize = view.RenderSize
         Debug.WriteLine($"为 {Me.GetType.Name} 分配缓存纹理。")
-        RenderTarget = New RenderTarget2D(sender.GraphicsDevice, size.BackBufferWidth, size.BackBufferHeight, False, SurfaceFormat.Color, Nothing, 1, RenderTargetUsage.PreserveContents)
+        RenderTarget = New RenderTarget2D(sender.GraphicsDevice, renderSize.X, renderSize.Y, False, SurfaceFormat.Color, Nothing, 1, RenderTargetUsage.PreserveContents)
     End Sub
 
     Dim _cachedRenderTargets As New List(Of Tuple(Of RenderTarget2D, DrawingContext))

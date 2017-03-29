@@ -15,26 +15,42 @@ Friend Class GameVirtualizingScrollViewerRenderer
             Return False
         End If
         Dim size = visual.Size.Value * 2
-        Dim renderBound As New Rect(0, 0, rtSize.Width, rtSize.Height)
+        Dim view = DirectCast(MyBase.View, GameVirtualizingScrollViewer)
+        Dim viewOfs = view.Offset.Value
+        Dim renderSize = view.RenderSize
+        Dim renderSourceBound = GetSourceRectangle(view, New Rect(viewOfs.X, viewOfs.Y, renderSize.X, renderSize.Y))
         Dim visualBound As New Rect(loc.X, loc.Y, size.X, size.Y)
-        renderBound.Intersect(visualBound)
-        visual.IsVirtualizing = renderBound.Width <= 0.3 OrElse renderBound.Height <= 0.3
+        renderSourceBound.Intersect(visualBound)
+        visual.IsVirtualizing = renderSourceBound.Width <= 0.3 OrElse renderSourceBound.Height <= 0.3
         Return visual.IsVirtualizing
+    End Function
+
+    Private Function GetSourceRectangle(view As GameVirtualizingScrollViewer, ByRef destRect As Rect) As Rect
+        Dim destTopLeft As New Vector2(CSng(destRect.X), CSng(destRect.Y))
+        Dim destSize As New Vector2(CSng(destRect.Width), CSng(destRect.Height))
+        Dim srcRectData = view.GetSourceRectangle(destTopLeft, destSize)
+        With destRect
+            .X = destTopLeft.X
+            .Y = destTopLeft.Y
+            .Width = destSize.X
+            .Height = destSize.Y
+        End With
+        Dim srcTopLeft = srcRectData.srcTopLeft
+        Dim srcSize = srcRectData.srcSize
+        Dim srcRect As New Rect(srcTopLeft.X, srcTopLeft.Y, srcSize.X, srcSize.Y)
+        Return srcRect
     End Function
 
     Protected Overrides Sub DrawOnParent(ds As CanvasDrawingSession, loc As Vector2, effectedImage As ICanvasImage)
         Dim view = DirectCast(Me.View, GameVirtualizingScrollViewer)
-        If view.Offset.CanRead Then
-            loc += view.Offset.Value
+        If view.Offset.CanRead OrElse view.Zoom.CanRead Then
+            Dim renderSize = view.RenderSize
+            Dim destRect As New Rect(loc.X, loc.Y, renderSize.X, renderSize.Y)
+            Dim srcRect = GetSourceRectangle(view, destRect)
+            ds.DrawImage(effectedImage, destRect, srcRect)
+        Else
+            MyBase.DrawOnParent(ds, loc, effectedImage)
         End If
-        If view.Zoom.CanRead Then
-            Dim zoom = view.Zoom.Value
-            If Math.Abs(zoom - 1.0F) > 0.1 Then
-                Dim rtSize = RenderTarget.Size
-                ds.DrawImage(effectedImage, New Rect(loc.X, loc.Y, rtSize.Width * zoom, rtSize.Height * zoom), New Rect(0, 0, rtSize.Width, rtSize.Height))
-                Return
-            End If
-        End If
-        MyBase.DrawOnParent(ds, loc, effectedImage)
     End Sub
+
 End Class

@@ -1,4 +1,5 @@
 ﻿Namespace Resources
+    <Obsolete("使用 System.Uri 替代")>
     Public Class ResourceId
         Implements IEquatable(Of ResourceId)
 

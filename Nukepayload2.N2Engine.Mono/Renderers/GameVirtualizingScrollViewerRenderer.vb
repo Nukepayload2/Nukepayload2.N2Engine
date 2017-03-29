@@ -15,30 +15,38 @@ Friend Class GameVirtualizingScrollViewerRenderer
             Return False
         End If
         Dim size = visual.Size.Value * 2
-        If Math.Abs(size.LengthSquared) Then
-
-        End If
-        Dim renderBound As New Rectangle(0, 0, RenderTarget.Width, RenderTarget.Height)
+        Dim view = DirectCast(Me.View, GameVirtualizingScrollViewer)
+        Dim viewOfs = view.Offset.Value
+        Dim renderSize = view.RenderSize
+        Dim renderBound = GetSourceRectangle(view, New Rectangle(viewOfs.X, viewOfs.Y, renderSize.X, renderSize.Y))
         Dim visualBound As New Rectangle(loc.X, loc.Y, size.X, size.Y)
         visual.IsVirtualizing = Not (renderBound.Contains(visualBound) OrElse renderBound.Intersects(visualBound))
         Return visual.IsVirtualizing
     End Function
 
-    Protected Overrides Sub DrawOnParent(dc As SpriteBatch, drawSize As Rectangle, effectedImage As Texture2D)
+    Protected Overrides Sub DrawOnParent(dc As SpriteBatch, destRect As Rectangle, effectedImage As Texture2D)
         Dim view = DirectCast(Me.View, GameVirtualizingScrollViewer)
-        If view.Offset.CanRead Then
-            Dim ofs = view.Offset.Value
-            drawSize.X += ofs.X
-            drawSize.Y += ofs.Y
+        If view.Offset.CanRead OrElse view.Zoom.CanRead Then
+            Dim srcRect = GetSourceRectangle(view, destRect)
+            dc.Draw(effectedImage, destRect, srcRect, Color.White)
+        Else
+            MyBase.DrawOnParent(dc, destRect, effectedImage)
         End If
-        If view.Zoom.CanRead Then
-            Dim zoom = view.Zoom.Value
-            If Math.Abs(zoom - 1.0F) > 0.1 Then
-                dc.Draw(effectedImage, New Rectangle(drawSize.X, drawSize.Y, RenderTarget.Width * zoom, RenderTarget.Height * zoom),
-                        New Rectangle(0, 0, RenderTarget.Width, RenderTarget.Height), Color.White)
-                Return
-            End If
-        End If
-        MyBase.DrawOnParent(dc, drawSize, effectedImage)
     End Sub
+
+    Private Shared Function GetSourceRectangle(view As GameVirtualizingScrollViewer, ByRef destRect As Rectangle) As Rectangle
+        Dim destTopLeft As New Numerics.Vector2(CSng(destRect.X), CSng(destRect.Y))
+        Dim destSize As New Numerics.Vector2(CSng(destRect.Width), CSng(destRect.Height))
+        Dim srcRectData = view.GetSourceRectangle(destTopLeft, destSize)
+        With destRect
+            .X = destTopLeft.X
+            .Y = destTopLeft.Y
+            .Width = destSize.X
+            .Height = destSize.Y
+        End With
+        Dim srcTopLeft = srcRectData.srcTopLeft
+        Dim srcSize = srcRectData.srcSize
+        Dim srcRect As New Rectangle(srcTopLeft.X, srcTopLeft.Y, srcSize.X, srcSize.Y)
+        Return srcRect
+    End Function
 End Class

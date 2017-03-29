@@ -17,7 +17,9 @@ Public MustInherit Class GameVisualContainerRenderer
 
     Friend Overrides Sub OnCreateResources(sender As CanvasAnimatedControl, args As CanvasCreateResourcesEventArgs)
         MyBase.OnCreateResources(sender, args)
-        RenderTarget = New CanvasRenderTarget(sender, sender.Size)
+        Dim view = DirectCast(Me.View, GameVisualContainer)
+        Dim renderSize = view.RenderSize
+        RenderTarget = New CanvasRenderTarget(sender, renderSize.X, renderSize.Y)
     End Sub
 
     Dim _cachedRenderTargetDrawingSession As CanvasDrawingSession
