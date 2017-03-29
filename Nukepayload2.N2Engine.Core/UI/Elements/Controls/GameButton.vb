@@ -87,7 +87,6 @@ Namespace UI.Controls
                 _IsPressed = True
                 _IsPointerOver = True
                 If ClickMode = ClickModes.Press Then
-                    e.Handled = True
                     RaiseEvent Click(Me, EventArgs.Empty)
                 End If
             End If
@@ -109,13 +108,16 @@ Namespace UI.Controls
                 _lastTouchPoint = e.PointerId
                 _IsPointerOver = True
                 _IsPressed = True
+                If ClickMode = ClickModes.Press Then
+                    RaiseEvent Click(Me, EventArgs.Empty)
+                End If
             End If
         End Sub
 
         Private Sub GameButton_TouchUp(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchUp
             If _lastTouchPoint = e.PointerId Then
                 _lastTouchPoint = GameTouchRoutedEventArgs.InvalidTouchId
-                If HitTest(e.Position) Then
+                If HitTest(e.Position) AndAlso ClickMode = ClickModes.Release Then
                     e.Handled = True
                     RaiseEvent Click(Me, EventArgs.Empty)
                 End If

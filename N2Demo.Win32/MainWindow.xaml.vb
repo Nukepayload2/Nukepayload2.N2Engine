@@ -1,6 +1,7 @@
 ﻿Imports Microsoft.Xna.Framework
 Imports Microsoft.Xna.Framework.Input
 Imports N2Demo.Core
+Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Win32
 
 Class MainWindow
@@ -12,9 +13,10 @@ Class MainWindow
         gameHandler = New MonoGameHandler(Sub(ctl) winformHost.Child = ctl, Sub()
                                                                                 Focus()
                                                                                 Width += 1
-                                                                            End Sub, New Nukepayload2.N2Engine.Foundation.SizeInInteger(CInt(ActualWidth), CInt(ActualHeight))) With {
-                                                                                .IsMouseVisible = True
-                                                                            }
+                                                                            End Sub,
+                                          New SizeInInteger(CInt(SystemParameters.PrimaryScreenWidth), CInt((SystemParameters.PrimaryScreenHeight)))) With {
+                                              .IsMouseVisible = True
+                                          }
         sparks = New MainCanvas
         Await sparks.LoadSceneAsync
         sparksRenderer = New GameCanvasRenderer(sparks, gameHandler)

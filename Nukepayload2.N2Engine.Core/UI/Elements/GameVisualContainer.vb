@@ -25,7 +25,7 @@ Namespace UI.Elements
                 If Me.Size.CanRead Then
                     size = Me.Size.Value
                 Else
-                    size = Information.BackBufferInformation.Size.ToVector2
+                    size = Information.BackBufferInformation.ViewPortSize.ToVector2
                 End If
                 Return size
             End Get

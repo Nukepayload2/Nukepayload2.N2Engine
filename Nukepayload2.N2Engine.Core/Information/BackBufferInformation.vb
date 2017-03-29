@@ -6,17 +6,21 @@ Namespace Information
     ''' </summary>
     Public Class BackBufferInformation
         ''' <summary>
-        ''' 大小发生改变。请务必在不需要此通知时取消订阅此事件。
+        ''' 游戏可见区域大小发生改变。请务必在不需要此通知时取消订阅此事件。
         ''' </summary>
-        Public Shared Event SizeChanged As EventHandler
+        Public Shared Event ViewPortSizeChanged As EventHandler
         ''' <summary>
         ''' DPI (像素密度) 设置发生改变。请务必在不需要此通知时取消订阅此事件。
         ''' </summary>
         Public Shared Event DpiSettingChanged As EventHandler
         ''' <summary>
-        ''' 当前的大小。通常是承载游戏的控件的大小。
+        ''' 整个屏幕大小。
         ''' </summary>
-        Public Shared Property Size As SizeInInteger
+        Public Shared Property ScreenSize As SizeInInteger
+        ''' <summary>
+        ''' 游戏可见区域的大小。
+        ''' </summary>
+        Public Shared Property ViewPortSize As SizeInInteger
         ''' <summary>
         ''' 当前的 DPI (像素密度)。如果使用 Mono Game 渲染器，则总是返回 96。对于 Win2D, 会返回 Windows 10 系统设置的 Dpi 值。
         ''' </summary>
@@ -25,15 +29,15 @@ Namespace Information
         ''' 通知大小改变
         ''' </summary>
         ''' <param name="newValue">新的大小</param>
-        Friend Shared Sub SetSize(newValue As SizeInInteger)
-            _Size = newValue
-            RaiseEvent SizeChanged(Nothing, EventArgs.Empty)
+        Friend Shared Sub NotifyViewPortSizeChanged(newValue As SizeInInteger)
+            _ViewPortSize = newValue
+            RaiseEvent ViewPortSizeChanged(Nothing, EventArgs.Empty)
         End Sub
         ''' <summary>
         ''' 通知 DPI (像素密度)改变。
         ''' </summary>
         ''' <param name="newValue">新的大小</param>
-        Friend Shared Sub SetDpi(newValue As Single)
+        Friend Shared Sub NotifyDpiChanged(newValue As Single)
             _Dpi = newValue
             RaiseEvent DpiSettingChanged(Nothing, EventArgs.Empty)
         End Sub

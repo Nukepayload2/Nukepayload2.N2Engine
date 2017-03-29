@@ -8,11 +8,12 @@ Public Class ButtonStatus
     Public ReadOnly Property PressedBorderColor As New Color(&H7F000000)
     Public ReadOnly Property BorderColor As New Color(&H7F7F7F7F)
     Public ReadOnly Property Text As String = "跳"
-    Public ReadOnly Property Position As New Lazy(Of Vector2)(
-        Function()
-            Dim bbSize = BackBufferInformation.Size
+    Public ReadOnly Property Position As Vector2
+        Get
+            Dim bbSize = BackBufferInformation.ViewPortSize
             Return New Vector2(bbSize.Width - Size.X - _Margin.Z, bbSize.Height - Size.Y - _Margin.W)
-        End Function)
+        End Get
+    End Property
 
     Public ReadOnly Property Size As New Vector2(120.0F, 120.0F)
     Public ReadOnly Property TextOffset As New Vector2(53.0F, 53.0F)

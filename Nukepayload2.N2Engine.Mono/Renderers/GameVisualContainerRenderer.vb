@@ -5,6 +5,7 @@ Imports RaisingStudio.Xna.Graphics
 
 Public MustInherit Class GameVisualContainerRenderer
     Inherits MonoGameRenderer
+
     Sub New(view As GameVisualContainer)
         MyBase.New(view)
     End Sub
@@ -58,8 +59,8 @@ Public MustInherit Class GameVisualContainerRenderer
             device.SetRenderTarget(tempRt)
             device.Clear(Color.Transparent)
             dc.Begin()
-            args.DrawingContext = dc
             For Each child In k.Group
+                args.DrawingContext = dc
                 If ShouldVirtualize(child) Then
                     Continue For
                 End If

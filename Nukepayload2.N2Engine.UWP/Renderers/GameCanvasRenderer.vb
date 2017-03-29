@@ -1,6 +1,7 @@
 ﻿Imports Microsoft.Graphics.Canvas
 Imports Microsoft.Graphics.Canvas.UI
 Imports Microsoft.Graphics.Canvas.UI.Xaml
+Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Information
 Imports Nukepayload2.N2Engine.Linq
 Imports Nukepayload2.N2Engine.UI.Elements
@@ -30,9 +31,12 @@ Public Class GameCanvasRenderer
 
     Public Shared Sub SynchronizeBackBufferInformation(host As CanvasAnimatedControl)
         DisplayInfo = DisplayInformation.GetForCurrentView
-        BackBufferInformation.SetDpi(DisplayInfo.LogicalDpi)
+        BackBufferInformation.NotifyDpiChanged(DisplayInfo.LogicalDpi)
         Dim size = host.RenderSize
-        BackBufferInformation.SetSize(New Foundation.SizeInInteger(CInt(size.Width), CInt(size.Height)))
+        Dim dpiScale = DisplayInfo.RawPixelsPerViewPixel
+        BackBufferInformation.ScreenSize = New SizeInInteger(CUInt(DisplayInfo.ScreenWidthInRawPixels / dpiScale),
+                                                             CUInt(DisplayInfo.ScreenHeightInRawPixels / dpiScale))
+        BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(CUInt(size.Width), CUInt(size.Height)))
     End Sub
 
     ''' <summary>
@@ -116,10 +120,10 @@ Public Class GameCanvasRenderer
 
     Private Sub Win2DCanvas_SizeChanged(sender As Object, e As SizeChangedEventArgs) Handles Win2DCanvas.SizeChanged
         Dim size = Win2DCanvas.RenderSize
-        BackBufferInformation.SetSize(New Foundation.SizeInInteger(CInt(size.Width), CInt(size.Height)))
+        BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(CInt(size.Width), CInt(size.Height)))
     End Sub
 
     Private Shared Sub DisplayInfo_DpiChanged(sender As DisplayInformation, args As Object) Handles DisplayInfo.DpiChanged
-        BackBufferInformation.SetDpi(sender.LogicalDpi)
+        BackBufferInformation.NotifyDpiChanged(sender.LogicalDpi)
     End Sub
 End Class

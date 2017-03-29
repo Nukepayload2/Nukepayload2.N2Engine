@@ -78,10 +78,6 @@ Public Class MainCanvas
                 Bind(Function(r) r.Location, New Vector2).
                 Bind(Function(r) r.Size, viewModel.ScrollingViewer.BufferSize).
                 AddChild(chara)
-            ).
-            AddChild(tblJumpLogicStatus.
-                Bind(Function(r) r.Text, Function() viewModel.JumpLogicStatusText).
-                Bind(Function(r) r.Location, Vector2.Zero)
             )
         ).
         AddChild(controlPanel.
@@ -101,7 +97,11 @@ Public Class MainCanvas
                 Bind(Function(r) r.TextOffset, Function() viewModel.ButtonStatus.TextOffset).
                 Bind(Function(r) r.Size, Function() viewModel.ButtonStatus.Size).
                 Bind(Function(r) r.Text, Function() viewModel.ButtonStatus.Text).
-                Bind(Function(r) r.Location, Function() viewModel.ButtonStatus.Position.Value)
+                Bind(Function(r) r.Location, Function() viewModel.ButtonStatus.Position)
+            ).
+            AddChild(tblJumpLogicStatus.
+                Bind(Function(r) r.Text, Function() viewModel.JumpLogicStatusText).
+                Bind(Function(r) r.Location, Vector2.Zero)
             )
         )
         character.Location.Bind(Function()

@@ -25,39 +25,32 @@ Public Class MonoGameHandler
     ''' <summary>
     ''' Winform 互操作
     ''' </summary>
-    Public ReadOnly Property GameForm As Windows.Forms.Form
+    Public WithEvents GameForm As Windows.Forms.Form
     ''' <summary>
     ''' 对于 WPF 应用程序，使用这个构造函数可以轻松地让 WindowsFormsHost 承载游戏窗口。
     ''' </summary>
     ''' <param name="setChild">将 WindowsFormsHost 的 Child 属性设置为参数中的 Control</param>
     ''' <param name="focusResizeWpfWindow">调用 WPF 窗口的 Focus 方法, 并且 WPF 窗口的宽度 +1。</param>
-    Sub New(setChild As Action(Of Windows.Forms.Control), focusResizeWpfWindow As Action, windowSize As SizeInInteger)
+    Sub New(setChild As Action(Of Windows.Forms.Control), focusResizeWpfWindow As Action, screenSize As SizeInInteger)
         MyClass.New
-        BackBufferInformation.SetSize(windowSize)
+        BackBufferInformation.ScreenSize = screenSize
         AddHandler graphics.PreparingDeviceSettings,
             Sub(sender, e)
-                _GameForm = Windows.Forms.Control.FromHandle(e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle)
+                GameForm = Windows.Forms.Control.FromHandle(e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle)
+                BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(GameForm.Width, GameForm.Height))
                 GameForm.TopLevel = False
                 GameForm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
                 setChild(GameForm)
                 focusResizeWpfWindow()
-                BackBufferInformation.SetSize(New Foundation.SizeInInteger(GameForm.Width, GameForm.Height))
-                AddHandler GameForm.SizeChanged,
-                    Sub()
-                        If graphics.PreferredBackBufferHeight = GameForm.Height AndAlso
-                            graphics.PreferredBackBufferWidth = GameForm.Width Then
-                            Return
-                        End If
-                        graphics.PreferredBackBufferHeight = GameForm.Height
-                        graphics.PreferredBackBufferWidth = GameForm.Width
-                        graphics.ApplyChanges()
-                        BackBufferInformation.SetSize(New Foundation.SizeInInteger(GameForm.Width, GameForm.Height))
-                        Debug.WriteLine($"分辨率重置： {GameForm.Width} x {GameForm.Height}")
-                    End Sub
-                GameForm.Width -= 1
+                graphics.PreferredBackBufferHeight = screenSize.Height
+                graphics.PreferredBackBufferWidth = screenSize.Width
+                graphics.ApplyChanges()
             End Sub
     End Sub
 
+    Private Sub GameForm_SizeChanged(sender As Object, e As EventArgs) Handles GameForm.SizeChanged
+        BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(GameForm.Width, GameForm.Height))
+    End Sub
 #End If
 
 #If ANDROID_APP Then
@@ -82,9 +75,8 @@ Public Class MonoGameHandler
     Protected Overrides Sub Initialize()
         ' TODO: 初始化游戏逻辑
         GraphicsDeviceManagerExtension.SharedDevice = GraphicsDevice
-        BackBufferInformation.SetDpi(96)
+        BackBufferInformation.NotifyDpiChanged(96)
         Dim viewport = GraphicsDevice.Viewport
-        BackBufferInformation.SetSize(New Foundation.SizeInInteger(viewport.Width, viewport.Height))
         RaiseEvent GameLoopStarting(Me, Nothing)
 
         MyBase.Initialize()
@@ -137,4 +129,5 @@ Public Class MonoGameHandler
         RaiseEvent Drawing(Me, New MonogameDrawEventArgs(spriteBatch, timing))
 
     End Sub
+
 End Class
