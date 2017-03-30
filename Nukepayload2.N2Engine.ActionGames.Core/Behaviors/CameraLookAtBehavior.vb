@@ -19,7 +19,7 @@ Public Class CameraLookAtBehavior
         _getter = _scrollViewer.Offset.Getter
         _scrollViewer.Offset.Bind(Function()
                                       Dim loc = _primaryCharacter.Location.Value
-                                      Dim screenSize = Information.BackBufferInformation.ScreenSize.ToVector2
+                                      Dim screenSize = Information.BackBufferInformation.ViewPortSize.ToVector2
                                       Dim center = screenSize / 2
                                       Return loc - center
                                   End Function)

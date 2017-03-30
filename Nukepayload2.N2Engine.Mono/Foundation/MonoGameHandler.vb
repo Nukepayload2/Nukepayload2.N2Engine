@@ -27,29 +27,33 @@ Public Class MonoGameHandler
     ''' </summary>
     Public WithEvents GameForm As Windows.Forms.Form
     ''' <summary>
+    ''' WPF 互操作
+    ''' </summary>
+    Public WithEvents GameWindow As Windows.Window
+    ''' <summary>
     ''' 对于 WPF 应用程序，使用这个构造函数可以轻松地让 WindowsFormsHost 承载游戏窗口。
     ''' </summary>
     ''' <param name="setChild">将 WindowsFormsHost 的 Child 属性设置为参数中的 Control</param>
-    ''' <param name="focusResizeWpfWindow">调用 WPF 窗口的 Focus 方法, 并且 WPF 窗口的宽度 +1。</param>
-    Sub New(setChild As Action(Of Windows.Forms.Control), focusResizeWpfWindow As Action, screenSize As SizeInInteger)
+    ''' <param name="wpfWindow">承载游戏的 WPF 窗口。</param>
+    Sub New(setChild As Action(Of Windows.Forms.Control), wpfWindow As Windows.Window, screenSize As SizeInInteger)
         MyClass.New
         BackBufferInformation.ScreenSize = screenSize
         AddHandler graphics.PreparingDeviceSettings,
             Sub(sender, e)
                 GameForm = Windows.Forms.Control.FromHandle(e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle)
-                BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(GameForm.Width, GameForm.Height))
+                GameWindow = wpfWindow
+                BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(CInt(GameWindow.ActualWidth), CInt(GameWindow.ActualHeight)))
                 GameForm.TopLevel = False
                 GameForm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
                 setChild(GameForm)
-                focusResizeWpfWindow()
                 graphics.PreferredBackBufferHeight = screenSize.Height
                 graphics.PreferredBackBufferWidth = screenSize.Width
                 graphics.ApplyChanges()
             End Sub
     End Sub
 
-    Private Sub GameForm_SizeChanged(sender As Object, e As EventArgs) Handles GameForm.SizeChanged
-        BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(GameForm.Width, GameForm.Height))
+    Private Sub GameForm_SizeChanged(sender As Object, e As EventArgs) Handles GameWindow.SizeChanged
+        BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(CInt(GameWindow.ActualWidth), CInt(GameWindow.ActualHeight)))
     End Sub
 #End If
 

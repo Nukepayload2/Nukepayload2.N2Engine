@@ -60,6 +60,7 @@ Public MustInherit Class GameVisualContainerRenderer
             device.Clear(Color.Transparent)
             dc.Begin()
             For Each child In k.Group
+                'If TypeOf child Is GameButton Then Stop
                 args.DrawingContext = dc
                 If ShouldVirtualize(child) Then
                     Continue For
@@ -112,6 +113,7 @@ Public MustInherit Class GameVisualContainerRenderer
 
     Protected Overridable Sub CommitRenderTargetToParent(device As GraphicsDevice, sb As SpriteBatch)
         Dim view = Me.View
+        Dim loc = view.Location.GetValueOrDefault
         Dim parent = view.Parent
         Dim parentRenderer = parent.Renderer
         Dim parentRT As RenderTarget2D
@@ -119,6 +121,9 @@ Public MustInherit Class GameVisualContainerRenderer
         ' 模板化支持
         Do Until TypeOf parentRenderer Is GameVisualContainerRenderer
             view = parentRenderer.View.Parent
+            If view.Location.CanRead Then
+                loc += view.Location.Value
+            End If
             parentRenderer = view.Renderer
         Loop
 
@@ -136,7 +141,6 @@ Public MustInherit Class GameVisualContainerRenderer
                                     .M31, .M32, 0F, 1.0F))
             End With
         End If
-        Dim loc = view.Location.Value
         Dim drawSize As New Rectangle(loc.X, loc.Y, RenderTarget.Width, RenderTarget.Height)
         OnBackgroundDraw(sb)
         Dim effectedImage = ApplyEffect(RenderTarget)

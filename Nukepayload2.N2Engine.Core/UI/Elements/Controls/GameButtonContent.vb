@@ -55,9 +55,9 @@ Namespace UI.Controls
         End Property
 
         Sub New()
-            _rect.Location.Bind(Location)
+            _rect.Location.Bind(New Vector2)
             _rect.Size.Bind(Size)
-            _txtText.Location.Bind(Function() Location.Value + TextOffset.Value)
+            _txtText.Location.Bind(TextOffset)
             _txtText.Size.Bind(Size)
             With Children
                 .Add(_rect)

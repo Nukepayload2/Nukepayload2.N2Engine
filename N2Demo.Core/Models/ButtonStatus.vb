@@ -3,10 +3,10 @@ Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Information
 
 Public Class ButtonStatus
-    Public ReadOnly Property Background As New Color(&H7FEFEFEF)
-    Public ReadOnly Property PointerOverBackground As New Color(&H7FFFFFFF)
+    Public ReadOnly Property Background As New Color(&H7FEFEF00)
+    Public ReadOnly Property PointerOverBackground As New Color(&H7FFFFF00)
     Public ReadOnly Property PressedBorderColor As New Color(&H7F000000)
-    Public ReadOnly Property BorderColor As New Color(&H7F7F7F7F)
+    Public ReadOnly Property BorderColor As New Color(&H7F7F7F00)
     Public ReadOnly Property Text As String = "跳"
     Public ReadOnly Property Position As Vector2
         Get

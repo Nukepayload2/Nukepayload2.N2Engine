@@ -10,11 +10,12 @@ Class MainWindow
 
     Private Async Sub MainWindow_LoadedAsync(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         MonoImplRegistration.Register()
-        gameHandler = New MonoGameHandler(Sub(ctl) winformHost.Child = ctl, Sub()
-                                                                                Focus()
-                                                                                Width += 1
-                                                                            End Sub,
-                                          New SizeInInteger(CInt(SystemParameters.PrimaryScreenWidth), CInt((SystemParameters.PrimaryScreenHeight)))) With {
+        Dim screenSize As New SizeInInteger(CInt(SystemParameters.PrimaryScreenWidth),
+                                            CInt(SystemParameters.PrimaryScreenHeight))
+        winformHost.Width = screenSize.Width
+        winformHost.Height = screenSize.Height
+        gameHandler = New MonoGameHandler(Sub(ctl) winformHost.Child = ctl, Me,
+                                          screenSize) With {
                                               .IsMouseVisible = True
                                           }
         sparks = New MainCanvas
