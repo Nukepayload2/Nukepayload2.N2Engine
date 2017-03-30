@@ -55,7 +55,9 @@ Public Class GameCanvasRenderer
             End With
         End If
         Dim loc = View.Location.Value
-        dc.Draw(RenderTarget, New Rectangle(loc.X, loc.Y, RenderTarget.Width, RenderTarget.Height), Color.White)
+        Dim winSize = Information.BackBufferInformation.ScreenSize
+        Dim viewSize = Information.BackBufferInformation.ViewPortSize
+        dc.Draw(RenderTarget, New Rectangle(loc.X, loc.Y, winSize.Width, winSize.Height), New Rectangle(0, 0, viewSize.Width, viewSize.Height), Color.White)
         dc.End()
     End Sub
 

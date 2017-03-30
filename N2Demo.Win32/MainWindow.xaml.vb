@@ -1,6 +1,4 @@
-﻿Imports Microsoft.Xna.Framework
-Imports Microsoft.Xna.Framework.Input
-Imports N2Demo.Core
+﻿Imports N2Demo.Core
 Imports Nukepayload2.N2Engine.Foundation
 Imports Nukepayload2.N2Engine.Win32
 
@@ -12,8 +10,6 @@ Class MainWindow
         MonoImplRegistration.Register()
         Dim screenSize As New SizeInInteger(CInt(SystemParameters.PrimaryScreenWidth),
                                             CInt(SystemParameters.PrimaryScreenHeight))
-        winformHost.Width = screenSize.Width
-        winformHost.Height = screenSize.Height
         gameHandler = New MonoGameHandler(Sub(ctl) winformHost.Child = ctl, Me,
                                           screenSize) With {
                                               .IsMouseVisible = True

@@ -46,6 +46,7 @@ Public Class MonoGameHandler
                 GameForm.TopLevel = False
                 GameForm.FormBorderStyle = Windows.Forms.FormBorderStyle.None
                 setChild(GameForm)
+                GameWindow.Focus()
                 graphics.PreferredBackBufferHeight = screenSize.Height
                 graphics.PreferredBackBufferWidth = screenSize.Width
                 graphics.ApplyChanges()

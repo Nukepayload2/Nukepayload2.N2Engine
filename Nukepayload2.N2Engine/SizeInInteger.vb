@@ -41,6 +41,14 @@ Namespace Foundation
         Public Function ToVector2() As Vector2
             Return New Vector2(Width, Height)
         End Function
+
+        Public Shared Operator *(value1 As SizeInInteger, value2 As SizeInInteger) As SizeInInteger
+            Return New SizeInInteger(value1.Width * value2.Width, value1.Height * value2.Height)
+        End Operator
+
+        Public Shared Operator \(value1 As SizeInInteger, value2 As SizeInInteger) As SizeInInteger
+            Return New SizeInInteger(value1.Width \ value2.Width, value1.Height \ value2.Height)
+        End Operator
     End Structure
 
 End Namespace

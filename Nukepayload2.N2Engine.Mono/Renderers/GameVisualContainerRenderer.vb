@@ -25,7 +25,8 @@ Public MustInherit Class GameVisualContainerRenderer
         Dim view = DirectCast(Me.View, GameVisualContainer)
         Dim renderSize = view.RenderSize
         Debug.WriteLine($"为 {Me.GetType.Name} 分配缓存纹理。")
-        RenderTarget = New RenderTarget2D(sender.GraphicsDevice, renderSize.X, renderSize.Y, False, SurfaceFormat.Color, Nothing, 1, RenderTargetUsage.PreserveContents)
+        RenderTarget = New RenderTarget2D(sender.GraphicsDevice, renderSize.X, renderSize.Y, False,
+                                          SurfaceFormat.Color, Nothing, 1, RenderTargetUsage.PreserveContents)
     End Sub
 
     Dim _cachedRenderTargets As New List(Of Tuple(Of RenderTarget2D, DrawingContext))
@@ -44,10 +45,10 @@ Public MustInherit Class GameVisualContainerRenderer
         Dim children = View.GetSubNodes
         Dim containers As New List(Of GameVisualContainer)
         Dim groupedChildren = Aggregate ch In children Group By ch.Transform Into Group Into ToArray
-        Dim size = device.PresentationParameters
+        Dim size = DirectCast(View, GameVisualContainer).RenderSize
         Dim outterDc = args.SpriteBatch
         Do While groupedChildren.Length > _cachedRenderTargets.Count
-            Dim trt As New RenderTarget2D(sender.GraphicsDevice, size.BackBufferWidth, size.BackBufferHeight, False, SurfaceFormat.Color, Nothing, 1, RenderTargetUsage.PreserveContents)
+            Dim trt As New RenderTarget2D(sender.GraphicsDevice, size.X, size.Y, False, SurfaceFormat.Color, Nothing, 1, RenderTargetUsage.PreserveContents)
             Dim tdc As New DrawingContext(args.SpriteBatch, trt)
             _cachedRenderTargets.Add(New Tuple(Of RenderTarget2D, DrawingContext)(trt, tdc))
         Loop
@@ -60,7 +61,6 @@ Public MustInherit Class GameVisualContainerRenderer
             device.Clear(Color.Transparent)
             dc.Begin()
             For Each child In k.Group
-                'If TypeOf child Is GameButton Then Stop
                 args.DrawingContext = dc
                 If ShouldVirtualize(child) Then
                     Continue For
