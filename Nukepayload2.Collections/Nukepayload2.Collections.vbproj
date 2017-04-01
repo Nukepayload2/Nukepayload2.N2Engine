@@ -90,6 +90,7 @@
     <Compile Include="ConcurrentObservableCollection.vb" />
     <Compile Include="MatrixMap.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="ObservableStack.vb" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

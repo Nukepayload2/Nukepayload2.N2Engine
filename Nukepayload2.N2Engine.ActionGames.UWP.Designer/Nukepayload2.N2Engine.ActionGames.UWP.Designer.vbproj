@@ -122,8 +122,16 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="SpriteResourceListEditorHeader.xaml.vb">
+      <DependentUpon>SpriteResourceListEditorHeader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpriteSheetEditor.xaml.vb">
+      <DependentUpon>SpriteSheetEditor.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SpriteSheetEditorHeader.xaml.vb">
+      <DependentUpon>SpriteSheetEditorHeader.xaml</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.ActionGames.UWP.Designer.rd.xml" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +168,50 @@
     <None Include="Nukepayload2.N2Engine.License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Nukepayload2.CodeAnalysis\Nukepayload2.CodeAnalysis.vbproj">
+      <Project>{11d14cb7-c9fe-4044-aba0-9be40efbc301}</Project>
+      <Name>Nukepayload2.CodeAnalysis</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Nukepayload2.UI.UWP\Nukepayload2.UI.UWP.vbproj">
+      <Project>{faee72f7-b4e0-48e6-8270-193738fb3bc2}</Project>
+      <Name>Nukepayload2.UI.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.ActionGames.Core\Nukepayload2.N2Engine.ActionGames.Core.vbproj">
+      <Project>{8d7a38e5-c530-4650-b3ad-cb020b624360}</Project>
+      <Name>Nukepayload2.N2Engine.ActionGames.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
+      <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
+      <Name>Nukepayload2.N2Engine.Core</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.UWP.Designer\Nukepayload2.N2Engine.UWP.Designer.vbproj">
+      <Project>{e1bcb30b-991c-4368-89fb-71c407d1010f}</Project>
+      <Name>Nukepayload2.N2Engine.UWP.Designer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
+      <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
+      <Name>Nukepayload2.N2Engine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.UI.SpriteFonts\Nukepayload2.UI.SpriteFonts.vbproj">
+      <Project>{4edb2801-2f43-4377-9ca8-215e640c5d86}</Project>
+      <Name>Nukepayload2.UI.SpriteFonts</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="SpriteResourceListEditorHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpriteSheetEditor.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="SpriteSheetEditorHeader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

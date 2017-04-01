@@ -1,0 +1,46 @@
+﻿<UserControl
+    x:Class="Nukepayload2.N2Engine.ActionGames.UWP.Designer.SpriteSheetEditorHeader"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nukepayload2.N2Engine.ActionGames.UWP.Designer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:n2="using:Nukepayload2.UI.UWP"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="140"
+    d:DesignWidth="400">
+    <ScrollViewer Padding="12,0" Background="{ThemeResource AppBarBackgroundThemeBrush}" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Disabled">
+        <StackPanel Padding="0,0,0,24" Orientation="Horizontal">
+            <n2:GroupBox Footer="当前实体">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Center">种类</TextBlock>
+                    <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="64"/>
+                </Grid>
+            </n2:GroupBox>
+            <n2:GroupBox Footer="实体表格工厂">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Center">行列实体数量</TextBlock>
+                    <n2:Vector2Editor Grid.Row="1"/>
+                </Grid>
+            </n2:GroupBox>
+            <n2:GroupBox Footer="物理世界工厂">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <TextBlock HorizontalAlignment="Center">重力方向</TextBlock>
+                    <n2:Vector2Editor Grid.Row="1"/>
+                </Grid>
+            </n2:GroupBox>
+        </StackPanel>
+    </ScrollViewer>
+</UserControl>

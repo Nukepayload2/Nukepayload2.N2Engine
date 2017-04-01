@@ -1,0 +1,66 @@
+﻿<UserControl
+    x:Class="Nukepayload2.N2Engine.ActionGames.UWP.Designer.SpriteSheetEditor"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nukepayload2.N2Engine.ActionGames.UWP.Designer"
+    xmlns:n2="using:Nukepayload2.UI.UWP"
+    xmlns:comm="using:Microsoft.Toolkit.Uwp.UI.Controls"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="432"
+    d:DesignWidth="768">
+    <UserControl.Resources>
+        <Style TargetType="comm:GridSplitter">
+            <Setter Property="Background" Value="Gray"/>
+            <Setter Property="GripperForeground" Value="White"/>
+        </Style>
+    </UserControl.Resources>
+    <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="240"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="2*"/>
+            </Grid.RowDefinitions>
+            <TextBlock FontSize="24" Margin="2,0">导入图片资源</TextBlock>
+            <!--图片资源列表-->
+            <GridView Grid.Row="1">
+
+            </GridView>
+            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,11">
+                <Button Margin="2" Padding="6">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;" />
+                </Button>
+                <Button Margin="2" Padding="6">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE107;" />
+                </Button>
+            </StackPanel>
+            <comm:GridSplitter Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Height="11"/>
+            <Pivot Grid.Row="3" Margin="-10,0">
+                <PivotItem Header="图块">
+                    <!--图块选取器-->
+                </PivotItem>
+                <PivotItem Header="设置">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock>图块大小</TextBlock>
+                            <n2:Vector2Editor/>
+                            <TextBlock>默认碰撞器</TextBlock>
+                            <ComboBox HorizontalAlignment="Stretch"/>
+                        </StackPanel>
+                    </ScrollViewer>
+                </PivotItem>
+            </Pivot>
+        </Grid>
+        <Grid Grid.Column="1">
+            <comm:GridSplitter HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="11"/>
+            <!--设计面板-->
+        </Grid>
+    </Grid>
+</UserControl>
