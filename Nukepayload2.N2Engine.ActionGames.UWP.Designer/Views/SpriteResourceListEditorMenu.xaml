@@ -1,5 +1,5 @@
 ﻿<UserControl
-    x:Class="Nukepayload2.N2Engine.ActionGames.UWP.Designer.SpriteResourceListEditorHeader"
+    x:Class="Nukepayload2.N2Engine.ActionGames.UWP.Designer.SpriteResourceListEditorMenu"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:local="using:Nukepayload2.N2Engine.ActionGames.UWP.Designer"

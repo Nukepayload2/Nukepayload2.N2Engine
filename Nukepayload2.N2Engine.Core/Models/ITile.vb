@@ -1,4 +1,5 @@
 ﻿Imports FarseerPhysics.Dynamics
+Imports Newtonsoft.Json
 Imports Nukepayload2.N2Engine.PhysicsIntegration
 Imports Nukepayload2.N2Engine.UI.Elements
 
@@ -19,6 +20,7 @@ Namespace Models
         ''' <summary>
         ''' 自动生成的 Body。
         ''' </summary>
+        <JsonIgnore>
         Property Body As Body
         ''' <summary>
         ''' 在贴图中的横向索引（从 0 开始）

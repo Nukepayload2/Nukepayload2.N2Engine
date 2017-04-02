@@ -122,15 +122,29 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\ColliderKinds.vb" />
+    <Compile Include="Models\EditableTile.vb" />
+    <Compile Include="Models\MenuDataTemplateNames.vb" />
+    <Compile Include="Models\SpriteCollection.vb" />
+    <Compile Include="Models\SpritePreview.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="SpriteResourceListEditorHeader.xaml.vb">
-      <DependentUpon>SpriteResourceListEditorHeader.xaml</DependentUpon>
+    <Compile Include="Utilities\ThumbnailGenerator.vb" />
+    <Compile Include="Models\EditableSpriteSheet.vb" />
+    <Compile Include="Models\EntitySheetFactory.vb" />
+    <Compile Include="ViewModels\SpriteSheetsViewModel.vb" />
+    <Compile Include="ViewModels\SpritesViewModel.vb" />
+    <Compile Include="Models\WorldFactory.vb" />
+    <Compile Include="Models\StageContent.vb" />
+    <Compile Include="ViewModels\StageViewModel.vb" />
+    <Compile Include="Models\TileSettings.vb" />
+    <Compile Include="Views\SpriteResourceListEditorMenu.xaml.vb">
+      <DependentUpon>SpriteResourceListEditorMenu.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SpriteSheetEditor.xaml.vb">
+    <Compile Include="Views\SpriteSheetEditor.xaml.vb">
       <DependentUpon>SpriteSheetEditor.xaml</DependentUpon>
     </Compile>
-    <Compile Include="SpriteSheetEditorHeader.xaml.vb">
-      <DependentUpon>SpriteSheetEditorHeader.xaml</DependentUpon>
+    <Compile Include="Views\SpriteSheetEditorMenu.xaml.vb">
+      <DependentUpon>SpriteSheetEditorMenu.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.ActionGames.UWP.Designer.rd.xml" />
   </ItemGroup>
@@ -200,18 +214,26 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Page Include="SpriteResourceListEditorHeader.xaml">
+    <Page Include="Views\SpriteResourceListEditorMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SpriteSheetEditor.xaml">
+    <Page Include="Views\SpriteSheetEditor.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="SpriteSheetEditorHeader.xaml">
+    <Page Include="Views\SpriteSheetEditorMenu.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Themes\DesignerTemplates.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Commands\" />
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
     <VisualStudioVersion>14.0</VisualStudioVersion>

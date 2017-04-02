@@ -122,7 +122,11 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Attributes\FileTypeDesignerAttribute.vb" />
+    <Compile Include="Attributes\MenuTemplateAttribute.vb" />
+    <Compile Include="Models\MenuDataTemplateInformation.vb" />
     <Compile Include="Converters\PropertyBinderUnderlyingTypeNameConverter.vb" />
+    <Compile Include="Models\CodeTypes.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="Views\PropertyBinderEditor.xaml.vb">
       <DependentUpon>PropertyBinderEditor.xaml</DependentUpon>
