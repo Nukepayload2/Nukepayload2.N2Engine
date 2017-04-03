@@ -7,12 +7,12 @@ Namespace Models
 
         End Sub
 
-        Sub New(thumbnail As ImageSource, file As StorageFile)
+        Sub New(thumbnail As BitmapImage, file As StorageFile)
             Me.Thumbnail = thumbnail
             Me.File = file
         End Sub
 
-        Public Property Thumbnail As ImageSource
+        Public Property Thumbnail As BitmapImage
         Public Property File As StorageFile
     End Class
 End Namespace

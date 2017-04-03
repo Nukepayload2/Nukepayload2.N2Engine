@@ -128,6 +128,7 @@
     <Compile Include="Models\SpriteCollection.vb" />
     <Compile Include="Models\SpritePreview.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="N2ActDesignerApiContract.vb" />
     <Compile Include="Utilities\ThumbnailGenerator.vb" />
     <Compile Include="Models\EditableSpriteSheet.vb" />
     <Compile Include="Models\EntitySheetFactory.vb" />
@@ -145,6 +146,9 @@
     </Compile>
     <Compile Include="Views\SpriteSheetEditorMenu.xaml.vb">
       <DependentUpon>SpriteSheetEditorMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\TilesGrid.xaml.vb">
+      <DependentUpon>TilesGrid.xaml</DependentUpon>
     </Compile>
     <EmbeddedResource Include="My Project\Nukepayload2.N2Engine.ActionGames.UWP.Designer.rd.xml" />
   </ItemGroup>
@@ -230,6 +234,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Views\TilesGrid.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>

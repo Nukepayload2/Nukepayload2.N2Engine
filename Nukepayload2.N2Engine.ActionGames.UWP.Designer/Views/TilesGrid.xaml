@@ -1,0 +1,23 @@
+﻿<UserControl
+    x:Class="Nukepayload2.N2Engine.ActionGames.UWP.Designer.TilesGrid"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Nukepayload2.N2Engine.ActionGames.UWP.Designer"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    d:DesignHeight="300"
+    d:DesignWidth="400">
+    <UserControl.Resources>
+        <DataTemplate x:Key="TileEditorDataTemplate">
+            <Button Padding="0" Margin="0" MinWidth="0" MinHeight="0" Click="BtnItem_Click">
+                <Image Source="{Binding Sprite}"/>
+            </Button>
+        </DataTemplate>
+    </UserControl.Resources>
+    <ScrollViewer x:Name="ScrItems" HorizontalScrollMode="Auto" VerticalScrollMode="Auto">
+        <Grid x:Name="GrdTiles">
+            
+        </Grid>
+    </ScrollViewer>
+</UserControl>

@@ -1,8 +1,10 @@
 ﻿' The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 Imports Nukepayload2.N2Engine.ActionGames.UWP.Designer.Models
+Imports Nukepayload2.N2Engine.UWP.Designer.Attributes
 Imports Nukepayload2.N2Engine.UWP.Designer.Models
 
+<MenuTemplate>
 Public NotInheritable Class SpriteResourceListEditorMenu
     Inherits UserControl
 

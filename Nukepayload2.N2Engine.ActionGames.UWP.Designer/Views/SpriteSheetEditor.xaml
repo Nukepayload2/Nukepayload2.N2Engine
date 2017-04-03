@@ -49,8 +49,14 @@
                 <PivotItem Header="设置">
                     <ScrollViewer>
                         <StackPanel>
+                            <TextBlock>出生点</TextBlock>
+                            <n2:Vector2Editor/>
                             <TextBlock>图块大小</TextBlock>
                             <n2:Vector2Editor/>
+                            <TextBlock>图块数量X</TextBlock>
+                            <TextBox/>
+                            <TextBlock>图块数量Y</TextBlock>
+                            <TextBox/>
                             <TextBlock>默认碰撞器</TextBlock>
                             <ComboBox HorizontalAlignment="Stretch"/>
                         </StackPanel>
@@ -61,6 +67,7 @@
         <Grid Grid.Column="1">
             <comm:GridSplitter HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="11"/>
             <!--设计面板-->
+            <local:TilesGrid Margin="11,0,0,0"/>
         </Grid>
     </Grid>
 </UserControl>
