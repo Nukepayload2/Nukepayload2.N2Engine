@@ -1,5 +1,6 @@
 ﻿' The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
+Imports System.Numerics
 Imports Nukepayload2.N2Engine.ActionGames.UWP.Designer.Models
 
 Public NotInheritable Class TilesGrid
@@ -16,7 +17,7 @@ Public NotInheritable Class TilesGrid
     Public Shared ReadOnly RowCountProperty As DependencyProperty =
                            DependencyProperty.Register(NameOf(RowCount),
                            GetType(Integer), GetType(TilesGrid),
-                           New PropertyMetadata(8,
+                           New PropertyMetadata(2,
                                                 Sub(s, e)
                                                     Dim this = DirectCast(s, TilesGrid)
                                                     If Not e.OldValue.Equals(e.NewValue) Then
@@ -35,7 +36,7 @@ Public NotInheritable Class TilesGrid
     Public Shared ReadOnly ColumnCountProperty As DependencyProperty =
                            DependencyProperty.Register(NameOf(ColumnCount),
                            GetType(Integer), GetType(TilesGrid),
-                           New PropertyMetadata(16,
+                           New PropertyMetadata(2,
                                                 Sub(s, e)
                                                     Dim this = DirectCast(s, TilesGrid)
                                                     If Not e.OldValue.Equals(e.NewValue) Then
@@ -55,7 +56,7 @@ Public NotInheritable Class TilesGrid
                            DependencyProperty.Register(NameOf(Tiles),
                            GetType(EditableTile(,)), GetType(TilesGrid),
                            New PropertyMetadata(Nothing,
-                           Sub(s, e) DirectCast(s, TilesGrid).UpdateTilesView(e.NewValue, e.OldValue)))
+                           Sub(s, e) DirectCast(s, TilesGrid).UpdateTilesView(e.NewValue)))
 
     Public Property SelectedTile As EditableTile
         Get
@@ -69,6 +70,19 @@ Public NotInheritable Class TilesGrid
                            DependencyProperty.Register(NameOf(SelectedTile),
                            GetType(EditableTile), GetType(TilesGrid),
                            New PropertyMetadata(Nothing))
+
+    Public Property TileSize As Vector2
+        Get
+            Return GetValue(TileSizeProperty)
+        End Get
+        Set
+            SetValue(TileSizeProperty, Value)
+        End Set
+    End Property
+    Public Shared ReadOnly TileSizeProperty As DependencyProperty =
+                           DependencyProperty.Register(NameOf(TileSize),
+                           GetType(Vector2), GetType(TilesGrid),
+                           New PropertyMetadata(New Vector2(64, 64)))
 
     Private Sub TilesGrid_Loaded(sender As Object, e As RoutedEventArgs) Handles Me.Loaded
         CreateTiles()
@@ -92,26 +106,57 @@ Public NotInheritable Class TilesGrid
 
     Dim _innerControls As FrameworkElement(,)
 
-    Private Sub UpdateTilesView(newValue As EditableTile(,), oldValue As EditableTile(,))
+    Private Sub UpdateTilesView(newValue As EditableTile(,))
         Dim curRowDef = GrdTiles.RowDefinitions
         Dim curColDef = GrdTiles.ColumnDefinitions
         Dim destRowCount = newValue.GetLength(0)
         Dim destColCount = newValue.GetLength(1)
+
         If Not (curRowDef.Count = destRowCount AndAlso destColCount = curColDef.Count) Then
+            ' 裁剪底下一条
+            For i = destRowCount To curRowDef.Count - 1
+                For j = 0 To curColDef.Count - 1
+                    If _innerControls(i, j) IsNot Nothing Then
+                        GrdTiles.Children.Remove(_innerControls(i, j))
+                    End If
+                Next
+            Next
+            ' 裁剪右边一条
+            For j = destColCount To curColDef.Count - 1
+                For i = 0 To destRowCount - 1
+                    If _innerControls(i, j) IsNot Nothing Then
+                        GrdTiles.Children.Remove(_innerControls(i, j))
+                    End If
+                Next
+            Next
+            ' 修改图块控件表
             ReDim Preserve _innerControls(destRowCount - 1, destColCount - 1)
+            ' 修改网格
             Do While destRowCount < curRowDef.Count
                 curRowDef.RemoveAt(curRowDef.Count - 1)
             Loop
             Do While destRowCount > curRowDef.Count
-                curRowDef.Add(New RowDefinition)
+                curRowDef.Add(New RowDefinition With {.Height = New GridLength(TileSize.Y)})
             Loop
             Do While destColCount < curColDef.Count
                 curColDef.RemoveAt(curColDef.Count - 1)
             Loop
             Do While destColCount > curColDef.Count
-                curColDef.Add(New ColumnDefinition)
+                curColDef.Add(New ColumnDefinition With {.Width = New GridLength(TileSize.X)})
             Loop
         End If
+        ' 同步行列宽度
+        If curColDef.Any AndAlso Math.Abs(curColDef.First.Width.Value - TileSize.X) < 0.001 Then
+            For Each cd In curColDef
+                cd.Width = New GridLength(TileSize.X)
+            Next
+        End If
+        If curRowDef.Any AndAlso Math.Abs(curRowDef.First.Height.Value - TileSize.Y) < 0.001 Then
+            For Each cd In curRowDef
+                cd.Height = New GridLength(TileSize.Y)
+            Next
+        End If
+        ' 添加新的土块
         Dim template = DirectCast(Resources!TileEditorDataTemplate, DataTemplate)
         For i = 0 To destRowCount - 1
             For j = 0 To destColCount - 1
@@ -119,6 +164,9 @@ Public NotInheritable Class TilesGrid
                 If ctl Is Nothing Then
                     ctl = DirectCast(template.LoadContent, FrameworkElement)
                     _innerControls(i, j) = ctl
+                    Grid.SetRow(ctl, i)
+                    Grid.SetColumn(ctl, j)
+                    GrdTiles.Children.Add(ctl)
                 End If
                 ctl.DataContext = newValue(i, j)
             Next

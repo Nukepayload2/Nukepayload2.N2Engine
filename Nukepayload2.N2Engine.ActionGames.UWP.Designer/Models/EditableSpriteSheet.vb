@@ -11,9 +11,5 @@
         ''' 这张图块表包含的图块。
         ''' </summary>
         Public Property Tiles As EditableTile(,)
-        ''' <summary>
-        ''' 被编辑器选中的图块。
-        ''' </summary>
-        Public Property SelectedTile As EditableTile
     End Class
 End Namespace

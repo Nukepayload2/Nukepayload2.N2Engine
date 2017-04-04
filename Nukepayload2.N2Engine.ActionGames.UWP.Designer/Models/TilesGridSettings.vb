@@ -1,7 +1,7 @@
 ﻿Imports System.Numerics
 
 Namespace Models
-    Public Class TileSettings
+    Public Class TilesGridSettings
         Implements INotifyPropertyChanged
 
         Dim _SpawnPoint As Vector2
@@ -26,25 +26,25 @@ Namespace Models
             End Set
         End Property
 
-        Dim _TileCountX As Integer
-        Public Property TileCountX As Integer
+        Dim _ColumnCount As Integer
+        Public Property ColumnCount As Integer
             Get
-                Return _TileCountX
+                Return _ColumnCount
             End Get
             Set(value As Integer)
-                _TileCountX = value
-                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(TileCountX)))
+                _ColumnCount = value
+                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(ColumnCount)))
             End Set
         End Property
 
-        Dim _TileCountY As Integer
-        Public Property TileCountY As Integer
+        Dim _RowCount As Integer
+        Public Property RowCount As Integer
             Get
-                Return _TileCountY
+                Return _RowCount
             End Get
             Set(value As Integer)
-                _TileCountY = value
-                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(TileCountY)))
+                _RowCount = value
+                RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(RowCount)))
             End Set
         End Property
 

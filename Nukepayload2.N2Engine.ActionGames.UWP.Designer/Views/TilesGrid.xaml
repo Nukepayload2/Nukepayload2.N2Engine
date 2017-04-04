@@ -10,7 +10,7 @@
     d:DesignWidth="400">
     <UserControl.Resources>
         <DataTemplate x:Key="TileEditorDataTemplate">
-            <Button Padding="0" Margin="0" MinWidth="0" MinHeight="0" Click="BtnItem_Click">
+            <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="0" Margin="0" MinWidth="2" MinHeight="2" Click="BtnItem_Click">
                 <Image Source="{Binding Sprite}"/>
             </Button>
         </DataTemplate>

@@ -5,6 +5,7 @@ Namespace ViewModels
     ''' 正在被编辑的关卡
     ''' </summary>
     Public Class StageViewModel
+        Inherits SingleInstance(Of StageViewModel)
         Implements INotifyPropertyChanged
         ''' <summary>
         ''' 导入的贴图表
@@ -13,7 +14,7 @@ Namespace ViewModels
         ''' <summary>
         ''' 生成图块用的设置
         ''' </summary>
-        Public ReadOnly Property Settings As New TileSettings
+        Public ReadOnly Property Settings As New TilesGridSettings
         ''' <summary>
         ''' 被编辑的关卡包含的信息。
         ''' </summary>
