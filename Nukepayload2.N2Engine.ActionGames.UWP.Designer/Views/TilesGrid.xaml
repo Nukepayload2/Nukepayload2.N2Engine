@@ -11,7 +11,7 @@
     <UserControl.Resources>
         <DataTemplate x:Key="TileEditorDataTemplate">
             <Button HorizontalAlignment="Stretch" VerticalAlignment="Stretch" Padding="0" Margin="0" MinWidth="2" MinHeight="2" Click="BtnItem_Click">
-                <Image Source="{Binding Sprite}"/>
+                <Image Source="{Binding}"/>
             </Button>
         </DataTemplate>
     </UserControl.Resources>

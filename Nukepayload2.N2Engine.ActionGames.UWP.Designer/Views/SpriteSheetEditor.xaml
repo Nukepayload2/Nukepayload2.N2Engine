@@ -34,31 +34,38 @@
 
             </GridView>
             <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,11">
-                <Button Margin="2" Padding="6">
+                <Button Margin="2" Padding="6" ToolTipService.ToolTip="导入">
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;" />
                 </Button>
-                <Button Margin="2" Padding="6">
+                <Button Margin="2" Padding="6" ToolTipService.ToolTip="移除">
                     <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE107;" />
+                </Button>
+                <Button Margin="2" Padding="6" ToolTipService.ToolTip="选为当前图块表">
+                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE80A;" />
                 </Button>
             </StackPanel>
             <comm:GridSplitter Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Height="11"/>
             <Pivot Grid.Row="3" Margin="-10,0">
-                <PivotItem Header="图块">
-                    <!--图块选取器-->
+                <PivotItem Header="图块表">
+                    <local:TilesGrid Margin="11,0,0,0"/>
                 </PivotItem>
-                <PivotItem Header="设置">
+                <PivotItem Header="地图">
                     <ScrollViewer>
                         <StackPanel>
-                            <TextBlock>出生点</TextBlock>
-                            <n2:Vector2Editor/>
-                            <TextBlock>图块大小</TextBlock>
-                            <n2:Vector2Editor/>
                             <TextBlock>图块数量X</TextBlock>
                             <TextBox/>
                             <TextBlock>图块数量Y</TextBlock>
                             <TextBox/>
-                            <TextBlock>默认碰撞器</TextBlock>
+                            <TextBlock TextWrapping="Wrap" Foreground="OrangeRed">新的图块数量如果较小则发生裁剪</TextBlock>
+                        </StackPanel>
+                    </ScrollViewer>
+                </PivotItem>
+                <PivotItem Header="图块">
+                    <ScrollViewer>
+                        <StackPanel>
+                            <TextBlock>碰撞器</TextBlock>
                             <ComboBox HorizontalAlignment="Stretch"/>
+                            <Button Margin="0,4">删除图块</Button>
                         </StackPanel>
                     </ScrollViewer>
                 </PivotItem>

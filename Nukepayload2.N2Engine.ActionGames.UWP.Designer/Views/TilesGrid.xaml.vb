@@ -1,6 +1,7 @@
 ﻿' The User Control item template is documented at https://go.microsoft.com/fwlink/?LinkId=234236
 
 Imports System.Numerics
+Imports Nukepayload2.Collections.Specialized
 Imports Nukepayload2.N2Engine.ActionGames.UWP.Designer.Models
 
 Public NotInheritable Class TilesGrid
@@ -44,7 +45,7 @@ Public NotInheritable Class TilesGrid
                                                     End If
                                                 End Sub))
 
-    Public Property Tiles As EditableTile(,)
+    Public Property Tiles As ObservableFixedArray2D(Of EditableTile)
         Get
             Return GetValue(TilesProperty)
         End Get
@@ -54,22 +55,37 @@ Public NotInheritable Class TilesGrid
     End Property
     Public Shared ReadOnly TilesProperty As DependencyProperty =
                            DependencyProperty.Register(NameOf(Tiles),
-                           GetType(EditableTile(,)), GetType(TilesGrid),
+                           GetType(ObservableFixedArray2D(Of EditableTile)), GetType(TilesGrid),
                            New PropertyMetadata(Nothing,
-                           Sub(s, e) DirectCast(s, TilesGrid).UpdateTilesView(e.NewValue)))
+                           Sub(s, e)
+                               DirectCast(s, TilesGrid).UpdateTilesView(e.NewValue)
+                           End Sub))
 
-    Public Property SelectedTile As EditableTile
+    Public Property SelectedTileX As Integer
         Get
-            Return GetValue(SelectedTileProperty)
+            Return GetValue(SelectedTileXProperty)
         End Get
         Set
-            SetValue(SelectedTileProperty, Value)
+            SetValue(SelectedTileXProperty, Value)
         End Set
     End Property
-    Public Shared ReadOnly SelectedTileProperty As DependencyProperty =
-                           DependencyProperty.Register(NameOf(SelectedTile),
-                           GetType(EditableTile), GetType(TilesGrid),
-                           New PropertyMetadata(Nothing))
+    Public Shared ReadOnly SelectedTileXProperty As DependencyProperty =
+                           DependencyProperty.Register(NameOf(SelectedTileX),
+                           GetType(Integer), GetType(TilesGrid),
+                           New PropertyMetadata(-1))
+
+    Public Property SelectedTileY As Integer
+        Get
+            Return GetValue(SelectedTileYProperty)
+        End Get
+        Set
+            SetValue(SelectedTileYProperty, Value)
+        End Set
+    End Property
+    Public Shared ReadOnly SelectedTileYProperty As DependencyProperty =
+                           DependencyProperty.Register(NameOf(SelectedTileY),
+                           GetType(Integer), GetType(TilesGrid),
+                           New PropertyMetadata(-1))
 
     Public Property TileSize As Vector2
         Get
@@ -90,7 +106,7 @@ Public NotInheritable Class TilesGrid
 
     Private Sub ReDimPreserveTiles()
         If RowCount > 0 AndAlso ColumnCount > 0 Then
-            ReDim Preserve Tiles(RowCount - 1, ColumnCount - 1)
+            Tiles.ReDimPreserve(RowCount - 1, ColumnCount - 1)
         Else
             Tiles = Nothing
         End If
@@ -98,7 +114,7 @@ Public NotInheritable Class TilesGrid
 
     Private Sub CreateTiles()
         If RowCount > 0 AndAlso ColumnCount > 0 Then
-            ReDim Tiles(RowCount - 1, ColumnCount - 1)
+            Tiles.ReDim(RowCount - 1, ColumnCount - 1)
         Else
             Tiles = Nothing
         End If
@@ -106,12 +122,13 @@ Public NotInheritable Class TilesGrid
 
     Dim _innerControls As FrameworkElement(,)
 
-    Private Sub UpdateTilesView(newValue As EditableTile(,))
+    WithEvents TilesData As ObservableFixedArray2D(Of EditableTile)
+
+    Private Sub UpdateTilesView(newValue As ObservableFixedArray2D(Of EditableTile))
         Dim curRowDef = GrdTiles.RowDefinitions
         Dim curColDef = GrdTiles.ColumnDefinitions
-        Dim destRowCount = newValue.GetLength(0)
-        Dim destColCount = newValue.GetLength(1)
-
+        Dim destRowCount = newValue.RowCount
+        Dim destColCount = newValue.ColumnCount
         If Not (curRowDef.Count = destRowCount AndAlso destColCount = curColDef.Count) Then
             ' 裁剪底下一条
             For i = destRowCount To curRowDef.Count - 1
@@ -171,17 +188,28 @@ Public NotInheritable Class TilesGrid
                 ctl.DataContext = newValue(i, j)
             Next
         Next
+        TilesData = newValue
     End Sub
     ''' <summary>
     ''' 点击的时候更新选中的图块
     ''' </summary>
     Private Sub BtnItem_Click(sender As Object, e As RoutedEventArgs)
-        SelectedTile = DirectCast(sender, FrameworkElement).DataContext
+        Dim ele = DirectCast(sender, FrameworkElement)
+        SelectedTileX = Grid.GetRow(ele)
+        SelectedTileY = Grid.GetColumn(ele)
     End Sub
     ''' <summary>
     ''' 通知已经修改了图块表。
     ''' </summary>
     Public Sub NotifyTileChanged()
         Tiles = Tiles
+    End Sub
+
+    Private Sub TilesData_CollectionChanged2D(sender As Object, e As NotifyCollectionChanged2DEventArgs(Of EditableTile)) Handles TilesData.CollectionChanged2D
+        If e.Action = Specialized.NotifyCollectionChangedAction.Replace Then
+            Dim index = e.NewStartingIndex
+            Dim ele = _innerControls(index.RowIndex, index.ColIndex)
+            ele.DataContext = e.NewItems(0, 0)
+        End If
     End Sub
 End Class

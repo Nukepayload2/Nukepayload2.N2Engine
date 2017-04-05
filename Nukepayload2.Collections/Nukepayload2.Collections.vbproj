@@ -55,6 +55,7 @@
     <None Include="Nukepayload2.Collections.License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -88,9 +89,17 @@
     <Compile Include="ConcurrentLinkedListNode.vb" />
     <Compile Include="ConcurrentList.vb" />
     <Compile Include="ConcurrentObservableCollection.vb" />
+    <Compile Include="INotifyCollectionChanged2D.vb" />
     <Compile Include="MatrixMap.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
+    <Compile Include="NotifyCollectionChanged2DEventArgs.vb" />
+    <Compile Include="ObservableFixedArray2D.vb" />
     <Compile Include="ObservableStack.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

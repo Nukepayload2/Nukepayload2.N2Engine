@@ -122,12 +122,16 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Commands\DeleteSelectedTileCommand.vb" />
+    <Compile Include="Commands\DrawDotCommand.vb" />
     <Compile Include="Commands\ImportSpriteCommand.vb" />
     <Compile Include="Commands\IncludeSpriteCommand.vb" />
-    <Compile Include="Commands\RemoveImportedSpriteCommand.vb" />
-    <Compile Include="Commands\RemoveIncludedSpriteCommand.vb" />
+    <Compile Include="Commands\ExcludedSpriteCommand.vb" />
+    <Compile Include="Commands\RemoveSpriteCommand.vb" />
+    <Compile Include="Commands\SetPrimarySpriteSheetCommand.vb" />
     <Compile Include="Models\ColliderKinds.vb" />
     <Compile Include="Models\EditableTile.vb" />
+    <Compile Include="Models\ImportedSpriteSheet.vb" />
     <Compile Include="Models\MenuDataTemplateNames.vb" />
     <Compile Include="Models\SpriteCollection.vb" />
     <Compile Include="Models\SpritePreview.vb" />
@@ -136,9 +140,9 @@
     <Compile Include="N2ActDesignerApiContract.vb" />
     <Compile Include="Utilities\BitmapSplitter.vb" />
     <Compile Include="Utilities\ThumbnailGenerator.vb" />
-    <Compile Include="Models\EditableSpriteSheet.vb" />
     <Compile Include="Models\EntitySheetFactory.vb" />
     <Compile Include="ViewModels\SingleInstance.vb" />
+    <Compile Include="Models\SpriteSheetEditTool.vb" />
     <Compile Include="ViewModels\SpriteSheetsViewModel.vb" />
     <Compile Include="ViewModels\SpritesViewModel.vb" />
     <Compile Include="Models\WorldFactory.vb" />
@@ -201,6 +205,10 @@
     <ProjectReference Include="..\..\Nukepayload2.UI.UWP\Nukepayload2.UI.UWP.vbproj">
       <Project>{faee72f7-b4e0-48e6-8270-193738fb3bc2}</Project>
       <Name>Nukepayload2.UI.UWP</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.Collections\Nukepayload2.Collections.vbproj">
+      <Project>{07D4710F-082E-45B1-B967-7E795F1E117A}</Project>
+      <Name>Nukepayload2.Collections</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine.ActionGames.Core\Nukepayload2.N2Engine.ActionGames.Core.vbproj">
       <Project>{8d7a38e5-c530-4650-b3ad-cb020b624360}</Project>

@@ -8,37 +8,38 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="140"
-    d:DesignWidth="400">
+    d:DesignWidth="700">
     <ScrollViewer Padding="12,0" Background="{ThemeResource AppBarBackgroundThemeBrush}" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Disabled">
         <StackPanel Padding="0,0,0,24" Orientation="Horizontal">
-            <n2:GroupBox Footer="当前实体">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <TextBlock HorizontalAlignment="Center">种类</TextBlock>
-                    <ComboBox Grid.Row="1" Grid.Column="1" VerticalAlignment="Center" Height="64"/>
-                </Grid>
-            </n2:GroupBox>
-            <n2:GroupBox Footer="实体表格工厂">
-                <Grid>
-                    <Grid.RowDefinitions>
-                        <RowDefinition Height="Auto"/>
-                        <RowDefinition/>
-                    </Grid.RowDefinitions>
-                    <TextBlock HorizontalAlignment="Center">行列实体数量</TextBlock>
-                    <n2:Vector2Editor Grid.Row="1"/>
-                </Grid>
-            </n2:GroupBox>
-            <n2:GroupBox Footer="物理世界工厂">
+            <n2:GroupBox Footer="物理属性">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock HorizontalAlignment="Center">重力方向</TextBlock>
-                    <n2:Vector2Editor Grid.Row="1"/>
+                    <n2:Vector2Editor Grid.Row="1" Margin="8,0"/>
+                </Grid>
+            </n2:GroupBox>
+            <n2:GroupBox Footer="绘图">
+                <Grid>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="Auto"/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock HorizontalAlignment="Center">工具</TextBlock>
+                    <GridView MinWidth="100" Grid.Row="1" Margin="8,0">
+
+                    </GridView>
+                    <TextBlock HorizontalAlignment="Center" Grid.Column="1">图块尺寸</TextBlock>
+                    <n2:Vector2Editor Margin="8,0" Grid.Row="1" Grid.Column="1"/>
+                    <TextBlock Margin="8,0" HorizontalAlignment="Center" Grid.Column="2">碰撞器类型</TextBlock>
+                    <ComboBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64"/>
                 </Grid>
             </n2:GroupBox>
         </StackPanel>
