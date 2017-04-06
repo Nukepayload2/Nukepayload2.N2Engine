@@ -8,6 +8,7 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
+    xmlns:vm="using:Nukepayload2.N2Engine.ActionGames.UWP.Designer.ViewModels"
     d:DesignHeight="432"
     d:DesignWidth="768">
     <UserControl.Resources>
@@ -15,66 +16,87 @@
             <Setter Property="Background" Value="Gray"/>
             <Setter Property="GripperForeground" Value="White"/>
         </Style>
+        <vm:StageViewModel x:Key="StageViewModel"/>
+        <n2:EnumItemsSourceConverter x:Key="EnumSrcConverter"/>
     </UserControl.Resources>
-    <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}">
+    <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}" DataContext="{StaticResource StageViewModel}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="240"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
         <Grid>
             <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="2*"/>
+                <RowDefinition Height="180"/>
+                <RowDefinition />
             </Grid.RowDefinitions>
-            <TextBlock FontSize="24" Margin="2,0">导入图片资源</TextBlock>
-            <!--图片资源列表-->
-            <GridView Grid.Row="1">
-
-            </GridView>
-            <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right" Margin="0,0,0,11">
-                <Button Margin="2" Padding="6" ToolTipService.ToolTip="导入">
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;" />
-                </Button>
-                <Button Margin="2" Padding="6" ToolTipService.ToolTip="移除">
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE107;" />
-                </Button>
-                <Button Margin="2" Padding="6" ToolTipService.ToolTip="选为当前图块表">
-                    <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE80A;" />
-                </Button>
-            </StackPanel>
-            <comm:GridSplitter Grid.Row="2" VerticalAlignment="Bottom" HorizontalAlignment="Stretch" Height="11"/>
-            <Pivot Grid.Row="3" Margin="-10,0">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition />
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock FontSize="24" Margin="2,0">导入图片资源</TextBlock>
+                <!--图片资源列表-->
+                <GridView Grid.Row="1" ItemsSource="{Binding SpriteSheets}" SelectedItem="{Binding SelectedSpriteSheet,Mode=TwoWay}">
+                    <GridView.ItemTemplate>
+                        <DataTemplate>
+                            <Image Source="{Binding SpritePreview.Thumbnail}"/>
+                        </DataTemplate>
+                    </GridView.ItemTemplate>
+                </GridView>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Right">
+                    <Button Margin="2" Padding="6" ToolTipService.ToolTip="导入" Command="{Binding ImportSpriteSheet}">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE109;" />
+                    </Button>
+                    <Button Margin="2" Padding="6" ToolTipService.ToolTip="移除" Command="{Binding RemoveSpriteSheet}">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE107;" />
+                    </Button>
+                    <Button Margin="2" Padding="6" ToolTipService.ToolTip="选为当前图块表" Command="{Binding SetPrimarySpriteSheet}">
+                        <FontIcon FontFamily="Segoe MDL2 Assets" Glyph="&#xE80A;" />
+                    </Button>
+                </StackPanel>
+            </Grid>
+            <comm:GridSplitter Grid.Row="1" VerticalAlignment="Top" HorizontalAlignment="Stretch" Height="11"/>
+            <Pivot Grid.Row="1" Margin="-10,11,0,0">
                 <PivotItem Header="图块表">
-                    <local:TilesGrid Margin="11,0,0,0"/>
+                    <local:TilesGrid DataContext="{Binding PrimarySpriteSheet}"
+                                     Tiles="{Binding TileSprites}" 
+                                     SelectedTileX="{Binding SelectedTileX,Mode=TwoWay}"
+                                     SelectedTileY="{Binding SelectedTileY,Mode=TwoWay}"
+                                     Margin="11,0,0,0"
+                                     TileSize="{Binding TileSize}"/>
                 </PivotItem>
-                <PivotItem Header="地图">
+                <PivotItem Header="地图" DataContext="{Binding MapSettings}">
                     <ScrollViewer>
                         <StackPanel>
                             <TextBlock>图块数量X</TextBlock>
-                            <TextBox/>
+                            <TextBox Text="{Binding ColumnCount,Mode=TwoWay}"/>
                             <TextBlock>图块数量Y</TextBlock>
-                            <TextBox/>
+                            <TextBox Text="{Binding RowCount,Mode=TwoWay}"/>
                             <TextBlock TextWrapping="Wrap" Foreground="OrangeRed">新的图块数量如果较小则发生裁剪</TextBlock>
                         </StackPanel>
                     </ScrollViewer>
                 </PivotItem>
-                <PivotItem Header="图块">
+                <PivotItem Header="图块" DataContext="{Binding StageData}">
                     <ScrollViewer>
                         <StackPanel>
                             <TextBlock>碰撞器</TextBlock>
-                            <ComboBox HorizontalAlignment="Stretch"/>
-                            <Button Margin="0,4">删除图块</Button>
+                            <ComboBox SelectedValue="{Binding SelectedTile.Collider}" ItemsSource="{Binding SelectedTile.Collider,Converter={StaticResource EnumSrcConverter}}" HorizontalAlignment="Stretch"/>
+                            <Button Margin="0,4" Command="{Binding DeleteSelectedTile}">删除图块</Button>
                         </StackPanel>
                     </ScrollViewer>
                 </PivotItem>
             </Pivot>
         </Grid>
-        <Grid Grid.Column="1">
-            <comm:GridSplitter HorizontalAlignment="Left" VerticalAlignment="Stretch" Width="11"/>
-            <!--设计面板-->
-            <local:TilesGrid Margin="11,0,0,0"/>
+        <comm:GridSplitter HorizontalAlignment="Left" Grid.Column="1" VerticalAlignment="Stretch" Width="11"/>
+        <Grid Grid.Column="1" Margin="11,0,0,0">
+            <local:TilesGrid Tiles="{Binding StageData.Tiles}"
+                             SelectedTileX="{Binding StageData.SelectedTileX,Mode=TwoWay}"
+                             SelectedTileY="{Binding StageData.SelectedTileY,Mode=TwoWay}"
+                             ColumnCount="{Binding MapSettings.ColumnCount}"
+                             RowCount="{Binding MapSettings.RowCount}"
+                             DrawDotCommand="{Binding StageData.DrawDotCommand}"
+                             TileSize="{Binding StageData.TileSize}"/>
         </Grid>
     </Grid>
 </UserControl>

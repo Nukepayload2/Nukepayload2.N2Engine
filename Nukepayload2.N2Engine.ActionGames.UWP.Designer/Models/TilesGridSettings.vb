@@ -2,7 +2,7 @@
     Public Class TilesGridSettings
         Implements INotifyPropertyChanged
 
-        Dim _ColumnCount As Integer
+        Dim _ColumnCount As Integer = 16
         Public Property ColumnCount As Integer
             Get
                 Return _ColumnCount
@@ -13,7 +13,7 @@
             End Set
         End Property
 
-        Dim _RowCount As Integer
+        Dim _RowCount As Integer = 8
         Public Property RowCount As Integer
             Get
                 Return _RowCount

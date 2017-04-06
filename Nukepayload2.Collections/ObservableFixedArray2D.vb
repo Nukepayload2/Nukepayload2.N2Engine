@@ -7,7 +7,7 @@ Namespace Specialized
     Public Class ObservableFixedArray2D(Of T)
         Implements INotifyCollectionChanged2D(Of T), ICollection, IStructuralComparable, IStructuralEquatable
 
-        Dim _data As T(,)
+        Friend _data As T(,)
 
         Public ReadOnly Property Count As Integer Implements ICollection.Count
             Get
@@ -47,6 +47,9 @@ Namespace Specialized
         End Property
 
         Public Function InRange(rowIndex As Integer, colIndex As Integer) As Boolean
+            If _data Is Nothing Then
+                Return False
+            End If
             If rowIndex < 0 OrElse colIndex < 0 Then
                 Return False
             End If
@@ -70,28 +73,21 @@ Namespace Specialized
 
         Public ReadOnly Property RowCount As Integer
             Get
+                If _data Is Nothing Then
+                    Return 0
+                End If
                 Return _data.GetLength(0)
             End Get
         End Property
 
         Public ReadOnly Property ColumnCount As Integer
             Get
+                If _data Is Nothing Then
+                    Return 0
+                End If
                 Return _data.GetLength(1)
             End Get
         End Property
-
-        ''' <summary>
-        ''' 更改数组的大小, 丢弃原有数据。
-        ''' </summary>
-        Public Sub [ReDim](rowIndex As Integer, colIndex As Integer)
-            ReDim _data(rowIndex, colIndex)
-        End Sub
-        ''' <summary>
-        ''' 更改数组的大小, 然后将原有数据尽可能地复制到新的数组。
-        ''' </summary>
-        Public Sub ReDimPreserve(rowIndex As Integer, colIndex As Integer)
-            ReDim Preserve _data(rowIndex, colIndex)
-        End Sub
 
         Public Sub CopyTo(array As Array, index As Integer) Implements ICollection.CopyTo
             DirectCast(_data, ICollection).CopyTo(array, index)
@@ -116,4 +112,28 @@ Namespace Specialized
         Public Event CollectionChanged2D As EventHandler(Of NotifyCollectionChanged2DEventArgs(Of T)) Implements INotifyCollectionChanged2D(Of T).CollectionChanged2D
     End Class
 
+    Public Module ObservableFixedArray2DExtensions
+
+        ''' <summary>
+        ''' 更改数组的大小, 丢弃原有数据。
+        ''' </summary>
+        <Extension>
+        Public Sub [ReDim](Of T)(ByRef arr As ObservableFixedArray2D(Of T), rowIndex As Integer, colIndex As Integer)
+            If arr Is Nothing Then
+                arr = New ObservableFixedArray2D(Of T)
+            End If
+            ReDim arr._data(rowIndex, colIndex)
+        End Sub
+        ''' <summary>
+        ''' 更改数组的大小, 然后将原有数据尽可能地复制到新的数组。
+        ''' </summary>
+        <Extension>
+        Public Sub ReDimPreserve(Of T)(ByRef arr As ObservableFixedArray2D(Of T), rowIndex As Integer, colIndex As Integer)
+            If arr Is Nothing Then
+                arr = New ObservableFixedArray2D(Of T)
+            End If
+            ReDim Preserve arr._data(rowIndex, colIndex)
+        End Sub
+
+    End Module
 End Namespace

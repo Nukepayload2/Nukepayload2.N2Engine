@@ -27,7 +27,7 @@ Namespace Attributes
         ''' </summary>
         Public Property SupportedCodeType As CodeTypes
         ''' <summary>
-        ''' 控件关联的菜单的模板。
+        ''' 控件关联的菜单的模板（如果使用模板化方式加载）。
         ''' </summary>
         Public Property MenuDataTemplateNames As String()
         ''' <summary>

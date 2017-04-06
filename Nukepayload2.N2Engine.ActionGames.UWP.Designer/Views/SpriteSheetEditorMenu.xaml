@@ -5,12 +5,17 @@
     xmlns:local="using:Nukepayload2.N2Engine.ActionGames.UWP.Designer"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:n2="using:Nukepayload2.UI.UWP"
+    xmlns:vm="using:Nukepayload2.N2Engine.ActionGames.UWP.Designer.ViewModels"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     mc:Ignorable="d"
     d:DesignHeight="140"
     d:DesignWidth="700">
+    <UserControl.Resources>
+        <vm:SpriteSheetsViewModel x:Key="SpriteSheetsViewModel"/>
+        <n2:EnumItemsSourceConverter x:Key="EnumSrcConverter"/>
+    </UserControl.Resources>
     <ScrollViewer Padding="12,0" Background="{ThemeResource AppBarBackgroundThemeBrush}" HorizontalScrollMode="Enabled" VerticalScrollBarVisibility="Disabled">
-        <StackPanel Padding="0,0,0,24" Orientation="Horizontal">
+        <StackPanel DataContext="{StaticResource SpriteSheetsViewModel}" Padding="0,0,0,24" Orientation="Horizontal">
             <n2:GroupBox Footer="物理属性">
                 <Grid>
                     <Grid.RowDefinitions>
@@ -18,7 +23,7 @@
                         <RowDefinition/>
                     </Grid.RowDefinitions>
                     <TextBlock HorizontalAlignment="Center">重力方向</TextBlock>
-                    <n2:Vector2Editor Grid.Row="1" Margin="8,0"/>
+                    <n2:Vector2Editor Value="{Binding Gravity,Mode=TwoWay}" Grid.Row="1" Margin="8,0"/>
                 </Grid>
             </n2:GroupBox>
             <n2:GroupBox Footer="绘图">
@@ -33,13 +38,17 @@
                         <ColumnDefinition Width="Auto"/>
                     </Grid.ColumnDefinitions>
                     <TextBlock HorizontalAlignment="Center">工具</TextBlock>
-                    <GridView MinWidth="100" Grid.Row="1" Margin="8,0">
-
+                    <GridView ItemsSource="{Binding Tools,Converter={StaticResource EnumSrcConverter}}"
+                              SelectedValue="{Binding Tools,Mode=TwoWay}"
+                              MinWidth="100" Grid.Row="1" Margin="8,0">
                     </GridView>
                     <TextBlock HorizontalAlignment="Center" Grid.Column="1">图块尺寸</TextBlock>
-                    <n2:Vector2Editor Margin="8,0" Grid.Row="1" Grid.Column="1"/>
+                    <n2:Vector2Editor Value="{Binding TileSize,Mode=TwoWay}" Margin="8,0" Grid.Row="1" Grid.Column="1"/>
                     <TextBlock Margin="8,0" HorizontalAlignment="Center" Grid.Column="2">碰撞器类型</TextBlock>
-                    <ComboBox Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="64"/>
+                    <ComboBox SelectedValue="{Binding DefaultCollider,Mode=TwoWay}"
+                              ItemsSource="{Binding DefaultCollider,Converter={StaticResource EnumSrcConverter}}"
+                              Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
+                              VerticalAlignment="Center" Height="64"/>
                 </Grid>
             </n2:GroupBox>
         </StackPanel>

@@ -1,4 +1,5 @@
 ﻿Imports Microsoft.Graphics.Canvas
+Imports Nukepayload2.N2Engine.ActionGames.UWP.Designer.Models
 Imports Windows.Storage
 
 Namespace Utilities
@@ -10,7 +11,7 @@ Namespace Utilities
         ''' <param name="imageFile">源文件</param>
         ''' <param name="tileWidth">图块宽度</param>
         ''' <param name="tileHeight">图块高度</param>
-        Public Async Function SplitAsync(imageFile As StorageFile, tileWidth As Integer, tileHeight As Integer) As Task(Of ImageSource(,))
+        Public Async Function SplitAsync(imageFile As StorageFile, tileWidth As Integer, tileHeight As Integer) As Task(Of EditableTile(,))
             If imageFile Is Nothing Then
                 Throw New ArgumentNullException(NameOf(imageFile))
             End If
@@ -25,7 +26,7 @@ Namespace Utilities
                 Using source = Await CanvasBitmap.LoadAsync(device, strm)
                     Dim rowCount = source.SizeInPixels.Height \ tileHeight
                     Dim colCount = source.SizeInPixels.Width \ tileWidth
-                    Dim subImages(rowCount - 1, colCount - 1) As WriteableBitmap
+                    Dim subImages(rowCount - 1, colCount - 1) As EditableTile
                     Dim logicalDpi = DisplayInformation.GetForCurrentView().LogicalDpi
                     For i = 0 To rowCount - 1
                         For j = 0 To colCount - 1
@@ -42,7 +43,9 @@ Namespace Utilities
                                     Await ms.WriteAsync(pixels, 0, pixels.Length)
                                 End Using
                             End Using
-                            subImages(i, j) = bmp
+                            subImages(i, j) = New EditableTile With {
+                                .Sprite = bmp, .SpriteIndex = (i, j)
+                            }
                         Next
                     Next
                     Return subImages

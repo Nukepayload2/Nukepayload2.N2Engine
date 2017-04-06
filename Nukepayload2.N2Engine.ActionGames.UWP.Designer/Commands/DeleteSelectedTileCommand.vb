@@ -9,8 +9,8 @@ Namespace Commands
 
         Public Sub ExecuteAsync(parameter As Object) Implements ICommand.Execute
             Dim model = StageViewModel.Current.StageData
-            If model.SelectedTile IsNot Nothing Then
-                model.Tiles.Remove(model.SelectedTile)
+            If model.Tiles.InRange(model.SelectedTileX, model.SelectedTileY) Then
+                model.Tiles(model.SelectedTileX, model.SelectedTileY) = Nothing
             End If
         End Sub
 

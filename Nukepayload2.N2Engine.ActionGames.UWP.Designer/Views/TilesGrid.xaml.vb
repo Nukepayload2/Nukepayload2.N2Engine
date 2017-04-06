@@ -7,6 +7,19 @@ Imports Nukepayload2.N2Engine.ActionGames.UWP.Designer.Models
 Public NotInheritable Class TilesGrid
     Inherits UserControl
 
+    Public Property DrawDotCommand As ICommand
+        Get
+            Return GetValue(DrawDotCommandProperty)
+        End Get
+        Set
+            SetValue(DrawDotCommandProperty, Value)
+        End Set
+    End Property
+    Public Shared ReadOnly DrawDotCommandProperty As DependencyProperty =
+                           DependencyProperty.Register(NameOf(DrawDotCommand),
+                           GetType(ICommand), GetType(TilesGrid),
+                           New PropertyMetadata(Nothing))
+
     Public Property RowCount As Integer
         Get
             Return GetValue(RowCountProperty)
@@ -22,7 +35,7 @@ Public NotInheritable Class TilesGrid
                                                 Sub(s, e)
                                                     Dim this = DirectCast(s, TilesGrid)
                                                     If Not e.OldValue.Equals(e.NewValue) Then
-                                                        this.ReDimPreserveTiles()
+                                                        this.ReDimPreserveTiles(e.NewValue, this.ColumnCount)
                                                     End If
                                                 End Sub))
 
@@ -41,7 +54,7 @@ Public NotInheritable Class TilesGrid
                                                 Sub(s, e)
                                                     Dim this = DirectCast(s, TilesGrid)
                                                     If Not e.OldValue.Equals(e.NewValue) Then
-                                                        this.ReDimPreserveTiles()
+                                                        this.ReDimPreserveTiles(this.RowCount, e.NewValue)
                                                     End If
                                                 End Sub))
 
@@ -104,9 +117,9 @@ Public NotInheritable Class TilesGrid
         CreateTiles()
     End Sub
 
-    Private Sub ReDimPreserveTiles()
-        If RowCount > 0 AndAlso ColumnCount > 0 Then
-            Tiles.ReDimPreserve(RowCount - 1, ColumnCount - 1)
+    Private Sub ReDimPreserveTiles(rowCount As Integer, columnCount As Integer)
+        If rowCount > 0 AndAlso columnCount > 0 Then
+            Tiles.ReDimPreserve(rowCount - 1, columnCount - 1)
         Else
             Tiles = Nothing
         End If
@@ -125,6 +138,11 @@ Public NotInheritable Class TilesGrid
     WithEvents TilesData As ObservableFixedArray2D(Of EditableTile)
 
     Private Sub UpdateTilesView(newValue As ObservableFixedArray2D(Of EditableTile))
+        If newValue Is Nothing Then
+            Return
+        End If
+        RowCount = newValue.RowCount
+        ColumnCount = newValue.ColumnCount
         Dim curRowDef = GrdTiles.RowDefinitions
         Dim curColDef = GrdTiles.ColumnDefinitions
         Dim destRowCount = newValue.RowCount
@@ -179,7 +197,11 @@ Public NotInheritable Class TilesGrid
             For j = 0 To destColCount - 1
                 Dim ctl = _innerControls(i, j)
                 If ctl Is Nothing Then
-                    ctl = DirectCast(template.LoadContent, FrameworkElement)
+                    ctl = DirectCast(template.LoadContent, Button)
+                    ctl.SetBinding(ButtonBase.CommandProperty, New Binding With {
+                                       .Source = Me,
+                                       .Path = New PropertyPath(NameOf(DrawDotCommand))
+                                   })
                     _innerControls(i, j) = ctl
                     Grid.SetRow(ctl, i)
                     Grid.SetColumn(ctl, j)

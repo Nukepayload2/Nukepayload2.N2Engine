@@ -13,9 +13,11 @@ Namespace Commands
             Dim spriteProp = SpriteSheetsViewModel.Current
             Dim stageData = vm.StageData
             If stageData.Tiles.InRange(stageData.SelectedTileX, stageData.SelectedTileY) Then
+                Dim tile = vm.SelectedSpriteSheet.SelectedTileSprite
                 Dim newTile As New Models.EditableTile With {
-                    .Sprite = vm.SelectedSpriteSheet.SelectedTileSprite,
-                    .Collider = spriteProp.DefaultCollider
+                    .Sprite = tile.Sprite,
+                    .Collider = spriteProp.DefaultCollider, .SpriteIndex = tile.SpriteIndex,
+                    .OriginalImportedSpriteIndex = tile.OriginalImportedSpriteIndex
                 }
                 stageData.Tiles(stageData.SelectedTileX, stageData.SelectedTileY) = newTile
             End If

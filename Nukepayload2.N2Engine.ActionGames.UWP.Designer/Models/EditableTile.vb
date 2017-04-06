@@ -61,6 +61,10 @@
             End Set
         End Property
 
+        Public Property OriginalImportedSpriteIndex As Integer
+
+        Public Property SpriteIndex As (Row As Integer, Column As Integer)
+
         Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
     End Class
 End Namespace
