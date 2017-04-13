@@ -119,7 +119,9 @@ Public NotInheritable Class TilesGrid
 
     Private Sub ReDimPreserveTiles(rowCount As Integer, columnCount As Integer)
         If rowCount > 0 AndAlso columnCount > 0 Then
-            Tiles.ReDimPreserve(rowCount - 1, columnCount - 1)
+            Dim til = Tiles
+            til.ReDimPreserve(rowCount - 1, columnCount - 1)
+            Tiles = til
         Else
             Tiles = Nothing
         End If
@@ -127,7 +129,9 @@ Public NotInheritable Class TilesGrid
 
     Private Sub CreateTiles()
         If RowCount > 0 AndAlso ColumnCount > 0 Then
-            Tiles.ReDim(RowCount - 1, ColumnCount - 1)
+            Dim til = Tiles
+            til.ReDim(RowCount - 1, ColumnCount - 1)
+            Tiles = til
         Else
             Tiles = Nothing
         End If

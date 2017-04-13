@@ -6,6 +6,10 @@ using Microsoft.Xna.Framework.Input.Touch;
 using Nukepayload2.N2Engine.IO.FileSystem;
 using Nukepayload2.N2Engine.Resources;
 using Android.Content.Res;
+using Android.Util;
+using System.Numerics;
+using Nukepayload2.N2Engine.Foundation;
+using Nukepayload2.N2Engine.Information;
 
 namespace N2Demo.Android
 {
@@ -28,6 +32,14 @@ namespace N2Demo.Android
 
             // 注册 N2 引擎的 Mono 实现
             MonoImplRegistration.Register(typeof(XamarinApiContract).Assembly);
+
+            var dm = new DisplayMetrics();
+            WindowManager.DefaultDisplay.GetMetrics(dm);
+            var size = new SizeInInteger(dm.WidthPixels, dm.HeightPixels);
+            BackBufferInformation.ScreenSize = size;
+            BackBufferInformation.ViewPortSize = size;
+            BackBufferInformation.Dpi = (float)dm.DensityDpi;
+
             ResourceLoader.AddAndroidRawResourceMapping("theme1.ogg", Resource.Raw.Theme1);
             ResourceLoader.AddAndroidRawResourceMapping("explosion4.ogg", Resource.Raw.Explosion4);
 

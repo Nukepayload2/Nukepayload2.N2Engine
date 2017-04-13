@@ -7,11 +7,33 @@ Namespace Utilities
     Public Class ThumbnailGenerator
         Public Property ThumbnailSize As Integer
         Sub New()
-            MyClass.New(300)
+            MyClass.New(100)
         End Sub
         Sub New(thumbnailSize As Integer)
             Me.ThumbnailSize = thumbnailSize
         End Sub
+        Public Async Function DrawOriginalImageAsync(imageFile As StorageFile) As Task(Of WriteableBitmap)
+            Dim device = CanvasDevice.GetSharedDevice
+            Dim originalWritableBmp As WriteableBitmap
+            Using originalRt = New CanvasRenderTarget(device, ThumbnailSize, ThumbnailSize, DisplayInformation.GetForCurrentView().LogicalDpi)
+                Using strm = Await imageFile.OpenReadAsync
+                    Using original = Await CanvasBitmap.LoadAsync(device, strm)
+                        Using ds = originalRt.CreateDrawingSession
+                            Dim pxSize = original.SizeInPixels
+                            originalWritableBmp = New WriteableBitmap(pxSize.Width, pxSize.Height)
+                            ds.Clear(Colors.Transparent)
+                            ds.DrawImage(original)
+                        End Using
+                        Using ms = originalWritableBmp.PixelBuffer.AsStream
+                            ms.Position = 0
+                            Dim pixels = originalRt.GetPixelBytes
+                            Await ms.WriteAsync(pixels, 0, pixels.Length)
+                        End Using
+                    End Using
+                End Using
+            End Using
+            Return originalWritableBmp
+        End Function
         Public Async Function GenerateThumbnailAsync(imageFile As StorageFile) As Task(Of WriteableBitmap)
             Dim device = CanvasDevice.GetSharedDevice
             Dim thumbnail As New WriteableBitmap(ThumbnailSize, ThumbnailSize)

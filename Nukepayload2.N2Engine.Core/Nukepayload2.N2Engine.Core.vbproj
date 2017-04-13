@@ -281,7 +281,7 @@
   <ItemGroup>
     <None Include="AssemblyDependency.dgml" />
     <None Include="Docs\游戏存档的结构.md" />
-    <None Include="packages.config" />
+    <None Include="project.json" />
     <None Include="编译常量说明.md" />
   </ItemGroup>
   <ItemGroup>
@@ -305,17 +305,6 @@
       <Project>{4edb2801-2f43-4377-9ca8-215e640c5d86}</Project>
       <Name>Nukepayload2.UI.SpriteFonts</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.1\lib\portable-net45+win8+wpa81+wp8\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Numerics.Vectors, Version=4.1.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Numerics.Vectors.4.3.0\lib\portable-net45+win8+wp8+wpa81\System.Numerics.Vectors.dll</HintPath>
-    </Reference>
-    <Reference Include="System.ValueTuple, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.ValueTuple.4.3.0\lib\netstandard1.0\System.ValueTuple.dll</HintPath>
-    </Reference>
   </ItemGroup>
   <ItemGroup>
     <None Include="Nukepayload2.N2Engine.License.txt">

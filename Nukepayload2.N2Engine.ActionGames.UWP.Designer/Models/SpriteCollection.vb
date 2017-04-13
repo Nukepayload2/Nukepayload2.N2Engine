@@ -12,7 +12,7 @@ Namespace Models
         End Function
 
         Public Async Function LoadAsync(files As IEnumerable(Of StorageFile)) As Task
-            Dim thumbnailGenerator As New ThumbnailGenerator(300)
+            Dim thumbnailGenerator As New ThumbnailGenerator()
             For Each f In files
                 Dim thumbnail = Await thumbnailGenerator.GenerateThumbnailAsync(f)
                 Add(New SpritePreview(thumbnail, f))

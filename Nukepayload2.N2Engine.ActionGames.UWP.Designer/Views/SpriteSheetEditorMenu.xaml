@@ -26,7 +26,7 @@
                     <n2:Vector2Editor Value="{Binding Gravity,Mode=TwoWay}" Grid.Row="1" Margin="8,0"/>
                 </Grid>
             </n2:GroupBox>
-            <n2:GroupBox Footer="绘图">
+            <n2:GroupBox Footer="绘图" VerticalAlignment="Top">
                 <Grid>
                     <Grid.RowDefinitions>
                         <RowDefinition Height="Auto"/>
@@ -43,12 +43,12 @@
                               MinWidth="100" Grid.Row="1" Margin="8,0">
                     </GridView>
                     <TextBlock HorizontalAlignment="Center" Grid.Column="1">图块尺寸</TextBlock>
-                    <n2:Vector2Editor Value="{Binding TileSize,Mode=TwoWay}" Margin="8,0" Grid.Row="1" Grid.Column="1"/>
+                    <n2:Vector2Editor Value="{Binding TileSize,Mode=TwoWay}" Margin="8,0" VerticalAlignment="Center" Grid.Row="1" Grid.Column="1"/>
                     <TextBlock Margin="8,0" HorizontalAlignment="Center" Grid.Column="2">碰撞器类型</TextBlock>
                     <ComboBox SelectedValue="{Binding DefaultCollider,Mode=TwoWay}"
                               ItemsSource="{Binding DefaultCollider,Converter={StaticResource EnumSrcConverter}}"
-                              Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center"
-                              VerticalAlignment="Center" Height="64"/>
+                              Grid.Row="1" Grid.Column="2" HorizontalAlignment="Center" VerticalAlignment="Center"
+                              Height="64"/>
                 </Grid>
             </n2:GroupBox>
         </StackPanel>

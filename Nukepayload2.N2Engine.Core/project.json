@@ -1,0 +1,11 @@
+{
+  "supports": {},
+  "dependencies": {
+    "Newtonsoft.Json": "10.0.2",
+    "System.Numerics.Vectors": "4.3.0",
+    "System.ValueTuple": "4.3.0"
+  },
+  "frameworks": {
+    ".NETPortable,Version=v4.5,Profile=Profile111": {}
+  }
+}

@@ -19,7 +19,7 @@
         <vm:StageViewModel x:Key="StageViewModel"/>
         <n2:EnumItemsSourceConverter x:Key="EnumSrcConverter"/>
     </UserControl.Resources>
-    <Grid Background="{ThemeResource AppBarBackgroundThemeBrush}" DataContext="{StaticResource StageViewModel}">
+    <Grid DataContext="{StaticResource StageViewModel}">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="240"/>
             <ColumnDefinition/>
