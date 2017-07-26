@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>c459addc-ce9b-45f2-9889-720b221c6a33</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Nukepayload2.N2Engine.PortableApiContract</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Color.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ColorEx.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Colors.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)IGameCommand.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)N2PortableApiContract.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyBinder.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PropertyDataChangedEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)RectangleBounds.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)SimpleCommand.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)SingleInstance.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)SizeInInteger.vb" />
+  </ItemGroup>
+</Project>

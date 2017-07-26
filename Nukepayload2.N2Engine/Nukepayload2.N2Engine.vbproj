@@ -83,24 +83,14 @@
     <Import Include="Windows.UI.Xaml.Media.Imaging" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Color.vb" />
-    <Compile Include="ColorEx.vb" />
-    <Compile Include="Colors.vb" />
-    <Compile Include="IGameCommand.vb" />
     <Compile Include="My Project\AssemblyInfo.vb" />
-    <Compile Include="N2PortableApiContract.vb" />
-    <Compile Include="PropertyBinder.vb" />
-    <Compile Include="PropertyDataChangedEventArgs.vb" />
-    <Compile Include="SimpleCommand.vb" />
-    <Compile Include="SingleInstance.vb" />
-    <Compile Include="RectangleBounds.vb" />
-    <Compile Include="SizeInInteger.vb" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Nukepayload2.N2Engine.License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <Import Project="..\Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
