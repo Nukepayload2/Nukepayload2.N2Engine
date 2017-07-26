@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>9c7ae078-c5e2-46c4-ab46-327f97c0b9aa</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Nukepayload2.N2Engine.DesignerApiContract</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IN2EngineBindingExpression.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ISimpleFactory.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)N2DesignerApiContract.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)N2EngineBindingExpression.vb" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>21bfd18f-446d-42b8-b913-22a5d551089d</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Nukepayload2.N2Engine.InputApiContract</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ButtonState.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Key.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)KeyboardStateManager.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)MouseKeys.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)N2InputApiContract.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PhysicalKeyStatus.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PointerDeviceType.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)VirtualKeyModifiers.vb" />
+  </ItemGroup>
+</Project>

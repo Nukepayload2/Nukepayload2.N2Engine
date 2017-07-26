@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>a3808b9d-e7ae-4717-b03f-54dba317f0f8</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Nukepayload2.N2Engine.StorageApiContract</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)IDirectory.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)IFile.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)N2StorageApiContract.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlatformSaveDirectoryBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlatformSaveManagerBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PartialSaveFileLoader.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)SaveFile.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)SaveFileStatus.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)SaveManager.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)SaveLocations.vb" />
+  </ItemGroup>
+</Project>

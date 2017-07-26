@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>228f0d82-fed6-4e89-8097-9d67abf27f56</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Nukepayload2.N2Engine.PhysicsIntegrationApiContract</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)Capsule.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ChainShape.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Circle.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ColliderBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)CompositeBreakableBody.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)CompoundPolygon.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)CustomCapsule.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Edge.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Ellipse.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Gear.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)HollowCollider.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ICollider.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)IJointedCollider.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)LineArc.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)LoopShape.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)N2PhysicsIntegrationApiContract.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Point.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Polygon.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PrimitiveBreakableBody.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PrimitiveCollider.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)RectangleCollider.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)RoundedRectangle.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)SolidArc.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)SolidCollider.vb" />
+  </ItemGroup>
+</Project>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>52d2d88f-7a7b-4466-817a-8be3badba42c</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Nukepayload2.N2Engine.ModelsApiContract</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)ICustomSpriteSheetItem.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ITile.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)N2ModelsApiContract.vb" />
+  </ItemGroup>
+</Project>

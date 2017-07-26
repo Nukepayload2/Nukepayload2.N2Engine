@@ -1,0 +1,91 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>8eae5b44-23ea-44d7-a0c1-cf76c6679038</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Nukepayload2.N2Engine.UIApiContract</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)CompositeTransform.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\GameEffect.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\GaussianBlurEffect.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Effects\IGameEffectSource.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\ClickModes.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\GameButton.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\GameButtonContent.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\GameButtonContentTemplate.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\GameContentControl.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\GameControl.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\GameTemplatedContent.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\GameTextBlock.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\IControlTemplate.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\IGameContentControl.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\IVirtualJoystickContent.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\VirtualJoystick.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\VirtualJoystickContent.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\VirtualJoystickContentTemplate.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\VirtualJoystickDragEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\VirtualJoystickState.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\DrawingVisual.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\EntityLayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameCanvas.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameCompositeModes.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameContentEntity.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameElement.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameEntity.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameEventRouteDirections.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameEventRouteModes.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameKeyboardRoutedEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameLayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameMouseRoutedEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameRoutedEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameScene.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameTouchRoutedEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameVirtualizingScrollViewer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameVisual.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameVisualContainer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\GeometryElement.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\PanelLayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\ParticleSystemViews\ParticleSystemView.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\ParticleSystemViews\RailgunParticleSystemView.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\ParticleSystemViews\SmokeParticleSystemView.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\ParticleSystemViews\SparkParticleSystemView.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\ParticleSystemViews\SwarmParticleSystemView.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\SpriteElement.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\SpriteEntityGrid.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\TappedEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Elements\UpdatingEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameCamera.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameClip.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameInsetClip.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObject.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjectEventHandler.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjectState.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameObjectStateTransition.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameVisualStateManager.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameVisualTreeHelper.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)IEventMediator.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)IGameAction.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)IKeyboardEventMediator.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)IMouseEventMediator.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ITouchStatusProvider.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Matrix3x2Transform.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PlaneTransform.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)RendererRegistrationRequestedEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\RendererBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\FontStretch.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\FontStyle.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\FontWeight.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\GameFont.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\GameFontFactory.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\IFontLoader.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)TimeAction.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Triggers\GameDataTrigger.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Triggers\GameEventTrigger.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Triggers\IGameTrigger.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Triggers\TimerTrigger.vb" />
+  </ItemGroup>
+</Project>

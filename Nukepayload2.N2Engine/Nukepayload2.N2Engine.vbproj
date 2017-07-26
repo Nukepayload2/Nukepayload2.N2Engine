@@ -20,7 +20,7 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <DefineConstants>THROW_IF_DATA_BINDING_FAILED</DefineConstants>
+    <DefineConstants>THROW_IF_DATA_BINDING_FAILED,DO_NOT_SERIALIZE_PARTICLES</DefineConstants>
     <OutputPath>bin\Debug</OutputPath>
     <DocumentationFile>Nukepayload2.N2Engine.xml</DocumentationFile>
     <NoWarn>40057,42016,41999,42020,42021,42022</NoWarn>
@@ -30,7 +30,7 @@
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <DefineConstants>THROW_IF_DATA_BINDING_FAILED</DefineConstants>
+    <DefineConstants>THROW_IF_DATA_BINDING_FAILED,DO_NOT_SERIALIZE_PARTICLES</DefineConstants>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
     <DocumentationFile>Nukepayload2.N2Engine.xml</DocumentationFile>
@@ -51,8 +51,10 @@
   </PropertyGroup>
   <ItemGroup>
     <!-- A reference to the entire .NET Framework and Windows SDK is automatically included -->
+    <None Include="AssemblyDependency.dgml" />
     <None Include="project.json" />
     <None Include="ReadMe.md" />
+    <None Include="游戏存档的结构.md" />
     <None Include="编译常量说明.md" />
   </ItemGroup>
   <ItemGroup>
@@ -91,6 +93,18 @@
     </None>
   </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.GenericAIApiContract\Nukepayload2.N2Engine.GenericAIApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.AnimationsApiContract\Nukepayload2.N2Engine.AnimationsApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.BehaviorsApiContract\Nukepayload2.N2Engine.BehaviorsApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.DesignerApiContract\Nukepayload2.N2Engine.DesignerApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.InputApiContract\Nukepayload2.N2Engine.InputApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.MediaApiContract\Nukepayload2.N2Engine.MediaApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.ModelsApiContract\Nukepayload2.N2Engine.ModelsApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.ParticleSystemsApiContract\Nukepayload2.N2Engine.ParticleSystemsApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.StorageApiContract\Nukepayload2.N2Engine.StorageApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.UIApiContract\Nukepayload2.N2Engine.UIApiContract.projitems" Label="Shared" />
+  <Import Project="..\Nukepayload2.N2Engine.UtilitiesApiContract\Nukepayload2.N2Engine.UtilitiesApiContract.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

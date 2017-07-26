@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <MSBuildAllProjects>$(MSBuildAllProjects);$(MSBuildThisFileFullPath)</MSBuildAllProjects>
+    <HasSharedItems>true</HasSharedItems>
+    <SharedGUID>722c701f-ae15-465e-b5ef-866150363cd6</SharedGUID>
+  </PropertyGroup>
+  <PropertyGroup Label="Configuration">
+    <Import_RootNamespace>Nukepayload2.N2Engine.MediaApiContract</Import_RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AudioPlayerBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)IMusicPlayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ISoundVoicePlayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)MediaPlayerExtensions.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)MediaPlayerFactory.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)N2MediaApiContract.vb" />
+  </ItemGroup>
+</Project>

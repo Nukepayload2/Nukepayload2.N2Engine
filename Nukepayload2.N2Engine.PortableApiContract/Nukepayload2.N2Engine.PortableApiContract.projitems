@@ -9,16 +9,45 @@
     <Import_RootNamespace>Nukepayload2.N2Engine.PortableApiContract</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)Color.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)ColorEx.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Colors.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)IGameCommand.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\Color.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\ColorEx.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\Colors.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensibility\ExtensionPreviewLevels.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensibility\ExtensionStages.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensibility\IExtendable.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Extensibility\IGameExtensionInfo.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\IGameCommand.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Information\BackBufferInformation.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Information\GameEnvironment.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Math\Combination.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Math\FastFactorial.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Math\RandomGenerator.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Math\Vector2Extensions.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)N2PortableApiContract.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)PropertyBinder.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)PropertyDataChangedEventArgs.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)RectangleBounds.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)SimpleCommand.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)SingleInstance.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)SizeInInteger.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\PropertyBinder.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\PropertyDataChangedEventArgs.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\RectangleBounds.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\SimpleCommand.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\SingleInstance.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Foundation\SizeInInteger.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Platform\InternalsVisibilitySettings.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Platform\PlatformActivator.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Platform\PlatformImplAttribute.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Platform\PlatformImplRegistration.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Platform\Platforms.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Platform\RegistrationIgnoreAttribute.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Platform\Renderers.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\IGameContentControlRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Renderers\IGameTemplatedContentRenderer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\BitmapResource.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\FontLoaderFactory.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\GameResourceBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\GameResourceModelBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceId.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceLoader.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Threading\GameDispatcher.vb" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="$(MSBuildThisFileDirectory)Foundation\" />
   </ItemGroup>
 </Project>
