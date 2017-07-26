@@ -194,10 +194,6 @@
     <Import Include="Windows.UI.Xaml.Navigation" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
-      <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
-      <Name>Nukepayload2.N2Engine.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
       <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
       <Name>Nukepayload2.N2Engine</Name>
@@ -213,19 +209,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>5.3.2</Version>
+      <Version>5.3.3</Version>
     </PackageReference>
     <PackageReference Include="Newtonsoft.Json">
-      <Version>10.0.2</Version>
+      <Version>10.0.3</Version>
     </PackageReference>
     <PackageReference Include="System.Numerics.Vectors">
       <Version>4.3.0</Version>
     </PackageReference>
     <PackageReference Include="System.ValueTuple">
-      <Version>4.3.0</Version>
+      <Version>4.3.1</Version>
     </PackageReference>
     <PackageReference Include="Win2D.uwp">
-      <Version>1.20.0</Version>
+      <Version>1.21.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems" Label="Shared" />

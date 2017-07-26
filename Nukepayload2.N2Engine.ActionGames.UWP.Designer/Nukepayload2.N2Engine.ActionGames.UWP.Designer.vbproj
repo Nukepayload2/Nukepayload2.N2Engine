@@ -211,10 +211,6 @@
       <Project>{8d7a38e5-c530-4650-b3ad-cb020b624360}</Project>
       <Name>Nukepayload2.N2Engine.ActionGames.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
-      <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
-      <Name>Nukepayload2.N2Engine.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine.UWP.Designer\Nukepayload2.N2Engine.UWP.Designer.vbproj">
       <Project>{e1bcb30b-991c-4368-89fb-71c407d1010f}</Project>
       <Name>Nukepayload2.N2Engine.UWP.Designer</Name>
@@ -253,13 +249,13 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>5.3.2</Version>
+      <Version>5.3.3</Version>
     </PackageReference>
     <PackageReference Include="Microsoft.Toolkit.Uwp.UI.Controls">
-      <Version>1.4.1</Version>
+      <Version>1.5.1</Version>
     </PackageReference>
     <PackageReference Include="System.ValueTuple">
-      <Version>4.3.0</Version>
+      <Version>4.3.1</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

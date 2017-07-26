@@ -171,10 +171,6 @@
       <Project>{df4dd7ab-2687-48d3-9c7b-b1d7f117dbd1}</Project>
       <Name>N2Demo.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
-      <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
-      <Name>Nukepayload2.N2Engine.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine.MonoOnUWP\Nukepayload2.N2Engine.MonoOnUWP.vbproj">
       <Project>{f828de3a-fd32-4c19-a6ee-9d0dd740f003}</Project>
       <Name>Nukepayload2.N2Engine.MonoOnUWP</Name>
@@ -194,19 +190,19 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>5.3.2</Version>
+      <Version>5.3.3</Version>
     </PackageReference>
     <PackageReference Include="MonoGame.Framework.WindowsUniversal">
       <Version>3.6.0.1625</Version>
     </PackageReference>
     <PackageReference Include="SharpDX">
-      <Version>3.1.1</Version>
+      <Version>4.0.1</Version>
     </PackageReference>
     <PackageReference Include="SharpDX.Direct2D1">
-      <Version>3.1.1</Version>
+      <Version>4.0.1</Version>
     </PackageReference>
     <PackageReference Include="SharpDX.Direct3D11">
-      <Version>3.1.1</Version>
+      <Version>4.0.1</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">

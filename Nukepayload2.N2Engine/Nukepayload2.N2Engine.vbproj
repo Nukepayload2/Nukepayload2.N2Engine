@@ -92,6 +92,20 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\FarseerPhysics.Portable\FarseerPhysics.Portable.csproj">
+      <Project>{816d2b8d-cc51-450b-a853-a6e22a9a27fa}</Project>
+      <Name>FarseerPhysics.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.Collections\Nukepayload2.Collections.vbproj">
+      <Project>{07d4710f-082e-45b1-b967-7e795f1e117a}</Project>
+      <Name>Nukepayload2.Collections</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.UI.SpriteFonts\Nukepayload2.UI.SpriteFonts.vbproj">
+      <Project>{4edb2801-2f43-4377-9ca8-215e640c5d86}</Project>
+      <Name>Nukepayload2.UI.SpriteFonts</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.GenericAIApiContract\Nukepayload2.N2Engine.GenericAIApiContract.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.AnimationsApiContract\Nukepayload2.N2Engine.AnimationsApiContract.projitems" Label="Shared" />

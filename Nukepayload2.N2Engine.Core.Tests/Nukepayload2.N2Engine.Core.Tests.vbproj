@@ -49,7 +49,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.10.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
@@ -129,10 +129,6 @@
     <ProjectReference Include="..\Nukepayload2.Collections\Nukepayload2.Collections.vbproj">
       <Project>{07d4710f-082e-45b1-b967-7e795f1e117a}</Project>
       <Name>Nukepayload2.Collections</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
-      <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
-      <Name>Nukepayload2.N2Engine.Core</Name>
     </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
       <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>

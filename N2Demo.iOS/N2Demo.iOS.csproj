@@ -131,10 +131,6 @@
       <Project>{DF4DD7AB-2687-48D3-9C7B-B1D7F117DBD1}</Project>
       <Name>N2Demo.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
-      <Project>{A30BD00A-8BD6-4BD7-8C88-74992C489C25}</Project>
-      <Name>Nukepayload2.N2Engine.Core</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.N2Engine.iOS.IO.FileSystem\Nukepayload2.N2Engine.iOS.IO.FileSystem.csproj">
       <Project>{30213fc0-5b24-4ab2-8642-ccab631c5795}</Project>
       <Name>Nukepayload2.N2Engine.iOS.IO.FileSystem</Name>

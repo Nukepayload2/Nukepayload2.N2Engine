@@ -43,15 +43,15 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Nukepayload2.N2Engine.Core\Nukepayload2.N2Engine.Core.vbproj">
-      <Project>{a30bd00a-8bd6-4bd7-8c88-74992c489c25}</Project>
-      <Name>Nukepayload2.N2Engine.Core</Name>
-    </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
     <None Include="Nukepayload2.N2Engine.License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
+      <Project>{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}</Project>
+      <Name>Nukepayload2.N2Engine</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.IO.FileSystem\Nukepayload2.N2Engine.IO.FileSystem.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
