@@ -1,14 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <MinimumVisualStudioVersion>14.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{8BDF4274-AB1A-47B8-94D0-E52C917EC1D2}</ProjectGuid>
+    <ProjectGuid>{873002F7-231E-455B-BDAC-F5A0EBF39D60}</ProjectGuid>
     <OutputType>Library</OutputType>
     <RootNamespace>Nukepayload2.N2Engine</RootNamespace>
-    <AssemblyName>Nukepayload2.N2Engine</AssemblyName>
+    <AssemblyName>Nukepayload2.N2Engine.Media</AssemblyName>
     <DefaultLanguage>zh-CN</DefaultLanguage>
     <ProjectTypeGuids>{14182A97-F7F0-4C62-8B27-98AA8AE2109A};{F184B08F-C81C-45F6-A57F-5ABD9991F28F}</ProjectTypeGuids>
     <TargetFrameworkProfile>
@@ -20,9 +20,10 @@
     <DebugType>full</DebugType>
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <DefineConstants>THROW_IF_DATA_BINDING_FAILED,DO_NOT_SERIALIZE_PARTICLES</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <OutputPath>bin\Debug</OutputPath>
-    <DocumentationFile>Nukepayload2.N2Engine.xml</DocumentationFile>
+    <DocumentationFile>Nukepayload2.N2Engine.Media.xml</DocumentationFile>
     <NoWarn>40057,42016,41999,42020,42021,42022</NoWarn>
     <WarningsAsErrors>42017,42018,42019,42032,42036</WarningsAsErrors>
   </PropertyGroup>
@@ -30,10 +31,11 @@
     <DebugType>pdbonly</DebugType>
     <DefineDebug>false</DefineDebug>
     <DefineTrace>true</DefineTrace>
-    <DefineConstants>THROW_IF_DATA_BINDING_FAILED,DO_NOT_SERIALIZE_PARTICLES</DefineConstants>
+    <DefineConstants>
+    </DefineConstants>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release</OutputPath>
-    <DocumentationFile>Nukepayload2.N2Engine.xml</DocumentationFile>
+    <DocumentationFile>Nukepayload2.N2Engine.Media.xml</DocumentationFile>
     <NoWarn>40057,42016,41999,42020,42021,42022</NoWarn>
     <WarningsAsErrors>42017,42018,42019,42032,42036</WarningsAsErrors>
   </PropertyGroup>
@@ -50,12 +52,8 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <ItemGroup>
-    <!-- A reference to the entire .NET Framework and Windows SDK is automatically included -->
-    <None Include="AssemblyDependency.dgml" />
     <None Include="project.json" />
-    <None Include="ReadMe.md" />
-    <None Include="游戏存档的结构.md" />
-    <None Include="编译常量说明.md" />
+    <!-- A reference to the entire .NET Framework and Windows SDK is automatically included -->
   </ItemGroup>
   <ItemGroup>
     <Import Include="Microsoft.VisualBasic" />
@@ -88,43 +86,11 @@
     <Compile Include="My Project\AssemblyInfo.vb" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Nukepayload2.N2Engine.License.txt">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-    </None>
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\FarseerPhysics.Portable\FarseerPhysics.Portable.csproj">
-      <Project>{816d2b8d-cc51-450b-a853-a6e22a9a27fa}</Project>
-      <Name>FarseerPhysics.Portable</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nukepayload2.Collections\Nukepayload2.Collections.vbproj">
-      <Project>{07d4710f-082e-45b1-b967-7e795f1e117a}</Project>
-      <Name>Nukepayload2.Collections</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Nukepayload2.UI.SpriteFonts\Nukepayload2.UI.SpriteFonts.vbproj">
-      <Project>{4edb2801-2f43-4377-9ca8-215e640c5d86}</Project>
-      <Name>Nukepayload2.UI.SpriteFonts</Name>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.Portable\Nukepayload2.N2Engine.Portable.vbproj">
+      <Project>{6f22b5a3-fe7a-4a14-bc67-0043186b376f}</Project>
+      <Name>Nukepayload2.N2Engine.Portable</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.GenericAIApiContract\Nukepayload2.N2Engine.GenericAIApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.AnimationsApiContract\Nukepayload2.N2Engine.AnimationsApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.BehaviorsApiContract\Nukepayload2.N2Engine.BehaviorsApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.DesignerApiContract\Nukepayload2.N2Engine.DesignerApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.InputApiContract\Nukepayload2.N2Engine.InputApiContract.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.MediaApiContract\Nukepayload2.N2Engine.MediaApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.ObjectModelApiContract\Nukepayload2.N2Engine.ObjectModelApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.ParticleSystemsApiContract\Nukepayload2.N2Engine.ParticleSystemsApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.StorageApiContract\Nukepayload2.N2Engine.StorageApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.UIApiContract\Nukepayload2.N2Engine.UIApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.UtilitiesApiContract\Nukepayload2.N2Engine.UtilitiesApiContract.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>
