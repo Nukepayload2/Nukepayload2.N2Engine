@@ -186,7 +186,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.Stora
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.UI", "Nukepayload2.N2Engine.UI\Nukepayload2.N2Engine.UI.vbproj", "{84BFE4C7-D14B-457A-B7EF-14A7D6CDB012}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Internals", "Internals", "{366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InternalParts", "InternalParts", "{366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}"
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
