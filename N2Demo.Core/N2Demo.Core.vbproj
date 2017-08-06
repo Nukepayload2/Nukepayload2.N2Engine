@@ -121,6 +121,11 @@
     <Compile Include="Models\JumpStateMachine.vb" />
     <Compile Include="Models\ScrollingViewer.vb" />
     <Compile Include="Models\Tile.vb" />
+    <Compile Include="My Project\Resources.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Resources\FontManager.vb" />
     <Compile Include="Resources\ResourceRouteConfig.vb" />
     <Compile Include="Save\SampleMasterData.vb" />
@@ -142,6 +147,7 @@
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
+      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

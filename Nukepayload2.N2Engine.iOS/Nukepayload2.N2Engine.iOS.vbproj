@@ -104,7 +104,7 @@
       <Name>Nukepayload2.UI.SpriteFonts</Name>
     </ProjectReference>
     <ProjectReference Include="..\RaisingStudio.Xna.Graphics.iOS\RaisingStudio.Xna.Graphics.iOS.csproj">
-      <Project>{e1a3e111-a8f0-4ef9-8c65-13dd3ce5855b}</Project>
+      <Project>{9f23634e-6cfe-492b-b9b7-205d775564a7}</Project>
       <Name>RaisingStudio.Xna.Graphics.iOS</Name>
     </ProjectReference>
   </ItemGroup>

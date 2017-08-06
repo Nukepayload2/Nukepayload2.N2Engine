@@ -1,4 +1,5 @@
 ﻿Imports Nukepayload2.N2Engine.Platform
+Imports Nukepayload2.N2Engine.UI.Text
 
 Namespace Resources
 
