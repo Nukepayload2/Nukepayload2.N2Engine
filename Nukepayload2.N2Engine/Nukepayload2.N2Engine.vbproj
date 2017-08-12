@@ -120,7 +120,6 @@
   <Import Project="..\Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.StorageApiContract\Nukepayload2.N2Engine.StorageApiContract.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.UIApiContract\Nukepayload2.N2Engine.UIApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.UtilitiesApiContract\Nukepayload2.N2Engine.UtilitiesApiContract.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)LineArc.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)LoopShape.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)N2PhysicsIntegrationApiContract.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)PhysicsExtension.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Point.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Polygon.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)PrimitiveBreakableBody.vb" />

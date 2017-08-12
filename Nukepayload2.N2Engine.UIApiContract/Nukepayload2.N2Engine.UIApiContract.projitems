@@ -65,6 +65,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)GameObjectEventHandler.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObjectState.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)GameObjectStateTransition.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)GameVisualInitializers.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)GameVisualStateManager.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)GameVisualTreeHelper.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)IEventMediator.vb" />
@@ -76,6 +77,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)PlaneTransform.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)RendererRegistrationRequestedEventArgs.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\RendererBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Text\FontLoaderFactory.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Text\FontStretch.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Text\FontStyle.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Text\FontWeight.vb" />

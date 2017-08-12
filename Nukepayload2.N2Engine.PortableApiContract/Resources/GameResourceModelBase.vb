@@ -4,7 +4,7 @@
     ''' </summary>
     Public Class GameResourceModelBase
         Public Property Name As String
-        Public Property ResourceId As ResourceId
+        Public Property ResourceId As Uri
         Public Property Description As String
     End Class
 End Namespace

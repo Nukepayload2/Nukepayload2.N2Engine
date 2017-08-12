@@ -9,6 +9,7 @@
     <Import_RootNamespace>Nukepayload2.N2Engine.AnimationsApiContract</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AnimationsHelper.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)BitmapDiscreteAnimation.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)BitmapFrame.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)DynamicBitmapAnimation.vb" />

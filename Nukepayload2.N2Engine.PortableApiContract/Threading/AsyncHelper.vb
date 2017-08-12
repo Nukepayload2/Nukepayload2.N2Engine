@@ -1,4 +1,4 @@
-﻿Namespace Tasks
+﻿Namespace Threading
     Public Module AsyncHelper
         ''' <summary>
         ''' 追踪此任务，等待直到它运行完毕。

@@ -40,12 +40,14 @@
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\IGameContentControlRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\IGameTemplatedContentRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\BitmapResource.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Resources\FontLoaderFactory.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\GameResourceBase.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\GameResourceModelBase.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceId.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\ResourceLoader.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Threading\AsyncHelper.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Threading\GameDispatcher.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\StaticCast.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Utilities\TreeHelper.vb" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="$(MSBuildThisFileDirectory)Foundation\" />
