@@ -9,6 +9,7 @@
     <Import_RootNamespace>Nukepayload2.N2Engine.UIApiContract</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="$(MSBuildThisFileDirectory)AnimationBase\TimelineAnimation.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)CompositeTransform.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\GameEffect.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Effects\GaussianBlurEffect.vb" />
@@ -30,12 +31,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\VirtualJoystickDragEventArgs.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\Controls\VirtualJoystickState.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\DrawingVisual.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Elements\EntityLayer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\GameCanvas.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\GameCompositeModes.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameContentEntity.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\GameElement.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Elements\GameEntity.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\GameEventRouteDirections.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\GameEventRouteModes.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\GameKeyboardRoutedEventArgs.vb" />
@@ -49,13 +47,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Elements\GameVisualContainer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\GeometryElement.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\PanelLayer.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Elements\ParticleSystemViews\ParticleSystemView.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Elements\ParticleSystemViews\RailgunParticleSystemView.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Elements\ParticleSystemViews\SmokeParticleSystemView.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Elements\ParticleSystemViews\SparkParticleSystemView.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Elements\ParticleSystemViews\SwarmParticleSystemView.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\SpriteElement.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)Elements\SpriteEntityGrid.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\TappedEventArgs.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Elements\UpdatingEventArgs.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)GameCamera.vb" />

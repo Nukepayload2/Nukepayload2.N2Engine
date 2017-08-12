@@ -25,6 +25,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)LineArc.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)LoopShape.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)N2PhysicsIntegrationApiContract.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectModel\ITile.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)PhysicsExtension.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Point.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Polygon.vb" />
@@ -34,5 +35,9 @@
     <Compile Include="$(MSBuildThisFileDirectory)RoundedRectangle.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)SolidArc.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)SolidCollider.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)UIExtensions\EntityLayer.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)UIExtensions\GameContentEntity.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)UIExtensions\GameEntity.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)UIExtensions\SpriteEntityGrid.vb" />
   </ItemGroup>
 </Project>

@@ -91,6 +91,5 @@
       <Name>Nukepayload2.N2Engine.Portable</Name>
     </ProjectReference>
   </ItemGroup>
-  <Import Project="..\Nukepayload2.N2Engine.ObjectModelApiContract\Nukepayload2.N2Engine.ObjectModelApiContract.projitems" Label="Shared" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />
 </Project>

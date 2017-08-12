@@ -14,6 +14,7 @@
     <TargetFrameworkProfile>
     </TargetFrameworkProfile>
     <TargetFrameworkVersion>v5.0</TargetFrameworkVersion>
+    <VBRuntime>Embed</VBRuntime>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -89,6 +90,10 @@
     <ProjectReference Include="..\Nukepayload2.N2Engine.Portable\Nukepayload2.N2Engine.Portable.vbproj">
       <Project>{6f22b5a3-fe7a-4a14-bc67-0043186b376f}</Project>
       <Name>Nukepayload2.N2Engine.Portable</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Nukepayload2.N2Engine.UI\Nukepayload2.N2Engine.UI.vbproj">
+      <Project>{84bfe4c7-d14b-457a-b7ef-14a7d6cdb012}</Project>
+      <Name>Nukepayload2.N2Engine.UI</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.VisualBasic.targets" />

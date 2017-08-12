@@ -17,6 +17,11 @@
     <Compile Include="$(MSBuildThisFileDirectory)N2ParticleSystemsApiContract.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Particle.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)ParticleSystemBase.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParticleSystemViews\ParticleSystemView.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParticleSystemViews\RailgunParticleSystemView.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParticleSystemViews\SmokeParticleSystemView.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParticleSystemViews\SparkParticleSystemView.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ParticleSystemViews\SwarmParticleSystemView.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)PointParticle.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)RailgunParticleSystem.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)SmokeParticleSystem.vb" />

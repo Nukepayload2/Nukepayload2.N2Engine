@@ -30,6 +30,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\SimpleCommand.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\SingleInstance.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\SizeInInteger.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectModel\ICustomSpriteSheetItem.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)ObjectModel\ISimpleFactory.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Platform\InternalsVisibilitySettings.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Platform\PlatformActivator.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Platform\PlatformImplAttribute.vb" />

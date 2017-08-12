@@ -95,22 +95,23 @@ Namespace UI.Elements
             _Triggers.Remove(trigger)
         End Sub
 
-        Dim _Behaviors As New List(Of IGameBehavior)
-        ''' <summary>
-        ''' 已经安装了哪些附加行为
-        ''' </summary>
-        Public ReadOnly Property Behaviors As IReadOnlyList(Of IGameBehavior)
-            Get
-                Return _Behaviors
-            End Get
-        End Property
+        ' 解除 UI 与 行为的双向依赖。
+        'Dim _Behaviors As New List(Of IGameBehavior)
+        '''' <summary>
+        '''' 已经安装了哪些附加行为
+        '''' </summary>
+        'Public ReadOnly Property Behaviors As IReadOnlyList(Of IGameBehavior)
+        '    Get
+        '        Return _Behaviors
+        '    End Get
+        'End Property
 
-        Friend Sub AddBehavior(trigger As IGameBehavior)
-            _Behaviors.Add(trigger)
-        End Sub
-        Friend Sub RemoveBehavior(trigger As IGameBehavior)
-            _Behaviors.Remove(trigger)
-        End Sub
+        'Friend Sub AddBehavior(trigger As IGameBehavior)
+        '    _Behaviors.Add(trigger)
+        'End Sub
+        'Friend Sub RemoveBehavior(trigger As IGameBehavior)
+        '    _Behaviors.Remove(trigger)
+        'End Sub
 
         ''' <summary>
         ''' 主动请求从游戏画布移除

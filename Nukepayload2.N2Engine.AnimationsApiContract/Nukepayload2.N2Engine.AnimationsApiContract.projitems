@@ -15,7 +15,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)DynamicBitmapAnimation.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)LoopInformation.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)N2AnimationsApiContract.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)TimelineAnimation.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Trailer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)TransitionAnimation.vb" />
   </ItemGroup>

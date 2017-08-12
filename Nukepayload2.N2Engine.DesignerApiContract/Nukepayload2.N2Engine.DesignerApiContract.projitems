@@ -10,7 +10,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)IN2EngineBindingExpression.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)ISimpleFactory.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)N2DesignerApiContract.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)N2EngineBindingExpression.vb" />
   </ItemGroup>

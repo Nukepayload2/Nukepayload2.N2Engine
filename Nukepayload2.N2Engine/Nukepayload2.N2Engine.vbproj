@@ -115,7 +115,6 @@
   <Import Project="..\Nukepayload2.N2Engine.DesignerApiContract\Nukepayload2.N2Engine.DesignerApiContract.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.InputApiContract\Nukepayload2.N2Engine.InputApiContract.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.MediaApiContract\Nukepayload2.N2Engine.MediaApiContract.projitems" Label="Shared" />
-  <Import Project="..\Nukepayload2.N2Engine.ObjectModelApiContract\Nukepayload2.N2Engine.ObjectModelApiContract.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.ParticleSystemsApiContract\Nukepayload2.N2Engine.ParticleSystemsApiContract.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.projitems" Label="Shared" />
   <Import Project="..\Nukepayload2.N2Engine.StorageApiContract\Nukepayload2.N2Engine.StorageApiContract.projitems" Label="Shared" />
