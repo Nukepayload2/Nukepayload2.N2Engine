@@ -1,6 +1,7 @@
 # Nukepayload2.N2Engine
 升级版的 Nukepayload2.Graphics.N2Engine。</br>
-用于支持 __任意__ 能够生成 __可移植类库 或 .NET Standard 类库__ 的 __.NET 语言__ 制作基于 Win2D 和 MonoGame 两种图形框架的跨平台游戏。
+用于支持 __任意__ 能够生成 __可移植类库 或 .NET Standard 类库__ 的 __.NET 语言__ 制作基于 Win2D 和 MonoGame 两种图形框架的跨平台游戏。</br>
+这个游戏引擎主要用于 2D 游戏创作和游戏程序框架建模。追求代码可维护性的极致，而不是性能的极致。
 
 ## 支持编程语言的优先级
 * Microsoft Visual Basic, 版本 >= 15.0
@@ -11,7 +12,7 @@
 ## 支持的平台
 * Universal Windows 10, 版本 >= 1511
 * Windows 桌面, 版本 >= 6.1.7.7601 (Windows 7 sp1)
-* (未完善) Windows Phone 8.1
+* (打算放弃) Windows Phone 8.1
 * Android, 版本 >= 4.0.3
 * (未完善) iOS, 版本 >= 7
 * (未完善) Linux 和 Mac, 需要 Gtk3 和 OpenGL
