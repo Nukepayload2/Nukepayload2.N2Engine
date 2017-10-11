@@ -188,14 +188,12 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.Physi
 EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
-		Nukepayload2.N2Engine.DesignerApiContract\Nukepayload2.N2Engine.DesignerApiContract.projitems*{013bd449-cd27-4e07-9710-bceb0ead789c}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Desktop\Nukepayload2.N2Engine.Desktop.projitems*{06537da4-d027-4449-9898-a780399d49b4}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems*{06537da4-d027-4449-9898-a780399d49b4}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{06537da4-d027-4449-9898-a780399d49b4}*SharedItemsImports = 4
 		Nukepayload2.UI.SpriteFonts.MonoGameShared\Nukepayload2.UI.SpriteFonts.MonoGameShared.projitems*{06537da4-d027-4449-9898-a780399d49b4}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{0cc24abe-f541-46fc-8849-ef695ea5d387}*SharedItemsImports = 13
 		RaisingStudio.Xna.Graphics.Shared\RaisingStudio.Xna.Graphics.Shared.projitems*{17cd6341-c2e8-4d0e-af87-c87d853f8a48}*SharedItemsImports = 4
-		Nukepayload2.N2Engine.BehaviorsApiContract\Nukepayload2.N2Engine.BehaviorsApiContract.projitems*{1fffe3d4-ea49-4c2a-8193-434e12f6a126}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.InputApiContract\Nukepayload2.N2Engine.InputApiContract.projitems*{21bfd18f-446d-42b8-b913-22a5d551089d}*SharedItemsImports = 13
 		Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.projitems*{228f0d82-fed6-4e89-8097-9d67abf27f56}*SharedItemsImports = 13
 		Nukepayload2.N2Engine.IO.FileSystem\Nukepayload2.N2Engine.IO.FileSystem.projitems*{24b5188b-425c-45c9-9d1a-f8624590207c}*SharedItemsImports = 4
@@ -205,6 +203,7 @@ Global
 		RaisingStudio.Xna.Graphics.Shared\RaisingStudio.Xna.Graphics.Shared.projitems*{52bcbc06-9a5b-4605-abca-f3cd600fa30a}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.IO.FileSystem\Nukepayload2.N2Engine.IO.FileSystem.projitems*{546f847c-14c7-4830-a213-83223ea59050}*SharedItemsImports = 13
 		Nukepayload2.N2Engine.BehaviorsApiContract\Nukepayload2.N2Engine.BehaviorsApiContract.projitems*{657caf93-3048-4cbb-b521-bac6ee848e8e}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.ParticleSystemsApiContract\Nukepayload2.N2Engine.ParticleSystemsApiContract.projitems*{6e2ce5f8-6720-4b18-b0bc-6869ad9ae511}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.projitems*{6f22b5a3-fe7a-4a14-bc67-0043186b376f}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.MediaApiContract\Nukepayload2.N2Engine.MediaApiContract.projitems*{722c701f-ae15-465e-b5ef-866150363cd6}*SharedItemsImports = 13
 		RaisingStudio.Xna.Graphics.Shared\RaisingStudio.Xna.Graphics.Shared.projitems*{728da484-91f3-4395-8143-91258d30296f}*SharedItemsImports = 4
@@ -216,7 +215,6 @@ Global
 		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{80604c90-fb0e-4432-89cc-939a1702a91e}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems*{80604c90-fb0e-4432-89cc-939a1702a91e}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.UIApiContract\Nukepayload2.N2Engine.UIApiContract.projitems*{84bfe4c7-d14b-457a-b7ef-14a7d6cdb012}*SharedItemsImports = 4
-		Nukepayload2.N2Engine.MediaApiContract\Nukepayload2.N2Engine.MediaApiContract.projitems*{873002f7-231e-455b-bdac-f5a0ebf39d60}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.AnimationsApiContract\Nukepayload2.N2Engine.AnimationsApiContract.projitems*{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.BehaviorsApiContract\Nukepayload2.N2Engine.BehaviorsApiContract.projitems*{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.DesignerApiContract\Nukepayload2.N2Engine.DesignerApiContract.projitems*{8bdf4274-ab1a-47b8-94d0-e52c917ec1d2}*SharedItemsImports = 4
@@ -231,7 +229,6 @@ Global
 		Nukepayload2.N2Engine.Xamarin\Nukepayload2.N2Engine.Xamarin.projitems*{8df48139-91ce-4b19-b6a2-abc050ff1f85}*SharedItemsImports = 13
 		Nukepayload2.N2Engine.UIApiContract\Nukepayload2.N2Engine.UIApiContract.projitems*{8eae5b44-23ea-44d7-a0c1-cf76c6679038}*SharedItemsImports = 13
 		Nukepayload2.N2Engine.DesignerApiContract\Nukepayload2.N2Engine.DesignerApiContract.projitems*{9c7ae078-c5e2-46c4-ab46-327f97c0b9aa}*SharedItemsImports = 13
-		Nukepayload2.N2Engine.InputApiContract\Nukepayload2.N2Engine.InputApiContract.projitems*{a123e3be-7ced-471d-a413-9c9295fd441b}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.StorageApiContract\Nukepayload2.N2Engine.StorageApiContract.projitems*{a3808b9d-e7ae-4717-b03f-54dba317f0f8}*SharedItemsImports = 13
 		Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems*{a6d04e38-fb22-4395-8e71-4617f9fb054f}*SharedItemsImports = 13
 		Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems*{aa2ea02e-f413-48ac-b384-ac59906bf91f}*SharedItemsImports = 4
@@ -249,12 +246,10 @@ Global
 		Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.projitems*{c459addc-ce9b-45f2-9889-720b221c6a33}*SharedItemsImports = 13
 		RaisingStudio.Xna.Graphics.Shared\RaisingStudio.Xna.Graphics.Shared.projitems*{ca20682b-fec9-46e1-8293-6896e8fc16a3}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.AnimationsApiContract\Nukepayload2.N2Engine.AnimationsApiContract.projitems*{d49cea6b-6d85-49c4-a32c-3650771cb5c9}*SharedItemsImports = 13
-		Nukepayload2.N2Engine.GenericAIApiContract\Nukepayload2.N2Engine.GenericAIApiContract.projitems*{efe45b99-ecf3-469d-b8f7-ae5a3c8bd4d2}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
 		Nukepayload2.UI.SpriteFonts.MonoGameShared\Nukepayload2.UI.SpriteFonts.MonoGameShared.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
-		Nukepayload2.N2Engine.AnimationsApiContract\Nukepayload2.N2Engine.AnimationsApiContract.projitems*{f993ffd9-5fe4-4fdb-85a6-6880c62f0c68}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.projitems*{f99f2ecf-7702-4816-9deb-d7ba3d68063a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
