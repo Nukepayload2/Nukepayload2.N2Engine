@@ -1,4 +1,5 @@
-﻿Imports System.Collections.Specialized
+﻿Imports System.Collections.ObjectModel
+Imports System.Collections.Specialized
 
 Namespace Concurrent
     ''' <summary>
