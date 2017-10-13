@@ -10,12 +10,15 @@
 * (未完善) 其它语言
 
 ## 支持的平台
-* Universal Windows 10, 版本 >= 1511
+* Universal Windows 10, 版本 1607
 * Windows 桌面, 版本 >= 6.1.7.7601 (Windows 7 sp1)
-* (打算放弃) Windows Phone 8.1
 * Android, 版本 >= 4.0.3
 * (未完善) iOS, 版本 >= 7
 * (未完善) Linux 和 Mac, 需要 Gtk3 和 OpenGL
+
+## 打算放弃的平台
+* Windows Phone 8.1
+* Windows 10 Mobile, 版本 <= 1703。如果需要在 Windows 10 Mobile 使用，请加入 Windows 预览体验计划，选择快速通道更新到至少与 rs3 等效的分支。
 
 ## 警告
 本计算机程序源代码受著作权法和国际条约保护。如未经授权而擅自违背许可协议，将受到严厉的民事和刑事制裁，并将在法律许可的最大限度内受到起诉。
