@@ -1,5 +1,5 @@
 ﻿Imports Nukepayload2.N2Engine.Platform
-Imports Nukepayload2.N2Engine.Resources
+Imports Nukepayload2.N2Engine.UI.Text
 
 <PlatformImpl(GetType(IFontLoader))>
 Partial Friend Class PlatformFontLoader

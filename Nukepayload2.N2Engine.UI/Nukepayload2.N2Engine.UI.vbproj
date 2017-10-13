@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.4</TargetFramework>
     <RootNamespace>Nukepayload2.N2Engine</RootNamespace>
   </PropertyGroup>
 
@@ -26,6 +26,11 @@
       <Project>{4edb2801-2f43-4377-9ca8-215e640c5d86}</Project>
       <Name>Nukepayload2.UI.SpriteFonts</Name>
     </ProjectReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Import Include="System.Numerics" />
+    <Import Include="System.Runtime.CompilerServices" />
   </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.UIApiContract\Nukepayload2.N2Engine.UIApiContract.projitems" Label="Shared" />
 </Project>

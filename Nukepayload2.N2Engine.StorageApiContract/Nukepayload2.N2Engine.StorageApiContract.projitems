@@ -9,8 +9,6 @@
     <Import_RootNamespace>Nukepayload2.N2Engine.StorageApiContract</Import_RootNamespace>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="$(MSBuildThisFileDirectory)IDirectory.vb" />
-    <Compile Include="$(MSBuildThisFileDirectory)IFile.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)N2StorageApiContract.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)PlatformSaveDirectoryBase.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)PlatformSaveManagerBase.vb" />

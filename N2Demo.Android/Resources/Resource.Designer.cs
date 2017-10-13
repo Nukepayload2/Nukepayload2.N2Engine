@@ -26,8 +26,6 @@ namespace N2Demo.Android
 		
 		public static void UpdateIdValues()
 		{
-			global::Nukepayload2.N2Engine.Android.IO.FileSystem.Resource.String.ApplicationName = global::N2Demo.Android.Resource.String.ApplicationName;
-			global::Nukepayload2.N2Engine.Android.IO.FileSystem.Resource.String.Hello = global::N2Demo.Android.Resource.String.Hello;
 		}
 		
 		public partial class Attribute

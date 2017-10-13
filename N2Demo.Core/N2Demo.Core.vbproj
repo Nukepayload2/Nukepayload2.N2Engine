@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.4</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -28,11 +28,6 @@
   
   <ItemGroup>
     <EmbeddedResource Include="Images\CharacterSheet.png" />
-    <EmbeddedResource Include="My Project\Resources.resx">
-      <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
-      <CustomToolNamespace>My.Resources</CustomToolNamespace>
-      <LastGenOutput>Resources.Designer.vb</LastGenOutput>
-    </EmbeddedResource>
     <EmbeddedResource Include="Fonts\SegoeUI14.n2fnt" />
     <EmbeddedResource Include="Images\Flame3.png" />
     <EmbeddedResource Include="Images\DemoTexture.png" />
