@@ -1,5 +1,4 @@
 ﻿Imports Android.App
-Imports Nukepayload2.N2Engine.Platform
 
 Namespace Global.Nukepayload2.N2Engine.Storage
     Friend Class SaveManagerImpl
@@ -14,28 +13,26 @@ Namespace Global.Nukepayload2.N2Engine.Storage
                 Case Else
                     Dim dirMgr = GetStoragePath()
                     Await AddFolderAsync(dirMgr, VendorName)
-                    folder = dirMgr.DirectoryName
+                    folder = dirMgr
             End Select
             Dim fol = Await SaveFolder.CreateAsync(folder)
             Return fol
         End Function
 
-        Private Shared Async Function AddFolderAsync(folder As IDirectory, newFolder As String) As Task
-            folder.DirectoryName = Path.Combine(folder.DirectoryName, newFolder)
-            If Not folder.Exists Then
-                Await folder.CreateAsync
+        Private Shared Async Function AddFolderAsync(folder As String, newFolder As String) As Task
+            folder = Path.Combine(folder, newFolder)
+            If Not Directory.Exists(folder) Then
+                Await Task.Run(Sub() Directory.CreateDirectory(folder))
             End If
         End Function
 
-        Private Function GetStoragePath() As IDirectory
-            Dim dirMgr = PlatformActivator.CreateBaseInstance(Of IDirectory)("/sdcard")
-            If Not dirMgr.Exists Then
-                dirMgr.DirectoryName = "/emulated/0"
-                If Not dirMgr.Exists Then
-                    Throw New PlatformNotSupportedException($"当前版本的 Android 不能通过 {dirMgr.DirectoryName} 读写文件。")
+        Private Function GetStoragePath() As String
+            For Each p In {"/sdcard", "/emulated/0"}
+                If Directory.Exists(p) Then
+                    Return p
                 End If
-            End If
-            Return dirMgr
+            Next
+            Throw New PlatformNotSupportedException("找不到合适的存档位置。")
         End Function
     End Class
 End Namespace

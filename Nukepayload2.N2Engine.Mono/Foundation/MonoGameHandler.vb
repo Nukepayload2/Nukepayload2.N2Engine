@@ -66,7 +66,11 @@ Public Class MonoGameHandler
     End Property
 #End If
 
-    Sub New(Optional orientation As DisplayOrientation = DisplayOrientation.LandscapeLeft Or DisplayOrientation.LandscapeRight)
+    Sub New()
+        MyClass.New(DisplayOrientation.LandscapeLeft Or DisplayOrientation.LandscapeRight)
+    End Sub
+
+    Sub New(orientation As DisplayOrientation)
         graphics = New GraphicsDeviceManager(Me)
         Content.RootDirectory = "Content"
         graphics.SupportedOrientations = orientation

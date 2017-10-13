@@ -3,7 +3,6 @@ using Android.OS;
 using Nukepayload2.N2Engine.Android;
 using N2Demo.Core;
 using Microsoft.Xna.Framework.Input.Touch;
-using Nukepayload2.N2Engine.IO.FileSystem;
 using Nukepayload2.N2Engine.Resources;
 using Android.Content.Res;
 using Android.Util;
@@ -31,7 +30,7 @@ namespace N2Demo.Android
             base.OnCreate(bundle);
 
             // 注册 N2 引擎的 Mono 实现
-            MonoImplRegistration.Register(typeof(XamarinApiContract).Assembly);
+            MonoImplRegistration.Register();
 
             var dm = new DisplayMetrics();
             WindowManager.DefaultDisplay.GetMetrics(dm);

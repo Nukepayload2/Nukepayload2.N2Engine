@@ -1,9 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
+    <TargetFramework>netstandard1.4</TargetFramework>
     <RootNamespace>Nukepayload2.N2Engine</RootNamespace>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Import Include="System.IO" />
+  </ItemGroup>
 
   <ItemGroup>
     <ProjectReference Include="..\Nukepayload2.N2Engine.Portable\Nukepayload2.N2Engine.Portable.vbproj">

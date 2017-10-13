@@ -27,7 +27,7 @@ namespace N2Demo.iOS
             if (gameHandler == null)
             {
                 // 注册 N2 引擎的 Mono 实现
-                MonoImplRegistration.Register(typeof(XamarinApiContract).Assembly);
+                MonoImplRegistration.Register();
                 gameHandler = new MonoGameHandler();
 
                 sparks = new MainCanvas();
