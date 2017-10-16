@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27004.2002
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.ActionGames.Core", "Nukepayload2.N2Engine.ActionGames.Core\Nukepayload2.N2Engine.ActionGames.Core.vbproj", "{8D7A38E5-C530-4650-B3AD-CB020B624360}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.ActionGames.Core", "Nukepayload2.N2Engine.ActionGames.Core\Nukepayload2.N2Engine.ActionGames.Core.vbproj", "{8D7A38E5-C530-4650-B3AD-CB020B624360}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.TableGames.Core", "Nukepayload2.N2Engine.TableGames.Core\Nukepayload2.N2Engine.TableGames.Core.vbproj", "{46E2996D-9B81-4FCB-8E9A-148A3A6CED63}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.TableGames.Core", "Nukepayload2.N2Engine.TableGames.Core\Nukepayload2.N2Engine.TableGames.Core.vbproj", "{46E2996D-9B81-4FCB-8E9A-148A3A6CED63}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreLibrary", "CoreLibrary", "{944BFB54-BD45-47F3-BDDA-ED24012572C4}"
 EndProject
@@ -15,7 +15,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.UWP",
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.UWP.Designer", "Nukepayload2.N2Engine.UWP.Designer\Nukepayload2.N2Engine.UWP.Designer.vbproj", "{E1BCB30B-991C-4368-89FB-71C407D1010F}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.RolePlayGames.Core", "Nukepayload2.N2Engine.RolePlayGames.Core\Nukepayload2.N2Engine.RolePlayGames.Core.vbproj", "{ACBC1542-DF92-44AE-845C-2FFD089FC2D6}"
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.RolePlayGames.Core", "Nukepayload2.N2Engine.RolePlayGames.Core\Nukepayload2.N2Engine.RolePlayGames.Core.vbproj", "{ACBC1542-DF92-44AE-845C-2FFD089FC2D6}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.TableGames.UWP.Designer", "Nukepayload2.N2Engine.TableGames.UWP.Designer\Nukepayload2.N2Engine.TableGames.UWP.Designer.vbproj", "{F248D6F2-74C5-41E4-B9C1-5543B06D2022}"
 EndProject
@@ -39,6 +39,7 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "N2Demo.UWP", "N2Demo.UWP\N2
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{2401E3DB-43A4-4EF8-ACFE-B806D19E9FB7}"
 	ProjectSection(SolutionItems) = preProject
+		CONTRIBUTING.md = CONTRIBUTING.md
 		FarseerPhysics.Portable\FarseerPhysics.License.txt = FarseerPhysics.Portable\FarseerPhysics.License.txt
 		N2Demo.License.txt = N2Demo.License.txt
 		Nukepayload2.Collections.License.txt = Nukepayload2.Collections.License.txt
@@ -64,7 +65,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaisingStudio.Xna.Graphics.
 EndProject
 Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "RaisingStudio.Xna.Graphics.Shared", "RaisingStudio.Xna.Graphics.Shared\RaisingStudio.Xna.Graphics.Shared.shproj", "{25FF50DA-E05C-4E11-B60F-259D4088FC7F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaisingStudio.Xna.Graphics.Android", "RaisingStudio.Xna.Graphics.Android\RaisingStudio.Xna.Graphics.Android.csproj", "{728DA484-91F3-4395-8143-91258D30296F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RaisingStudio.Xna.Graphics.Android", "RaisingStudio.Xna.Graphics.Android\RaisingStudio.Xna.Graphics.Android.csproj", "{728DA484-91F3-4395-8143-91258D30296F}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RaisingStudio.Xna.Graphics.UWP", "RaisingStudio.Xna.Graphics.UWP\RaisingStudio.Xna.Graphics.UWP.csproj", "{CA20682B-FEC9-46E1-8293-6896E8FC16A3}"
 EndProject
