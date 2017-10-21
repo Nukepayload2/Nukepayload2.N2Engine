@@ -23,6 +23,5 @@
     <None Include="Nukepayload2.N2Engine.License.txt">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="project.json" />
   </ItemGroup>
 </Project>
