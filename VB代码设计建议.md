@@ -417,6 +417,85 @@ End Class
 ### 工厂模式
 工厂模式将构造对象的代码从构造函数中提取出来。这样容易处理复杂的对象创建过程。
 
+例如，一款即时战略游戏中的兵营可以生产各种各样类型的步兵。不同阵营对于各种类型的步兵都有自己的兵种。这时候要使用容易理解的代码创建步兵，就需要使用工厂模式实现。
+
+__VB__
+```vb.net
+Public MustInherit Class Barracks
+    Public MustOverride Function CreateScout() As IInfantry
+    Public MustOverride Function CreateBasicAntiInfantry() As IInfantry
+    Public MustOverride Function CreateBasicAntiArmor() As IInfantry
+    Public MustOverride Function CreateEngineer() As IInfantry
+    Public MustOverride Function CreateAdvancedSoldier() As IInfantry
+    Public MustOverride Function CreateCommando() As IInfantry
+End Class
+
+Public Class SovietBarracks
+    Inherits Barracks
+    Public Overrides Function CreateBasicScout() As IInfantry
+        Return New SovietAttackDog
+    End Function
+    Public Overrides Function CreateBasicAntiInfantry() As IInfantry
+        Return New Conscript
+    End Function
+    Public Overrides Function CreateBasicAntiArmor() As IInfantry
+        Return New FlakTrooper
+    End Function
+    Public Overrides Function CreateEngineer() As IInfantry
+        Return New SovietEngineer
+    End Function
+    Public Overrides Function CreateAdvancedSoldier() As IInfantry
+        Return New TeslaTrooper
+    End Function
+    Public Overrides Function CreateCommando() As IInfantry
+        Return New Natasha
+    End Function
+End Class
+
+Public Class AlliedBarracks
+    Inherits Barracks
+    Public Overrides Function CreateBasicScout() As IInfantry
+        Return New AlliedAttackDog
+    End Function
+    Public Overrides Function CreateBasicAntiInfantry() As IInfantry
+        Return New PeaceKeeper
+    End Function
+    Public Overrides Function CreateBasicAntiArmor() As IInfantry
+        Return New JavelinRocketSoldier
+    End Function
+    Public Overrides Function CreateEngineer() As IInfantry
+        Return New AlliedEngineer
+    End Function
+    Public Overrides Function CreateAdvancedSoldier() As IInfantry
+        Return New Spy
+    End Function
+    Public Overrides Function CreateCommando() As IInfantry
+        Return New Tanya
+    End Function
+End Class
+
+Public Class Dojo
+    Inherits Barracks
+    Public Overrides Function CreateBasicScout() As IInfantry
+        Return New Dragonfly
+    End Function
+    Public Overrides Function CreateBasicAntiInfantry() As IInfantry
+        Return New Warrior
+    End Function
+    Public Overrides Function CreateBasicAntiArmor() As IInfantry
+        Return New TankDestroyer
+    End Function
+    Public Overrides Function CreateEngineer() As IInfantry
+        Return New EmpireEngineer
+    End Function
+    Public Overrides Function CreateAdvancedSoldier() As IInfantry
+        Return New Ninja
+    End Function
+    Public Overrides Function CreateCommando() As IInfantry
+        Return New Yoriko
+    End Function
+End Class
+```
 
 ### 适配器/门面模式
 #### 适配器
@@ -450,5 +529,9 @@ public static unsafe UnmanagedMemoryStream CreateUnmanagedMemoryStream(IntPtr po
 ```
 
 ### 装饰器模式
+
+
 ### 依赖注入
+
+
 ### 使用 VB 进行函数式编程
