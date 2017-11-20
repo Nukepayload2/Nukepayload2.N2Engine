@@ -501,6 +501,59 @@ End Class
 #### 适配器
 适配器模式统一对于不同但是相似的接口的调用。
 
+下面的代码统一了两种音频播放 API。
+
+__VB__
+```vb.net
+' 从元数据得到的声明
+Public Class MediaElement
+    Public Property MediaSource As Stream
+    Public Property IsPlaying As Boolean
+End Class
+
+' 从元数据得到的声明
+Public Class AudioPlayer
+    Public Async Function SetMediaStreamAsync(strm As Stream) As Task
+    Public Sub Play()
+End Class
+
+' 适配器
+Public Interface IAudioPlayer
+    Function SetMediaStreamAsync(strm As Stream) As Task
+    Sub Play()
+End Interface
+
+Public Class MediaElementAdapter
+    Implements IAudioPlayer
+
+    Private _mediaElement As New MediaElement
+
+    Public Function SetMediaStreamAsync(strm As Stream) As Task Implements IAudioPlayer.SetMediaStream
+        _mediaElement.Stream = strm
+        Return Task.CompletedTask
+    End Function
+
+    Public Sub Play() Implements IAudioPlayer.Play
+        _mediaElement.IsPlaying = True
+    End Sub
+End Class
+
+Public Class AudioPlayerAdapter
+    Implements IAudioPlayer
+
+    Private _audioPlayer As New AudioPlayer
+
+    Public Function SetMediaStreamAsync(strm As Stream) As Task Implements IAudioPlayer.SetMediaStream
+        Await _audioPlayer.SetMediaStreamAsync(strm)
+    End Function
+
+    Public Sub Play() Implements IAudioPlayer.Play
+        _audioPlayer.Play
+    End Sub
+End Class
+```
+
+
 #### 门面模式
 创建新的接口包装一些已经存在的接口，通常用于提高可读性和通用性。
 
@@ -529,9 +582,243 @@ public static unsafe UnmanagedMemoryStream CreateUnmanagedMemoryStream(IntPtr po
 ```
 
 ### 装饰器模式
+装饰器模式嵌套使用同基类的类型。这样可以在上一次计算的基础上做出调整。
 
+下面的代码使用装饰器模式实现了伤害计算的嵌套。
+
+__VB__
+```vb.net
+Public Interface IDamageCompositor
+    Function GetDamage(value As Double) As Double
+End Interface
+
+Public Class WoodenArmor
+    Implements IDamageCompositor
+
+    Function GetDamage(value As Double) As Double Implements IDamageCompositor.GetDamage
+        Return Math.Max(value * 0.9, value * 0.98 - 20)
+    End Function
+End Class
+
+Public Class Pan
+    Implements IDamageCompositor
+
+    Public Property BaseArmor As IDamageCompositor
+
+    Function GetDamage(value As Double) As Double Implements IDamageCompositor.GetDamage
+        Return If(Rnd < 0.1, 0.0, BaseArmor.GetDamage(value))
+    End Function
+End Class
+```
 
 ### 依赖注入
+依赖注入让跨平台或者其它高度抽象的代码使用具体平台或具体设计的功能。
 
+下面的代码封装了获取进程名称的功能给跨平台的类库使用。
+
+.NET Standard 代码:
+
+__VB__
+```vb.net
+Public Interface IMetaGame
+    Function GetCurrentProcessName() As String
+End Interface
+
+Public Interface IProcessInfoProvider
+    Function GetCurrentProcess() As Integer
+    Function GetProcessName(pid As Integer) As String
+End Interface
+```
+
+.NET Framework 平台具体实现代码(省略细节):
+
+__VB__
+```vb.net
+<PlatformImpl(GetType(IMetaGame))>
+Friend Class MetaGame
+    Implements IMetaGame
+    Sub New(processInfoProvider As IProcessInfoProvider)
+        '...
+    End Sub
+    '...
+End Class
+
+<PlatformImpl(GetType(IProcessInfoProvider, SingleInstance:=True))>
+Friend Class ProcessInfoProvider
+    Implements IProcessInfoProvider
+    '...
+End Class
+```
+
+应用程序启动时，在平台相关的代码中注册平台具体实现的代码。
+
+__VB__
+```vb.net
+PlatformActivator.Register(Of ProcessInfoProvider)
+PlatformActivator.Register(Of MetaGame)
+```
+
+.NET Standard 代码创建刚才注册的 IMetaGame:
+
+__VB__
+```vb.net
+Dim metaGame = PlatformActivator.CreateInstance(Of IMetaGame)
+```
 
 ### 使用 VB 进行函数式编程
+函数式编程是一种编程风格，专注于输入和输出而不是维护状态，分离数据和行为。对于数据处理代码可以让代码逻辑更加清晰。
+
+#### 不可变类型
+不可变类型的每一个需要变更数据的操作都产生新的对象。典型的例子是 `String`。
+
+下面的代码定义了一个不可变的点，使用的时候代码更加简介和线程安全。
+
+__VB__
+```vb.net
+Public Structure ImmutablePoint
+    Public ReadOnly Property X As Single
+    Public ReadOnly Property Y As Single
+
+    Sub New(x As Single, y As Single)
+        _X = x
+        _Y = y
+    End Sub
+
+    Public Function Offset(x As Single, y As Single) As ImmutablePoint
+        Return New ImmutablePoint(Me.X + x, Me.Y + y)
+    End Function
+End Structure
+```
+
+__VB__
+```vb.net
+Dim pt As New ImmutablePoint(123, 567)
+
+pt = pt.Offset(-222, 172).Offset(9876, -761)
+```
+
+#### 委托
+
+使用匿名委托，可以定义带有行为的变量。
+
+__VB__
+```vb.net
+Dim addOne = Function(n%) n + 1
+
+Console.WriteLine(addOne(1)) ' 输出 2 并换行
+```
+
+也可以用泛型委托做同样的事情。
+
+__VB__
+```vb.net
+Dim addOne As Func(Of Integer, Integer) = Function(n) n + 1
+
+Console.WriteLine(addOne(1)) ' 输出 2 并换行
+```
+
+使用委托作为参数, 可以查询或处理数据。下面的代码使用 Linq 查询苏军阵营的玩家的数量。
+
+__VB__
+```vb.net
+Dim sides As ISide() = Players.Select(Sub(p) p.Side).ToArray
+
+Dim isSoviet = Function(side As ISide) side.Name = "Soviet"
+Dim sovietPlayerCount = sides.Count(isSoviet)
+```
+
+#### 使用表达式代替完整的声明
+注意：这种风格在 VB 的实现可能会导致一些反模式。下面的代码用字段代替了方法，省略了一个 `End Function`。
+
+__VB__
+```vb.net
+Public ReadOnly GetArmoredPlayers As Func(Of IPlayer(), IPlayer()) = 
+    Function(Players) Players.Where(Sub(p) p.Armor IsNot Nothing)
+```
+
+#### 管线
+这种写法省略了重复的变量名。使用 `With` 块或者返回正在操作的实例的方法或拓展方法能够实现这个写法。
+
+__VB__
+```vb.net
+With player
+    .TakeDamage(Function(p) p.Armor.GetDamage(1 + alcohol.Count))
+    .AskForHelpIf(Function(p) p.HP <= 0 AndAlso Not p.SelfHelp)
+    .SurrenderIf(Function(p) p.HP <= 0)
+End With
+```
+
+或者像 C# 一样干脆让每个方法返回被最初的对象
+
+__VB__
+```vb.net
+player.
+    TakeDamage(Function(p) p.Armor.GetDamage(1 + alcohol.Count)).
+    AskForHelpIf(Function(p) p.HP <= 0 AndAlso Not p.SelfHelp).
+    SurrenderIf(Function(p) p.HP <= 0)
+```
+
+#### 拓展方法
+查看 Linq 的源码，模仿它们的风格。能够帮助实现管线风格。
+
+__VB__
+```vb.net
+Module PlayerExtensions
+    <Extension>
+    Sub SurrenderIf(player As Player, predicate As Predicate(Of Player))
+        If predicate(player) Then player.Surrender
+    End Sub
+End Module
+```
+
+如果这个库要给 C# 用，返回最初操作的对象。
+
+__VB__
+```vb.net
+Public Module PlayerExtensions
+    <Extension>
+    Public Function SurrenderIf(player As Player, predicate As Predicate(Of Player)) As Player
+        If predicate(player) Then player.Surrender
+        Return player
+    End Function
+End Module
+```
+
+#### Iterator Function
+实现上面提到的拓展方法通常需要 `Yield` 语句。这样可以省略 List 的定义。
+
+__VB__
+```vb.net
+Module MyLinqExtensions
+    <Extension>
+    Function Where(players As PlayerCollection, predicate As Predicate(Of Player)) As IEnumerable(Of Player)
+        players.Lock
+        For Each p In players
+            If predicate(p) Then Yield p
+        Next
+        players.Unlock
+    End Function
+End Module
+```
+
+#### 值元组
+使用这个功能可能要装 Nuget 包 `System.ValueTuple`。
+
+下面的代码使用值元组写了一个简单的 RTS 游戏的 AI 的决策树。
+
+__VB__
+```vb.net
+Private _decisionsToAttack As (Func(Of Player, Boolean), PlayerAction)() = 
+{
+    (Function(p) p.HasSuperWeapon, PlayerAction.UseSuperWeapon),
+    (Function(p) p.HasAgreement, PlayerAction.UseAgreement),
+    (Function(p) p.ThreatSense.CanDecideIf(
+                     Function(t) t.Armor.ThreatLevel = ThreatLevel.Higher,
+                     Function() p.Units.Where(Function(u) u.AntiArmor)),
+                 PlayerAction.InfantryRush),
+    (Function(p) p.ThreatSense.CanDecideIf(
+                     Function(t) t.AirForces.ThreatLevel = ThreatLevel.Higher,
+                     Function() p.Units.Count(Function(u) u.AntiAir)) < p.AADefenceMinCount,
+                 PlayerAction.BuildMoreAA)
+}
+```
