@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27004.2006
+VisualStudioVersion = 15.0.27004.2008
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.ActionGames.Core", "Nukepayload2.N2Engine.ActionGames.Core\Nukepayload2.N2Engine.ActionGames.Core.vbproj", "{8D7A38E5-C530-4650-B3AD-CB020B624360}"
 EndProject
@@ -46,9 +46,12 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		Nukepayload2.Collections.License.txt = Nukepayload2.Collections.License.txt
 		Nukepayload2.N2Engine.License.txt = Nukepayload2.N2Engine.License.txt
 		Nukepayload2.UI.License.txt = Nukepayload2.UI.License.txt
+		PULL_REQUEST_TEMPLATE.md = PULL_REQUEST_TEMPLATE.md
 		RaisingStudio.Xna.Graphics.License.txt = RaisingStudio.Xna.Graphics.License.txt
 		RaisingStudio.Xna.Graphics.Summary.txt = RaisingStudio.Xna.Graphics.Summary.txt
 		README.md = README.md
+		VB代码设计建议.md = VB代码设计建议.md
+		VB代码风格建议.md = VB代码风格建议.md
 		代码规范.md = 代码规范.md
 		可移植的粒子系统.md = 可移植的粒子系统.md
 		合作说明.md = 合作说明.md

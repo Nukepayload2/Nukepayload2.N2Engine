@@ -1,0 +1,183 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "CoreLibrary", "CoreLibrary", "{944BFB54-BD45-47F3-BDDA-ED24012572C4}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.Collections", "Nukepayload2.Collections\Nukepayload2.Collections.vbproj", "{07D4710F-082E-45B1-B967-7E795F1E117A}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FarseerPhysics.Portable", "FarseerPhysics.Portable\FarseerPhysics.Portable.csproj", "{816D2B8D-CC51-450B-A853-A6E22A9A27FA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{87758A79-8AB9-4B5B-87EC-F2DFE52BB4D9}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.UI.SpriteFonts", "Nukepayload2.UI.SpriteFonts\Nukepayload2.UI.SpriteFonts.vbproj", "{4EDB2801-2F43-4377-9CA8-215E640C5D86}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{9F77AEAA-AC6D-48E3-8656-49BFF3871BDA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.PortableApiContract", "Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.shproj", "{C459ADDC-CE9B-45F2-9889-720B221C6A33}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.GenericAIApiContract", "Nukepayload2.N2Engine.GenericAIApiContract\Nukepayload2.N2Engine.GenericAIApiContract.shproj", "{805741BF-06EC-4819-A551-3D5CA9624737}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.AnimationsApiContract", "Nukepayload2.N2Engine.AnimationsApiContract\Nukepayload2.N2Engine.AnimationsApiContract.shproj", "{D49CEA6B-6D85-49C4-A32C-3650771CB5C9}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.BehaviorsApiContract", "Nukepayload2.N2Engine.BehaviorsApiContract\Nukepayload2.N2Engine.BehaviorsApiContract.shproj", "{657CAF93-3048-4CBB-B521-BAC6EE848E8E}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.DesignerApiContract", "Nukepayload2.N2Engine.DesignerApiContract\Nukepayload2.N2Engine.DesignerApiContract.shproj", "{9C7AE078-C5E2-46C4-AB46-327F97C0B9AA}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.InputApiContract", "Nukepayload2.N2Engine.InputApiContract\Nukepayload2.N2Engine.InputApiContract.shproj", "{21BFD18F-446D-42B8-B913-22A5D551089D}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.MediaApiContract", "Nukepayload2.N2Engine.MediaApiContract\Nukepayload2.N2Engine.MediaApiContract.shproj", "{722C701F-AE15-465E-B5EF-866150363CD6}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.ParticleSystemsApiContract", "Nukepayload2.N2Engine.ParticleSystemsApiContract\Nukepayload2.N2Engine.ParticleSystemsApiContract.shproj", "{ADEB9DA6-BE85-430D-9529-9C06C42157C5}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.PhysicsIntegrationApiContract", "Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.shproj", "{228F0D82-FED6-4E89-8097-9D67ABF27F56}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.StorageApiContract", "Nukepayload2.N2Engine.StorageApiContract\Nukepayload2.N2Engine.StorageApiContract.shproj", "{A3808B9D-E7AE-4717-B03F-54DBA317F0F8}"
+EndProject
+Project("{D954291E-2A0B-460D-934E-DC6B0785DB48}") = "Nukepayload2.N2Engine.UIApiContract", "Nukepayload2.N2Engine.UIApiContract\Nukepayload2.N2Engine.UIApiContract.shproj", "{8EAE5B44-23EA-44D7-A0C1-CF76C6679038}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.Animations", "Nukepayload2.N2Engine.Animations\Nukepayload2.N2Engine.Animations.vbproj", "{F993FFD9-5FE4-4FDB-85A6-6880C62F0C68}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.Behaviors", "Nukepayload2.N2Engine.Behaviors\Nukepayload2.N2Engine.Behaviors.vbproj", "{1FFFE3D4-EA49-4C2A-8193-434E12F6A126}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.Designer", "Nukepayload2.N2Engine.Designer\Nukepayload2.N2Engine.Designer.vbproj", "{013BD449-CD27-4E07-9710-BCEB0EAD789C}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.GenericAI", "Nukepayload2.N2Engine.GenericAI\Nukepayload2.N2Engine.GenericAI.vbproj", "{EFE45B99-ECF3-469D-B8F7-AE5A3C8BD4D2}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.Input", "Nukepayload2.N2Engine.Input\Nukepayload2.N2Engine.Input.vbproj", "{A123E3BE-7CED-471D-A413-9C9295FD441B}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.Media", "Nukepayload2.N2Engine.Media\Nukepayload2.N2Engine.Media.vbproj", "{873002F7-231E-455B-BDAC-F5A0EBF39D60}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.ParticleSystems", "Nukepayload2.N2Engine.ParticleSystems\Nukepayload2.N2Engine.ParticleSystems.vbproj", "{6E2CE5F8-6720-4B18-B0BC-6869AD9AE511}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.Portable", "Nukepayload2.N2Engine.Portable\Nukepayload2.N2Engine.Portable.vbproj", "{6F22B5A3-FE7A-4A14-BC67-0043186B376F}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.Storage", "Nukepayload2.N2Engine.Storage\Nukepayload2.N2Engine.Storage.vbproj", "{B82ED1DB-4B0A-4E7F-862C-2D43A40D467F}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.UI", "Nukepayload2.N2Engine.UI\Nukepayload2.N2Engine.UI.vbproj", "{84BFE4C7-D14B-457A-B7EF-14A7D6CDB012}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "InternalParts", "InternalParts", "{366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIContracts", "APIContracts", "{71432963-19C8-4113-A128-0D2BF6D07A5E}"
+EndProject
+Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.PhysicsIntegration", "Nukepayload2.N2Engine.PhysicsIntegration\Nukepayload2.N2Engine.PhysicsIntegration.vbproj", "{F99F2ECF-7702-4816-9DEB-D7BA3D68063A}"
+EndProject
+Global
+	GlobalSection(SharedMSBuildProjectFiles) = preSolution
+		Nukepayload2.N2Engine.InputApiContract\Nukepayload2.N2Engine.InputApiContract.projitems*{21bfd18f-446d-42b8-b913-22a5d551089d}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.projitems*{228f0d82-fed6-4e89-8097-9d67abf27f56}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.BehaviorsApiContract\Nukepayload2.N2Engine.BehaviorsApiContract.projitems*{657caf93-3048-4cbb-b521-bac6ee848e8e}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.ParticleSystemsApiContract\Nukepayload2.N2Engine.ParticleSystemsApiContract.projitems*{6e2ce5f8-6720-4b18-b0bc-6869ad9ae511}*SharedItemsImports = 4
+		Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.projitems*{6f22b5a3-fe7a-4a14-bc67-0043186b376f}*SharedItemsImports = 4
+		Nukepayload2.N2Engine.MediaApiContract\Nukepayload2.N2Engine.MediaApiContract.projitems*{722c701f-ae15-465e-b5ef-866150363cd6}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.GenericAIApiContract\Nukepayload2.N2Engine.GenericAIApiContract.projitems*{805741bf-06ec-4819-a551-3d5ca9624737}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.UIApiContract\Nukepayload2.N2Engine.UIApiContract.projitems*{84bfe4c7-d14b-457a-b7ef-14a7d6cdb012}*SharedItemsImports = 4
+		Nukepayload2.N2Engine.UIApiContract\Nukepayload2.N2Engine.UIApiContract.projitems*{8eae5b44-23ea-44d7-a0c1-cf76c6679038}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.DesignerApiContract\Nukepayload2.N2Engine.DesignerApiContract.projitems*{9c7ae078-c5e2-46c4-ab46-327f97c0b9aa}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.StorageApiContract\Nukepayload2.N2Engine.StorageApiContract.projitems*{a3808b9d-e7ae-4717-b03f-54dba317f0f8}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.ParticleSystemsApiContract\Nukepayload2.N2Engine.ParticleSystemsApiContract.projitems*{adeb9da6-be85-430d-9529-9c06c42157c5}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.StorageApiContract\Nukepayload2.N2Engine.StorageApiContract.projitems*{b82ed1db-4b0a-4e7f-862c-2d43a40d467f}*SharedItemsImports = 4
+		Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.projitems*{c459addc-ce9b-45f2-9889-720b221c6a33}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.AnimationsApiContract\Nukepayload2.N2Engine.AnimationsApiContract.projitems*{d49cea6b-6d85-49c4-a32c-3650771cb5c9}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.projitems*{f99f2ecf-7702-4816-9deb-d7ba3d68063a}*SharedItemsImports = 4
+	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{07D4710F-082E-45B1-B967-7E795F1E117A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{07D4710F-082E-45B1-B967-7E795F1E117A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{07D4710F-082E-45B1-B967-7E795F1E117A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{07D4710F-082E-45B1-B967-7E795F1E117A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{816D2B8D-CC51-450B-A853-A6E22A9A27FA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{816D2B8D-CC51-450B-A853-A6E22A9A27FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{816D2B8D-CC51-450B-A853-A6E22A9A27FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{816D2B8D-CC51-450B-A853-A6E22A9A27FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EDB2801-2F43-4377-9CA8-215E640C5D86}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EDB2801-2F43-4377-9CA8-215E640C5D86}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EDB2801-2F43-4377-9CA8-215E640C5D86}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EDB2801-2F43-4377-9CA8-215E640C5D86}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F993FFD9-5FE4-4FDB-85A6-6880C62F0C68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F993FFD9-5FE4-4FDB-85A6-6880C62F0C68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F993FFD9-5FE4-4FDB-85A6-6880C62F0C68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F993FFD9-5FE4-4FDB-85A6-6880C62F0C68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1FFFE3D4-EA49-4C2A-8193-434E12F6A126}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FFFE3D4-EA49-4C2A-8193-434E12F6A126}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FFFE3D4-EA49-4C2A-8193-434E12F6A126}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FFFE3D4-EA49-4C2A-8193-434E12F6A126}.Release|Any CPU.Build.0 = Release|Any CPU
+		{013BD449-CD27-4E07-9710-BCEB0EAD789C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{013BD449-CD27-4E07-9710-BCEB0EAD789C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{013BD449-CD27-4E07-9710-BCEB0EAD789C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{013BD449-CD27-4E07-9710-BCEB0EAD789C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EFE45B99-ECF3-469D-B8F7-AE5A3C8BD4D2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EFE45B99-ECF3-469D-B8F7-AE5A3C8BD4D2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EFE45B99-ECF3-469D-B8F7-AE5A3C8BD4D2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EFE45B99-ECF3-469D-B8F7-AE5A3C8BD4D2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A123E3BE-7CED-471D-A413-9C9295FD441B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A123E3BE-7CED-471D-A413-9C9295FD441B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A123E3BE-7CED-471D-A413-9C9295FD441B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A123E3BE-7CED-471D-A413-9C9295FD441B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{873002F7-231E-455B-BDAC-F5A0EBF39D60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{873002F7-231E-455B-BDAC-F5A0EBF39D60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{873002F7-231E-455B-BDAC-F5A0EBF39D60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{873002F7-231E-455B-BDAC-F5A0EBF39D60}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6E2CE5F8-6720-4B18-B0BC-6869AD9AE511}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6E2CE5F8-6720-4B18-B0BC-6869AD9AE511}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6E2CE5F8-6720-4B18-B0BC-6869AD9AE511}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6E2CE5F8-6720-4B18-B0BC-6869AD9AE511}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6F22B5A3-FE7A-4A14-BC67-0043186B376F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6F22B5A3-FE7A-4A14-BC67-0043186B376F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6F22B5A3-FE7A-4A14-BC67-0043186B376F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6F22B5A3-FE7A-4A14-BC67-0043186B376F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B82ED1DB-4B0A-4E7F-862C-2D43A40D467F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B82ED1DB-4B0A-4E7F-862C-2D43A40D467F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B82ED1DB-4B0A-4E7F-862C-2D43A40D467F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B82ED1DB-4B0A-4E7F-862C-2D43A40D467F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{84BFE4C7-D14B-457A-B7EF-14A7D6CDB012}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{84BFE4C7-D14B-457A-B7EF-14A7D6CDB012}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{84BFE4C7-D14B-457A-B7EF-14A7D6CDB012}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{84BFE4C7-D14B-457A-B7EF-14A7D6CDB012}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F99F2ECF-7702-4816-9DEB-D7BA3D68063A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F99F2ECF-7702-4816-9DEB-D7BA3D68063A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F99F2ECF-7702-4816-9DEB-D7BA3D68063A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F99F2ECF-7702-4816-9DEB-D7BA3D68063A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{07D4710F-082E-45B1-B967-7E795F1E117A} = {9F77AEAA-AC6D-48E3-8656-49BFF3871BDA}
+		{816D2B8D-CC51-450B-A853-A6E22A9A27FA} = {9F77AEAA-AC6D-48E3-8656-49BFF3871BDA}
+		{87758A79-8AB9-4B5B-87EC-F2DFE52BB4D9} = {9F77AEAA-AC6D-48E3-8656-49BFF3871BDA}
+		{4EDB2801-2F43-4377-9CA8-215E640C5D86} = {87758A79-8AB9-4B5B-87EC-F2DFE52BB4D9}
+		{C459ADDC-CE9B-45F2-9889-720B221C6A33} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{805741BF-06EC-4819-A551-3D5CA9624737} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{D49CEA6B-6D85-49C4-A32C-3650771CB5C9} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{657CAF93-3048-4CBB-B521-BAC6EE848E8E} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{9C7AE078-C5E2-46C4-AB46-327F97C0B9AA} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{21BFD18F-446D-42B8-B913-22A5D551089D} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{722C701F-AE15-465E-B5EF-866150363CD6} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{ADEB9DA6-BE85-430D-9529-9C06C42157C5} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{228F0D82-FED6-4E89-8097-9D67ABF27F56} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{A3808B9D-E7AE-4717-B03F-54DBA317F0F8} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{8EAE5B44-23EA-44D7-A0C1-CF76C6679038} = {71432963-19C8-4113-A128-0D2BF6D07A5E}
+		{F993FFD9-5FE4-4FDB-85A6-6880C62F0C68} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{1FFFE3D4-EA49-4C2A-8193-434E12F6A126} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{013BD449-CD27-4E07-9710-BCEB0EAD789C} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{EFE45B99-ECF3-469D-B8F7-AE5A3C8BD4D2} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{A123E3BE-7CED-471D-A413-9C9295FD441B} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{873002F7-231E-455B-BDAC-F5A0EBF39D60} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{6E2CE5F8-6720-4B18-B0BC-6869AD9AE511} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{6F22B5A3-FE7A-4A14-BC67-0043186B376F} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{B82ED1DB-4B0A-4E7F-862C-2D43A40D467F} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{84BFE4C7-D14B-457A-B7EF-14A7D6CDB012} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B} = {944BFB54-BD45-47F3-BDDA-ED24012572C4}
+		{71432963-19C8-4113-A128-0D2BF6D07A5E} = {944BFB54-BD45-47F3-BDDA-ED24012572C4}
+		{F99F2ECF-7702-4816-9DEB-D7BA3D68063A} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {08963F99-4C0D-43E3-8052-29A11055F453}
+	EndGlobalSection
+EndGlobal
