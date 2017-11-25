@@ -109,9 +109,5 @@
 - RaisingStudio.Xna.Graphics.Win32
 
 ### 在这个仓库不可见的项目
-要使用这些项目的二进制文件，从发行版复制。某些代码在 GitHub 可见。
-
-- Nukepayload2.CodeAnalysis (代码不可见)
-- libExtraWindow
-- Nukepayload2.UI.UWP
-- Nukepayload2.N2Engine.Shell (代码不可见)
+要使用这些项目的二进制文件，从发行版复制。
+- Nukepayload2.N2Engine.Shell

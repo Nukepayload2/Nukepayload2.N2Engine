@@ -162,14 +162,6 @@
     <Import Include="Windows.UI.Xaml.Navigation" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\Nukepayload2.CodeAnalysis\Nukepayload2.CodeAnalysis.vbproj">
-      <Project>{11D14CB7-C9FE-4044-ABA0-9BE40EFBC301}</Project>
-      <Name>Nukepayload2.CodeAnalysis</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\Nukepayload2.UI.UWP\Nukepayload2.UI.UWP.vbproj">
-      <Project>{faee72f7-b4e0-48e6-8270-193738fb3bc2}</Project>
-      <Name>Nukepayload2.UI.UWP</Name>
-    </ProjectReference>
     <ProjectReference Include="..\Nukepayload2.Collections\Nukepayload2.Collections.vbproj">
       <Project>{07d4710f-082e-45b1-b967-7e795f1e117a}</Project>
       <Name>Nukepayload2.Collections</Name>
@@ -192,7 +184,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
-      <Version>6.0.1</Version>
+      <Version>6.0.2</Version>
+    </PackageReference>
+    <PackageReference Include="Nukepayload2.CodeAnalysis">
+      <Version>1.0.1-beta</Version>
     </PackageReference>
   </ItemGroup>
   <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
