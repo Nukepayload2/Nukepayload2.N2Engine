@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Import Include="System.ComponentModel" />
     <Import Include="System.IO" />
     <Import Include="System.Numerics" />
     <Import Include="System.Runtime.CompilerServices" />

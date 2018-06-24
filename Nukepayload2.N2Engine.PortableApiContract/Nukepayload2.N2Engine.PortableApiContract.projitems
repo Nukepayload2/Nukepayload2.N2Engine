@@ -39,6 +39,7 @@
     <Compile Include="$(MSBuildThisFileDirectory)Platform\Platforms.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Platform\RegistrationIgnoreAttribute.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Platform\Renderers.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Preview\CachedPropertyBinder.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\IGameContentControlRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Renderers\IGameTemplatedContentRenderer.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Resources\BitmapResource.vb" />

@@ -81,6 +81,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "APIContracts", "APIContract
 EndProject
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.PhysicsIntegration", "Nukepayload2.N2Engine.PhysicsIntegration\Nukepayload2.N2Engine.PhysicsIntegration.vbproj", "{F99F2ECF-7702-4816-9DEB-D7BA3D68063A}"
 EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.Preview.Tests", "Nukepayload2.N2Engine.Preview.Tests\Nukepayload2.N2Engine.Preview.Tests.vbproj", "{7B4C711E-87AA-47B9-987F-B93FFA84B7D1}"
+EndProject
 Global
 	GlobalSection(SharedMSBuildProjectFiles) = preSolution
 		Nukepayload2.N2Engine.InputApiContract\Nukepayload2.N2Engine.InputApiContract.projitems*{21bfd18f-446d-42b8-b913-22a5d551089d}*SharedItemsImports = 13
@@ -192,6 +194,10 @@ Global
 		{F99F2ECF-7702-4816-9DEB-D7BA3D68063A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F99F2ECF-7702-4816-9DEB-D7BA3D68063A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F99F2ECF-7702-4816-9DEB-D7BA3D68063A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B4C711E-87AA-47B9-987F-B93FFA84B7D1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B4C711E-87AA-47B9-987F-B93FFA84B7D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B4C711E-87AA-47B9-987F-B93FFA84B7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B4C711E-87AA-47B9-987F-B93FFA84B7D1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -232,6 +238,7 @@ Global
 		{366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B} = {944BFB54-BD45-47F3-BDDA-ED24012572C4}
 		{71432963-19C8-4113-A128-0D2BF6D07A5E} = {944BFB54-BD45-47F3-BDDA-ED24012572C4}
 		{F99F2ECF-7702-4816-9DEB-D7BA3D68063A} = {366EE0C4-3CA7-4502-B5CA-F68EFCEBC22B}
+		{7B4C711E-87AA-47B9-987F-B93FFA84B7D1} = {716F2BA2-2B65-4B6F-A3EA-C9270A09D274}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {08963F99-4C0D-43E3-8052-29A11055F453}
