@@ -6,8 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="System.ValueTuple" Version="4.4.0" />
-    <PackageReference Include="System.Numerics.Vectors" Version="4.4.0" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -19,10 +19,10 @@
       <HintPath>C:\Program Files (x86)\MonoGame\v3.0\Assemblies\iOS\MonoGame.Framework.dll</HintPath>
     </Reference>
     <Reference Include="OpenTK-1.0">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\Xamarin.iOS\v1.0\OpenTK-1.0.dll</HintPath>
+      <HintPath>$(DevEnvDir)\Reference Assemblies\Microsoft\Framework\Xamarin.iOS\v1.0\OpenTK-1.0.dll</HintPath>
     </Reference>
     <Reference Include="Xamarin.iOS">
-      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
+      <HintPath>$(DevEnvDir)\Reference Assemblies\Microsoft\Framework\Xamarin.iOS\v1.0\Xamarin.iOS.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

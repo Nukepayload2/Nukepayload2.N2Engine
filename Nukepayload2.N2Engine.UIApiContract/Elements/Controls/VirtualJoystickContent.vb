@@ -10,38 +10,67 @@ Namespace UI.Controls
         Dim _circleStroke As New EllipseElement
         Dim _circleFilled As New EllipseElement
 
-        Public ReadOnly Property Stroke As PropertyBinder(Of Color) Implements IVirtualJoystickContent.Stroke
+        Public Property Stroke As PropertyBinder(Of Color) Implements IVirtualJoystickContent.Stroke
             Get
                 Return _circleStroke.Stroke
             End Get
+            Set(value As PropertyBinder(Of Color))
+                _circleStroke.Stroke = value
+            End Set
         End Property
 
-        Public ReadOnly Property Fill As PropertyBinder(Of Color) Implements IVirtualJoystickContent.Fill
+        Public Property Fill As PropertyBinder(Of Color) Implements IVirtualJoystickContent.Fill
             Get
                 Return _circleFilled.Fill
             End Get
+            Set(value As PropertyBinder(Of Color))
+                _circleFilled.Fill = value
+            End Set
         End Property
 
-        Public ReadOnly Property StrokeSize As PropertyBinder(Of Vector2) Implements IVirtualJoystickContent.StrokeSize
+        Public Property StrokeSize As PropertyBinder(Of Vector2) Implements IVirtualJoystickContent.StrokeSize
             Get
                 Return _circleStroke.Size
             End Get
+            Set(value As PropertyBinder(Of Vector2))
+                _circleStroke.Size = value
+            End Set
         End Property
 
-        Public ReadOnly Property FillSize As PropertyBinder(Of Vector2) Implements IVirtualJoystickContent.FillSize
+        Public Property FillSize As PropertyBinder(Of Vector2) Implements IVirtualJoystickContent.FillSize
             Get
                 Return _circleFilled.Size
             End Get
+            Set(value As PropertyBinder(Of Vector2))
+                _circleFilled.Size = value
+            End Set
         End Property
 
-        Public ReadOnly Property StartPoint As New PropertyBinder(Of Vector2) Implements IVirtualJoystickContent.StartPoint
-        Public ReadOnly Property EndPoint As New PropertyBinder(Of Vector2) Implements IVirtualJoystickContent.EndPoint
+        ''' <summary>
+        ''' 虚拟摇杆的摇杆框的中心坐标。预计不会频繁变动。
+        ''' </summary>
+        Public Property StartPoint As PropertyBinder(Of Vector2) Implements IVirtualJoystickContent.StartPoint
+            Get
+                Return _circleStroke.Location
+            End Get
+            Set
+                _circleStroke.Location = Value
+            End Set
+        End Property
+
+        ''' <summary>
+        ''' 虚拟摇杆的摇杆头的中心坐标。预计会频繁变动。
+        ''' </summary>
+        Public Property EndPoint As PropertyBinder(Of Vector2) Implements IVirtualJoystickContent.EndPoint
+            Get
+                Return _circleFilled.Location
+            End Get
+            Set(value As PropertyBinder(Of Vector2))
+                _circleFilled.Location = value
+            End Set
+        End Property
 
         Sub New()
-            _circleStroke.Location.Bind(
-                Function() StartPoint.Value)
-            _circleFilled.Location.Bind(
-                Function() EndPoint.Value)
             With Children
                 .Add(_circleStroke)
                 .Add(_circleFilled)

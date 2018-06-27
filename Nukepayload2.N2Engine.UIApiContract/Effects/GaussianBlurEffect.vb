@@ -9,7 +9,7 @@ Namespace UI.Effects
         ''' <summary>
         ''' 模糊半径
         ''' </summary>
-        Public ReadOnly Property BlurAmount As New PropertyBinder(Of Single)
+        Public Property BlurAmount As PropertyBinder(Of Single) = New ManualPropertyBinder(Of Single)
         ''' <summary>
         ''' 这个效果没有子效果源。
         ''' </summary>

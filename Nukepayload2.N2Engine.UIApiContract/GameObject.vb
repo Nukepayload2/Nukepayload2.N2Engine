@@ -23,7 +23,7 @@ Namespace UI
         ''' </summary>
         Public Property Resources As New Dictionary(Of String, GameResourceBase)
         ''' <summary>
-        ''' 初始化<see cref="Resources"/> 
+        ''' 初始化 <see cref="Resources"/>
         ''' </summary>
         Protected Overridable Sub CreateResources()
 

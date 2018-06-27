@@ -43,10 +43,10 @@ Namespace UI.Elements
         ''' <summary>
         ''' (Win2D) 图块的边界吻合处是否应该无缝。
         ''' </summary>
-        Public ReadOnly Property ClampToSourceRect As New PropertyBinder(Of Boolean)
+        Public Property ClampToSourceRect As PropertyBinder(Of Boolean) = New ManualPropertyBinder(Of Boolean)
         ''' <summary>
         ''' (Win2D) 表示贴图是不是像素风格。如果是像素风格, 则缩放使用临近算法，否则使用线性插值算法。
         ''' </summary>
-        Public ReadOnly Property IsPixelStyled As New PropertyBinder(Of Boolean)
+        Public Property IsPixelStyled As PropertyBinder(Of Boolean) = New ManualPropertyBinder(Of Boolean)
     End Class
 End Namespace

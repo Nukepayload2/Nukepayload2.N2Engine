@@ -3,15 +3,15 @@
 Imports System.Linq.Expressions
 Imports System.Reflection
 
-Namespace Foundation.Preview
+Namespace Foundation
     ''' <summary>
     ''' 表示每次值变更都会缓存值的强类型数据绑定。
-    ''' 设定数据源和路径消耗最多的时间，设置值消耗的时间次之，读取值消耗的时间比 <see cref="PropertyBinder(Of T)"/> 少。
+    ''' 设定数据源和路径消耗最多的时间，设置值消耗的时间次之，读取值消耗的时间比 <see cref="RelayPropertyBinder(Of T)"/> 少。
     ''' </summary>
     ''' <typeparam name="TDeclaringType"></typeparam>
     ''' <typeparam name="TValue"></typeparam>
     Public Class CachedPropertyBinder(Of TValue)
-        Implements INotifyPropertyChanged
+        Implements PropertyBinder(Of TValue)
 
         Private _setValue As Action(Of INotifyPropertyChanged, TValue) = AddressOf DefaultSetValue
 
@@ -29,6 +29,18 @@ Namespace Foundation.Preview
 
         Public Event PropertyChanged As PropertyChangedEventHandler Implements INotifyPropertyChanged.PropertyChanged
 
+        Sub New()
+
+        End Sub
+
+        Sub New(other As PropertyBinder(Of TValue))
+            SetBinding(other, NameOf(other.Value))
+        End Sub
+
+        Sub New(source As INotifyPropertyChanged, path As String)
+            SetBinding(source, path)
+        End Sub
+
         Public Property Path As String
             Get
                 Return _Path
@@ -43,7 +55,9 @@ Namespace Foundation.Preview
                 Else
                     CompilePropertyAccess(ds.GetType, value)
                 End If
+                Dim old = _Value
                 _Value = _getValue(ds)
+                RaiseEvent DataChanged(Me, New PropertyBinderDataChangedEventArgs(Of TValue)(old, _Value))
                 RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.Value)))
             End Set
         End Property
@@ -67,7 +81,9 @@ Namespace Foundation.Preview
                         CompilePropertyAccess(value.GetType, Path)
                     End If
                 End If
+                Dim old = _Value
                 _Value = _getValue(value)
+                RaiseEvent DataChanged(Me, New PropertyBinderDataChangedEventArgs(Of TValue)(old, _Value))
                 RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.Value)))
             End Set
         End Property
@@ -92,7 +108,9 @@ Namespace Foundation.Preview
                     CompilePropertyAccess(source.GetType, path)
                 End If
             End If
+            Dim old = _Value
             _Value = _getValue(source)
+            RaiseEvent DataChanged(Me, New PropertyBinderDataChangedEventArgs(Of TValue)(old, _Value))
             RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.Value)))
         End Sub
 
@@ -107,22 +125,44 @@ Namespace Foundation.Preview
             _getValue = getLambda.Compile
         End Sub
 
-        Public Property Value As TValue
+        Public Property Value As TValue Implements PropertyBinder(Of TValue).Value
             Get
                 Return _Value
             End Get
             Set(value As TValue)
+                Dim old = _Value
                 _Value = value
                 _setValue(DataSource, value)
+                RaiseEvent DataChanged(Me, New PropertyBinderDataChangedEventArgs(Of TValue)(old, _Value))
                 RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.Value)))
             End Set
         End Property
 
+        Public ReadOnly Property CanRead As Boolean Implements PropertyBinder(Of TValue).CanRead
+            Get
+                Return Path IsNot Nothing AndAlso DataSource IsNot Nothing
+            End Get
+        End Property
+
+        Public ReadOnly Property CanWrite As Boolean Implements PropertyBinder(Of TValue).CanWrite
+            Get
+                Return Path IsNot Nothing AndAlso DataSource IsNot Nothing
+            End Get
+        End Property
+
+        Public Event DataChanged As EventHandler(Of PropertyBinderDataChangedEventArgs(Of TValue)) Implements PropertyBinder(Of TValue).DataChanged
+
         Private Sub OnValueChanged(sender As Object, e As PropertyChangedEventArgs)
             If e.PropertyName = Path Then
+                Dim old = _Value
                 _Value = _getValue(DataSource)
+                RaiseEvent DataChanged(Me, New PropertyBinderDataChangedEventArgs(Of TValue)(old, _Value))
                 RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(Me.Value)))
             End If
         End Sub
+
+        Public Function GetValueOrDefault() As TValue Implements PropertyBinder(Of TValue).GetValueOrDefault
+            Return Value
+        End Function
     End Class
 End Namespace

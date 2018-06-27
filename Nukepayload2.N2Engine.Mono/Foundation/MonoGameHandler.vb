@@ -38,8 +38,10 @@ Public Class MonoGameHandler
     Sub New(setChild As Action(Of Windows.Forms.Control), wpfWindow As Windows.Window, screenSize As SizeInInteger)
         MyClass.New
         BackBufferInformation.ScreenSize = screenSize
+        Dim prepared = False
         AddHandler graphics.PreparingDeviceSettings,
             Sub(sender, e)
+                If prepared Then Return
                 GameForm = Windows.Forms.Control.FromHandle(e.GraphicsDeviceInformation.PresentationParameters.DeviceWindowHandle)
                 GameWindow = wpfWindow
                 BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(CInt(GameWindow.ActualWidth), CInt(GameWindow.ActualHeight)))
@@ -49,6 +51,7 @@ Public Class MonoGameHandler
                 GameWindow.Focus()
                 graphics.PreferredBackBufferHeight = screenSize.Height
                 graphics.PreferredBackBufferWidth = screenSize.Width
+                prepared = True
                 graphics.ApplyChanges()
             End Sub
     End Sub

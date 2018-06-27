@@ -8,7 +8,6 @@ Namespace UI.Controls
     Public Class VirtualJoystick
         Inherits GameContentControl(Of VirtualJoystickContent)
 
-        Dim _startPoint, _endPoint As Vector2
         Dim _startTouchId As UInteger
 
         ''' <summary>
@@ -79,44 +78,44 @@ Namespace UI.Controls
         End Sub
 
         Private Sub Initialize(isTouchPointInVirtualJoystickRange As Func(Of Vector2, Boolean))
-            With Content
-                .StartPoint.Bind(Function() _startPoint)
-                .EndPoint.Bind(Function() _endPoint)
-                .IsVisible.Bind(Function() State = VirtualJoystickState.Drag)
-            End With
             Me.IsTouchPointInVirtualJoystickRange = isTouchPointInVirtualJoystickRange
         End Sub
 
         Private Sub VirtualJoystick_TouchDown(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchDown
             If _startTouchId = GameTouchRoutedEventArgs.InvalidTouchId Then
-                _startPoint = e.Position
-                _endPoint = _startPoint
-                If IsTouchPointInVirtualJoystickRange(_startPoint) Then
+                Dim startPoint = e.Position
+                Dim endPoint = startPoint
+                Content.StartPoint.Value = startPoint
+                Content.EndPoint.Value = endPoint
+                If IsTouchPointInVirtualJoystickRange(startPoint) Then
                     _startTouchId = e.PointerId
                     _State = VirtualJoystickState.Drag
-                    RaiseEvent VirtualJoystickDragStarting(Me, New VirtualJoystickDragEventArgs(_startPoint, _endPoint))
+                    IsVisible.Value = True
+                    RaiseEvent VirtualJoystickDragStarting(Me, New VirtualJoystickDragEventArgs(startPoint, endPoint))
                 End If
             End If
         End Sub
 
         Private Sub VirtualJoystick_TouchMove(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchMove
             If _startTouchId = e.PointerId Then
-                _endPoint = e.Position
+                Content.EndPoint.Value = e.Position
             End If
         End Sub
 
         Private Sub VirtualJoystick_TouchUp(sender As GameVisual, e As GameTouchRoutedEventArgs) Handles Me.TouchUp
             If _startTouchId = e.PointerId Then
-                _endPoint = _startPoint
+                Dim startPoint = Content.StartPoint.Value
+                Content.EndPoint.Value = startPoint
                 _State = VirtualJoystickState.Idle
+                IsVisible.Value = False
                 _startTouchId = GameTouchRoutedEventArgs.InvalidTouchId
-                RaiseEvent VirtualJoystickReleased(Me, New VirtualJoystickDragEventArgs(_startPoint, _endPoint))
+                RaiseEvent VirtualJoystickReleased(Me, New VirtualJoystickDragEventArgs(startPoint, startPoint))
             End If
         End Sub
 
         Private Sub VirtualJoystick_Updating(sender As GameVisual, e As EventArgs) Handles Me.Updating
             If _startTouchId <> GameTouchRoutedEventArgs.InvalidTouchId Then
-                RaiseEvent VirtualJoystickDragging(Me, New VirtualJoystickDragEventArgs(_startPoint, _endPoint))
+                RaiseEvent VirtualJoystickDragging(Me, New VirtualJoystickDragEventArgs(Content.StartPoint.Value, Content.EndPoint.Value))
             End If
         End Sub
     End Class

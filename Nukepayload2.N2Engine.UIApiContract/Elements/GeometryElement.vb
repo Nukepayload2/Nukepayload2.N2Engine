@@ -9,7 +9,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 轮廓线的颜色。可为空。
         ''' </summary>
-        Public ReadOnly Property Stroke As New PropertyBinder(Of Color)
+        Public Property Stroke As PropertyBinder(Of Color) = New ManualPropertyBinder(Of Color)
     End Class
     ''' <summary>
     ''' 表示线段
@@ -19,11 +19,11 @@ Namespace UI.Elements
         ''' <summary>
         ''' 线段的起始点
         ''' </summary>
-        Public ReadOnly Property StartPoint As New PropertyBinder(Of Vector2)
+        Public Property StartPoint As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 线段的结束点
         ''' </summary>
-        Public ReadOnly Property EndPoint As New PropertyBinder(Of Vector2)
+        Public Property EndPoint As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
     End Class
     ''' <summary>
     ''' 表示折线
@@ -33,11 +33,11 @@ Namespace UI.Elements
         ''' <summary>
         ''' 线段的每一个顶点
         ''' </summary>
-        Public ReadOnly Property Points As New PropertyBinder(Of Vector2())
+        Public Property Points As PropertyBinder(Of Vector2()) = New ManualPropertyBinder(Of Vector2())
         ''' <summary>
         ''' 是否是闭合的折线段
         ''' </summary>
-        Public ReadOnly Property IsClosed As New PropertyBinder(Of Boolean)
+        Public Property IsClosed As PropertyBinder(Of Boolean) = New ManualPropertyBinder(Of Boolean)
 
     End Class
     ''' <summary>
@@ -48,11 +48,11 @@ Namespace UI.Elements
         ''' <summary>
         ''' 贝塞尔曲线的起始点
         ''' </summary>
-        Public ReadOnly Property StartPoint As New PropertyBinder(Of Vector2)
+        Public Property StartPoint As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 贝塞尔曲线的结束点
         ''' </summary>
-        Public ReadOnly Property EndPoint As New PropertyBinder(Of Vector2)
+        Public Property EndPoint As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
 
     End Class
     ''' <summary>
@@ -63,7 +63,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 二次贝塞尔曲线的控制点
         ''' </summary>
-        Public ReadOnly Property ControlPoint As New PropertyBinder(Of Vector2)
+        Public Property ControlPoint As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
     End Class
     ''' <summary>
     ''' 表示三次贝塞尔曲线
@@ -73,11 +73,11 @@ Namespace UI.Elements
         ''' <summary>
         ''' 三次贝塞尔曲线的控制点 1
         ''' </summary>
-        Public ReadOnly Property ControlPoint1 As New PropertyBinder(Of Vector2)
+        Public Property ControlPoint1 As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 三次贝塞尔曲线的控制点 2
         ''' </summary>
-        Public ReadOnly Property ControlPoint2 As New PropertyBinder(Of Vector2)
+        Public Property ControlPoint2 As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
     End Class
     ''' <summary>
     ''' 表示自定义的贝塞尔曲线
@@ -87,7 +87,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 贝塞尔曲线的控制点
         ''' </summary>
-        Public ReadOnly Property ControlPoints As New PropertyBinder(Of Vector2())
+        Public Property ControlPoints As PropertyBinder(Of Vector2()) = New ManualPropertyBinder(Of Vector2())
         ''' <summary>
         ''' 根据高次贝塞尔曲线的公式生成折线的顶点
         ''' </summary>
@@ -107,7 +107,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 填充色。可为空。
         ''' </summary>
-        Public ReadOnly Property Fill As New PropertyBinder(Of Color)
+        Public Property Fill As PropertyBinder(Of Color) = New ManualPropertyBinder(Of Color)
     End Class
     ''' <summary>
     ''' 代表拥有边线的实心矩形
@@ -129,15 +129,14 @@ Namespace UI.Elements
         ''' <summary>
         ''' 三角形的第 1 个点
         ''' </summary>
-        Public ReadOnly Property Point1 As New PropertyBinder(Of Vector2)
+        Public Property Point1 As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 三角形的第 2 个点
         ''' </summary>
-        Public ReadOnly Property Point2 As New PropertyBinder(Of Vector2)
+        Public Property Point2 As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 三角形的第 3 个点
         ''' </summary>
-        Public ReadOnly Property Point3 As New PropertyBinder(Of Vector2)
+        Public Property Point3 As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
     End Class
 End Namespace
-

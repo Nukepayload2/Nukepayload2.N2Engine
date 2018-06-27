@@ -9,6 +9,6 @@ Namespace UI
         ''' <summary>
         ''' 定义从四周进行的裁剪。顺序为：w左，x上，y右，z下。
         ''' </summary>
-        Public ReadOnly Property Thickness As New PropertyBinder(Of Vector4)
+        Public Property Thickness As PropertyBinder(Of Vector4) = New ManualPropertyBinder(Of Vector4)
     End Class
 End Namespace

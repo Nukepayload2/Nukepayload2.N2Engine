@@ -13,19 +13,25 @@ Namespace UI.Controls
         ''' <summary>
         ''' 按钮边框的颜色
         ''' </summary>
-        Public ReadOnly Property BorderColor As PropertyBinder(Of Color)
+        Public Property BorderColor As PropertyBinder(Of Color)
             Get
                 Return _rect.Stroke
             End Get
+            Set(value As PropertyBinder(Of Color))
+                _rect.Stroke = value
+            End Set
         End Property
 
         ''' <summary>
         ''' 按钮背景色
         ''' </summary>
-        Public ReadOnly Property Background As PropertyBinder(Of Color)
+        Public Property Background As PropertyBinder(Of Color)
             Get
                 Return _rect.Fill
             End Get
+            Set(value As PropertyBinder(Of Color))
+                _rect.Fill = value
+            End Set
         End Property
 
         ''' <summary>
@@ -43,22 +49,42 @@ Namespace UI.Controls
         ''' <summary>
         ''' 按钮上文字的位移
         ''' </summary>
-        Public ReadOnly Property TextOffset As New PropertyBinder(Of Vector2)
-
+        Public Property TextOffset As PropertyBinder(Of Vector2)
+            Get
+                Return _txtText.Location
+            End Get
+            Set(value As PropertyBinder(Of Vector2))
+                _txtText.Location = value
+            End Set
+        End Property
         ''' <summary>
         ''' 按钮中的文字
         ''' </summary>
-        Public ReadOnly Property Text As PropertyBinder(Of String)
+        Public Property Text As PropertyBinder(Of String)
             Get
                 Return _txtText.Text
             End Get
+            Set(value As PropertyBinder(Of String))
+                _txtText.Text = value
+            End Set
+        End Property
+
+        Public Overrides Property Size As PropertyBinder(Of Vector2)
+            Get
+                Return MyBase.Size
+            End Get
+            Set(value As PropertyBinder(Of Vector2))
+                MyBase.Size = value
+                If _rect IsNot Nothing Then
+                    _rect.Size = New CachedPropertyBinder(Of Vector2)(value)
+                    _txtText.Size = New CachedPropertyBinder(Of Vector2)(value)
+                End If
+            End Set
         End Property
 
         Sub New()
-            _rect.Location.Bind(New Vector2)
-            _rect.Size.Bind(Size)
-            _txtText.Location.Bind(TextOffset)
-            _txtText.Size.Bind(Size)
+            _rect.Size = New CachedPropertyBinder(Of Vector2)(Size)
+            _txtText.Size = New CachedPropertyBinder(Of Vector2)(Size)
             With Children
                 .Add(_rect)
                 .Add(_txtText)

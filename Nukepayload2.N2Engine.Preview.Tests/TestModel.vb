@@ -11,6 +11,7 @@ Public Class TestModel
             Return _TestInt32ValueNotify
         End Get
         Set(value As Integer)
+            If _TestInt32ValueNotify = value Then Return
             _TestInt32ValueNotify = value
             RaiseEvent PropertyChanged(Me, New PropertyChangedEventArgs(NameOf(TestInt32ValueNotify)))
         End Set

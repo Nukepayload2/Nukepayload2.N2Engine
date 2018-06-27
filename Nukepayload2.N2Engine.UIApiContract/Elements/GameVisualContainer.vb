@@ -22,7 +22,7 @@ Namespace UI.Elements
         Public ReadOnly Property RenderSize As Vector2
             Get
                 Dim size As Vector2
-                If Me.Size.CanRead Then
+                If Me.Size.CanRead AndAlso Me.Size.Value.X > 1 Then
                     size = Me.Size.Value
                 Else
                     size = Information.BackBufferInformation.ScreenSize.ToVector2

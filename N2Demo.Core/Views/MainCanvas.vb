@@ -1,4 +1,6 @@
-﻿Imports System.Numerics
+﻿Option Strict On
+
+Imports System.Numerics
 Imports FarseerPhysics.Dynamics
 Imports Nukepayload2.N2Engine.ActionGames.Core
 Imports Nukepayload2.N2Engine.Animations
@@ -59,57 +61,74 @@ Public Class MainCanvas
     Private Sub VisualTreeDataBind()
         stageGrid = New StageOneGrid
         chara = New PrimaryCharacter(character, New RectangleCollider(1, viewModel.CharacterSheet.Size.ToPhysicsUnit))
-        character.Bind(Function(r) r.Sprite, Function()
-                                                 If Not flameGuyAnimationState.MoveNext Then
-                                                     flameGuyAnimationState.Reset()
-                                                     flameGuyAnimationState.MoveNext()
-                                                 End If
-                                                 Return flameGuyAnimationState.Current
-                                             End Function).
-        Bind(Function(r) r.Size, Function() viewModel.CharacterSheet.Size)
-        IsFrozen.Bind(Function() isPaused)
-        Location.Bind(New Vector2)
-        ZIndex.Bind(0)
-        AddChild(scrollViewer.
-            Bind(Function(m) m.Location, Function() viewModel.ScrollingViewer.Offset).
-            Bind(Function(m) m.ZIndex, 0).
-            Bind(Function(r) r.Size, viewModel.ScrollingViewer.BufferSize).
-            AddChild(stageGrid.LayoutRoot.
-                Bind(Function(r) r.Location, New Vector2).
-                Bind(Function(r) r.Size, viewModel.ScrollingViewer.BufferSize).
-                AddChild(chara)
-            )
-        ).
-        AddChild(controlPanel.
-            Bind(Function(r) r.Location, New Vector2).
-            AddChild(Joystick.
-                Bind(Function(r) r.Fill, New Color(&H7FFF3F3F)).
-                Bind(Function(r) r.Stroke, New Color(&H9F000000)).
-                Bind(Function(r) r.FillSize, New Vector2(64.0F)).
-                Bind(Function(r) r.StrokeSize, New Vector2(72.0F)).
-                Bind(Function(r) r.Location, New Vector2)
-            ).
-            AddChild(BtnJump.
-                Bind(Function(r) r.Background, Function() If(BtnJump.IsPointerOver,
-                    viewModel.ButtonStatus.PointerOverBackground, viewModel.ButtonStatus.Background)).
-                Bind(Function(r) r.BorderColor, Function() If(BtnJump.IsPressed,
-                    viewModel.ButtonStatus.PressedBorderColor, viewModel.ButtonStatus.BorderColor)).
-                Bind(Function(r) r.TextOffset, Function() viewModel.ButtonStatus.TextOffset).
-                Bind(Function(r) r.Size, Function() viewModel.ButtonStatus.Size).
-                Bind(Function(r) r.Text, Function() viewModel.ButtonStatus.Text).
-                Bind(Function(r) r.Location, Function() viewModel.ButtonStatus.Position)
-            ).
-            AddChild(tblJumpLogicStatus.
-                Bind(Function(r) r.Text, Function() viewModel.JumpLogicStatusText).
-                Bind(Function(r) r.Location, Vector2.Zero)
-            )
-        )
-        character.Location.Bind(Function()
-                                    Dim phyPos = chara.Body.Position.ToDisplayUnit
-                                    Dim chaSize = character.Size.Value
-                                    Return New Vector2(phyPos.X + chaSize.X / 2,
-                                                       phyPos.Y + chaSize.Y)
-                                End Function)
+
+        character.Sprite = New RelayPropertyBinder(Of BitmapResource)(
+            Function()
+                If Not flameGuyAnimationState.MoveNext Then
+                    flameGuyAnimationState.Reset()
+                    flameGuyAnimationState.MoveNext()
+                End If
+                Return flameGuyAnimationState.Current
+            End Function)
+        character.Size = New CachedPropertyBinder(Of Vector2)(
+            viewModel.CharacterSheet, NameOf(viewModel.CharacterSheet.Size))
+
+        IsFrozen.Value = isPaused
+
+        Children.Add(scrollViewer)
+        With scrollViewer
+            .Location = New CachedPropertyBinder(Of Vector2)(
+                viewModel.ScrollingViewer, NameOf(viewModel.ScrollingViewer.Offset))
+            .Size = New CachedPropertyBinder(Of Vector2)(
+                viewModel.ScrollingViewer, NameOf(viewModel.ScrollingViewer.BufferSize))
+        End With
+
+        Dim layoutRoot = stageGrid.LayoutRoot
+        scrollViewer.Children.Add(layoutRoot)
+        With layoutRoot
+            .Size = New CachedPropertyBinder(Of Vector2)(
+                viewModel.ScrollingViewer, NameOf(viewModel.ScrollingViewer.BufferSize))
+            .Children.Add(chara)
+        End With
+
+        Children.Add(controlPanel)
+        With controlPanel
+            .Children.Add(Joystick)
+            With Joystick
+                .Fill.Value = New Color(&H7FFF3F3F)
+                .Stroke.Value = New Color(&H9F000000)
+                .FillSize.Value = New Vector2(64.0F)
+                .StrokeSize.Value = New Vector2(72.0F)
+            End With
+            .Children.Add(BtnJump)
+            With BtnJump
+                .Background = New RelayPropertyBinder(Of Color)(Function() If(BtnJump.IsPointerOver,
+                    viewModel.ButtonStatus.PointerOverBackground, viewModel.ButtonStatus.Background))
+                .BorderColor = New RelayPropertyBinder(Of Color)(Function() If(BtnJump.IsPressed,
+                    viewModel.ButtonStatus.PressedBorderColor, viewModel.ButtonStatus.BorderColor))
+                .TextOffset = New CachedPropertyBinder(Of Vector2)(
+                    viewModel.ButtonStatus, NameOf(viewModel.ButtonStatus.TextOffset))
+                .Size = New CachedPropertyBinder(Of Vector2)(
+                    viewModel.ButtonStatus, NameOf(viewModel.ButtonStatus.Size))
+                .Text = New CachedPropertyBinder(Of String)(
+                    viewModel.ButtonStatus, NameOf(viewModel.ButtonStatus.Text))
+                .Location = New CachedPropertyBinder(Of Vector2)(
+                    viewModel.ButtonStatus, NameOf(viewModel.ButtonStatus.Position))
+            End With
+            .Children.Add(tblJumpLogicStatus)
+            With tblJumpLogicStatus
+                .Text = New CachedPropertyBinder(Of String)(
+                    viewModel, NameOf(viewModel.JumpLogicStatusText))
+            End With
+        End With
+
+        character.Location = New RelayPropertyBinder(Of Vector2)(
+            Function()
+                Dim phyPos = chara.Body.Position.ToDisplayUnit
+                Dim chaSize = character.Size.Value
+                Return New Vector2(phyPos.X + chaSize.X / 2, phyPos.Y + chaSize.Y)
+            End Function)
+
         chara.Body.Position = viewModel.CharacterSheet.Location.ToPhysicsUnit
         chara.Body.FixedRotation = True
         chara.Body.BodyType = BodyType.Dynamic

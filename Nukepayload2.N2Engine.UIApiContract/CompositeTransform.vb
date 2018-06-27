@@ -9,23 +9,23 @@ Namespace UI
         ''' <summary>
         ''' 平移变换。这个操作最先进行。在 Win2D 中单位是设备无关单位，在 MonoGame 中单位是像素。
         ''' </summary>
-        Public ReadOnly Property Translate As New PropertyBinder(Of Vector2)
+        Public Property Translate As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 绕Z轴进行旋转变换。单位是度。这个操作第二个执行。
         ''' </summary>
-        Public ReadOnly Property Rotate As New PropertyBinder(Of Single)
+        Public Property Rotate As PropertyBinder(Of Single) = New ManualPropertyBinder(Of Single)
         ''' <summary>
         ''' 扭曲变换。在 Win2D 中单位是设备无关单位，在 MonoGame 中单位是像素。这个操作第三个执行。
         ''' </summary>
-        Public ReadOnly Property Skew As New PropertyBinder(Of Vector2)
+        Public Property Skew As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 扭曲变换。用百分比表示。这个操作最后执行。
         ''' </summary>
-        Public ReadOnly Property Scale As New PropertyBinder(Of Vector2)
+        Public Property Scale As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 旋转，扭曲 和 缩放变换原点。默认是左上角。如果绑定为元素的大小，则表示右下角。
         ''' </summary>
-        Public ReadOnly Property Origin As New PropertyBinder(Of Vector2)
+        Public Property Origin As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 获取当前变换按照平移，旋转，扭曲，缩放的顺序得到的变换矩阵。
         ''' </summary>

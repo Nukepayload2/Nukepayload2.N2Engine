@@ -12,12 +12,12 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.NETCore.Portable.Compatibility" Version="1.0.1" />
-    <PackageReference Include="System.Numerics.Vectors" Version="4.4.0" />
+    <PackageReference Include="System.Numerics.Vectors" Version="4.5.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Reference Include="MonoGame.Framework">
-      <HintPath>C:\Program Files (x86)\MonoGame\v3.0\Assemblies\iOS\MonoGame.Framework.dll</HintPath>
+      <HintPath>$(DevEnvDir)\MonoGame\v3.0\Assemblies\iOS\MonoGame.Framework.dll</HintPath>
     </Reference>
   </ItemGroup>
 

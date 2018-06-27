@@ -17,6 +17,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)Extensibility\IExtendable.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Extensibility\IGameExtensionInfo.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Foundation\IGameCommand.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Preview\ManualPropertyBinder.vb" />
+    <Compile Include="$(MSBuildThisFileDirectory)Preview\RelayPropertyBinder.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Information\BackBufferInformation.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Information\GameEnvironment.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Math\Combination.vb" />
@@ -51,8 +53,5 @@
     <Compile Include="$(MSBuildThisFileDirectory)Threading\GameDispatcher.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\StaticCast.vb" />
     <Compile Include="$(MSBuildThisFileDirectory)Utilities\TreeHelper.vb" />
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="$(MSBuildThisFileDirectory)Foundation\" />
   </ItemGroup>
 </Project>

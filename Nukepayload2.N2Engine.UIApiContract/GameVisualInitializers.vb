@@ -5,17 +5,17 @@ Namespace UI
 
     Public Module GameVisualInitializers
         <Extension>
-        Public Function Bind(Of TObject, TProperty)(obj As TObject, getProperty As Func(Of TObject, PropertyBinder(Of TProperty)), value As TProperty) As TObject
+        Public Function Bind(Of TObject, TProperty)(obj As TObject, getProperty As Func(Of TObject, RelayPropertyBinder(Of TProperty)), value As TProperty) As TObject
             getProperty(obj).Bind(value)
             Return obj
         End Function
         <Extension>
-        Public Function Bind(Of TObject, TProperty)(obj As TObject, getProperty As Func(Of TObject, PropertyBinder(Of TProperty)), getter As Func(Of TProperty)) As TObject
+        Public Function Bind(Of TObject, TProperty)(obj As TObject, getProperty As Func(Of TObject, RelayPropertyBinder(Of TProperty)), getter As Func(Of TProperty)) As TObject
             getProperty(obj).Bind(getter)
             Return obj
         End Function
         <Extension>
-        Public Function Bind(Of TObject, TProperty)(obj As TObject, getProperty As Func(Of TObject, PropertyBinder(Of TProperty)), getter As Func(Of TProperty), setter As Action(Of TProperty)) As TObject
+        Public Function Bind(Of TObject, TProperty)(obj As TObject, getProperty As Func(Of TObject, RelayPropertyBinder(Of TProperty)), getter As Func(Of TProperty), setter As Action(Of TProperty)) As TObject
             getProperty(obj).Bind(getter, setter)
             Return obj
         End Function

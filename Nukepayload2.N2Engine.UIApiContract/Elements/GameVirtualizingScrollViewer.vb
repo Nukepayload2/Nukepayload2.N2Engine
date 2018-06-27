@@ -10,11 +10,11 @@ Namespace UI.Elements
         ''' <summary>
         ''' 内部元素的位置偏移。如果不绑定值则不偏移对待。
         ''' </summary>
-        Public ReadOnly Property Offset As New PropertyBinder(Of Vector2)
+        Public Property Offset As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 缩放比例。如果不绑定值则按 1 对待。
         ''' </summary>
-        Public ReadOnly Property Zoom As New PropertyBinder(Of Single)
+        Public Property Zoom As PropertyBinder(Of Single) = New ManualPropertyBinder(Of Single)
         ''' <summary>
         ''' 被通知正在卷动时引发此事件。
         ''' </summary>

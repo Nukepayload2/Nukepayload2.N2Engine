@@ -12,19 +12,25 @@ Namespace UI.Controls
         ''' <summary>
         ''' 按钮边框的颜色
         ''' </summary>
-        Public ReadOnly Property BorderColor As PropertyBinder(Of Color)
+        Public Property BorderColor As PropertyBinder(Of Color)
             Get
                 Return Content.BorderColor
             End Get
+            Set(value As PropertyBinder(Of Color))
+                Content.BorderColor = value
+            End Set
         End Property
 
         ''' <summary>
         ''' 按钮背景色
         ''' </summary>
-        Public ReadOnly Property Background As PropertyBinder(Of Color)
+        Public Property Background As PropertyBinder(Of Color)
             Get
                 Return Content.Background
             End Get
+            Set(value As PropertyBinder(Of Color))
+                Content.Background = value
+            End Set
         End Property
 
         ''' <summary>
@@ -42,25 +48,47 @@ Namespace UI.Controls
         ''' <summary>
         ''' 按钮上文字的位移
         ''' </summary>
-        Public ReadOnly Property TextOffset As PropertyBinder(Of Vector2)
+        Public Property TextOffset As PropertyBinder(Of Vector2)
             Get
                 Return Content.TextOffset
             End Get
+            Set(value As PropertyBinder(Of Vector2))
+                Content.TextOffset = value
+            End Set
         End Property
 
         ''' <summary>
         ''' 按钮中的文字
         ''' </summary>
-        Public ReadOnly Property Text As PropertyBinder(Of String)
+        Public Property Text As PropertyBinder(Of String)
             Get
                 Return Content.Text
             End Get
+            Set(value As PropertyBinder(Of String))
+                Content.Text = value
+            End Set
+        End Property
+
+        Public Overrides Property Size As PropertyBinder(Of Vector2)
+            Get
+                Return Content.Size
+            End Get
+            Set(value As PropertyBinder(Of Vector2))
+                If Content IsNot Nothing Then Content.Size = value
+            End Set
+        End Property
+
+        Public Overrides Property Location As PropertyBinder(Of Vector2)
+            Get
+                Return Content.Location
+            End Get
+            Set(value As PropertyBinder(Of Vector2))
+                If Content IsNot Nothing Then Content.Location = value
+            End Set
         End Property
 
         Sub New()
             MyBase.New((New GameButtonContentTemplate).CreateContent)
-            Content.Location.Bind(Location)
-            Content.Size.Bind(Size)
         End Sub
 
         ''' <summary>

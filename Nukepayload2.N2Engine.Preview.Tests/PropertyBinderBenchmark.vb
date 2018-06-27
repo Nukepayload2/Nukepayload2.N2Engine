@@ -14,13 +14,24 @@ Public Class PropertyBinderBenchmark
     End Sub
 
     <TestMethod>
-    Public Sub TestCachedProperty_SetBenchmark()
+    Public Sub TestCachedProperty_SetSameValueBenchmark()
         Dim vm = TestViewModel.Instance
         vm.Model.TestInt32ValueNotify = 3
         Dim view As New TestView
         view.CachedInt32Value.SetBinding(vm.Model, NameOf(vm.Model.TestInt32ValueNotify))
         For i = 1 To LoopCount
             view.CachedInt32Value.Value = 4
+        Next
+    End Sub
+
+    <TestMethod>
+    Public Sub TestCachedProperty_SetDifferentValueBenchmark()
+        Dim vm = TestViewModel.Instance
+        vm.Model.TestInt32ValueNotify = 3
+        Dim view As New TestView
+        view.CachedInt32Value.SetBinding(vm.Model, NameOf(vm.Model.TestInt32ValueNotify))
+        For i = 1 To LoopCount
+            view.CachedInt32Value.Value = i
         Next
     End Sub
 

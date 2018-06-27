@@ -14,7 +14,18 @@ Namespace UI.Elements
         ''' <param name="collider">碰撞器信息。用于创建 Body。</param>
         Sub New(collider As ICollider)
             Me.Collider = collider
+            Location = New RelayPropertyBinder(Of Vector2)(
+            Function()
+                Dim v = Body.Position
+                Return New Vector2(ConvertUnits.ToDisplayUnits(v.X),
+                                   ConvertUnits.ToDisplayUnits(v.Y))
+            End Function,
+            Sub(v)
+                Body.Position = New Vector2(ConvertUnits.ToSimUnits(v.X),
+                                            ConvertUnits.ToSimUnits(v.Y))
+            End Sub)
         End Sub
+
         ''' <summary>
         ''' 创建 Body。在开始游戏前必须调用此方法，否则物理引擎将不能正常工作。
         ''' </summary>
@@ -37,19 +48,6 @@ Namespace UI.Elements
         ''' 表示视图中物体的物理属性
         ''' </summary>
         Public ReadOnly Property Body As Body
-        ''' <summary>
-        ''' 视图的位置。这通常是物体的左上角的坐标。此属性默认情况下绑定到 <see cref="Body"/> 上。 
-        ''' </summary>
-        Public Overrides ReadOnly Property Location As New PropertyBinder(Of Vector2)(
-            Function()
-                Dim v = Body.Position
-                Return New Vector2(ConvertUnits.ToDisplayUnits(v.X),
-                                   ConvertUnits.ToDisplayUnits(v.Y))
-            End Function,
-            Sub(v)
-                Body.Position = New Vector2(ConvertUnits.ToSimUnits(v.X),
-                                            ConvertUnits.ToSimUnits(v.Y))
-            End Sub)
 
     End Class
 End Namespace

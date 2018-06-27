@@ -6,7 +6,7 @@ Namespace UI
     ''' </summary>
     Public Class Matrix3x2Transform
         Inherits PlaneTransform
-        Public ReadOnly Property Matrix As New PropertyBinder(Of Matrix3x2)
+        Public Property Matrix As PropertyBinder(Of Matrix3x2) = New ManualPropertyBinder(Of Matrix3x2)
         Public Overrides Function GetTransformMatrix() As Matrix3x2
             Return Matrix.Value
         End Function

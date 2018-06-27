@@ -30,27 +30,27 @@ Namespace UI.Elements
         ''' <summary>
         ''' 位置。这通常是物体的左上角的坐标。
         ''' </summary>
-        Public Overridable ReadOnly Property Location As New PropertyBinder(Of Vector2)
+        Public Overridable Property Location As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' 大小。用于简易版本的碰撞检测。
         ''' </summary>
-        Public ReadOnly Property Size As New PropertyBinder(Of Vector2)
+        Public Overridable Property Size As PropertyBinder(Of Vector2) = New ManualPropertyBinder(Of Vector2)
         ''' <summary>
         ''' (未实施) 不透明度。范围是0到1。默认是 1。
         ''' </summary>
-        Public ReadOnly Property Opacity As New PropertyBinder(Of Single)(1.0F)
+        Public Property Opacity As PropertyBinder(Of Single) = New ManualPropertyBinder(Of Single)(1.0F)
         ''' <summary>
         ''' (未实施) Z序越高越靠外，反之靠里。默认是 0。
         ''' </summary>
-        Public ReadOnly Property ZIndex As New PropertyBinder(Of Integer)(0)
+        Public Property ZIndex As PropertyBinder(Of Integer) = New ManualPropertyBinder(Of Integer)(0)
         ''' <summary>
         ''' (未实施) 是否在碰撞检测中可见。默认是可见的。
         ''' </summary>
-        Public ReadOnly Property IsHitTestVisible As New PropertyBinder(Of Boolean)(True)
+        Public Property IsHitTestVisible As PropertyBinder(Of Boolean) = New ManualPropertyBinder(Of Boolean)(True)
         ''' <summary>
         ''' 是否可见
         ''' </summary>
-        Public ReadOnly Property IsVisible As New PropertyBinder(Of Boolean)
+        Public Property IsVisible As PropertyBinder(Of Boolean) = New ManualPropertyBinder(Of Boolean)(True)
         ''' <summary>
         ''' (未实施) 渲染时需要处理的特效
         ''' </summary>
@@ -62,7 +62,7 @@ Namespace UI.Elements
         ''' <summary>
         ''' 如果这个对象被冻结，则不会主动进行更新。
         ''' </summary>
-        Public ReadOnly Property IsFrozen As New PropertyBinder(Of Boolean)
+        Public Property IsFrozen As PropertyBinder(Of Boolean) = New ManualPropertyBinder(Of Boolean)
 
         Dim _IsVirtualizing As Boolean
         ''' <summary>

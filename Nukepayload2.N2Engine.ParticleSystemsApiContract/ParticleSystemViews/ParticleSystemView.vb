@@ -7,7 +7,7 @@ Namespace UI.ParticleSystemViews
     Public MustInherit Class ParticleSystemView(Of T As IParticleSystem)
         Inherits GameElement
 
-        Public ReadOnly Property Data As New PropertyBinder(Of T)
+        Public Property Data As PropertyBinder(Of T) = New ManualPropertyBinder(Of T)
 
         Public Overrides Property UpdateAction As Action(Of UpdatingEventArgs)
             Get

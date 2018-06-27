@@ -10,7 +10,7 @@ Namespace UI.Controls
         ''' <summary>
         ''' 要显示的文字
         ''' </summary>
-        Public ReadOnly Property Text As New PropertyBinder(Of String)
+        Public Property Text As PropertyBinder(Of String) = New ManualPropertyBinder(Of String)
         ''' <summary>
         ''' 所用的字体
         ''' </summary>
