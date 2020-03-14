@@ -10,6 +10,11 @@
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.7.1.189" />
+    <PackageReference Include="SharpDX" Version="4.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Nukepayload2.N2Engine.Portable\Nukepayload2.N2Engine.Portable.vbproj">
       <Project>{6f22b5a3-fe7a-4a14-bc67-0043186b376f}</Project>
       <Name>Nukepayload2.N2Engine.Portable</Name>

@@ -20,4 +20,8 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.7.1.189" />
+    <PackageReference Include="SharpDX" Version="4.2.0" />
+  </ItemGroup>
 </Project>
