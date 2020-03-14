@@ -51,10 +51,10 @@
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="MonoGame.Framework.DesktopGL">
-      <Version>3.6.0.1625</Version>
+      <Version>3.7.1.189</Version>
     </PackageReference>
     <PackageReference Include="System.Numerics.Vectors">
-      <Version>4.4.0</Version>
+      <Version>4.5.0</Version>
     </PackageReference>
   </ItemGroup>
   <Import Project="..\RaisingStudio.Xna.Graphics.Shared\RaisingStudio.Xna.Graphics.Shared.projitems" Label="Shared" />

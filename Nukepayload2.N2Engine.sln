@@ -237,6 +237,10 @@ Global
 		Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.projitems*{c459addc-ce9b-45f2-9889-720b221c6a33}*SharedItemsImports = 13
 		RaisingStudio.Xna.Graphics.Shared\RaisingStudio.Xna.Graphics.Shared.projitems*{ca20682b-fec9-46e1-8293-6896e8fc16a3}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.AnimationsApiContract\Nukepayload2.N2Engine.AnimationsApiContract.projitems*{d49cea6b-6d85-49c4-a32c-3650771cb5c9}*SharedItemsImports = 13
+		Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
+		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
+		Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
+		Nukepayload2.UI.SpriteFonts.MonoGameShared\Nukepayload2.UI.SpriteFonts.MonoGameShared.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.projitems*{f99f2ecf-7702-4816-9deb-d7ba3d68063a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
