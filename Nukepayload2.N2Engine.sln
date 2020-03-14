@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2005
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{778DAE3C-4631-46EA-AA77-85C1314464D9}") = "Nukepayload2.N2Engine.ActionGames.Core", "Nukepayload2.N2Engine.ActionGames.Core\Nukepayload2.N2Engine.ActionGames.Core.vbproj", "{8D7A38E5-C530-4650-B3AD-CB020B624360}"
 EndProject
@@ -75,8 +75,6 @@ Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.MonoO
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "N2Demo.Win32", "N2Demo.Win32\N2Demo.Win32.vbproj", "{325B2127-BEE1-44F5-B040-4FFDA7A32D7B}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "libExtraWindow", "..\..\vs2013\libExtraWindow\libExtraWindow\libExtraWindow.vbproj", "{643A914E-EFA5-45A9-A632-B0546A2D5E71}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "N2Demo.Android", "N2Demo.Android\N2Demo.Android.csproj", "{19CF8DCF-9A87-4E2C-BE7F-882C08C36D91}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "N2Demo.MonoOnUWP", "N2Demo.MonoOnUWP\N2Demo.MonoOnUWP.vbproj", "{CC256F42-F59A-4607-8734-D07064C6E36E}"
@@ -118,8 +116,6 @@ EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.N2Engine.Shell", "..\Nukepayload2.N2Engine.Shell\Nukepayload2.N2Engine.Shell.vbproj", "{6EEF663D-7607-4051-BD59-6B0EEA43FB83}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Dependencies", "Dependencies", "{9F77AEAA-AC6D-48E3-8656-49BFF3871BDA}"
-EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "WPF", "WPF", "{4A2BE418-C12E-4B8B-B059-33AB6BD61EBC}"
 EndProject
 Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "Nukepayload2.UI.UWP", "..\Nukepayload2.UI.UWP\Nukepayload2.UI.UWP.vbproj", "{FAEE72F7-B4E0-48E6-8270-193738FB3BC2}"
 EndProject
@@ -237,10 +233,6 @@ Global
 		Nukepayload2.N2Engine.PortableApiContract\Nukepayload2.N2Engine.PortableApiContract.projitems*{c459addc-ce9b-45f2-9889-720b221c6a33}*SharedItemsImports = 13
 		RaisingStudio.Xna.Graphics.Shared\RaisingStudio.Xna.Graphics.Shared.projitems*{ca20682b-fec9-46e1-8293-6896e8fc16a3}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.AnimationsApiContract\Nukepayload2.N2Engine.AnimationsApiContract.projitems*{d49cea6b-6d85-49c4-a32c-3650771cb5c9}*SharedItemsImports = 13
-		Nukepayload2.N2Engine.Mono\Nukepayload2.N2Engine.Mono.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
-		Nukepayload2.N2Engine.Platform\Nukepayload2.N2Engine.Platform.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
-		Nukepayload2.N2Engine.WinRT\Nukepayload2.N2Engine.WinRT.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
-		Nukepayload2.UI.SpriteFonts.MonoGameShared\Nukepayload2.UI.SpriteFonts.MonoGameShared.projitems*{f828de3a-fd32-4c19-a6ee-9d0dd740f003}*SharedItemsImports = 4
 		Nukepayload2.N2Engine.PhysicsIntegrationApiContract\Nukepayload2.N2Engine.PhysicsIntegrationApiContract.projitems*{f99f2ecf-7702-4816-9deb-d7ba3d68063a}*SharedItemsImports = 4
 	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -1148,54 +1140,6 @@ Global
 		{325B2127-BEE1-44F5-B040-4FFDA7A32D7B}.Release|x64.Build.0 = Release|Any CPU
 		{325B2127-BEE1-44F5-B040-4FFDA7A32D7B}.Release|x86.ActiveCfg = Release|Any CPU
 		{325B2127-BEE1-44F5-B040-4FFDA7A32D7B}.Release|x86.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|ARM.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|ARM.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|iPhone.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|iPhone.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|iPhoneSimulator.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|x64.ActiveCfg = Release|x64
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|x64.Build.0 = Release|x64
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|x86.ActiveCfg = Release|x86
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Ad-Hoc|x86.Build.0 = Release|x86
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|Any CPU.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|Any CPU.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|ARM.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|ARM.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|iPhone.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|iPhone.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|iPhoneSimulator.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|x64.ActiveCfg = Release|x64
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|x64.Build.0 = Release|x64
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|x86.ActiveCfg = Release|x86
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.AppStore|x86.Build.0 = Release|x86
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|ARM.ActiveCfg = Debug|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|ARM.Build.0 = Debug|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|iPhone.ActiveCfg = Debug|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|iPhone.Build.0 = Debug|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|iPhoneSimulator.ActiveCfg = Debug|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|iPhoneSimulator.Build.0 = Debug|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|x64.ActiveCfg = Debug|x64
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|x64.Build.0 = Debug|x64
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|x86.ActiveCfg = Debug|x86
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Debug|x86.Build.0 = Debug|x86
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|Any CPU.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|ARM.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|ARM.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|iPhone.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|iPhone.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|iPhoneSimulator.ActiveCfg = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|iPhoneSimulator.Build.0 = Release|Any CPU
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|x64.ActiveCfg = Release|x64
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|x64.Build.0 = Release|x64
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|x86.ActiveCfg = Release|x86
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71}.Release|x86.Build.0 = Release|x86
 		{19CF8DCF-9A87-4E2C-BE7F-882C08C36D91}.Ad-Hoc|Any CPU.ActiveCfg = Release|Any CPU
 		{19CF8DCF-9A87-4E2C-BE7F-882C08C36D91}.Ad-Hoc|Any CPU.Build.0 = Release|Any CPU
 		{19CF8DCF-9A87-4E2C-BE7F-882C08C36D91}.Ad-Hoc|Any CPU.Deploy.0 = Release|Any CPU
@@ -2509,7 +2453,6 @@ Global
 		{CA20682B-FEC9-46E1-8293-6896E8FC16A3} = {E0ADCDD2-9D1F-4C48-B09A-BCF001B863BC}
 		{F828DE3A-FD32-4C19-A6EE-9D0DD740F003} = {74F37D22-44D6-419A-A7C5-928F72891012}
 		{325B2127-BEE1-44F5-B040-4FFDA7A32D7B} = {28A21CBA-48DF-4BEE-A6CF-844C62DF0312}
-		{643A914E-EFA5-45A9-A632-B0546A2D5E71} = {4A2BE418-C12E-4B8B-B059-33AB6BD61EBC}
 		{19CF8DCF-9A87-4E2C-BE7F-882C08C36D91} = {28A21CBA-48DF-4BEE-A6CF-844C62DF0312}
 		{CC256F42-F59A-4607-8734-D07064C6E36E} = {28A21CBA-48DF-4BEE-A6CF-844C62DF0312}
 		{A6D04E38-FB22-4395-8E71-4617F9FB054F} = {C71BC2A2-28FE-485A-A33F-FC5938E0C19B}
@@ -2528,7 +2471,6 @@ Global
 		{BD6EE5BC-09F3-485C-BE68-63D3339F415D} = {87758A79-8AB9-4B5B-87EC-F2DFE52BB4D9}
 		{06CD173D-A116-482A-99FD-DF14AC4F7936} = {716F2BA2-2B65-4B6F-A3EA-C9270A09D274}
 		{6EEF663D-7607-4051-BD59-6B0EEA43FB83} = {C71BC2A2-28FE-485A-A33F-FC5938E0C19B}
-		{4A2BE418-C12E-4B8B-B059-33AB6BD61EBC} = {9F77AEAA-AC6D-48E3-8656-49BFF3871BDA}
 		{FAEE72F7-B4E0-48E6-8270-193738FB3BC2} = {87758A79-8AB9-4B5B-87EC-F2DFE52BB4D9}
 		{11D14CB7-C9FE-4044-ABA0-9BE40EFBC301} = {9F77AEAA-AC6D-48E3-8656-49BFF3871BDA}
 		{F55380EF-7108-47D7-90B5-DF32592E187B} = {3831393B-BE3B-41C7-A96E-EFDEDA196138}

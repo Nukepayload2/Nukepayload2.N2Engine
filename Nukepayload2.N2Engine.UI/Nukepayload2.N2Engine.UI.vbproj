@@ -32,10 +32,5 @@
     <Import Include="System.Numerics" />
     <Import Include="System.Runtime.CompilerServices" />
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.7.1.189" />
-    <PackageReference Include="SharpDX" Version="4.2.0" />
-  </ItemGroup>
   <Import Project="..\Nukepayload2.N2Engine.UIApiContract\Nukepayload2.N2Engine.UIApiContract.projitems" Label="Shared" />
 </Project>

@@ -1,7 +1,5 @@
 ﻿Imports Nukepayload2.N2Engine.Platform
 
-<Assembly: InternalsVisibleTo("Nukepayload2.N2Engine.Core")>
-
 ''' <summary>
 ''' 启动应用时，注册UWP的实现到引擎核心。
 ''' </summary>

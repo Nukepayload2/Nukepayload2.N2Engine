@@ -9,11 +9,6 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
   </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="MonoGame.Framework.WindowsDX" Version="3.7.1.189" />
-    <PackageReference Include="SharpDX" Version="4.2.0" />
-  </ItemGroup>
   
   <ItemGroup>
     <ProjectReference Include="..\Nukepayload2.N2Engine\Nukepayload2.N2Engine.vbproj">
