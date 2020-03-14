@@ -54,7 +54,7 @@ Public Class MonoGameHandler
     End Sub
 
     Private Sub GameForm_SizeChanged(sender As Object, e As EventArgs) Handles GameWindow.SizeChanged
-        BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(CInt(GameWindow.ActualWidth), CInt(GameWindow.ActualHeight)))
+        BackBufferInformation.NotifyViewPortSizeChanged(New SizeInInteger(GameForm.Width, GameForm.Height))
     End Sub
 #End If
 
